@@ -29,3 +29,6 @@
 	smudge = git-media-smudge %f
 [push]
 	default = simple
+[alias]
+    hub =! echo `git config remote.origin.url` | sed -E s/[a-z]+@github\\.com:// | sed s/\\.git$//
+	gh-create = !sh -c \"curl -u \\\"guillaumewuip\\\" https://api.github.com/user/repos -d \\\"{\\\\\\\"name\\\\\\\":\\\\\\\"$1\\\\\\\"}\\\"\" -
