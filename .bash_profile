@@ -3,6 +3,8 @@
 export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/platform-tools" 
 ## Add macport
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+#heroku
+export PATH="/usr/local/heroku/bin:$PATH"
 
 export EDITOR="/usr/bin/vim"
 
