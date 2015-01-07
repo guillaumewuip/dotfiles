@@ -24,6 +24,7 @@ alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
 alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
 
 # Quicker navigation
+alias home="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
