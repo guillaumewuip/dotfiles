@@ -142,4 +142,8 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 ### Extra
 
-. z.sh
+. ~/z.sh
+
+### Go GVM
+[[ -s "/Users/Guillaume/.gvm/scripts/gvm" ]] && source "/Users/Guillaume/.gvm/scripts/gvm"
+
