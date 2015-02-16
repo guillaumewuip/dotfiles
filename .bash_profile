@@ -5,6 +5,8 @@ export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/pla
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 #heroku
 export PATH="/usr/local/heroku/bin:$PATH"
+#rabbitmq
+export PATH="$PATH:/usr/local/sbin"
 
 export EDITOR="/usr/bin/vim"
 
