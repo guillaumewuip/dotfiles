@@ -14,6 +14,10 @@ alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
 
 ### Aliases
 
+#Tmux
+alias tl="tmux list-sessions"
+alias ta="tmux attach -t"
+
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
