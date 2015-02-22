@@ -151,3 +151,4 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 ### reset boot2docker env
 ### http://stackoverflow.com/questions/27528337/am-i-trying-to-connect-to-a-tls-enabled-daemon-without-tls
 ### $(boot2docker shellinit)
+$(boot2docker shellinit 2>/dev/null)
