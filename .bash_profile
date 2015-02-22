@@ -34,7 +34,7 @@ alias .....="cd ../../../.."
 
 # Shortcuts to my Code folder in my home directory
 alias web="cd /Users/Guillaume/Documents/Informatique/Web/"
-alias scolaire="cd /Users/Guillaume/Documents/Scolaire/L2/S3"
+alias scolaire="cd /Users/Guillaume/Documents/Scolaire/L2/S4"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
