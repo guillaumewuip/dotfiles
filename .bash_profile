@@ -22,7 +22,7 @@ alias ta="tmux attach -t"
 
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
-alias s='open -a "Sublime Text"'
+alias sublime='open -a "Sublime Text"'
 
 # Color LS
 colorflag="-G"
