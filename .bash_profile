@@ -158,3 +158,7 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 ### http://stackoverflow.com/questions/27528337/am-i-trying-to-connect-to-a-tls-enabled-daemon-without-tls
 ### $(boot2docker shellinit)
 $(boot2docker shellinit 2>/dev/null)
+
+## The fuck
+# https://github.com/nvbn/thefuck
+alias fuck='$(thefuck $(fc -ln -1))'
