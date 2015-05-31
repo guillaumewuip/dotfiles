@@ -1,6 +1,8 @@
 
 ## Add android sdk/tools and android sdk/platform-tools
 export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/platform-tools" 
+#Mongo
+export PATH="$PATH:/usr/local/mongodb/bin/"
 ## Add macport
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 #heroku
