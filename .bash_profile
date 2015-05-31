@@ -16,6 +16,20 @@ alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
 
 ### Aliases
 
+#Git
+alias  gl="git ls"
+alias gll="git ll"
+alias gaa="git add ."
+alias  ga="git add"
+alias gap="git add -p"
+
+alias  gc="git commit -m"
+alias gca="git commit -a -m"
+
+alias gd="git diff"
+
+alias gs="git status -s"
+
 #Tmux
 alias tl="tmux list-sessions"
 alias ta="tmux attach -t"
