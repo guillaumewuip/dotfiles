@@ -457,3 +457,6 @@ highlight clear SignColumn
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
 autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
+
+"https://github.com/Yggdroot/indentLine
+let g:indentLine_enabled = 1
