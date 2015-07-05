@@ -456,3 +456,4 @@ highlight clear SignColumn
 "Arduino, Processing
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
+autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
