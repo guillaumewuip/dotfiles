@@ -15,6 +15,7 @@ export EDITOR="/usr/bin/vim"
 alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
 
 ### Aliases
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
 #Git
 alias  gl="git ls"
