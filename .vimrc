@@ -425,6 +425,7 @@ endfunction
 
 "Pathogen
 execute pathogen#infect()
+Helptags
 
 "https://github.com/plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled=1
