@@ -461,9 +461,10 @@ autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
 "https://github.com/Yggdroot/indentLine
 let g:indentLine_enabled = 1
 
+"vim-better-whitespace
+let strip_whitespace_on_save = 1
 
 "On vim start
-autocmd VimEnter * ToggleStripWhitespaceOnSave
 
 "Open NERDTree on full screen if vim isn't open with a file
 autocmd VimEnter * if !argc() | NERDTree | endif
