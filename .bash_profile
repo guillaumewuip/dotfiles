@@ -19,6 +19,7 @@ alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
 #Git
 alias  gl="git ls"
 alias gll="git ll"
+alias glg="git lg"
 alias gaa="git add ."
 alias  ga="git add"
 alias gap="git add -p"
