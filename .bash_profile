@@ -36,6 +36,10 @@ alias gs="git status -s"
 alias tl="tmux list-sessions"
 alias ta="tmux attach -t"
 
+#Docker
+alias dm="docker-machine"
+alias dm-start="eval \"$(docker-machine env docker-vm)\""
+
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias sublime='open -a "Sublime Text"'
@@ -169,12 +173,7 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 ### Go GVM
 [[ -s "/Users/Guillaume/.gvm/scripts/gvm" ]] && source "/Users/Guillaume/.gvm/scripts/gvm"
 
-### Docker
-### reset boot2docker env
-### http://stackoverflow.com/questions/27528337/am-i-trying-to-connect-to-a-tls-enabled-daemon-without-tls
-### $(boot2docker shellinit)
-$(boot2docker shellinit 2>/dev/null)
-
 ## The fuck
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
+
