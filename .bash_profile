@@ -38,7 +38,7 @@ alias ta="tmux attach -t"
 
 #Docker
 alias dm="docker-machine"
-alias dm-start="eval \"$(docker-machine env docker-vm)\""
+alias dm-start='eval "$(docker-machine env docker-vm)"'
 
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
