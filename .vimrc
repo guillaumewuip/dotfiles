@@ -1,12 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
-" Version: 
+" Version:
 "       5.0 - 29/05/12 15:43:36
 "
-" Blog_post: 
+" Blog_post:
 "       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
 "
 " Awesome_version:
@@ -19,7 +19,7 @@
 " Syntax_highlighted:
 "       http://amix.dk/vim/vimrc.html
 "
-" Raw_version: 
+" Raw_version:
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
@@ -90,7 +90,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -220,7 +220,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -434,18 +434,18 @@ let mapleader=","
 
 "Vim airline
 set laststatus=2 " so we always get airline displaying / always show status
-let g:airline_enable_branch=1
+let g:airline#extensions#branch#enabled = 1
 let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_linecolumn_prefix = '␊ '
-let g:airline_linecolumn_prefix = '␤ '
-let g:airline_linecolumn_prefix = '¶ '
-let g:airline_branch_prefix = '⎇ '
-let g:airline_paste_symbol = 'ρ'
-let g:airline_paste_symbol = 'Þ'
-let g:airline_paste_symbol = '∥'
+let g:airline_symbols = {}
+let g:airline_symbols.linenr = '␊ '
+let g:airline_symbols.linenr = '␤ '
+let g:airline_symbols.linenr = '¶ '
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
 let g:airline#extensions#tabline#enabled = 0
 
 set clipboard=unnamed
