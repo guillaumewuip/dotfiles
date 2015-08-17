@@ -465,6 +465,10 @@ let g:indentLine_enabled = 1
 "vim-better-whitespace
 let strip_whitespace_on_save = 1
 
+"vim-multiple-cursors
+let g:multi_cursor_exit_from_visual_mode = 1
+let g:multi_cursor_exit_from_insert_mode = 0
+
 "On vim start
 
 "Open NERDTree on full screen if vim isn't open with a file
