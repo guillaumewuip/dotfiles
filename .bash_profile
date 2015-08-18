@@ -179,3 +179,4 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
 
+[[ -r ~/.bashrc ]] && . ~/.bashrc
