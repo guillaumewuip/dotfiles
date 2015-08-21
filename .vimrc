@@ -123,7 +123,7 @@ set tm=500
 set number
 
 "Add 80 caracter column
-set colorcolumn 80
+set colorcolumn=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
