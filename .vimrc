@@ -39,6 +39,10 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"Pathogen
+execute pathogen#infect()
+Helptags "Add plugin docs
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -121,7 +125,9 @@ set tm=500
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable
+if !exists("g:syntax_on")
+    syntax enable
+endif
 
 colorscheme desert
 set background=dark
@@ -423,10 +429,6 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-"Pathogen
-execute pathogen#infect()
-Helptags
-
 "https://github.com/plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled=1
 
@@ -462,6 +464,7 @@ autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
 "https://github.com/Yggdroot/indentLine
 let g:indentLine_char = '┆'
 let g:indentLine_enabled = 1
+au BufRead,BufEnter,BufNewFile * IndentLinesReset
 
 "vim-better-whitespace
 let strip_whitespace_on_save = 1
