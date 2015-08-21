@@ -431,9 +431,6 @@ endfunction
 "https://github.com/plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled=1
 
-"For nerdCommenter
-let mapleader=","
-
 "Vim airline
 set laststatus=2 " so we always get airline displaying / always show status
 let g:airline#extensions#branch#enabled = 1
