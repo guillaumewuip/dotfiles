@@ -151,6 +151,11 @@ set nobackup
 set nowb
 set noswapfile
 
+"Arduino, Processing
+autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
+"Stylus
+autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -362,6 +367,10 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins config
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "https://github.com/plasticboy/vim-markdown
 let g:vim_markdown_folding_disabled=1
 
@@ -381,18 +390,12 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline#extensions#tabline#enabled = 0
 
-"For GitGutter
+"GitGutter
 highlight clear SignColumn
-
-"Arduino, Processing
-autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
-
-autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
 
 "https://github.com/Yggdroot/indentLine
 let g:indentLine_char = '┆'
 let g:indentLine_enabled = 1
-au BufRead,BufEnter,BufNewFile * IndentLinesReset
 
 "vim-better-whitespace
 let strip_whitespace_on_save = 1
@@ -401,10 +404,11 @@ let strip_whitespace_on_save = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 let g:multi_cursor_exit_from_insert_mode = 0
 
-"On vim start
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => On vim start
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Open NERDTree on full screen if vim isn't open with a file
 autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd VimEnter * if !argc() | wincmd p | endif
 autocmd VimEnter * if !argc() | wincmd q | endif
-
