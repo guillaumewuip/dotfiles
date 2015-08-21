@@ -23,6 +23,7 @@
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
+"    -> Pathogen
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -36,6 +37,8 @@
 "    -> Spell checking
 "    -> Misc
 "    -> Helper functions
+"    -> Plugins config
+"    -> Vim start
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -116,6 +119,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
+"Show line numbers
 set number
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
