@@ -234,8 +234,7 @@ set viminfo^=%
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-" NOT WORKING ...
+" Move a line of text using Ctrl+[jk]
 " Normal mode
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
