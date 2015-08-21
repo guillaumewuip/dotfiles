@@ -62,6 +62,9 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
+"Allow vim clipboad <-> host clipboard to share data
+set clipboard=unnamed
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -330,7 +333,6 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
-
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste
@@ -378,8 +380,6 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline#extensions#tabline#enabled = 0
-
-set clipboard=unnamed
 
 "For GitGutter
 highlight clear SignColumn
