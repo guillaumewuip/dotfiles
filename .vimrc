@@ -460,6 +460,7 @@ autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
 
 "https://github.com/Yggdroot/indentLine
+let g:indentLine_char = '┆'
 let g:indentLine_enabled = 1
 
 "vim-better-whitespace
