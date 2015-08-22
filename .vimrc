@@ -124,6 +124,8 @@ set number
 
 "Add 80 caracter column
 set colorcolumn=80
+autocmd filetype nerdtree set colorcolumn&
+autocmd filetype nerdtree autocmd BufLeave <buffer> set colorcolumn=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -419,3 +421,4 @@ let g:multi_cursor_exit_from_insert_mode = 0
 autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd VimEnter * if !argc() | wincmd p | endif
 autocmd VimEnter * if !argc() | wincmd q | endif
+
