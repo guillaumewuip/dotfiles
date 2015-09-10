@@ -62,7 +62,7 @@ alias .....="cd ../../../.."
 
 # Shortcuts to my Code folder in my home directory
 alias web="cd /Users/Guillaume/Documents/Informatique/Web/"
-alias scolaire="cd /Users/Guillaume/Documents/Scolaire/L2/S4"
+alias sco="cd /Users/Guillaume/Documents/Scolaire/3A"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -94,8 +94,12 @@ function sshTunnel() {
 }
 alias tunnelVPN="sshTunnel 1194 guillaumewuip.ddns.net 1194 bastion"
 
-alias setProxies="export http_proxy=http://cache.etu.univ-nantes.fr && export https_proxy=http://cache.etu.univ-nantes.fr"
-alias unsetProxies="unset http_proxy && unset https_proxy"
+proxies="export http_proxy=http://cache.etu.univ-nantes.fr"
+proxies="$proxies && export https_proxy=http://cache.etu.univ-nantes.fr"
+proxies="$proxies && export HTTP_PROXY=${http_proxy}"
+proxies="$proxies && export HTTPS_PROXY=${https_proxy}"
+alias setProxies="${proxies}"
+alias unsetProxies="unset http_proxy && unset https_proxy && unset HTTP_PROXY && unset HTTPS_PROXY"
 
 ### Prompt Colors
 # Modified version of @gf3’s Sexy Bash Prompt
