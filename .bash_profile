@@ -94,8 +94,8 @@ function sshTunnel() {
 }
 alias tunnelVPN="sshTunnel 1194 guillaumewuip.ddns.net 1194 bastion"
 
-proxies="export http_proxy=http://cache.etu.univ-nantes.fr"
-proxies="$proxies && export https_proxy=http://cache.etu.univ-nantes.fr"
+proxies="export http_proxy=http://cache.etu.univ-nantes.fr:3128"
+proxies="$proxies && export https_proxy=http://cache.etu.univ-nantes.fr:3128"
 proxies="$proxies && export HTTP_PROXY=${http_proxy}"
 proxies="$proxies && export HTTPS_PROXY=${https_proxy}"
 alias setProxies="${proxies}"
