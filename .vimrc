@@ -68,6 +68,15 @@ let g:mapleader = ","
 "Allow vim clipboad <-> host clipboard to share data
 set clipboard=unnamed
 
+set mouse=a
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+map <ScrollWheelUp> k
+map <ScrollWheelDown> j
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
