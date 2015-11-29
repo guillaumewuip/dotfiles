@@ -1,14 +1,14 @@
 
-## Add android sdk/tools and android sdk/platform-tools
-export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/platform-tools" 
+## Add macport
+export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
 #Mongo
 export PATH="$PATH:/usr/local/mongodb/bin/"
-## Add macport
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-#heroku
-export PATH="/usr/local/heroku/bin:$PATH"
 #rabbitmq
 export PATH="$PATH:/usr/local/sbin"
+#heroku
+export PATH="$PATH:/usr/local/heroku/bin"
+## Add android sdk/tools and android sdk/platform-tools
+export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/platform-tools" 
 
 export EDITOR="/usr/bin/vim"
 
