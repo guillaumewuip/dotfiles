@@ -177,7 +177,7 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 . ~/z.sh
 
 ### Go GVM
-[[ -s "/Users/Guillaume/.gvm/scripts/gvm" ]] && source "/Users/Guillaume/.gvm/scripts/gvm"
+[[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
 
 ## The fuck
 # https://github.com/nvbn/thefuck
