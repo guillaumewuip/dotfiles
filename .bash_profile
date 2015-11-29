@@ -70,7 +70,7 @@ alias sudo='sudo '
 ## Start an HTTP server from a directory, optionally specifying the port
 function server() {
     local port="${1:-8000}"
-    open "http://localhost:${port}/" && python -m SimpleHTTPServer "$port"
+    open "http://localhost:${port}/" && python2 -m SimpleHTTPServer "$port"
 }
 
 ## matrix fun
