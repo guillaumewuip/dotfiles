@@ -32,6 +32,9 @@ alias gd="git diff"
 
 alias gs="git status -s"
 
+#load git autocompletion (osx)
+source /opt/local/etc/bash_completion.d/git-completion.bash
+
 #Tmux
 alias tl="tmux list-sessions"
 alias ta="tmux attach -t"
