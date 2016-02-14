@@ -16,6 +16,7 @@ alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
 
 ### Aliases
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+alias cmus='cmus 2> /dev/null'
 
 #Git
 alias  gl="git ls"
