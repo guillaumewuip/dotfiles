@@ -85,6 +85,7 @@ set so=7
 
 " Turn on the WiLd menu
 set wildmenu
+set wildmode=list:longest:full
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
