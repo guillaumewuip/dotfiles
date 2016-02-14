@@ -31,10 +31,10 @@ alias gca="git commit -a -m"
 
 alias gd="git diff"
 
-alias gs="git status -s"
+alias gs="git status -sb"
 
 #load git autocompletion (osx)
-source /opt/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-completion.bash
 
 #Tmux
 alias tl="tmux list-sessions"
