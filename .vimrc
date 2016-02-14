@@ -129,8 +129,23 @@ set novisualbell
 set t_vb=
 set tm=500
 
-"Show line numbers
+" Display relative line numbers and absolute line number for the current line
 set number
+""set number relativenumber
+"" In insert mode, display absolute line numbers
+"au InsertEnter * :set relativenumber
+"" Come back to standard mode when leaving insert mode
+"au InsertLeave * :set number norelativenumber
+
+" Hghlight the screen line of the cursor
+"set cursorline
+" Always show 5 lines around cursor
+set scrolloff=5
+" from : http://vim.wikia.com/wiki/Highlight_current_line
+" toogle highlight cursor column
+nnoremap <Leader>c :set cursorcolumn!<CR>
+" toogle highligh cursor line
+nnoremap <Leader>l :set cursorline!<CR>
 
 "Add 80 caracter column
 set colorcolumn=80
