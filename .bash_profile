@@ -107,6 +107,11 @@ proxies="$proxies && export HTTPS_PROXY=${https_proxy}"
 alias setProxies="${proxies}"
 alias unsetProxies="unset http_proxy && unset https_proxy && unset HTTP_PROXY && unset HTTPS_PROXY"
 
+function icd() {
+    cd "$(ls -a -d */ .. | ipt)"
+    icd
+}
+
 ### Prompt Colors
 # Modified version of @gf3’s Sexy Bash Prompt
 # (https://github.com/gf3/dotfiles)
