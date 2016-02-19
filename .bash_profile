@@ -71,6 +71,8 @@ alias sco="cd /Users/Guillaume/Documents/Scolaire/3A/S6"
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+alias weather='curl http://wttr.in'
+
 ## Start an HTTP server from a directory, optionally specifying the port
 function server() {
     local port="${1:-8000}"
