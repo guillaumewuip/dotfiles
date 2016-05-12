@@ -10,6 +10,14 @@ export PATH="$PATH:/usr/local/heroku/bin"
 ## Add android sdk/tools and android sdk/platform-tools
 export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/platform-tools" 
 
+
+# Ruby
+export PATG="/usr/local/bin:/usr/local/sbin:$PATH"
+export RBENV_ROOT="$(brew --prefix rbenv)"
+export GEM_HOME="$(brew --prefix)/opt/gems"
+export GEM_PATH="$(brew --prefix)/opt/gems"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 export EDITOR="/usr/bin/vim"
 
 alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
