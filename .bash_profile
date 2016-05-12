@@ -36,6 +36,7 @@ alias gap="git add -p"
 
 alias  gc="git commit -m"
 alias gca="git commit -a -m"
+alias  gv="git commit -v"
 
 alias gd="git diff"
 
