@@ -207,4 +207,8 @@ shopt -s extglob # enables extended globbing, usefull for ls !(*.*)
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
 
+
+#Torch
+. /usr/local/torch/install/bin/torch-activate
+
 [[ -r ~/.bashrc ]] && . ~/.bashrc
