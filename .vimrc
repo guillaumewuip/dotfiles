@@ -138,14 +138,16 @@ set number
 "au InsertLeave * :set number norelativenumber
 
 " Hghlight the screen line of the cursor
-"set cursorline
+set nocursorline
+set nocursorcolumn
+nnoremap H :set cursorline! <CR>
 " Always show 5 lines around cursor
 set scrolloff=5
 " from : http://vim.wikia.com/wiki/Highlight_current_line
 " toogle highlight cursor column
-nnoremap <Leader>c :set cursorcolumn!<CR>
+"nnoremap <Leader>c :set cursorcolumn!<CR>
 " toogle highligh cursor line
-nnoremap <Leader>l :set cursorline!<CR>
+"nnoremap <Leader>l :set cursorline!<CR>
 
 "Add 80 caracter column
 set colorcolumn=80
@@ -162,6 +164,7 @@ endif
 
 colorscheme desert
 set background=dark
+hi CursorLine cterm=NONE ctermbg=236
 
 " Set extra options when running in GUI mode
 if has("gui_running")
