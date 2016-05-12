@@ -52,7 +52,7 @@ alias ta="tmux attach -t"
 #Docker
 alias dm="docker-machine"
 function dm-env() {
-    eval "$(docker-machine env docker-vm)"
+    eval "$(docker-machine env dev)"
 }
 
 # Open specified files in Sublime Text
