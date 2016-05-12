@@ -1,1 +1,27 @@
 set editing-mode vi
+$if mode=vi
+set show-mode-in-prompt on
+set vi-ins-mode-string "⚡️  "
+set vi-cmd-mode-string "(cmd) ⚡️ "
+
+set keymap vi-command
+# these are for vi-command mode
+Control-l: clear-screen
+Control-a: beginning-of-line
+Control-e: end-of-line
+#prevent bash to open $EDITOR, switch to insert mode instead
+#v: vi-insertion-mode
+
+set keymap vi-insert
+# these are for vi-insert mode
+Control-l: clear-screen
+Control-a: beginning-of-line
+Control-e: end-of-line
+
+# Pressing tab will list all completions & select the first one. Pressing it
+# again will cycle through available completions.
+#TAB: menu-complete
+# Shift-TAB cycles completions backward
+"\e[Z": menu-complete-backward
+
+$endif
