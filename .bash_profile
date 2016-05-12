@@ -197,6 +197,9 @@ shopt -s extglob # enables extended globbing, usefull for ls !(*.*)
 
 . ~/z.sh
 
+#https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 ### Go GVM
 [[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
 
