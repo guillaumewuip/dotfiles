@@ -154,6 +154,9 @@ set colorcolumn=80
 autocmd filetype nerdtree set colorcolumn&
 autocmd filetype nerdtree autocmd BufLeave <buffer> set colorcolumn=80
 
+"jump with % in if/elsif/else/end
+runtime macros/matchit.vim
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
