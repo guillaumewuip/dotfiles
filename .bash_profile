@@ -214,3 +214,5 @@ alias fuck='$(thefuck $(fc -ln -1))'
 . /usr/local/torch/install/bin/torch-activate
 
 [[ -r ~/.bashrc ]] && . ~/.bashrc
+
+if [ "$TMUX" = "" ]; then exec tmux; fi
