@@ -458,3 +458,5 @@ autocmd VimEnter * if !argc() | wincmd q | endif
 "FZF
 set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'FZF'
+
+set textwidth=80 "line width
