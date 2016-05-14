@@ -211,7 +211,7 @@ alias fuck='$(thefuck $(fc -ln -1))'
 
 
 #Torch
-. /usr/local/torch/install/bin/torch-activate
+[ -f /usr/local/torch/install/bin/torch-activate ] && . /usr/local/torch/install/bin/torch-activate
 
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
