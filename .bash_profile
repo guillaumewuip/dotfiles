@@ -2,10 +2,10 @@
 ## Add macport
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 #heroku
-export PATH="$PATH:/usr/local/heroku/bin"
+export PATH=$PATH:/usr/local/heroku/bin
 ## Add android sdk/tools and android sdk/platform-tools
-export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/platform-tools" 
-
+export PATH=$PATH:/Users/Guillaume/Library/Android/sdk/tools
+export PATH=$PATH:/Users/Guillaume/Library/Android/sdk/platform-tools
 
 # Ruby
 export RBENV_ROOT="$(brew --prefix rbenv)"
