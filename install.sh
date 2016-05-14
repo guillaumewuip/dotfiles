@@ -1,21 +1,19 @@
-HOME=~/          #home dir
-DIR="* .[^.]*"   #current dir
+IGNORE_FILES="install.sh|remove.sh|README.md|.git|.gitignore"
 
-for i in $DIR; do
+HOME=~/
 
-    #don't link this script
-    if [ $i == "install.sh" -o $i == "remove.sh" -o "README.md" -o ".git"]; then
-        continue;
-    fi
+find -E . -mindepth 1 -maxdepth 1 -a ! -regex "./($IGNORE_FILES)" | while read i
+do
+    i=`basename $i`
 
     homeFile=$HOME$i	#target file
-    file=$(pwd)/$i 	#full path to current file
+    file=`pwd`/$i       #full path to current file
 
     if [ -e $homeFile ]; then #file exist
 
-        if [ $file == $(readlink $homeFile) ]; then
+        if [ $file == `readlink $homeFile` ]; then
                 echo "$i already linked"
-                continue;
+                continue
         else
                 #save old version
             echo "mv $homeFile $homeFile.old"
@@ -30,6 +28,9 @@ for i in $DIR; do
 
 done
 
+echo "curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+echo "git submodule update --init --recursive"
 git submodule update --init --recursive
 
