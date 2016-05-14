@@ -58,3 +58,6 @@
 [submodule ".vim/autoload/pathogen.vim"]
 	path = .vim/autoload/pathogen.vim
 	url = https://github.com/tpope/vim-pathogen
+[submodule ".tmux/plugins/tmux-battery"]
+	path = .tmux/plugins/tmux-battery
+	url = https://github.com/tmux-plugins/tmux-battery
