@@ -1,10 +1,6 @@
 
 ## Add macport
-export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
-#Mongo
-export PATH="$PATH:/usr/local/mongodb/bin/"
-#rabbitmq
-export PATH="$PATH:/usr/local/sbin"
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 #heroku
 export PATH="$PATH:/usr/local/heroku/bin"
 ## Add android sdk/tools and android sdk/platform-tools
@@ -12,7 +8,6 @@ export PATH="$PATH:/Applications/Android SDK/tools:/Applications/Android SDK/pla
 
 
 # Ruby
-export PATG="/usr/local/bin:/usr/local/sbin:$PATH"
 export RBENV_ROOT="$(brew --prefix rbenv)"
 export GEM_HOME="$(brew --prefix)/opt/gems"
 export GEM_PATH="$(brew --prefix)/opt/gems"
