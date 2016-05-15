@@ -1,8 +1,8 @@
 set editing-mode vi
 $if mode=vi
+set vi-ins-mode-string "\033[38;5;242m☞ \033[m "
+set vi-cmd-mode-string "\033[38;5;242m☝︎ \033[m "
 set show-mode-in-prompt on
-set vi-ins-mode-string "⚡️  "
-set vi-cmd-mode-string "(cmd) ⚡️ "
 
 set keymap vi-command
 # these are for vi-command mode
