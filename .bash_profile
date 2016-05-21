@@ -12,6 +12,7 @@ export RBENV_ROOT="$(brew --prefix rbenv)"
 export GEM_HOME="$(brew --prefix)/opt/gems"
 export GEM_PATH="$(brew --prefix)/opt/gems"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH=$PATH:/usr/local/opt/gems/bin
 
 export EDITOR="/usr/bin/vim"
 
