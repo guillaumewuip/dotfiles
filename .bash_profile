@@ -205,10 +205,12 @@ shopt -s extglob # enables extended globbing, usefull for ls !(*.*)
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
 
-
 #Torch
 [ -f /usr/local/torch/install/bin/torch-activate ] && . /usr/local/torch/install/bin/torch-activate
 
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
 if [ "$TMUX" = "" ]; then exec tmux; fi
+
+#Autoenv
+[ -f /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
