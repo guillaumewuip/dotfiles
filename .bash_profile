@@ -173,14 +173,28 @@ function parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
+# Send OSX notification after long process exit
+function f_notifyme {
+    case "$OSTYPE" in
+        darwin*)
+            LAST_EXIT_CODE=$?
+            CMD=$(history 1 | sed 's/^ *[^ ]* *//')
+            ~/notifier "$CMD" "$LAST_EXIT_CODE" &
+            ;;
+        *);;
+    esac
+}
+
 
 # Change this symbol to something sweet.
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
 #symbol="⚡  "
 symbol=""
 
-export PS1="\[${BOLD}${MAGENTA}\]\u \[$ORANGE\]in \[$GREEN\]\w\[$ORANGE\]\$([[
+PS1="\[${BOLD}${MAGENTA}\]\u \[$ORANGE\]in \[$GREEN\]\w\[$ORANGE\]\$([[
 -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n$symbol\[$RESET\]"
+PS1='$(f_notifyme)'$PS1
+export PS1=$PS1
 export PS2="\[$ORANGE\]☞  \[$RESET\]"
 
 
