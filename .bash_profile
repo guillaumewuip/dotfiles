@@ -228,5 +228,5 @@ if [ "$TMUX" = "" ]; then exec tmux; fi
 
 #Autoenv
 [ -f /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
-[ -f ~/.env_global ] && source .env_global
+[ -f ~/.env_global ] && source ~/.env_global
 
