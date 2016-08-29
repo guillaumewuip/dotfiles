@@ -46,6 +46,12 @@
 execute pathogen#infect()
 Helptags "Add plugin docs
 
+"Vim-plug
+call plug#begin('~/.vim/plugged')
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+end
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -464,3 +470,4 @@ set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'FZF'
 
 set textwidth=80 "line width
+
