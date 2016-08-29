@@ -21,6 +21,7 @@ alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
 ### Aliases
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias cmus='cmus 2> /dev/null'
+alias vim='nvim'
 
 #Git
 alias  gl="git ls"
@@ -179,7 +180,7 @@ function f_notifyme {
         darwin*)
             LAST_EXIT_CODE=$?
             CMD=$(history 1 | sed 's/^ *[^ ]* *//')
-            ~/notifier "$CMD" "$LAST_EXIT_CODE" &
+            ~/.notifier "$CMD" "$LAST_EXIT_CODE" &
             ;;
         *);;
     esac

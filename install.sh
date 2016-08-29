@@ -12,10 +12,10 @@ do
     if [ -e $homeFile ]; then #file exist
 
         if [ $file == `readlink $homeFile` ]; then
-                echo "$i already linked"
-                continue
+            echo "$i already linked"
+            continue
         else
-                #save old version
+            #save old version
             echo "mv $homeFile $homeFile.old"
             mv $homeFile $homeFile.old
         fi

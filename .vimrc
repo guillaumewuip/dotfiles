@@ -69,10 +69,12 @@ let g:mapleader = ","
 set clipboard=unnamed
 
 set mouse=a
-if has("mouse_sgr")
-    set ttymouse=sgr
-else
-    set ttymouse=xterm2
+if !has('nvim')
+    if has("mouse_sgr")
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    end
 end
 map <ScrollWheelUp> k
 map <ScrollWheelDown> j
