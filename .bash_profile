@@ -41,6 +41,7 @@ alias gs="git status -sb"
 
 #load git autocompletion (osx)
 source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/npm
 
 #Tmux
 alias tl="tmux list-sessions"
