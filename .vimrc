@@ -469,5 +469,8 @@ autocmd VimEnter * if !argc() | wincmd q | endif
 set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'FZF'
 
+"Nerdcommenter
+let NERDSpaceDelims=1
+
 set textwidth=80 "line width
 
