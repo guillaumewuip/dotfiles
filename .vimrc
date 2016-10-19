@@ -50,6 +50,7 @@ Helptags "Add plugin docs
 call plug#begin('~/.vim/plugged')
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'vim-scripts/LanguageTool', { 'do': ':UpdateRemotePlugins' }
 end
 call plug#end()
 
@@ -474,3 +475,4 @@ let NERDSpaceDelims=1
 
 set textwidth=80 "line width
 
+let g:languagetool_jar='/usr/local/Cellar/languagetool/3.4/libexec/languagetool-commandline.jar'
