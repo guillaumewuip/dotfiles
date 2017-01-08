@@ -6,6 +6,7 @@ export PATH=$PATH:/usr/local/heroku/bin
 ## Add android sdk/tools and android sdk/platform-tools
 export PATH=$PATH:/Users/Guillaume/Library/Android/sdk/tools
 export PATH=$PATH:/Users/Guillaume/Library/Android/sdk/platform-tools
+export PATH=$PATH:/Library/TeX/texbin
 
 # Ruby
 export RBENV_ROOT="$(brew --prefix rbenv)"
