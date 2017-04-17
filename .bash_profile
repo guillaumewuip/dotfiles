@@ -15,6 +15,9 @@ export GEM_PATH="$(brew --prefix)/opt/gems"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=$PATH:/usr/local/opt/gems/bin
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 export EDITOR="/usr/bin/vim"
 
 alias arduino="/Applications/Arduino.app/Contents/MacOs/JavaApplicationStub"
@@ -74,7 +77,7 @@ alias .....="cd ../../../.."
 
 # Shortcuts to my Code folder in my home directory
 alias web="cd /Users/Guillaume/Documents/Informatique/Web/"
-alias sco="cd /Users/Guillaume/Documents/Scolaire/4A/S7"
+alias sco="cd /Users/Guillaume/Documents/Scolaire/4A/S8"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -110,8 +113,6 @@ alias tunnelVPN="sshTunnel 1194 guillaumewuip.ddns.net 1194 bastion"
 
 proxies="export http_proxy=http://cache.etu.univ-nantes.fr:3128"
 proxies="$proxies && export https_proxy=http://cache.etu.univ-nantes.fr:3128"
-proxies="$proxies && export HTTP_PROXY=${http_proxy}"
-proxies="$proxies && export HTTPS_PROXY=${https_proxy}"
 alias setProxies="${proxies}"
 alias unsetProxies="unset http_proxy && unset https_proxy && unset HTTP_PROXY && unset HTTPS_PROXY"
 
@@ -195,10 +196,10 @@ function f_notifyme {
 symbol=""
 
 PS1="\[${BOLD}${MAGENTA}\]\u \[$ORANGE\]in \[$GREEN\]\w\[$ORANGE\]\$([[
--n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n$symbol\[$RESET\]"
+-n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n$symbol"
 PS1='$(f_notifyme)'$PS1
 export PS1=$PS1
-export PS2="\[$ORANGE\]☞  \[$RESET\]"
+export PS2="\[$RESET\]\[$ORANGE\]☞  \[$RESET\]"
 
 
 ### Misc
