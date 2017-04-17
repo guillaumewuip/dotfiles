@@ -51,6 +51,10 @@ call plug#begin('~/.vim/plugged')
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'vim-scripts/LanguageTool', { 'do': ':UpdateRemotePlugins' }
+    Plug 'junegunn/vim-easy-align', { 'do': ':UpdateRemotePlugins' }
+    Plug 'ryanoasis/vim-devicons', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'do': ':UpdateRemotePlugins' }
 end
 call plug#end()
 
@@ -442,6 +446,8 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline#extensions#tabline#enabled = 0
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
 
 "GitGutter
 highlight clear SignColumn
@@ -476,3 +482,5 @@ let NERDSpaceDelims=1
 set textwidth=80 "line width
 
 let g:languagetool_jar='/usr/local/Cellar/languagetool/3.4/libexec/languagetool-commandline.jar'
+
+let g:deoplete#enable_at_startup = 1
