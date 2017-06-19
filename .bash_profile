@@ -196,7 +196,7 @@ function f_notifyme {
 symbol=""
 
 PS1="\[${BOLD}${MAGENTA}\]\u \[$ORANGE\]in \[$GREEN\]\w\[$ORANGE\]\$([[
--n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n$symbol"
+-n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\[$RESET\]\n$symbol"
 PS1='$(f_notifyme)'$PS1
 export PS1=$PS1
 export PS2="\[$RESET\]\[$ORANGE\]☞  \[$RESET\]"
