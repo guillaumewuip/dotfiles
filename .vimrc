@@ -221,10 +221,10 @@ set autoindent
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -487,3 +487,5 @@ set textwidth=80 "line width
 let g:languagetool_jar='/usr/local/Cellar/languagetool/3.4/libexec/languagetool-commandline.jar'
 
 let g:deoplete#enable_at_startup = 1
+
+let g:jsx_ext_required = 0
