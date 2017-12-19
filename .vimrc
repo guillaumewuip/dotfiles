@@ -50,7 +50,6 @@ Helptags "Add plugin docs
 call plug#begin('~/.vim/plugged')
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'vim-scripts/LanguageTool', { 'do': ':UpdateRemotePlugins' }
     Plug 'junegunn/vim-easy-align', { 'do': ':UpdateRemotePlugins' }
     Plug 'ryanoasis/vim-devicons', { 'do': ':UpdateRemotePlugins' }
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
