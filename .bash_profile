@@ -73,6 +73,10 @@ alias .....="cd ../../../.."
 alias web="cd /Users/Guillaume/Documents/Informatique/Web/"
 alias sco="cd /Users/Guillaume/Documents/Scolaire/5A/S9"
 
+export CDPATH=$CDPATH:.
+export CDPATH=$CDPATH:/Users/Guillaume/Documents/Informatique/Web/
+export CDPATH=$CDPATH:/Users/Guillaume/Documents/Scolaire/5A/S9/
+
 # Enable aliases to be sudoâed
 alias sudo='sudo '
 
