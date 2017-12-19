@@ -30,3 +30,7 @@ $if mode=vi
     # Shift-TAB cycles completions backward
     "\e[Z": menu-complete-backward
 $endif
+
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
