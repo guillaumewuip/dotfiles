@@ -43,7 +43,7 @@ alias gd="git diff"
 
 alias gs="git status -sb"
 
-#load git autocompletion (osx)
+#load autocompletions
 source /usr/local/etc/bash_completion.d/git-completion.bash
 source /usr/local/etc/bash_completion.d/npm
 
@@ -227,4 +227,6 @@ if [ "$TMUX" = "" ]; then exec tmux; fi
 #Autoenv
 [ -f /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
 [ -f ~/.env_global ] && source ~/.env_global
+
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
