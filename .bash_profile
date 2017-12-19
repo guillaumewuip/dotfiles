@@ -51,12 +51,6 @@ source /usr/local/etc/bash_completion.d/npm
 alias tl="tmux list-sessions"
 alias ta="tmux attach -t"
 
-#Docker
-alias dm="docker-machine"
-function dm-env() {
-    eval "$(docker-machine env dev)"
-}
-
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias sublime='open -a "Sublime Text"'
@@ -79,7 +73,7 @@ alias .....="cd ../../../.."
 alias web="cd /Users/Guillaume/Documents/Informatique/Web/"
 alias sco="cd /Users/Guillaume/Documents/Scolaire/5A/S9"
 
-# Enable aliases to be sudo’ed
+# Enable aliases to be sudoâed
 alias sudo='sudo '
 
 alias weather='curl http://wttr.in'
@@ -122,7 +116,7 @@ function icd() {
 }
 
 ### Prompt Colors
-# Modified version of @gf3’s Sexy Bash Prompt
+# Modified version of @gf3âs Sexy Bash Prompt
 # (https://github.com/gf3/dotfiles)
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
@@ -192,14 +186,14 @@ function f_notifyme {
 
 # Change this symbol to something sweet.
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
-#symbol="⚡  "
+#symbol="â¡  "
 symbol=""
 
 PS1="\[${BOLD}${MAGENTA}\]\u \[$ORANGE\]in \[$GREEN\]\w\[$ORANGE\]\$([[
 -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\[$RESET\]\n$symbol"
 PS1='$(f_notifyme)'$PS1
 export PS1=$PS1
-export PS2="\[$RESET\]\[$ORANGE\]☞  \[$RESET\]"
+export PS2="\[$RESET\]\[$ORANGE\]â  \[$RESET\]"
 
 
 ### Misc
