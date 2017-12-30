@@ -1,4 +1,5 @@
 
+export PATH=$PATH:/usr/local/sbin
 ## Add macport
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 #heroku
