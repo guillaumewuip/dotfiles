@@ -125,6 +125,10 @@ function pong() {
   ping ${1:-"8.8.8.8"} | while read line; do echo "$(date): $line"; done
 }
 
+function port() {
+  lsof -i ":${1:-80}"
+}
+
 ### Prompt Colors
 # Modified version of @gf3âs Sexy Bash Prompt
 # (https://github.com/gf3/dotfiles)
