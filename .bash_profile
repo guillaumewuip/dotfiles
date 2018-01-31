@@ -116,11 +116,6 @@ proxies="$proxies && export https_proxy=http://cache.etu.univ-nantes.fr:3128"
 alias setProxies="${proxies}"
 alias unsetProxies="unset http_proxy && unset https_proxy && unset HTTP_PROXY && unset HTTPS_PROXY"
 
-function icd() {
-    cd "$(ls -a -d */ .. | ipt)"
-    icd
-}
-
 function pong() {
   ping ${1:-"8.8.8.8"} | while read line; do echo "$(date): $line"; done
 }
@@ -221,9 +216,6 @@ shopt -s extglob # enables extended globbing, usefull for ls !(*.*)
 
 . ~/z.sh
 
-#https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 ### Go GVM
 [[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
 
@@ -231,16 +223,9 @@ shopt -s extglob # enables extended globbing, usefull for ls !(*.*)
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
 
-#Torch
-[ -f /usr/local/torch/install/bin/torch-activate ] && . /usr/local/torch/install/bin/torch-activate
-
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
 if [ "$TMUX" = "" ]; then exec tmux; fi
-
-#Autoenv
-[ -f /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
-[ -f ~/.env_global ] && source ~/.env_global
 
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
