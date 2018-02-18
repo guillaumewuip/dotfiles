@@ -41,23 +41,6 @@
 "    -> Vim start
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Pathogen
-execute pathogen#infect()
-Helptags "Add plugin docs
-
-"Vim-plug
-call plug#begin('~/.vim/plugged')
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'junegunn/vim-easy-align', { 'do': ':UpdateRemotePlugins' }
-    Plug 'ryanoasis/vim-devicons', { 'do': ':UpdateRemotePlugins' }
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'do': ':UpdateRemotePlugins' }
-end
-call plug#end()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -484,7 +467,5 @@ let NERDSpaceDelims=1
 set textwidth=80 "line width
 
 let g:languagetool_jar='/usr/local/Cellar/languagetool/3.4/libexec/languagetool-commandline.jar'
-
-let g:deoplete#enable_at_startup = 1
 
 let g:jsx_ext_required = 0
