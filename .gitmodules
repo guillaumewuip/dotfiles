@@ -145,3 +145,6 @@
 [submodule ".vim/pack/git-plugins/start/nerdcommenter"]
 	path = .vim/pack/git-plugins/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
+[submodule ".vim/pack/git-plugins/start/vim-easy-align"]
+	path = .vim/pack/git-plugins/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align
