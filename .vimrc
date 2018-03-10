@@ -460,7 +460,7 @@ autocmd VimEnter * if !argc() | wincmd q | endif
 
 "FZF
 set rtp+=/usr/local/opt/fzf
-let g:fzf_command_prefix = 'FZF'
+let g:fzf_command_prefix = 'F'
 
 "Nerdcommenter
 let NERDSpaceDelims=1
