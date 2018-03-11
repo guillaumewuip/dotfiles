@@ -12,5 +12,5 @@ cd .home
 
 # Terminal
 
-Font : Incosolata-dz for Powerline https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Inconsolata
+Font : [Incosolata-dz for Powerline](./Inconsolata for Powerline Mod Nerd Font.otf)
 
