@@ -160,3 +160,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-fugitive"]
 	path = .vim/pack/git-plugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule ".vim/pack/git-plugins/start/vim-css-color"]
+	path = .vim/pack/git-plugins/start/vim-css-color
+	url = https://github.com/ap/vim-css-color
