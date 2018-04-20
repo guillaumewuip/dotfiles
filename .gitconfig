@@ -1,6 +1,6 @@
 [core]
 	# Use custom `.gitignore`
-	excludesfile = /Users/Guillaume/.gitignore_global
+  excludesfile = /Users/guillaumeclochard/.gitignore_global
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,indent-with-non-tab,trailing-space
 	ignorecase = false
@@ -23,8 +23,8 @@
 	changed = green
 	untracked = cyan
 [user]
-	name = Guillaume Wuip
-	email = guillaume@wuips.com
+	name = Guillaume Clochard
+	email = guillaume.clochard@iadvize.com
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
