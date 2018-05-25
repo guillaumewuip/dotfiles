@@ -26,3 +26,7 @@ function port() {
   lsof -i ":${1:-80}"
 }
 
+function inframe() {
+  docker run -ti --rm -v ${HOME}/.inframe:/root/.inframe -v ${HOME}/.aws:/root/.aws -v ${HOME}/.ssh/iadvize_github_rsa:/root/.ssh/id_rsa -v $(pwd):/config iadvize/inframe $@
+}
+
