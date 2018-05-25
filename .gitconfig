@@ -49,3 +49,5 @@
 	process = git-lfs filter-process
 [credentials]
 	helper = cache
+[rerere]
+	enabled = true
