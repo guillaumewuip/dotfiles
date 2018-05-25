@@ -323,6 +323,9 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+map <leader>an :ALENext<cr>
+map <leader>ap :ALEPrevious<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
