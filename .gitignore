@@ -1,3 +1,4 @@
 .vim/autoload/pathogen.vim
 .tmux/resurrect/
 .config
+tags
