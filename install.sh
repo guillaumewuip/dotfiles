@@ -28,9 +28,6 @@ do
 
 done
 
-echo "curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
 echo "git submodule update --init --recursive"
 git submodule update --init --recursive
 
