@@ -3,8 +3,11 @@ const bitbar = require('bitbar');
 const _ = require('lodash');
 const request = require('request-json').createClient('https://api.github.com/');
 const dotenv = require('dotenv');
+const path = require('path');
 
-dotenv.config();
+dotenv.config({
+  path: path.join(__dirname, '.env'),
+});
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
