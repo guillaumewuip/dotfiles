@@ -52,3 +52,5 @@
 	helper = cache
 [rerere]
 	enabled = true
+[rebase]
+	autoStash = true
