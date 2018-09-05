@@ -163,3 +163,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-css-color"]
 	path = .vim/pack/git-plugins/start/vim-css-color
 	url = https://github.com/ap/vim-css-color
+[submodule ".vim/pack/git-plugins/start/vim-rhubarb"]
+	path = .vim/pack/git-plugins/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
