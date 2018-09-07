@@ -465,6 +465,9 @@ autocmd VimEnter * if !argc() | wincmd q | endif
 set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'F'
 
+":FRag search_term /path/to/dir
+command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 "Nerdcommenter
 let NERDSpaceDelims=1
 
