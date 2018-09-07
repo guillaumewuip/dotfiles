@@ -166,3 +166,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-rhubarb"]
 	path = .vim/pack/git-plugins/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
+[submodule ".vim/pack/git-plugins/start/vim-which-key"]
+	path = .vim/pack/git-plugins/start/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key.git
