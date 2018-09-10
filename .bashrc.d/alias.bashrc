@@ -12,11 +12,13 @@ alias gaa="git add ."
 alias  ga="git add"
 alias gap="git add -p"
 
-alias  gc="git commit -m"
-alias gca="git commit -a -m"
-alias  gv="git commit -v"
+alias gc="git commit -m"
+alias gv="git commit -v"
+alias gf="git fix"
+
 
 alias gd="git diff"
+alias gdc="git diff --cached"
 
 alias gs="git status -sb"
 
