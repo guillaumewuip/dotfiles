@@ -476,3 +476,6 @@ set textwidth=80 "line width
 let g:languagetool_jar='/usr/local/Cellar/languagetool/3.4/libexec/languagetool-commandline.jar'
 
 let g:jsx_ext_required = 0
+
+let g:deoplete#enable_at_startup = 1
+

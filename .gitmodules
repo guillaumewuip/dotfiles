@@ -138,7 +138,7 @@
 	url = https://github.com/ryanoasis/vim-devicons
 [submodule ".vim/pack/git-plugins/start/deoplete.nvim"]
 	path = .vim/pack/git-plugins/start/deoplete.nvim
-	url = https://github.com/Shougo/deoplete.nvim
+	url = git@github.com:Shougo/deoplete.nvim.git
 [submodule ".vim/pack/git-plugins/start/vim-nerdtree-syntax-highlight"]
 	path = .vim/pack/git-plugins/start/vim-nerdtree-syntax-highlight
 	url = https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
