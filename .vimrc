@@ -426,7 +426,7 @@ let g:vim_markdown_conceal = 0
 "Vim airline
 set laststatus=2 " so we always get airline displaying / always show status
 let g:airline#extensions#branch#enabled = 1
-let g:airline_theme='luna'
+let g:airline_theme='atomic'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
