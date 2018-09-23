@@ -172,3 +172,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-eunuch"]
 	path = .vim/pack/git-plugins/start/vim-eunuch
 	url = https://github.com/tpope/vim-eunuch
+[submodule ".vim/pack/git-plugins/start/tagbar"]
+	path = .vim/pack/git-plugins/start/tagbar
+	url = https://github.com/majutsushi/tagbar
