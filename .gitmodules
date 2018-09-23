@@ -169,3 +169,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-which-key"]
 	path = .vim/pack/git-plugins/start/vim-which-key
 	url = https://github.com/liuchengxu/vim-which-key.git
+[submodule ".vim/pack/git-plugins/start/vim-eunuch"]
+	path = .vim/pack/git-plugins/start/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch
