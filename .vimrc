@@ -441,6 +441,8 @@ let g:airline#extensions#tabline#enabled = 0
 let g:webdevicons_enable_airline_statusline = 1
 let g:webdevicons_enable_airline_tabline = 1
 
+let g:airline#extensions#ale#enabled = 1
+
 "GitGutter
 highlight clear SignColumn
 
