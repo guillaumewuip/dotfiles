@@ -38,8 +38,11 @@
     lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lastid = log --format="%H" -n 1
     rp = rebase -p
-    rb =! git rebase -i --autosquash -p $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
+    rebasef =! git rebase -i --autosquash -p $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     fix =! git commit --fixup $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
+    addf =! git add $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
+    showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
+    difff =! git diff $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
 [diff]
 	tool = vimdiff
 	algorithm = patience
