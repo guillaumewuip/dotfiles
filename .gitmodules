@@ -175,3 +175,9 @@
 [submodule ".vim/pack/git-plugins/start/tagbar"]
 	path = .vim/pack/git-plugins/start/tagbar
 	url = https://github.com/majutsushi/tagbar
+[submodule ".vim/pack/git-plugins/start/nvim-typescript"]
+	path = .vim/pack/git-plugins/start/nvim-typescript
+	url = https://github.com/mhartington/nvim-typescript
+[submodule ".vim/pack/git-plugins/start/yats.vim"]
+	path = .vim/pack/git-plugins/start/yats.vim
+	url = https://github.com/HerringtonDarkholme/yats.vim
