@@ -43,6 +43,7 @@
     addf =! git add $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
     showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     difff =! git diff $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
+    checkoutf =! git checkout $(git branch | fzf)
 [diff]
 	tool = vimdiff
 	algorithm = patience
