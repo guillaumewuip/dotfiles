@@ -329,6 +329,8 @@ map <leader>p :cp<cr>
 map <leader>an :ALENext<cr>
 map <leader>ap :ALEPrevious<cr>
 
+map <Leader>d :TSDoc<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
