@@ -238,16 +238,10 @@ map <space> /
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <leader>j <C-W>j
-map <leader>k <C-W>k
-map <leader>h <C-W>h
-map <leader>l <C-W>l
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -485,4 +479,3 @@ let g:languagetool_jar='/usr/local/Cellar/languagetool/3.4/libexec/languagetool-
 let g:jsx_ext_required = 0
 
 let g:deoplete#enable_at_startup = 1
-
