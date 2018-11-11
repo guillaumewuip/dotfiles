@@ -238,10 +238,10 @@ map <space> /
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+map Ï <C-W>j
+map È <C-W>k
+map ¬ <C-W>l
+map Ì <C-W>h
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
