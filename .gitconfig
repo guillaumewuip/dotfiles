@@ -40,6 +40,7 @@
     rp = rebase -p
     rebasef =! git rebase -i --autosquash $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     fix =! git commit --fixup $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
+    fixh =! git commit --fixup $(git --no-pager ls -n 50 | grep -v fixup! | fzf | cut -d' ' -f1)
     addf =! git add $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
     showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     difff =! git diff $(git status --short | fzf | rev | cut -d' ' -f1 | rev)

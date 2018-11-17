@@ -16,6 +16,7 @@ alias gc="git commit -m"
 alias gcan="git commit --amend --no-edit"
 alias gv="git commit -v"
 alias gf="git fix"
+alias gfh="git fixh"
 alias grb="git rebasef"
 alias gaf="git addf"
 
