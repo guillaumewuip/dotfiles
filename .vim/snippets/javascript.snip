@@ -1,0 +1,14 @@
+snippet describe
+abbr    desc
+  import {
+    expect,
+  } from 'chai';
+
+  describe('${1:#:describe-name}', () => {
+    ${0:DESCRIBE}
+  });
+
+snippet it
+  it('should ${1:#:do-something}', () => {
+    ${0:IT}
+  });
