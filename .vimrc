@@ -1,46 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer:
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version:
-"       5.0 - 29/05/12 15:43:36
-"
-" Blog_post:
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version:
-"       http://amix.dk/vim/vimrc.txt
-"
-" Sections:
-"    -> Pathogen
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"    -> Plugins config
-"    -> Vim start
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -126,11 +84,6 @@ set tm=500
 
 " Display relative line numbers and absolute line number for the current line
 set number
-""set number relativenumber
-"" In insert mode, display absolute line numbers
-"au InsertEnter * :set relativenumber
-"" Come back to standard mode when leaving insert mode
-"au InsertLeave * :set number norelativenumber
 
 " Hghlight the screen line of the cursor
 set nocursorline
@@ -138,14 +91,10 @@ set nocursorcolumn
 nnoremap H :set cursorline! <CR>
 " Always show 5 lines around cursor
 set scrolloff=5
-" from : http://vim.wikia.com/wiki/Highlight_current_line
-" toogle highlight cursor column
-"nnoremap <Leader>c :set cursorcolumn!<CR>
-" toogle highligh cursor line
-"nnoremap <Leader>l :set cursorline!<CR>
 
 "Add 80 caracter column
 set colorcolumn=80
+set textwidth=80 "line width
 autocmd filetype nerdtree set colorcolumn&
 autocmd filetype nerdtree autocmd BufLeave <buffer> set colorcolumn=80
 
@@ -231,13 +180,10 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 map j gj
 map k gk
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows
+" Smart way to move between windows (alt+hjkl)
 map Ï <C-W>j
 map È <C-W>k
 map ¬ <C-W>l
@@ -268,6 +214,7 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -284,17 +231,12 @@ map 0 ^
 " Normal mode
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
-
 " Insert mode
 inoremap <C-j> <ESC>:m .+1<CR>==gi
 inoremap <C-k> <ESC>:m .-2<CR>==gi
-
 " Visual mode
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
-
-" Join deleting spaces, without inserting one
-nmap <leader>jj Jx
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
@@ -306,7 +248,7 @@ vnoremap <silent> gv :call VisualSelection('gv')<CR>
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 " Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><left><left><left><left><left><left><left><left>
+map <leader><space> :vimgrep // <C-R>%<C-A>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
@@ -320,31 +262,11 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
-map <leader>an :ALENext<cr>
-map <leader>ap :ALEPrevious<cr>
-
-map <Leader>d :TSDoc<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -382,16 +304,7 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
 " Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
    let l:currentBufNum = bufnr("%")
    let l:alternateBufNum = bufnr("#")
@@ -410,6 +323,7 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+command! Bclose call <SID>BufcloseCloseIt()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins config
@@ -437,8 +351,6 @@ let g:airline#extensions#tabline#enabled = 0
 let g:webdevicons_enable_airline_statusline = 1
 let g:webdevicons_enable_airline_tabline = 1
 
-let g:airline#extensions#ale#enabled = 1
-
 "GitGutter
 highlight clear SignColumn
 
@@ -453,6 +365,39 @@ let strip_whitespace_on_save = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 let g:multi_cursor_exit_from_insert_mode = 0
 
+"FZF
+set rtp+=/usr/local/opt/fzf
+let g:fzf_command_prefix = 'F'
+":FRag search_term /path/to/dir
+command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+"Nerdcommenter
+let NERDSpaceDelims=1
+
+let g:jsx_ext_required = 0
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+" neosnippet
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
+smap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
+
+" ALE
+map <leader>an :ALENext<cr>
+map <leader>ap :ALEPrevious<cr>
+let g:airline#extensions#ale#enabled = 1
+
+" Typescript
+map <Leader>d :TSDoc<cr>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => On vim start
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -461,32 +406,4 @@ let g:multi_cursor_exit_from_insert_mode = 0
 autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd VimEnter * if !argc() | wincmd p | endif
 autocmd VimEnter * if !argc() | wincmd q | endif
-
-"FZF
-set rtp+=/usr/local/opt/fzf
-let g:fzf_command_prefix = 'F'
-
-":FRag search_term /path/to/dir
-command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-"Nerdcommenter
-let NERDSpaceDelims=1
-
-set textwidth=80 "line width
-
-let g:languagetool_jar='/usr/local/Cellar/languagetool/3.4/libexec/languagetool-commandline.jar'
-
-let g:jsx_ext_required = 0
-
-let g:deoplete#enable_at_startup = 1
-
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
-\ }
-"
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
-smap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
 
