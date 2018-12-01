@@ -10,7 +10,3 @@ cd .home
 ./remobv.sh #will remove symlink in ~/
 ```
 
-# Terminal
-
-Font : [Incosolata-dz for Powerline](./Inconsolata for Powerline Mod Nerd Font.otf)
-
