@@ -397,6 +397,10 @@ let g:airline#extensions#ale#enabled = 1
 " Typescript
 map <Leader>d :TSDoc<cr>
 
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "~",
     \ "Staged"    : "+",
