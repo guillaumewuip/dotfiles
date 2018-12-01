@@ -397,6 +397,18 @@ let g:airline#extensions#ale#enabled = 1
 " Typescript
 map <Leader>d :TSDoc<cr>
 
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "~",
+    \ "Staged"    : "+",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "x",
+    \ 'Dirty'     : '~',
+    \ 'Clean'     : '✔︎',
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => On vim start
