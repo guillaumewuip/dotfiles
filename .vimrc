@@ -111,7 +111,10 @@ endif
 
 colorscheme desert
 set background=dark
-hi CursorLine cterm=NONE ctermbg=236
+
+highlight CursorLine cterm=NONE ctermbg=236
+
+highlight Search cterm=NONE ctermfg=231 ctermbg=215
 
 " Set extra options when running in GUI mode
 if has("gui_running")
