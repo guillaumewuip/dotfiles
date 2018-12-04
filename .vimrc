@@ -114,7 +114,7 @@ set background=dark
 
 highlight CursorLine cterm=NONE ctermbg=236
 
-highlight Search cterm=NONE ctermfg=231 ctermbg=215
+highlight Search cterm=NONE ctermfg=15 ctermbg=172
 
 " Set extra options when running in GUI mode
 if has("gui_running")
