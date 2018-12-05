@@ -48,6 +48,7 @@
     difff =! git diff $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
     checkoutf =! git checkout $(git branch | fzf)
     pr =! hub pull-request -a guillaumewuip --edit
+    fa =! git fetch -a
 [diff]
 	tool = vimdiff
 	algorithm = patience
