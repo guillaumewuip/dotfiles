@@ -47,6 +47,7 @@
     showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     difff =! git diff $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
     checkoutf =! git checkout $(git branch | fzf)
+    pr =! hub pull-request -a guillaumewuip --edit
 [diff]
 	tool = vimdiff
 	algorithm = patience
