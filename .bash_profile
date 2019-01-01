@@ -4,11 +4,12 @@ export LANG=fr_FR.UTF-8
 export TERM=xterm-256color
 
 # https://medium.com/@waxzce/use-bashrc-d-directory-instead-of-bloated-bashrc-50204d5389ff
-
 for file in ~/.bashrc.d/*.bashrc;
 do
   source "$file"
 done
 
-if [ "$TMUX" = "" ]; then exec tmux; fi
+if [ "$TMUX" = "" ]; then
+  exec tmux attach-session -t 0 || exec tmux -u;
+fi
 
