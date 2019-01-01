@@ -3,4 +3,5 @@
 .config
 !.config/nvim
 !.config/kitty
+!.config/alacritty
 tags
