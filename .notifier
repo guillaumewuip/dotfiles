@@ -5,7 +5,7 @@
 on run argv
   tell application "System Events"
     set frontApp to name of first application process whose frontmost is true
-    if frontApp is not "Terminal" then
+    if frontApp is not in {"Terminal", "Kitty"} then
       set notifTitle to item 1 of argv
       set notifBody to "Succeded"
       set errorCode to item 2 of argv
