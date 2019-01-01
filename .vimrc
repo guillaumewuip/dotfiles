@@ -404,6 +404,8 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+let g:NERDTreeHighlightCursorline = 0
+
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "~",
     \ "Staged"    : "+",
