@@ -46,12 +46,9 @@ alias .....="cd ../../../.."
 
 # Shortcuts to my Code folder in my home directory
 alias web="cd /Users/Guillaume/Documents/Informatique/Web/"
-alias sco="cd /Users/Guillaume/Documents/Scolaire/5A/S9"
 
 # Enable aliases to be sudoâed
 alias sudo='sudo '
-
-alias weather='curl http://wttr.in'
 
 ## The fuck
 # https://github.com/nvbn/thefuck
