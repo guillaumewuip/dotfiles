@@ -10,6 +10,6 @@ do
 done
 
 if [ "$TMUX" = "" ]; then
-  exec tmux attach-session -t 0 || exec tmux -u;
+  exec tmux new -A -s 0
 fi
 
