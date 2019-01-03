@@ -48,7 +48,7 @@ window:
   #     - none: Neither borders nor title bar
   #     - buttonless: Title bar, transparent background and title bar buttons
   #     - transparent: Title bar, transparent background, but no title bar buttons
-  decorations: none
+  decorations: transparent
 
   # When true, alacritty starts maximized.
   start_maximized: false
@@ -489,3 +489,4 @@ key_bindings:
   - { key: Key5,      mods: Alt|Shift,  chars: "["                            }
   - { key: Minus,     mods: Alt|Shift,  chars: "]"                            }
   - { key: N,         mods: Alt,        chars: "~"                            }
+  - { key: Period,    mods: Alt|Shift,  chars: "\\"                           }
