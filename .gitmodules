@@ -190,3 +190,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-hcl"]
 	path = .vim/pack/git-plugins/start/vim-hcl
 	url = https://github.com/jvirtanen/vim-hcl
+[submodule ".vim/pack/git-plugins/start/vim-rhubarb"]
+	path = .vim/pack/git-plugins/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb
