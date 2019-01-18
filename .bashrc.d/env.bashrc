@@ -1,6 +1,6 @@
 # PHP
-export PATH="/usr/local/opt/php@7.1/bin:$PATH"
-export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+export PATH="/usr/local/opt/php@5.6/bin:$PATH"
+export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
 
 export EDITOR="/usr/local/bin/nvim -u ~/.vim/.vimrc.git --noplugin"
 
