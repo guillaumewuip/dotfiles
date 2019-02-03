@@ -44,9 +44,9 @@
     rom =! git rebase origin/master
     fix =! git commit --fixup $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     fixh =! git commit --fixup $(git --no-pager ls -n 50 | grep -v fixup! | fzf | cut -d' ' -f1)
-    addf =! git add $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
+    addf =! git add ''\"$(git status --short | fzf | awk '{$1=$1}1' | cut -d' ' -f2- | sed -E 's/\"//g')\"''
     showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
-    difff =! git diff $(git status --short | fzf | rev | cut -d' ' -f1 | rev)
+    difff =! git diff ''\"$(git status --short | fzf | awk '{$1=$1}1' | cut -d' ' -f2- | sed -E 's/\"//g')\"''
     checkoutf =! git checkout $(git branch | fzf)
     pr =! hub pull-request -a guillaumewuip --edit
     fa =! git fetch -a
