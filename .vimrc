@@ -429,4 +429,4 @@ autocmd VimEnter * if !argc() | wincmd p | endif
 autocmd VimEnter * if !argc() | wincmd q | endif
 
 "Search work under cursor with FRag
-map <Leader>f :FRag <C-R><C-W>
+map <Leader>f :FRag <C-R><C-W> ./
