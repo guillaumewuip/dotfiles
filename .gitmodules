@@ -82,9 +82,6 @@
 [submodule ".vim/bundle/cypher-vim-syntax"]
 	path = .vim/bundle/cypher-vim-syntax
 	url = https://github.com/neo4j-contrib/cypher-vim-syntax
-[submodule ".vim/pack/git-plugins/start/ale"]
-	path = .vim/pack/git-plugins/start/ale
-	url = https://github.com/w0rp/ale.git
 [submodule ".vim/pack/git-plugins/start/emmet-vim"]
 	path = .vim/pack/git-plugins/start/emmet-vim
 	url = http://github.com/mattn/emmet-vim.git

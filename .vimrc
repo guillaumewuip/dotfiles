@@ -392,11 +392,6 @@ let g:neosnippet#disable_runtime_snippets = {
 imap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
 smap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
 
-" ALE
-map <leader>an :ALENext<cr>
-map <leader>ap :ALEPrevious<cr>
-let g:airline#extensions#ale#enabled = 1
-
 " Typescript
 map <Leader>d :TSDoc<cr>
 
