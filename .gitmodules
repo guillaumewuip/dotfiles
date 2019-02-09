@@ -187,3 +187,6 @@
 [submodule ".vim/pack/git-plugins/start/typescript-vim.git"]
 	path = .vim/pack/git-plugins/start/typescript-vim.git
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/pack/git-plugins/start/vim-tsx"]
+	path = .vim/pack/git-plugins/start/vim-tsx
+	url = https://github.com/ianks/vim-tsx
