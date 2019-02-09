@@ -181,3 +181,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-rhubarb"]
 	path = .vim/pack/git-plugins/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
+[submodule ".vim/pack/git-plugins/start/coc.nvim"]
+	path = .vim/pack/git-plugins/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim
