@@ -184,3 +184,6 @@
 [submodule ".vim/pack/git-plugins/start/coc.nvim"]
 	path = .vim/pack/git-plugins/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim
+[submodule ".vim/pack/git-plugins/start/typescript-vim.git"]
+	path = .vim/pack/git-plugins/start/typescript-vim.git
+	url = https://github.com/leafgarland/typescript-vim.git
