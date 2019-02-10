@@ -389,9 +389,6 @@ let NERDSpaceDelims=1
 
 let g:jsx_ext_required = 0
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
 " neosnippet
 let g:neosnippet#snippets_directory='~/.vim/snippets'
 let g:neosnippet#disable_runtime_snippets = {
