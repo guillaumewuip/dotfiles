@@ -389,16 +389,6 @@ let NERDSpaceDelims=1
 
 let g:jsx_ext_required = 0
 
-" neosnippet
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
-\ }
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
-smap <S-TAB>     <Plug>(neosnippet_expand_or_jump)
-
 " Typescript
 map <Leader>d :TSDoc<cr>
 
@@ -523,6 +513,7 @@ endfunction
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => On vim start

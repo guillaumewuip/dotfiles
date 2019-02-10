@@ -160,9 +160,6 @@
 [submodule ".vim/pack/git-plugins/start/targets"]
 	path = .vim/pack/git-plugins/start/targets
 	url = git://github.com/wellle/targets.vim.git
-[submodule ".vim/pack/git-plugins/start/neosnippet.vim"]
-	path = .vim/pack/git-plugins/start/neosnippet.vim
-	url = https://github.com/shougo/neosnippet.vim
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
