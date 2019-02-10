@@ -160,9 +160,6 @@
 [submodule ".vim/pack/git-plugins/start/tagbar"]
 	path = .vim/pack/git-plugins/start/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule ".vim/pack/git-plugins/start/nvim-typescript"]
-	path = .vim/pack/git-plugins/start/nvim-typescript
-	url = https://github.com/mhartington/nvim-typescript
 [submodule ".vim/pack/git-plugins/start/targets"]
 	path = .vim/pack/git-plugins/start/targets
 	url = git://github.com/wellle/targets.vim.git
