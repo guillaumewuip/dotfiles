@@ -389,6 +389,12 @@ let NERDSpaceDelims=1
 
 let g:jsx_ext_required = 0
 
+let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
+let g:UltiSnipsEditSplit = 'tabdo'
+
+let g:UltiSnipsJumpForwardTrigger = '<leader>sn'
+let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
+
 " Typescript
 map <Leader>d :TSDoc<cr>
 

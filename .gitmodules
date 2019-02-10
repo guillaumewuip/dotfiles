@@ -181,3 +181,6 @@
 [submodule ".vim/pack/git-plugins/start/typescript-vim"]
 	path = .vim/pack/git-plugins/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
+[submodule ".vim/pack/git-plugins/start/ultisnips"]
+	path = .vim/pack/git-plugins/start/ultisnips
+	url = https://github.com/SirVer/ultisnips
