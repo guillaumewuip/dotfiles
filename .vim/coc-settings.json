@@ -1,7 +1,7 @@
 {
   "coc.preferences.jumpCommand": "tab drop",
-  "coc.preferences.diagnostic.errorSign": "✖︎",
-  "coc.preferences.diagnostic.warningSign": "▲",
-  "coc.preferences.diagnostic.infoSign": "➜",
-  "coc.preferences.diagnostic.hintSign": "➜"
+  "coc.preferences.diagnostic.errorSign": "xx",
+  "coc.preferences.diagnostic.warningSign": "!!",
+  "coc.preferences.diagnostic.infoSign": ">>",
+  "coc.preferences.diagnostic.hintSign": ">>"
 }
