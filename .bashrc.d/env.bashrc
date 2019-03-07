@@ -1,4 +1,4 @@
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/local/bin/nvim -u ~/.vim/.vimrc.git --noplugin"
 
 # Extend cf tab completion
 export CDPATH=$CDPATH:.
