@@ -114,7 +114,6 @@ runtime macros/matchit.vim
 if !exists("g:syntax_on")
     syntax enable
 endif
-
 colorscheme desert
 set background=dark
 
@@ -417,6 +416,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+nnoremap <Leader>p :NERDTreeFind<CR>
 
 "Search work under cursor with FRag
 map <Leader>f :FRag <C-R><C-W> ./
