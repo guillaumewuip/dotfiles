@@ -33,8 +33,6 @@
 	followTags = true
 [alias]
     hub =! echo `git config remote.origin.url` | sed -E s/[a-z]+@github\\.com:// | sed s/\\.git$//
-	gh-create = !sh -c \"curl -u \\\"guillaumewuip\\\" https://api.github.com/user/repos -d \\\"{\\\\\\\"name\\\\\\\":\\\\\\\"$1\\\\\\\"}\\\"\" -
-	# TBC
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
