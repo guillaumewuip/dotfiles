@@ -50,6 +50,7 @@
     checkoutf =! git checkout $(git branch | fzf)
     pr =! hub pull-request -a guillaumewuip --edit
     fa =! git fetch -a
+    pushf =! git push --force-with-lease
 [diff]
 	tool = vimdiff
 	algorithm = patience
