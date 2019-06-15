@@ -53,3 +53,5 @@ alias sudo='sudo '
 ## The fuck
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
+
+[ -f private-alias.bashrc ] && source private-alias.bashrc
