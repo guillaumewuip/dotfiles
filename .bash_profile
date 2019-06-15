@@ -8,8 +8,3 @@ for file in ~/.bashrc.d/*.bashrc;
 do
   source "$file"
 done
-
-if [ "$TMUX" = "" ]; then
-  exec tmux new -A -s 0
-fi
-
