@@ -42,6 +42,7 @@
     rebaseo =! git rebase $(git branch -a | grep origin | fzf | cut -d'/' -f2-)
     rebasel =! git rebase $(git branch -a | grep -v origin | fzf | cut -d'/' -f2-)
     rom =! git rebase origin/master
+    romi =! git rebase -i --autosquash origin/master
     fix =! git commit --fixup $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     fixh =! git commit --fixup $(git --no-pager ls -n 50 | grep -v fixup! | fzf | cut -d' ' -f1)
     addf =! git add ''\"$(git status --short | fzf | awk '{$1=$1}1' | cut -d' ' -f2- | sed -E 's/\"//g')\"''
