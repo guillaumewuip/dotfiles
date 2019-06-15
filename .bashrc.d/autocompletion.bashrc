@@ -1,7 +1,5 @@
-
 #load autocompletions
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-  . /usr/local/share/bash-completion/bash_completion
-fi
+#
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
