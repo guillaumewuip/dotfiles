@@ -1,6 +1,6 @@
 .vim/autoload/pathogen.vim
 .tmux/resurrect/
-.config
+.config/*
 !.config/nvim
 !.config/kitty
 !.config/alacritty
