@@ -51,14 +51,13 @@ chunkc set global_desktop_mode           bsp
 chunkc set global_desktop_offset_top     0
 chunkc set global_desktop_offset_bottom  0
 chunkc set global_desktop_offset_left    0
-chunkc set global_desktop_offset_right   50
+chunkc set global_desktop_offset_right   150
 chunkc set global_desktop_offset_gap     10
 
 chunkc set 2_desktop_offset_top          20
 chunkc set 2_desktop_offset_bottom       20
-chunkc set 2_desktop_offset_left         0
-chunkc set 2_desktop_offset_right        0
-chunkc set 2_desktop_offset_gap          10
+chunkc set 2_desktop_offset_left         20
+chunkc set 2_desktop_offset_right        20
 
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
@@ -112,4 +111,5 @@ chunkc tiling::rule --owner Finder --name Copy --state float &
 chunkc tiling::rule --owner Caprine --desktop 2 &
 chunkc tiling::rule --owner Moniteur --state float &
 chunkc tiling::rule --owner Toggl --state float --grid-layout 2:6:5:2:1:1 &
-chunkc tiling::rule --owner Chrome --name DevTools --state float &
+chunkc tiling::rule --owner Chrome --name DevTools --state float --level 4 &
+chunkc tiling::rule --owner iTunes --state float &
