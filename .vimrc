@@ -352,15 +352,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols = {}
-let g:airline_symbols.linenr = '␊ '
-let g:airline_symbols.linenr = '␤ '
-let g:airline_symbols.linenr = '¶ '
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline#extensions#tabline#enabled = 0
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_airline_tabline = 1
 
 
 "GitGutter
@@ -497,14 +488,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-let airline#extensions#coc#error_symbol = 'Error:'
-let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-
-let airline#extensions#coc#error_symbol = 'Warning:'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

@@ -100,9 +100,6 @@
 [submodule ".vim/pack/git-plugins/start/nerdtree"]
 	path = .vim/pack/git-plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
-[submodule ".vim/pack/git-plugins/start/vim-arline"]
-	path = .vim/pack/git-plugins/start/vim-arline
-	url = https://github.com/vim-airline/vim-airline
 [submodule ".vim/pack/git-plugins/start/vim-airline-themes"]
 	path = .vim/pack/git-plugins/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
@@ -187,3 +184,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-aftercolors"]
 	path = .vim/pack/git-plugins/start/vim-aftercolors
 	url = https://github.com/tsiemens/vim-aftercolors
+[submodule ".vim/pack/git-plugins/start/vim-airline"]
+	path = .vim/pack/git-plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
