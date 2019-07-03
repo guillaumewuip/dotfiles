@@ -8,96 +8,95 @@ alt - return [
 cmd - g : open -na "Google Chrome"
 
 # toggle window split type vertical / horizontal
-lalt - a : yabai -m window --toggle split
+lalt - a : chunkc tiling::window --toggle split
 
-# toggle float
-lalt - z : yabai -m window --toggle float;
-
-# fullscreen for focused window
-lalt - f : yabai -m window --toggle zoom-fullscreen
+# toggle sticky
+lalt - z : chunkc tiling::window --toggle sticky;\
+          chunkc tiling::window --grid-layout 4:4:2:1:2:2
 
 # native fullscreen for focused window
-shift + alt - f : yabai -m window --toggle native-fullscreen
+lalt - f : chunkc tiling::window --toggle fullscreen
 
-# toggle window parent zoom
-lalt - d : yabai -m window --toggle zoom-parent
+# native fullscreen for focused window
+shift + alt - f : chunkc tiling::window --toggle native-fullscreen
 
-# # toggle window fade
-# lalt - e : chunkc tiling::window --toggle fade
+# toggle window fade
+lalt - e : chunkc tiling::window --toggle fade
 
 # change layout of desktop
-shift + alt - a : yabai -m space --layout bsp
-shift + alt - e : yabai -m space --layout float
+shift + alt - a : chunkc tiling::desktop --layout bsp
+shift + alt - z : chunkc tiling::desktop --layout monocle
+shift + alt - e : chunkc tiling::desktop --layout float
 
 # change focus
-lalt - h : yabai -m window --focus west
-lalt - j : yabai -m window --focus south
-lalt - k : yabai -m window --focus north
-lalt - l : yabai -m window --focus east
+lalt - h : chunkc tiling::window --focus west
+lalt - j : chunkc tiling::window --focus south
+lalt - k : chunkc tiling::window --focus north
+lalt - l : chunkc tiling::window --focus east
 
 # move focused window
-shift + lalt - h : yabai -m window --warp west
-shift + lalt - j : yabai -m window --warp south
-shift + lalt - k : yabai -m window --warp north
-shift + lalt - l : yabai -m window --warp east
+shift + lalt - h : chunkc tiling::window --warp west
+shift + lalt - j : chunkc tiling::window --warp south
+shift + lalt - k : chunkc tiling::window --warp north
+shift + lalt - l : chunkc tiling::window --warp east
 
 # toggle offset
-shift + lalt - o : yabai -m space --toggle padding; yabai -m space --toggle gap
+shift + lalt - o : chunkc tiling::desktop --toggle offset
 
 # rotate all desktop windows
-lalt - r : yabai -m space --rotate 90
+lalt - r : chunkc tiling::desktop --rotate 90
 
 # mirror tree y-axis
-shift + lalt - r : yabai -m space --mirror y-axis
+shift + lalt - r : chunkc tiling::desktop --mirror vertical
 
-# # increase region size
-lalt - w : yabai -m window --resize left:-40:0
-lalt - x : yabai -m window --resize bottom:0:40
-lalt - c : yabai -m window --resize top:0:-40
-lalt - v : yabai -m window --resize right:40:0
+# increase region size
+lalt - w : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+lalt - x : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+lalt - c : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+lalt - v : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
 
 # decrease region size
-shift + lalt - w : yabai -m window --resize left:40:0
-shift + lalt - x : yabai -m window --resize bottom:0:-40
-shift + lalt - c : yabai -m window --resize top:0:40
-shift + lalt - v : yabai -m window --resize right:-40:0
+shift + lalt - w : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+shift + lalt - x : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+shift + lalt - c : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+shift + lalt - v : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
 
 # fast focus desktop
-lalt - p : yabai -m space --focus prev
-lalt - n : yabai -m space --focus next
-lalt - 0x12 : yabai -m space --focus 1
-lalt - 0x13 : yabai -m space --focus 2
-lalt - 0x14 : yabai -m space --focus 3
-lalt - 0x15 : yabai -m space --focus 4
-lalt - 0x16 : yabai -m space --focus 5
-lalt - 0x17 : yabai -m space --focus 6
-lalt - 0x18 : yabai -m space --focus 7
-lalt - 0x19 : yabai -m space --focus 8
+lalt - p : chunkc tiling::desktop --focus prev
+lalt - n : chunkc tiling::desktop --focus next
+lalt - 0x12 : chunkc tiling::desktop --focus 1
+lalt - 0x13 : chunkc tiling::desktop --focus 2
+lalt - 0x14 : chunkc tiling::desktop --focus 3
+lalt - 0x15 : chunkc tiling::desktop --focus 4
+lalt - 0x16 : chunkc tiling::desktop --focus 5
+lalt - 0x17 : chunkc tiling::desktop --focus 6
+lalt - 0x18 : chunkc tiling::desktop --focus 7
+lalt - 0x19 : chunkc tiling::desktop --focus 8
 
 # send window to desktop and follow focus
-shift + lalt - p : yabai -m window --space prev; yabai -m space --focus prev
-shift + lalt - n : yabai -m window --space next; yabai -m space --focus next
-shift + lalt - 0x12 : yabai -m window --space 1; yabai -m space --focus 1
-shift + lalt - 0x13 : yabai -m window --space 2; yabai -m space --focus 2
-shift + lalt - 0x14 : yabai -m window --space 3; yabai -m space --focus 3
-shift + lalt - 0x15 : yabai -m window --space 4; yabai -m space --focus 4
-shift + lalt - 0x16 : yabai -m window --space 5; yabai -m space --focus 5
-shift + lalt - 0x17 : yabai -m window --space 6; yabai -m space --focus 6
-shift + lalt - 0x18 : yabai -m window --space 7; yabai -m space --focus 7
-shift + lalt - 0x19 : yabai -m window --space 8; yabai -m space --focus 8
+shift + lalt - p : chunkc tiling::window --send-to-desktop prev; chunkc tiling::desktop --focus prev
+shift + lalt - n : chunkc tiling::window --send-to-desktop next; chunkc tiling::desktop --focus next
+shift + lalt - 0x12 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
+shift + lalt - 0x13 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desktop --focus 2
+shift + lalt - 0x14 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
+shift + lalt - 0x15 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
+shift + lalt - 0x16 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
+shift + lalt - 0x17 : chunkc tiling::window --send-to-desktop 6; chunkc tiling::desktop --focus 6
+shift + lalt - 0x18 : chunkc tiling::window --send-to-desktop 7; chunkc tiling::desktop --focus 7
+shift + lalt - 0x19 : chunkc tiling::window --send-to-desktop 8; chunkc tiling::desktop --focus 8
 
 # focus monitor
-shift + ctrl - p : yabai -m display --focus prev
-shift + ctrl - n : yabai -m display --focus next
+ctrl - p : chunkc tiling::monitor -f prev
+ctrl - n : chunkc tiling::monitor -f next
 
 # send window to monitor and follow focus
-shift + ctrl - p : yabai -m window --display prev; yabai -m display --focus prev
-shift + ctrl - n : yabai -m window --display next; yabai -m display --focus next
+shift + ctrl - p : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
+shift + ctrl - n : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
 
 # create desktop and follow focus
-cmd + alt - n : yabai -m space --create; \
-                id=$(yabai -m query --displays --display | jq .spaces); \
-                yabai -m space --focus $id
+cmd + alt - n : chunkc tiling::desktop --create; \
+                id=$(chunkc tiling::query --desktops-for-monitor $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id))); \
+                chunkc tiling::desktop --focus $(echo ${id##* })
 
 # destroy desktop
-cmd + alt - w : yabai -m space --destroy
+cmd + alt - w : chunkc tiling::desktop --annihilate
