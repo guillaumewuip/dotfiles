@@ -1,6 +1,6 @@
 # open terminal
 alt - return [
-  *       : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
+  *       : /Applications/Kitty.app/Contents/MacOS/kitty -d ~
   "kitty" ~
 ]
 
