@@ -6,6 +6,8 @@
   "diagnostic.infoSign": ">>",
   "diagnostic.hintSign": ">>",
 
+  "typescript.referencesCodeLens.enable": true,
+
   "codeLens.enable": true,
 
   "coc.preferences.formatOnSaveFiletypes": [
