@@ -23,15 +23,31 @@
   "languageserver": {
     "elmLS": {
       "command": "elm-language-server",
-      "args": ["--stdio"],
-      "filetypes": ["elm"],
-      "rootPatterns": ["elm.json"],
+      "args": [
+        "--stdio"
+      ],
+      "filetypes": [
+        "elm"
+      ],
+      "rootPatterns": [
+        "elm.json"
+      ],
       "initializationOptions": {
         "runtime": "node",
         "elmPath": "elm",
         "elmFormatPath": "elm-format",
         "elmTestPath": "elm-test"
       }
+    },
+    "metals": {
+      "command": "metals-vim",
+      "rootPatterns": [
+        "build.sbt"
+      ],
+      "filetypes": [
+        "scala",
+        "sbt"
+      ]
     }
   }
 }
