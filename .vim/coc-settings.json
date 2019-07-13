@@ -1,7 +1,35 @@
 {
   "coc.preferences.jumpCommand": "tab drop",
-  "coc.preferences.diagnostic.errorSign": "xx",
-  "coc.preferences.diagnostic.warningSign": "!!",
-  "coc.preferences.diagnostic.infoSign": ">>",
-  "coc.preferences.diagnostic.hintSign": ">>"
+
+  "diagnostic.errorSign": "xx",
+  "diagnostic.warningSign": "!!",
+  "diagnostic.infoSign": ">>",
+  "diagnostic.hintSign": ">>",
+
+  "codeLens.enable": true,
+
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "css",
+    "elm"
+  ],
+
+  "languageserver": {
+    "elmLS": {
+      "command": "elm-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "runtime": "node",
+        "elmPath": "elm",
+        "elmFormatPath": "elm-format",
+        "elmTestPath": "elm-test"
+      }
+    }
+  }
 }

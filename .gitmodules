@@ -187,3 +187,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-airline"]
 	path = .vim/pack/git-plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule ".vim/pack/git-plugins/start/vim-elm-syntax"]
+	path = .vim/pack/git-plugins/start/vim-elm-syntax
+	url = https://github.com/andys8/vim-elm-syntax
