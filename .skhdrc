@@ -86,12 +86,8 @@ shift + lalt - 0x18 : chunkc tiling::window --send-to-desktop 7; chunkc tiling::
 shift + lalt - 0x19 : chunkc tiling::window --send-to-desktop 8; chunkc tiling::desktop --focus 8
 
 # focus monitor
-ctrl - p : chunkc tiling::monitor -f prev
-ctrl - n : chunkc tiling::monitor -f next
-
-# send window to monitor and follow focus
-shift + ctrl - p : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
-shift + ctrl - n : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
+shift + ctrl - p : chunkc tiling::monitor -f prev
+shift + ctrl - n : chunkc tiling::monitor -f next
 
 # create desktop and follow focus
 cmd + alt - n : chunkc tiling::desktop --create; \
