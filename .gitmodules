@@ -196,3 +196,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-makery"]
 	path = .vim/pack/git-plugins/start/vim-makery
 	url = https://github.com/igemnace/vim-makery
+[submodule ".vim/pack/git-plugins/start/undotree"]
+	path = .vim/pack/git-plugins/start/undotree
+	url = https://github.com/mbbill/undotree
