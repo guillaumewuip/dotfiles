@@ -5,20 +5,28 @@
   "diagnostic.warningSign": "!!",
   "diagnostic.infoSign": ">>",
   "diagnostic.hintSign": ">>",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "▶︎ ",
 
   "typescript.referencesCodeLens.enable": true,
 
   "codeLens.enable": true,
 
-  "coc.preferences.formatOnSaveFiletypes": [
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "coc.preferences.formatOnType": false,
+
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onType",
+  "eslint.filetypes": [
     "javascript",
     "typescript",
     "typescriptreact",
-    "json",
-    "javascriptreact",
-    "css",
-    "elm"
+    "javascriptreact"
   ],
+  "eslint.codeAction.disableRuleComment": {
+    "enable": true,
+    "location": "separateLine"
+  },
 
   "languageserver": {
     "elmLS": {
