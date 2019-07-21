@@ -19,7 +19,7 @@ let g:mapleader = ","
 "Allow vim clipboad <-> host clipboard to share data
 set clipboard=unnamed
 
-set mouse=a
+set mouse=n
 if !has('nvim')
     if has("mouse_sgr")
         set ttymouse=sgr
@@ -91,10 +91,12 @@ set tm=500
 " Display relative line numbers and absolute line number for the current line
 set number
 
-" Hghlight the screen line of the cursor
+" Not highlight the screen line of the cursor
 set nocursorline
 set nocursorcolumn
+" Highlight the screen line of the cursor with H
 nnoremap H :set cursorline! <CR>
+
 " Always show 5 lines around cursor
 set scrolloff=5
 
@@ -103,9 +105,6 @@ set colorcolumn=80
 set textwidth=80 "line width
 autocmd filetype nerdtree set colorcolumn&
 autocmd filetype nerdtree autocmd BufLeave <buffer> set colorcolumn=80
-
-"jump with % in if/elsif/else/end
-runtime macros/matchit.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -124,14 +123,6 @@ highlight CocHighlightText ctermfg=15 ctermbg=136
 highlight CocHighlightRead ctermfg=15 ctermbg=136
 highlight CocHighlightWrite ctermfg=15 ctermbg=136
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " Transliterate files in UTF-8
@@ -143,15 +134,27 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
+" Protect changes between writes. Default values of
+" updatecount (200 keystrokes) and updatetime
+" (4 seconds) are fineset swapfile
+set swapfile
+set directory^=~/.vim/swap//
 
-"Arduino, Processing
-autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
-"Stylus
-autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
+" protect against crash-during-write
+set writebackup
+
+" but do not persist backup after successful write
+set nobackup
+
+" use rename-and-write-new method whenever safe
+set backupcopy=auto
+" consolidate the writebackups -- not a big
+" deal either way, since they usually get deleted
+set backupdir^=~/.vim/backup//
+
+" persist the undo tree for each file
+set undofile
+set undodir^=~/.vim/undo//
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -168,9 +171,9 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
-" Linebreak on 500 characters
+" Linebreak on 120 characters
 set lbr
-set tw=500
+set tw=120
 
 set ai "Auto indent
 set si "Smart indent
@@ -194,24 +197,11 @@ map k gk
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows (alt+hjkl)
-map Ï <C-W>j
-map È <C-W>k
-map ¬ <C-W>l
-map Ì <C-W>h
-
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
@@ -252,18 +242,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
-
-" Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-" Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A>
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-
 " After a :cope :
 "
 " To go to the next search result do:
@@ -340,61 +318,59 @@ command! Bclose call <SID>BufcloseCloseIt()
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"https://github.com/plasticboy/vim-markdown
+"vim-markdown
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_conceal = 0
 
 "Vim airline
 set laststatus=2 " so we always get airline displaying / always show status
-let g:airline#extensions#branch#enabled = 1
 let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols = {}
-
+"No git info
+let g:airline_section_b = ''
+"Files percentage, lines, line
+let g:airline_section_z = '%3p%%%#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__#%3v'
 
 "GitGutter
 highlight clear SignColumn
 
-"https://github.com/Yggdroot/indentLine
+"indentLine
 let g:indentLine_char = '┆'
 let g:indentLine_enabled = 1
 
 "vim-better-whitespace
 let strip_whitespace_on_save = 1
 
-"vim-multiple-cursors
-let g:multi_cursor_exit_from_visual_mode = 1
-let g:multi_cursor_exit_from_insert_mode = 0
-
 "FZF
 set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'F'
 ":FRag search_term /path/to/dir
 command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+nmap <silent> <C-F> :FFiles<CR>
+nmap <silent> <C-G> :FFiles <c-r>=expand("%:p:h")<cr>/<CR>
+"Search work under cursor with FRag
+map <Leader>f :FRag <C-R><C-W> ./
 
 "Nerdcommenter
 let NERDSpaceDelims=1
 
+"vim-jsx
 let g:jsx_ext_required = 0
 
+"UltiSnips
 let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
 let g:UltiSnipsEditSplit = 'tabdo'
-
 let g:UltiSnipsJumpForwardTrigger = '<leader>sn'
 let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
-
-" Typescript
-map <Leader>d :TSDoc<cr>
 
 " NERDTree
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-
 let g:NERDTreeHighlightCursorline = 0
-
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "~",
     \ "Staged"    : "+",
@@ -407,13 +383,14 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
-
 nnoremap <Leader>p :NERDTreeFind<CR>
 
-"Search work under cursor with FRag
-map <Leader>f :FRag <C-R><C-W> ./
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => COC.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Typescript
+map <Leader>d :TSDoc<cr>
 
-" COC
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 
@@ -431,15 +408,14 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use D for show documentation in preview window
-nnoremap <silent> D :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
-  if &filetype == 'vim'
+  if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
     call CocAction('doHover')
   endif
 endfunction
+nnoremap <silent> D :call <SID>show_documentation()<CR>
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -468,27 +444,11 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+"Autocomplete config
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -504,7 +464,6 @@ endfunction
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => On vim start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -513,3 +472,5 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd VimEnter * if !argc() | wincmd p | endif
 autocmd VimEnter * if !argc() | wincmd q | endif
+set sidescrolloff=15
+set sidescroll=1
