@@ -193,3 +193,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-scala"]
 	path = .vim/pack/git-plugins/start/vim-scala
 	url = https://github.com/derekwyatt/vim-scala
+[submodule ".vim/pack/git-plugins/start/vim-makery"]
+	path = .vim/pack/git-plugins/start/vim-makery
+	url = https://github.com/igemnace/vim-makery
