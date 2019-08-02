@@ -252,6 +252,18 @@ map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Diff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &diff
+  nnoremap - [c
+  nnoremap + ]c
+endif
+
+map <Leader>1 :diffget LOCAL<CR>
+map <Leader>2 :diffget BASE<CR>
+map <Leader>3 :diffget REMOTE<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
