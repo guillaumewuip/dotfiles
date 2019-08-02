@@ -20,6 +20,9 @@ lalt - f : chunkc tiling::window --toggle fullscreen
 # native fullscreen for focused window
 shift + alt - f : chunkc tiling::window --toggle native-fullscreen
 
+# toggle window parent zoom
+lalt - d : chunkc tiling::window --toggle parent
+
 # toggle window fade
 lalt - e : chunkc tiling::window --toggle fade
 
