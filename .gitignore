@@ -6,3 +6,6 @@
 !.config/alacritty
 tags
 .bashrc.d/private-alias.bashrc
+.vim/swap
+.vim/backup
+.vim/undodir
