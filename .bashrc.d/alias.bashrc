@@ -11,15 +11,13 @@ alias glg="git lg"
 alias gaa="git add ."
 alias  ga="git add"
 alias gap="git add -p"
+alias gaf="git addf"
 
 alias gc="git commit -m"
 alias gcan="git commit --amend --no-edit"
 alias gv="git commit -v"
 alias gf="git fix"
 alias gfh="git fixh"
-alias grb="git rebasef"
-alias gaf="git addf"
-
 
 alias gd="git diff"
 alias gdc="git diff --cached"
