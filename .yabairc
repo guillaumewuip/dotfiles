@@ -2,6 +2,14 @@
 
 # bar settings
 yabai -m config status_bar                   off
+yabai -m config status_bar_text_font         "Helvetica Neue:Bold:12.0"
+yabai -m config status_bar_icon_font         "FontAwesome:Regular:12.0"
+yabai -m config status_bar_background_color  0xff202020
+yabai -m config status_bar_foreground_color  0xffa8a8a8
+yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
+yabai -m config status_bar_power_icon_strip   
+yabai -m config status_bar_space_icon        
+yabai -m config status_bar_clock_icon        
 
 # global settings
 yabai -m config mouse_follows_focus          off
@@ -9,10 +17,15 @@ yabai -m config focus_follows_mouse          autofocus
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
 yabai -m config window_opacity               on
-yabai -m config window_shadow                on
-yabai -m config window_border                off
+yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.70
+yabai -m config window_shadow                on
+yabai -m config window_border                off
+# yabai -m config window_border_width          4
+# yabai -m config active_window_border_color   0xff775759
+# yabai -m config normal_window_border_color   0xff505050
+# yabai -m config insert_window_border_color   0xffd75f5f
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
 yabai -m config mouse_modifier               fn
@@ -27,11 +40,9 @@ yabai -m config left_padding                 0
 yabai -m config right_padding                150
 yabai -m config window_gap                   10
 
-
 yabai -m rule --add label=Finder_rule app=Finder title=Copy manage=off &
 yabai -m rule --add label=Caprine_rule app=Caprine space=2 &
 yabai -m rule --add label=Monitor_rule app=Moniteur manage=off &
 yabai -m rule --add label=Toggl_rule app=Toggl manage=off grid="2:6:5:2:1:1" &
-yabai -m rule --add label=DevTools_rule app=Chrome title=DevTools manage=off &
 
 echo "yabai configuration loaded.."
