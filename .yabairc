@@ -40,9 +40,9 @@ yabai -m config left_padding                 0
 yabai -m config right_padding                150
 yabai -m config window_gap                   10
 
-yabai -m rule --add label=Finder_rule app=Finder title=Copy manage=off &
-yabai -m rule --add label=Caprine_rule app=Caprine space=2 &
-yabai -m rule --add label=Monitor_rule app=Moniteur manage=off &
-yabai -m rule --add label=Toggl_rule app=Toggl manage=off grid="2:6:5:2:1:1" &
+yabai -m rule --add app=Moniteur manage=off
+yabai -m rule --add app=Toggl space=3 manage=off
+yabai -m rule --add app=Finder title=Copy manage=off
+yabai -m rule --add app=Caprine space=2
 
 echo "yabai configuration loaded.."
