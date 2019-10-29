@@ -137,8 +137,8 @@ set ffs=unix,dos,mac
 " Protect changes between writes. Default values of
 " updatecount (200 keystrokes) and updatetime
 " (4 seconds) are fineset swapfile
-set swapfile
-set directory^=~/.vim/swap//
+" set swapfile
+" set directory^=~/.vim/swap//
 
 " protect against crash-during-write
 set writebackup
