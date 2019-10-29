@@ -333,6 +333,7 @@ command! Bclose call <SID>BufcloseCloseIt()
 "vim-markdown
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 "Vim airline
 set laststatus=2 " so we always get airline displaying / always show status
