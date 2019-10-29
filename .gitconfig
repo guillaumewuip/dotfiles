@@ -49,7 +49,7 @@
     showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     difff =! git status --short | fzf -m | awk '{$1=$1}1' | cut -d' ' -f2- | xargs git diff
     checkoutf =! git checkout $(git branch | fzf)
-    pr =! TICKET=$(git rev-parse --abbrev-ref HEAD | cut -f1,2 -d-) && hub pull-request -a guillaumewuip -m ''\"$TICKET\n\n> Ticket link [$TICKET](https://iadvize.atlassian.net/browse/$TICKET)\"'' --edit
+    pr =! TICKET=$(git rev-parse --abbrev-ref HEAD | cut -f1,2 -d-) && hub pull-request -a guillaumewuip -m ''\"$TICKET\n\n> Ticket $TICKET\"'' --edit
     fa =! git fetch -a
     pushf =! git push --force-with-lease
 [diff]
