@@ -4,6 +4,8 @@ alt - return [
   "kitty" ~
 ]
 
+shift + alt - return : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser --incognito https://demo.iadvize.com/rd/sd/gclochard?chat
+
 # toggle window split type vertical / horizontal
 lalt - a : yabai -m window --toggle split
 
@@ -85,19 +87,19 @@ shift + ctrl - p : yabai -m display --focus prev
 shift + ctrl - n : yabai -m display --focus next
 
 # send window to monitor and follow focus
-shift + ctrl - p : yabai -m window --display prev; yabai -m display --focus prev
-shift + ctrl - n : yabai -m window --display next; yabai -m display --focus next
+cmd + ctrl - p : yabai -m window --display prev; yabai -m display --focus prev
+cmd + ctrl - n : yabai -m window --display next; yabai -m display --focus next
 
 # create desktop and follow focus
 cmd + alt - n : yabai -m space --create; \
-                id=$(yabai -m query --displays --display | jq .spaces); \
+                id=$(yabai -m query --displays --display | jq .spaces[-1]); \
                 yabai -m space --focus $id
 
-# destroy desktop
-cmd + alt - w : yabai -m space --destroy
-
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + cmd - n : yabai -m space --create && \
+cmd + alt - m : yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                   yabai -m window --space "${index}" && \
                   yabai -m space --focus "${index}"
+
+# destroy desktop
+cmd + alt - w : yabai -m space --destroy
