@@ -10,7 +10,7 @@ shift + alt - return : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Br
 alt - q : yabai -m window --toggle split
 
 # toggle window parent zoom
-alt - e : yabai -m window --toggle zoom-parent
+alt - w : yabai -m window --toggle zoom-parent
 
 # rotate all desktop windows
 alt - r : yabai -m space --rotate 90
