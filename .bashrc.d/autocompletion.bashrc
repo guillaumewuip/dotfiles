@@ -1,5 +1,5 @@
 #load autocompletions
 #
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
