@@ -4,7 +4,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Extend cf tab completion
 export CDPATH=$CDPATH:.
-export CDPATH=$CDPATH:/Users/Guillaume/Documents/Informatique/Web/
 
 # enables extended globbing, usefull for ls !(*.*)
 shopt -s extglob
