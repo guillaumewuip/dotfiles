@@ -4,6 +4,7 @@
 !.config/nvim
 !.config/kitty
 !.config/alacritty
+!.config/coc/ultisnips
 tags
 .bashrc.d/private-alias.bashrc
 .vim/swap

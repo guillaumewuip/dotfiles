@@ -30,6 +30,12 @@
     "location": "separateLine"
   },
 
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"],
+    "typescriptreact": ["javascript"]
+  },
+
   "languageserver": {
     "elmLS": {
       "command": "elm-language-server",
