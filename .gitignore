@@ -4,7 +4,13 @@
 !.config/nvim
 !.config/kitty
 !.config/alacritty
-!.config/coc/ultisnips
+!.config/coc/
+.config/coc/**/.*
+.config/coc/*
+!.config/coc/ultisnips/
+!.config/coc/extensions/
+.config/coc/extensions/*
+!.config/coc/extensions/package.json
 tags
 .bashrc.d/private-alias.bashrc
 .vim/swap

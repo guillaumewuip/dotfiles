@@ -1,0 +1,31 @@
+snippet describe
+
+describe('$1', () => {
+	$0
+});
+endsnippet
+
+snippet it
+it('should $1', () => {
+	$0
+});
+endsnippet
+
+snippet import
+import $0 from '$1';
+endsnippet
+
+snippet importobject
+import {
+	$0,
+} from 'truc';
+endsnippet
+
+snippet eslintNextLine
+// eslint-disable-next-line $0
+endsnippet
+
+snippet console
+console.log({ $0 });
+endsnippet
+
