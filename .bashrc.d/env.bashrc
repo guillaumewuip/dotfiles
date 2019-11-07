@@ -1,5 +1,7 @@
 export EDITOR="/usr/local/bin/nvim -u ~/.vim/.vimrc.git --noplugin"
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Extend cf tab completion
 export CDPATH=$CDPATH:.
 export CDPATH=$CDPATH:/Users/Guillaume/Documents/Informatique/Web/
