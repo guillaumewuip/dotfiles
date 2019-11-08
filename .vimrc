@@ -361,7 +361,7 @@ let strip_whitespace_on_save = 1
 set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'F'
 ":FRag search_term /path/to/dir
-command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nmap <silent> <C-F> :FFiles<CR>
 nmap <silent> <C-G> :FFiles <c-r>=expand("%:p:h")<cr>/<CR>
 "Search work under cursor with FRag
