@@ -13,5 +13,7 @@ export FZF_DEFAULT_COMMAND='
    find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
       sed s/^..//) 2> /dev/null'
 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
