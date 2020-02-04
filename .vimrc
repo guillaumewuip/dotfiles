@@ -494,3 +494,6 @@ set sidescrolloff=15
 set sidescroll=1
 
 :command Lint set mp=yarn\ run\ lint:js\ --format\ unix | make | copen
+
+set foldmethod=syntax
+set foldlevelstart=99
