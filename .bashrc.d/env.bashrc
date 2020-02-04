@@ -8,11 +8,10 @@ export CDPATH=$CDPATH:.
 # enables extended globbing, usefull for ls !(*.*)
 shopt -s extglob
 
-export FZF_DEFAULT_COMMAND='
-  (git ls-tree -r --name-only HEAD ||
-   find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
-      sed s/^..//) 2> /dev/null'
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
+# To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 set -o vi
