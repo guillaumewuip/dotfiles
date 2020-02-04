@@ -2,19 +2,19 @@
   "dependencies": {
     "coc-json": ">=1.2.4",
     "coc-css": ">=1.2.2",
-    "coc-tsserver": ">=1.4.5",
+    "coc-tsserver": ">=1.4.9",
     "coc-html": ">=1.2.1",
     "coc-highlight": ">=1.2.5",
-    "coc-git": ">=1.6.16",
-    "coc-vimlsp": ">=0.4.3",
+    "coc-git": ">=1.6.18",
+    "coc-vimlsp": ">=0.4.5",
     "coc-svg": ">=0.0.13",
     "coc-yaml": ">=1.0.2",
-    "coc-eslint": ">=1.2.2",
-    "coc-snippets": ">=2.1.13",
-    "coc-marketplace": ">=1.5.0",
+    "coc-eslint": ">=1.2.5",
+    "coc-snippets": ">=2.1.18",
+    "coc-marketplace": ">=1.7.0",
     "coc-emoji": ">=1.2.3",
     "coc-stylelint": ">=1.1.0",
-    "coc-prettier": ">=1.1.10",
+    "coc-prettier": ">=1.1.11",
     "coc-docker": ">=0.2.1"
   }
 }
