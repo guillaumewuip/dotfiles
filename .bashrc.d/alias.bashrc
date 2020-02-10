@@ -43,7 +43,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # Shortcuts to my Code folder in my home directory
-alias web="cd /Users/Guillaume/Documents/Informatique/Web/"
+alias go='cd ~/dev/$(cd ~/dev; fd . --maxdepth 5 --type d | fzf)'
 
 # Enable aliases to be sudoâed
 alias sudo='sudo '
