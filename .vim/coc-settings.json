@@ -12,6 +12,8 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.importModuleSpecifier": "relative",
 
+  "tsserver.log": "off",
+
   "codeLens.enable": true,
 
   "coc.preferences.formatOnSaveFiletypes": [],
@@ -34,36 +36,5 @@
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"],
     "typescriptreact": ["javascript"]
-  },
-
-  "languageserver": {
-    "elmLS": {
-      "command": "elm-language-server",
-      "args": [
-        "--stdio"
-      ],
-      "filetypes": [
-        "elm"
-      ],
-      "rootPatterns": [
-        "elm.json"
-      ],
-      "initializationOptions": {
-        "runtime": "node",
-        "elmPath": "elm",
-        "elmFormatPath": "elm-format",
-        "elmTestPath": "elm-test"
-      }
-    },
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": [
-        "build.sbt"
-      ],
-      "filetypes": [
-        "scala",
-        "sbt"
-      ]
-    }
   }
 }
