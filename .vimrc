@@ -103,8 +103,6 @@ set scrolloff=5
 "Add 80 caracter column
 set colorcolumn=80
 set textwidth=80 "line width
-autocmd filetype nerdtree set colorcolumn&
-autocmd filetype nerdtree autocmd BufLeave <buffer> set colorcolumn=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -197,18 +195,15 @@ map k gk
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+" move among buffers with CTRL
+map <C-L> :bnext<CR>
+map <C-H> :bprev<CR>
+" close buffer with CTRL
+map <C-X> :bd<CR>
 
 " Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
+set switchbuf=useopen,usetab,newtab
+set stal=2
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -347,6 +342,12 @@ let g:airline_section_b = ''
 "Files percentage, lines, line
 let g:airline_section_z = '%3p%%%#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__#%3v'
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#formatter = 'default'
+
 "GitGutter
 highlight clear SignColumn
 
@@ -384,11 +385,6 @@ endfunction
 let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 let g:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {1..-1} | head -'.&lines.'"'
 let g:fzf_buffers_jump = 1
-let g:fzf_action = {
-  \ 'enter': 'tab split',
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
 
 set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'F'
@@ -412,10 +408,10 @@ let g:UltiSnipsJumpForwardTrigger = '<leader>sn'
 let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
 
 " NERDTree
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeHighlightCursorline = 0
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeHighlightCursorline = 1
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "~",
     \ "Staged"    : "+",
@@ -428,13 +424,26 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeQuitOnOpen=0
+let g:NERDTreeWinSize=40
+
+nnoremap <Leader>d :NERDTree<cr>
 nnoremap <Leader>p :NERDTreeFind<CR>
+
+autocmd VimEnter * if !argc() | NERDTree | endif
+
+autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+" autocmd BufWinEnter * NERDTreeFind | wincmd w
+
+autocmd filetype nerdtree set colorcolumn&
+autocmd filetype nerdtree autocmd BufLeave <buffer> set colorcolumn=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript
-map <Leader>d :TSDoc<cr>
 
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
@@ -518,10 +527,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " => On vim start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Open NERDTree on full screen if vim isn't open with a file
-autocmd VimEnter * if !argc() | NERDTree | endif
-autocmd VimEnter * if !argc() | wincmd p | endif
-autocmd VimEnter * if !argc() | wincmd q | endif
 set sidescrolloff=15
 set sidescroll=1
 
