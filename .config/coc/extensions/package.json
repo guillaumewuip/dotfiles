@@ -5,18 +5,11 @@
     "coc-tsserver": ">=1.4.9",
     "coc-html": ">=1.2.3",
     "coc-highlight": ">=1.2.5",
-    "coc-git": ">=1.7.0",
+    "coc-git": ">=1.7.2",
     "coc-vimlsp": ">=0.4.5",
-    "coc-svg": ">=0.0.13",
     "coc-yaml": ">=1.0.3",
     "coc-eslint": ">=1.2.6",
-    "coc-snippets": ">=2.1.18",
-    "coc-marketplace": ">=1.7.0",
-    "coc-emoji": ">=1.2.3",
-    "coc-stylelint": ">=1.1.0",
-    "coc-prettier": ">=1.1.11",
-    "coc-docker": ">=0.2.1",
-    "coc-jest": ">=1.0.3",
-    "coc-explorer": ">=0.2.17"
+    "coc-snippets": ">=2.1.19",
+    "coc-emoji": ">=1.2.3"
   }
 }
