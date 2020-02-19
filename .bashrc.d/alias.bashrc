@@ -18,6 +18,7 @@ alias gcan="git commit --amend --no-edit"
 alias gv="git commit -v"
 alias gf="git fix"
 alias gfh="git fixh"
+alias gw="git switchf"
 
 alias gd="git diff"
 alias gdc="git diff --cached"
