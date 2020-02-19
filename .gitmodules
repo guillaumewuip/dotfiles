@@ -55,15 +55,6 @@
 [submodule ".vim/autoload/pathogen.vim"]
 	path = .vim/autoload/pathogen.vim
 	url = https://github.com/tpope/vim-pathogen
-[submodule ".tmux/plugins/tmux-battery"]
-	path = .tmux/plugins/tmux-battery
-	url = https://github.com/tmux-plugins/tmux-battery
-[submodule ".tmux/plugins/tmux-continuum"]
-	path = .tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tmux-continuum
-[submodule ".tmux/plugins/tmux-resurrect"]
-	path = .tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect
 [submodule ".vim/bundle/vim-twig"]
 	path = .vim/bundle/vim-twig
 	url = https://github.com/evidens/vim-twig
@@ -133,9 +124,6 @@
 [submodule ".vim/pack/git-plugins/start/tagbar"]
 	path = .vim/pack/git-plugins/start/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule ".tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule ".vim/pack/git-plugins/start/nerdtree-git-plugin"]
 	path = .vim/pack/git-plugins/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
