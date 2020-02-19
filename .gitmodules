@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/emmet-vim"]
 	path = .vim/bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim
-[submodule ".vim/bundle/indentLine"]
-	path = .vim/bundle/indentLine
-	url = https://github.com/Yggdroot/indentLine
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
@@ -82,18 +79,9 @@
 [submodule ".vim/bundle/cypher-vim-syntax"]
 	path = .vim/bundle/cypher-vim-syntax
 	url = https://github.com/neo4j-contrib/cypher-vim-syntax
-[submodule ".vim/pack/git-plugins/start/emmet-vim"]
-	path = .vim/pack/git-plugins/start/emmet-vim
-	url = http://github.com/mattn/emmet-vim.git
 [submodule ".vim/pack/start/html5.vim"]
 	path = .vim/pack/start/html5.vim
 	url = https://github.com/othree/html5.vim
-[submodule ".vim/pack/git-plugins/start/html5.vim"]
-	path = .vim/pack/git-plugins/start/html5.vim
-	url = https://github.com/othree/html5.vim
-[submodule ".vim/pack/git-plugins/start/indentLine"]
-	path = .vim/pack/git-plugins/start/indentLine
-	url = https://github.com/Yggdroot/indentLine
 [submodule ".vim/pack/git-plugins/nerdcommenter"]
 	path = .vim/pack/git-plugins/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
@@ -106,9 +94,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-better-whitespace"]
 	path = .vim/pack/git-plugins/start/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace
-[submodule ".vim/pack/git-plugins/start/vim-css3-syntax"]
-	path = .vim/pack/git-plugins/start/vim-css3-syntax
-	url = https://github.com/hail2u/vim-css3-syntax
 [submodule ".vim/pack/git-plugins/start/vim-gitgutter"]
 	path = .vim/pack/git-plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
@@ -130,9 +115,6 @@
 [submodule ".vim/pack/git-plugins/start/nerdcommenter"]
 	path = .vim/pack/git-plugins/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
-[submodule ".vim/pack/git-plugins/start/vim-easy-align"]
-	path = .vim/pack/git-plugins/start/vim-easy-align
-	url = https://github.com/junegunn/vim-easy-align
 [submodule ".vim/pack/git-plugins/start/fzf.vim"]
 	path = .vim/pack/git-plugins/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
@@ -151,18 +133,12 @@
 [submodule ".vim/pack/git-plugins/start/tagbar"]
 	path = .vim/pack/git-plugins/start/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule ".vim/pack/git-plugins/start/targets"]
-	path = .vim/pack/git-plugins/start/targets
-	url = git://github.com/wellle/targets.vim.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule ".vim/pack/git-plugins/start/nerdtree-git-plugin"]
 	path = .vim/pack/git-plugins/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule ".vim/pack/git-plugins/start/vim-hcl"]
-	path = .vim/pack/git-plugins/start/vim-hcl
-	url = https://github.com/jvirtanen/vim-hcl
 [submodule ".vim/pack/git-plugins/start/vim-rhubarb"]
 	path = .vim/pack/git-plugins/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
@@ -184,15 +160,12 @@
 [submodule ".vim/pack/git-plugins/start/vim-airline"]
 	path = .vim/pack/git-plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule ".vim/pack/git-plugins/start/vim-elm-syntax"]
-	path = .vim/pack/git-plugins/start/vim-elm-syntax
-	url = https://github.com/andys8/vim-elm-syntax
-[submodule ".vim/pack/git-plugins/start/vim-scala"]
-	path = .vim/pack/git-plugins/start/vim-scala
-	url = https://github.com/derekwyatt/vim-scala
 [submodule ".vim/pack/git-plugins/start/vim-makery"]
 	path = .vim/pack/git-plugins/start/vim-makery
 	url = https://github.com/igemnace/vim-makery
 [submodule ".vim/pack/git-plugins/start/undotree"]
 	path = .vim/pack/git-plugins/start/undotree
 	url = https://github.com/mbbill/undotree
+[submodule ".vim/pack/git-plugins/start/indentLine"]
+	path = .vim/pack/git-plugins/start/indentLine
+	url = https://github.com/Yggdroot/indentLine
