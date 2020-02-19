@@ -10,6 +10,7 @@
     "coc-yaml": ">=1.0.3",
     "coc-eslint": ">=1.2.6",
     "coc-snippets": ">=2.1.19",
-    "coc-emoji": ">=1.2.3"
+    "coc-emoji": ">=1.2.3",
+    "coc-actions": ">=1.2.1"
   }
 }
