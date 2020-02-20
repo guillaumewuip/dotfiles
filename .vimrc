@@ -177,14 +177,6 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -271,57 +263,6 @@ let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-function! VisualSelection(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-" Don't close window, when deleting a buffer
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
-command! Bclose call <SID>BufcloseCloseIt()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -347,6 +288,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 "GitGutter
 highlight clear SignColumn
@@ -359,41 +301,36 @@ let g:indentLine_enabled = 1
 let strip_whitespace_on_save = 1
 
 "FZF
-function! CreateCenteredFloatingWindow()
-    let width = min([&columns - 4, max([80, &columns - 20])])
-    let height = min([&lines - 4, max([20, &lines - 10])])
-    let top = ((&lines - height) / 2) - 1
-    let left = (&columns - width) / 2
-    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+let g:fzf_command_prefix = 'F'
+set rtp+=/usr/local/opt/fzf
 
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
-    let lines = [top] + repeat([mid], height - 2) + [bot]
-    let s:buf = nvim_create_buf(v:false, v:true)
-    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-    call nvim_open_win(s:buf, v:true, opts)
-    set winhl=Normal:Floating
-    let opts.row += 1
-    let opts.height -= 2
-    let opts.col += 2
-    let opts.width -= 4
-    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    au BufWipeout <buffer> exe 'bw '.s:buf
-endfunction
-
-let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
-let g:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {1..-1} | head -'.&lines.'"'
 let g:fzf_buffers_jump = 1
 
-set rtp+=/usr/local/opt/fzf
-let g:fzf_command_prefix = 'F'
+let g:fzf_preview_use_floating_window = 1
+let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"' " Installed ripgrep
+
+
 ":FRag search_term /path/to/dir
 command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-nmap <silent> <C-F> :FFiles<CR>
-nmap <silent> <C-G> :FFiles <c-r>=expand("%:p:h")<cr>/<CR>
+
+"Search files in project
+nmap <silent> <C-F> :FzfPreviewProjectFiles<CR>
+
+"Search and grep  in project
+nmap <silent> <C-G> :FzfPreviewProjectGrep<CR>
+
+"Search buffers
+nmap <silent> <C-B> :FzfPreviewAllBuffers<CR>
+
+"Search git status
+nmap <silent> <C-S> :FzfPreviewGitStatus<CR>
+
 "Search work under cursor with FRag
 map <Leader>f :FRag <C-R><C-W> ./
+
+"Open buffers
+map <Leader>b :Buffers
 
 "Nerdcommenter
 let NERDSpaceDelims=1
@@ -411,7 +348,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeHighlightCursorline = 1
+let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "~",
     \ "Staged"    : "+",
@@ -429,10 +366,11 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinSize=40
 
-nnoremap <Leader>d :NERDTree<cr>
+nnoremap <Leader>d :NERDTreeToggle<cr>
 nnoremap <Leader>p :NERDTreeFind<CR>
 
 autocmd VimEnter * if !argc() | NERDTree | endif
+autocmd VimEnter * if !argc() | wincmd w | endif
 
 autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 " autocmd BufWinEnter * NERDTreeFind | wincmd w
@@ -535,3 +473,6 @@ set sidescroll=1
 
 set foldmethod=syntax
 set foldlevelstart=99
+
+set ttyfast
+set lazyredraw
