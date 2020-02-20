@@ -8,7 +8,7 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "▶︎ ",
 
-  "typescript.referencesCodeLens.enable": true,
+  "typescript.referencesCodeLens.enable": false,
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.importModuleSpecifier": "relative",
 
