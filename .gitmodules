@@ -55,3 +55,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-polyglot"]
 	path = .vim/pack/git-plugins/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule ".vim/pack/git-plugins/start/vim-multiple-cursors"]
+	path = .vim/pack/git-plugins/start/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
