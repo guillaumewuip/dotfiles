@@ -308,7 +308,9 @@ let g:fzf_buffers_jump = 1
 
 let g:fzf_preview_use_floating_window = 1
 let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
-let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"' " Installed ripgrep
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"'
+let g:fzf_preview_use_dev_icons = 0
+let g:fzf_preview_fzf_preview_window_option = 'down:50%'
 
 
 ":FRag search_term /path/to/dir
