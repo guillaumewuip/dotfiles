@@ -17,3 +17,5 @@ tags
 .vim/backup
 .vim/undodir
 .vim/undo
+.vim/sessions
+.vim/.netrwhist

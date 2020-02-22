@@ -40,9 +40,6 @@
 [submodule ".vim/pack/git-plugins/start/fzf-preview"]
 	path = .vim/pack/git-plugins/start/fzf-preview
 	url = https://github.com/yuki-ycino/fzf-preview.vim
-[submodule ".vim/pack/git-plugins/start/vim-signify"]
-	path = .vim/pack/git-plugins/start/vim-signify
-	url = https://github.com/mhinz/vim-signify
 [submodule ".vim/pack/git-plugins/start/vim-polyglot"]
 	path = .vim/pack/git-plugins/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot

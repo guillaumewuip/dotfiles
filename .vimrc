@@ -13,7 +13,6 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
 let g:mapleader = ","
 
 "Allow vim clipboad <-> host clipboard to share data
@@ -27,15 +26,22 @@ if !has('nvim')
         set ttymouse=xterm2
     end
 end
-map <ScrollWheelUp> k
-map <ScrollWheelDown> j
+
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+" Smaller updatetime
+set updatetime=100
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" don't wait to long for terminal key code
+set timeout timeoutlen=1000 ttimeoutlen=50
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
 " Turn on the WiLd menu
 set wildmenu
 set wildmode=list:longest:full
@@ -52,7 +58,7 @@ set cmdheight=2
 " always show signcolumns
 set signcolumn=yes
 
-" if hidden not set, TextEdit might fail.
+" hide buffer instead of unloading it
 set hidden
 
 " Configure backspace so it acts as it should act
@@ -98,28 +104,18 @@ set nocursorcolumn
 nnoremap H :set cursorline! <CR>
 
 " Always show 5 lines around cursor
-set scrolloff=5
+set scrolloff=7
+
+" H
+set sidescrolloff=15
+set sidescroll=1
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
 
 "Add 80 caracter column
 set colorcolumn=80
 set textwidth=80 "line width
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-if !exists("g:syntax_on")
-    syntax enable
-endif
-colorscheme desert
-set background=dark
-
-highlight CursorLine cterm=NONE ctermbg=236
-
-highlight Search cterm=NONE ctermfg=15 ctermbg=172
-highlight CocHighlightText ctermfg=15 ctermbg=136
-highlight CocHighlightRead ctermfg=15 ctermbg=136
-highlight CocHighlightWrite ctermfg=15 ctermbg=136
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -130,13 +126,32 @@ set fileencoding=utf-8
 set ffs=unix,dos,mac
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax enable
+
+colorscheme desert
+set background=dark
+
+highlight CursorLine cterm=NONE ctermbg=236
+
+highlight Search cterm=NONE ctermfg=15 ctermbg=172
+highlight CocHighlightText ctermfg=15 ctermbg=136
+highlight CocHighlightRead ctermfg=15 ctermbg=136
+highlight CocHighlightWrite ctermfg=15 ctermbg=136
+
+highlight Pmenu       cterm=NONE ctermfg=255 ctermbg=236
+highlight PmenuSel    cterm=NONE ctermfg=15 ctermbg=240
+highlight CocFloating cterm=NONE ctermfg=255 ctermbg=236
+
+highlight clear SignColumn
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Protect changes between writes. Default values of
-" updatecount (200 keystrokes) and updatetime
-" (4 seconds) are fineset swapfile
-" set swapfile
-" set directory^=~/.vim/swap//
+" No swap files
+set noswapfile
 
 " protect against crash-during-write
 set writebackup
@@ -177,6 +192,10 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+set foldmethod=syntax
+set foldlevelstart=99
+set foldcolumn=0
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -194,7 +213,9 @@ map <C-H> :bprev<CR>
 map <C-X> :bd<CR>
 
 " Specify the behavior when switching between buffers
-set switchbuf=useopen,usetab,newtab
+set switchbuf=useopen
+
+" Show tabline when more than 2 tabs
 set stal=2
 
 " Return to last edit position when opening files (You want this!)
@@ -203,17 +224,8 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
-" Remember info about open buffers on close
-set viminfo^=%
-
 " Open file under cursor in new tab
 nnoremap t <c-w>gf
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 " Move a line of text using Ctrl+[jk]
 " Normal mode
@@ -226,9 +238,9 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimgrep searching and cope displaying
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <ScrollWheelUp> k
+map <ScrollWheelDown> j
+
 " After a :cope :
 "
 " To go to the next search result do:
@@ -238,212 +250,11 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Diff
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if &diff
-  nnoremap - [c
-  nnoremap + ]c
-endif
-
-map <Leader>1 :diffget LOCAL<CR>
-map <Leader>2 :diffget BASE<CR>
-map <Leader>3 :diffget REMOTE<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins config
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"vim-markdown
-let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
-"Vim airline
-set laststatus=2 " so we always get airline displaying / always show status
-let g:airline_theme='minimal'
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols = {}
-"No git info
-let g:airline_section_b = ''
-"Files percentage, lines, line
-let g:airline_section_z = '%3p%%%#__accent_bold#%4l%#__restore__#%#__accent_bold#/%L%#__restore__#%3v'
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-"GitGutter
-highlight clear SignColumn
-
-"indentLine
-let g:indentLine_char = '┆'
-let g:indentLine_enabled = 1
-
-"vim-better-whitespace
-let strip_whitespace_on_save = 1
-
-"FZF
-let g:fzf_command_prefix = 'F'
-set rtp+=/usr/local/opt/fzf
-
-let g:fzf_buffers_jump = 1
-
-let g:fzf_preview_use_floating_window = 1
-let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
-let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"'
-let g:fzf_preview_use_dev_icons = 0
-let g:fzf_preview_fzf_preview_window_option = 'down:50%'
-
-
-":FRag search_term /path/to/dir
-command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-"Search files in project
-nmap <silent> <C-F> :FzfPreviewProjectFiles<CR>
-
-"Search and grep  in project
-nmap <silent> <C-G> :FzfPreviewProjectGrep<CR>
-
-"Search buffers
-nmap <silent> <C-B> :FzfPreviewAllBuffers<CR>
-
-"Search git status
-nmap <silent> <C-S> :FzfPreviewGitStatus<CR>
-
-"Search work under cursor with FRag
-map <Leader>f :FRag <C-R><C-W> ./
-
-"Open buffers
-map <Leader>b :Buffers
-
-"Nerdcommenter
-let NERDSpaceDelims=1
-
-"vim-jsx
-let g:jsx_ext_required = 0
-
-"UltiSnips
-let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
-let g:UltiSnipsEditSplit = 'tabdo'
-let g:UltiSnipsJumpForwardTrigger = '<leader>sn'
-let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => COC.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Typescript
-
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" navigate diagnostics
-nmap <silent> <leader>ap <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>an <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use D for show documentation in preview window
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> D :call <SID>show_documentation()<CR>
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-vmap = <Plug>(coc-format-selected)
-nmap <leader>fo  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-
-" Autocomplete config
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-let g:coc_snippet_next = '<tab>'
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => On vim start
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set sidescrolloff=15
-set sidescroll=1
-
-set foldmethod=syntax
-set foldlevelstart=99
-
-set ttyfast
-set lazyredraw
-
-
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -471,16 +282,89 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
-highlight Pmenu     cterm=NONE ctermfg=255 ctermbg=236
-highlight PmenuSel  cterm=NONE ctermfg=15 ctermbg=240
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins config
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"vim-markdown
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+"Vim airline
+set laststatus=2 " so we always get airline displaying / always show status
+let g:airline_theme='minimal'
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols = {
+      \'maxlinenr': '',
+      \'linenr': '',
+      \}
+
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#show_close_button = 0
+
+"indentLine
+let g:indentLine_char = '┆'
+let g:indentLine_enabled = 1
+
+"vim-better-whitespace
+let strip_whitespace_on_save = 1
+
+"FZF
+let g:fzf_command_prefix = 'F'
+set rtp+=/usr/local/opt/fzf
+
+let g:fzf_buffers_jump = 1
+
+let g:fzf_preview_use_floating_window = 1
+let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"'
+let g:fzf_preview_use_dev_icons = 0
+let g:fzf_preview_fzf_preview_window_option = 'down:50%'
+
+":FRag search_term /path/to/dir
+command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+"Search files in project
+nmap <silent> <C-F> :FzfPreviewFromResources project git directory<CR>
+
+"Search and grep  in project
+nmap <silent> <C-G> :FzfPreviewProjectGrep<CR>
+
+"Search buffers
+nmap <silent> <C-B> :FzfPreviewAllBuffers<CR>
+
+"Search git status
+nmap <silent> <C-S> :FzfPreviewGitStatus<CR>
+
+"Search work under cursor with FRag
+xnoremap  <Leader>f "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+
+"Nerdcommenter
+let NERDSpaceDelims=1
+
+"UltiSnips
+let g:UltiSnipsSnippetsDir = '~/.vim/UltiSnips'
+let g:UltiSnipsEditSplit = 'tabdo'
+let g:UltiSnipsJumpForwardTrigger = '<leader>sn'
+let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
+
+"multi-cursor
 let g:multi_cursor_select_all_word_key = '<C-m>'
 
+" Defx
 function! s:defx_toggle_tree_or_open_file() abort
   let s:candidate = defx#get_candidate()
 
@@ -533,8 +417,12 @@ function! s:defx_keymaps() abort
   nnoremap <silent><buffer><expr> dd              defx#do_action('remove')
 endfunction
 
-" keymap
 autocmd FileType defx call s:defx_keymaps() | setlocal cursorline
+
+function! s:openDefx() abort
+  call fzf_preview#window#create_centered_floating_window()
+  execute 'Defx'
+endfunction
 
 function! OpenDefx() abort
   call fzf_preview#window#create_centered_floating_window()
@@ -555,3 +443,69 @@ nnoremap <Leader>p :call OpenDefxOnCurrentFile()<CR>
 
 " Open defx on enter
 autocmd VimEnter * if !argc() | call OpenDefx() | endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => COC.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" navigate diagnostics
+nmap <silent> <leader>ap <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>an <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use D for show documentation in preview window
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+nnoremap <silent> D :call <SID>show_documentation()<CR>
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap = <Plug>(coc-format-selected)
+nmap <leader>fo  <Plug>(coc-format-selected)
+
+" Setup formatexpr specified filetype(s).
+autocmd FileType typescript,json setl formatexpr=CocActionAsync'formatSelected')
+" Update signature help on jump placeholder
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+" Autocomplete config
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+let g:coc_snippet_next = '<tab>'
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

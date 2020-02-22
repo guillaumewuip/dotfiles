@@ -1,6 +1,17 @@
 {
   "coc.preferences.jumpCommand": "drop",
 
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "coc.preferences.formatOnType": false,
+
+  "coc.preferences.rootPatterns":[
+    "package.json",
+    "tsconfig.json",
+    ".git",
+    ".hg",
+    ".projections.json"
+  ],
+
   "diagnostic.errorSign": "xx",
   "diagnostic.warningSign": "!!",
   "diagnostic.infoSign": ">>",
@@ -8,16 +19,20 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "▶︎ ",
 
-  "typescript.referencesCodeLens.enable": false,
+  "typescript.format.enabled": false,
   "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.referencesCodeLens.enable": false,
+  "typescript.implementationsCodeLens.enable": false,
+
+  "javascript.format.enabled": false,
   "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.referencesCodeLens.enable": false,
+  "javascript.implementationsCodeLens.enable": false,
 
   "tsserver.log": "off",
+  "tsserver.formatOnType": false,
 
-  "codeLens.enable": true,
-
-  "coc.preferences.formatOnSaveFiletypes": [],
-  "coc.preferences.formatOnType": false,
+  "codeLens.enable": false,
 
   "eslint.autoFixOnSave": true,
   "eslint.run": "onType",
@@ -36,5 +51,10 @@
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"],
     "typescriptreact": ["javascript"]
-  }
+  },
+
+  "snippets.priority": 95,
+  "snippets.loadFromExtensions": false,
+
+  "coc.source.issues.enable": false
 }
