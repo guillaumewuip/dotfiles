@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/Guillaume/.vim'
-let g:netrw_dirhist_2='/Users/Guillaume/Documents/Informatique/Web/Node/Scribe.js/static/js/controllers'
-let g:netrw_dirhist_3='/Users/Guillaume/Documents/Informatique/VPN'
-let g:netrw_dirhist_4='/Users/Guillaume/Documents/Informatique'
-let g:netrw_dirhist_5='/Users/Guillaume/Documents/Scolaire/L2/S3/Projet Info/Polylaby/polylaby2014-code/branches/ljubljana/LabyrinthS'
-let g:netrw_dirhist_6='/Users/Guillaume/Documents/Informatique/Web/Node/Scribe.js/static/js/directives'
