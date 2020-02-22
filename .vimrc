@@ -346,40 +346,6 @@ let g:UltiSnipsEditSplit = 'tabdo'
 let g:UltiSnipsJumpForwardTrigger = '<leader>sn'
 let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
 
-" NERDTree
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeHighlightCursorline = 0
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "~",
-    \ "Staged"    : "+",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "x",
-    \ 'Dirty'     : '~',
-    \ 'Clean'     : '✔︎',
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeWinSize=40
-
-nnoremap <Leader>d :NERDTreeToggle<cr>
-nnoremap <Leader>p :NERDTreeFind<CR>
-
-autocmd VimEnter * if !argc() | NERDTree | endif
-autocmd VimEnter * if !argc() | wincmd w | endif
-
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
-" autocmd BufWinEnter * NERDTreeFind | wincmd w
-
-autocmd filetype nerdtree set colorcolumn&
-autocmd filetype nerdtree autocmd BufLeave <buffer> set colorcolumn=80
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -514,3 +480,78 @@ highlight Pmenu     cterm=NONE ctermfg=255 ctermbg=236
 highlight PmenuSel  cterm=NONE ctermfg=15 ctermbg=240
 
 let g:multi_cursor_select_all_word_key = '<C-m>'
+
+function! s:defx_toggle_tree_or_open_file() abort
+  let s:candidate = defx#get_candidate()
+
+  if s:candidate['is_directory']
+    call defx#call_action('open_or_close_tree')
+  else
+    let s:path = s:candidate['action__path']
+
+    bwipeout
+    wincmd q
+    execute "edit ". s:path
+  endif
+endfunction
+
+function! s:defx_quit() abort
+  wincmd q
+  wincmd q
+endfunction
+
+function! DefxSystemOpen(context) abort
+  execute '! open ' . a:context.targets[0]
+endfunction
+
+function! s:defx_keymaps() abort
+  " Enter to open file or toggle tree
+  nnoremap <silent><buffer> <CR>                  :call <SID>defx_toggle_tree_or_open_file()<CR>
+  nnoremap <silent><buffer> o                     :call <SID>defx_toggle_tree_or_open_file()<CR>
+  nnoremap <silent><buffer><expr> h               defx#do_action('close_tree')
+  nnoremap <silent><buffer><expr> <C-H>           defx#do_action('close_tree')
+  nnoremap <silent><buffer><expr> l               defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> <C-L>           defx#do_action('open_or_close_tree')
+
+  nnoremap <silent><buffer><expr> U               defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> D               defx#do_action('open_directory')
+
+  nnoremap <silent><buffer> <Esc>                 :call <SID>defx_quit()<CR>
+
+  nnoremap <silent><buffer><expr> .               defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> yy              defx#do_action('yank_path')
+
+  nnoremap <silent><buffer><expr> R               defx#do_action('redraw')
+
+  nnoremap <silent><buffer><expr> !               defx#do_action('call', 'DefxSystemOpen')
+
+  nnoremap <silent><buffer><expr> n               defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> r               defx#do_action('rename')
+  nnoremap <silent><buffer><expr><nowait> c       defx#do_action('copy')
+  nnoremap <silent><buffer><expr><nowait> m       defx#do_action('move')
+  nnoremap <silent><buffer><expr><nowait> p       defx#do_action('paste')
+  nnoremap <silent><buffer><expr> dd              defx#do_action('remove')
+endfunction
+
+" keymap
+autocmd FileType defx call s:defx_keymaps() | setlocal cursorline
+
+function! OpenDefx() abort
+  call fzf_preview#window#create_centered_floating_window()
+  execute 'Defx -toggle'
+endfunction
+
+function! OpenDefxOnCurrentFile() abort
+  let s:dir = expand('%:p:h')
+  let s:filename = expand('%:p')
+
+  call fzf_preview#window#create_centered_floating_window()
+
+  execute 'Defx -search=' . s:filename
+endfunction
+
+nnoremap <C-e> :call OpenDefx()<CR>
+nnoremap <Leader>p :call OpenDefxOnCurrentFile()<CR>
+
+" Open defx on enter
+autocmd VimEnter * if !argc() | call OpenDefx() | endif

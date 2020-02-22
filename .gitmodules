@@ -1,15 +1,9 @@
 [submodule ".vim/pack/git-plugins/nerdcommenter"]
 	path = .vim/pack/git-plugins/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
-[submodule ".vim/pack/git-plugins/start/nerdtree"]
-	path = .vim/pack/git-plugins/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree
 [submodule ".vim/pack/git-plugins/start/vim-better-whitespace"]
 	path = .vim/pack/git-plugins/start/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace
-[submodule ".vim/pack/git-plugins/start/vim-devicons"]
-	path = .vim/pack/git-plugins/start/vim-devicons
-	url = https://github.com/ryanoasis/vim-devicons
 [submodule ".vim/pack/git-plugins/start/nerdcommenter"]
 	path = .vim/pack/git-plugins/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
@@ -28,9 +22,6 @@
 [submodule ".vim/pack/git-plugins/start/tagbar"]
 	path = .vim/pack/git-plugins/start/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule ".vim/pack/git-plugins/start/nerdtree-git-plugin"]
-	path = .vim/pack/git-plugins/start/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
 [submodule ".vim/pack/git-plugins/start/vim-rhubarb"]
 	path = .vim/pack/git-plugins/start/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb
@@ -58,3 +49,9 @@
 [submodule ".vim/pack/git-plugins/start/vim-multiple-cursors"]
 	path = .vim/pack/git-plugins/start/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
+[submodule ".vim/pack/git-plugins/start/defx.nvim"]
+	path = .vim/pack/git-plugins/start/defx.nvim
+	url = https://github.com/Shougo/defx.nvim
+[submodule ".vim/pack/git-plugins/start/defx-git"]
+	path = .vim/pack/git-plugins/start/defx-git
+	url = https://github.com/kristijanhusak/defx-git
