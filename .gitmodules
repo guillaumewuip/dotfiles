@@ -40,9 +40,6 @@
 [submodule ".vim/pack/git-plugins/start/fzf-preview"]
 	path = .vim/pack/git-plugins/start/fzf-preview
 	url = https://github.com/yuki-ycino/fzf-preview.vim
-[submodule ".vim/pack/git-plugins/start/vim-polyglot"]
-	path = .vim/pack/git-plugins/start/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot
 [submodule ".vim/pack/git-plugins/start/vim-multiple-cursors"]
 	path = .vim/pack/git-plugins/start/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
@@ -52,3 +49,21 @@
 [submodule ".vim/pack/git-plugins/start/defx-git"]
 	path = .vim/pack/git-plugins/start/defx-git
 	url = https://github.com/kristijanhusak/defx-git
+[submodule ".vim/pack/git-plugins/start/typescript-vim"]
+	path = .vim/pack/git-plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim
+[submodule ".vim/pack/git-plugins/start/vim-markdown"]
+	path = .vim/pack/git-plugins/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
+[submodule ".vim/pack/git-plugins/start/vim-yaml"]
+	path = .vim/pack/git-plugins/start/vim-yaml
+	url = https://github.com/stephpy/vim-yaml
+[submodule ".vim/pack/git-plugins/start/vim-tsx"]
+	path = .vim/pack/git-plugins/start/vim-tsx
+	url = https://github.com/ianks/vim-tsx/
+[submodule ".vim/pack/git-plugins/start/vim-jsx"]
+	path = .vim/pack/git-plugins/start/vim-jsx
+	url = https://github.com/mxw/vim-jsx
+[submodule ".vim/pack/git-plugins/start/vim-javascript"]
+	path = .vim/pack/git-plugins/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
