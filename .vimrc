@@ -160,7 +160,7 @@ set writebackup
 set nobackup
 
 " use rename-and-write-new method whenever safe
-set backupcopy=auto
+set backupcopy=yes
 " consolidate the writebackups -- not a big
 " deal either way, since they usually get deleted
 set backupdir^=~/.vim/backup//
@@ -312,6 +312,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#fnamemod = ':t:.'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#show_close_button = 0
 
@@ -410,22 +411,19 @@ function! s:defx_keymaps() abort
   nnoremap <silent><buffer><expr> !               defx#do_action('call', 'DefxSystemOpen')
 
   nnoremap <silent><buffer><expr> n               defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> r               defx#do_action('rename')
   nnoremap <silent><buffer><expr><nowait> c       defx#do_action('copy')
   nnoremap <silent><buffer><expr><nowait> m       defx#do_action('move')
   nnoremap <silent><buffer><expr><nowait> p       defx#do_action('paste')
   nnoremap <silent><buffer><expr> dd              defx#do_action('remove')
 endfunction
 
-autocmd FileType defx call s:defx_keymaps() | setlocal cursorline
-
-function! s:openDefx() abort
-  call fzf_preview#window#create_centered_floating_window()
-  execute 'Defx'
-endfunction
+autocmd FileType defx call s:defx_keymaps() |
 
 function! OpenDefx() abort
   call fzf_preview#window#create_centered_floating_window()
+
+  setlocal cursorline
+
   execute 'Defx -toggle'
 endfunction
 
@@ -434,6 +432,8 @@ function! OpenDefxOnCurrentFile() abort
   let s:filename = expand('%:p')
 
   call fzf_preview#window#create_centered_floating_window()
+
+  setlocal cursorline
 
   execute 'Defx -search=' . s:filename
 endfunction
