@@ -9,7 +9,7 @@ let s:theme = 'minimal'
 
 function! airline#themes#{s:theme}#refresh()
     " Normal
-    let N1 = [ '#E4E4E4', '#3A3A3A', 254, 241 ]
+    let N1 = [ '#E4E4E4', '#3A3A3A', 254, 237 ]
     let N2 = [ '#E4E4E4', '#4E4E4E', 254, 239 ]
     let N3 = [ '#EEEEEE', '#262626', 255, 235 ]
 
@@ -47,6 +47,13 @@ function! airline#themes#{s:theme}#refresh()
     let palette.accents = {
                 \ 'red': [ ER[1], '', ER[3], '' ]
                 \ }
+
+    let palette.tabline = {}
+
+    let palette.tabline.airline_tabsel = [ '#E4E4E4', '#3A3A3A', 254, 136 ]
+    let palette.tabline.airline_tabmod = [ '#E4E4E4', '#3A3A3A', 254, 124 ]
+    let palette.tabline.airline_tabmod_unsel = [ '#E4E4E4', '#3A3A3A', 254, 241 ]
+    let palette.tabline.airline_tabtype = [ '#E4E4E4', '#3A3A3A', 254, 136 ]
 
     let g:airline#themes#{s:theme}#palette = palette
 endfunction
