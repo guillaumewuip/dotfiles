@@ -145,6 +145,12 @@ highlight Pmenu       cterm=NONE ctermfg=255 ctermbg=236
 highlight PmenuSel    cterm=NONE ctermfg=15 ctermbg=240
 highlight CocFloating cterm=NONE ctermfg=255 ctermbg=236
 
+highlight TabLine                     cterm=NONE ctermfg=255 ctermbg=236
+highlight TabLineCell                 cterm=NONE ctermfg=255 ctermbg=236
+highlight TabLineCellSelected         cterm=NONE ctermfg=15 ctermbg=172
+highlight TabLineCellModified         cterm=NONE ctermfg=255 ctermbg=244
+highlight TabLineCellSelectedModified cterm=NONE ctermfg=15 ctermbg=160
+
 highlight clear SignColumn
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -286,6 +292,114 @@ vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Airline / Tabline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set laststatus=2 " so we always get airline displaying / always show status
+
+function! CocStatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+
+  if empty(info) | return '' | endif
+
+  let msgs = []
+
+  if get(info, 'error', 0)
+    call add(msgs, '\ #CocErrorSign#: ' . info['error'])
+  endif
+
+  if get(info, 'warning', 0)
+    call add(msgs, '\ #CocWarningSign#W: ' . info['warning'])
+  endif
+
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%f
+set statusline+=%#ErrorMsg#
+set statusline+=%r
+set statusline+=%#Pmenu#
+set statusline+=%=
+set statusline+=\ %y
+set statusline+=\ %#PmenuSel#
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\%{CocStatusDiagnostic()}
+
+let s:tab_hi_modified = '%#TabLineCellModified#'
+let s:tab_hi_selected_modified = '%#TabLineCellSelectedModified#'
+let s:tab_hi_selected = '%#TabLineCellSelected#'
+let s:tab_hi_non_selected = '%#TabLineCell#'
+let s:tab_hi_cwd = '%#TabLine#'
+
+function! TabLine() abort
+    let bl = []
+    let current_nr = bufnr('%')
+
+    let bufs = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    let bufs_count = len(bufs)
+
+    " Show 3 buffers maximum when the joined buffer's list string is bigger
+    " than the window's width.
+    if strlen(join(map(copy(bufs), 'bufname(v:val)'))) ># &columns
+        let bl += [s:tab_hi_cwd, '[' . bufs_count . ']']
+        let current_i = index(bufs, current_nr)
+        let prev_nr = current_i - 1 >=# 0 ? bufs[current_i - 1] : bufs[0]
+        let next_nr = current_i + 1 <# len(bufs) - 1
+                    \ ? bufs[current_i + 1]
+                    \ : bufs[-1]
+        let current = s:tab_hi_selected . s:GetFormattedBuffer(current_nr)
+        let prev = prev_nr isnot# current_nr
+                    \ ? s:GetFormattedBuffer(prev_nr)
+                    \ : ''
+        let next = next_nr isnot# current_nr
+                    \ ? s:GetFormattedBuffer(next_nr)
+                    \ : ''
+        let bl += [prev, current, next]
+    else
+        for b in bufs
+            call add(bl, s:GetFormattedBuffer(b))
+        endfor
+    endif
+
+    let bl += [s:tab_hi_cwd]
+
+    return join(bl)
+endfunction
+
+" ========== HELPERS ========================================
+function! s:GetFormattedBuffer(buf) abort
+    let buf_name = pathshorten(fnamemodify(bufname(a:buf), ':.'))
+
+    if empty(buf_name)
+        let buf_name = '[No Name]'
+    endif
+
+    let modified = getbufvar(a:buf, '&modified')
+
+    let selected = a:buf is# bufnr('%')
+
+    if modified
+      let buf_name = buf_name . '+'
+    endif
+
+    if modified && selected
+      return printf('%s %s', s:tab_hi_selected_modified, buf_name)
+    elseif modified
+      return printf('%s %s', s:tab_hi_modified, buf_name)
+    elseif selected
+      return printf('%s %s', s:tab_hi_selected, buf_name)
+    else
+      return printf('%s %s', s:tab_hi_non_selected, buf_name)
+    endif
+endfunction
+
+set showtabline=2
+set tabline=%!TabLine()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -295,7 +409,6 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
 "Vim airline
-set laststatus=2 " so we always get airline displaying / always show status
 let g:airline_theme='minimal'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
@@ -365,6 +478,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
 "multi-cursor
 let g:multi_cursor_select_all_word_key = '<C-m>'
 
+"netrw
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
