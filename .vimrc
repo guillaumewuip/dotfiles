@@ -365,84 +365,13 @@ let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
 "multi-cursor
 let g:multi_cursor_select_all_word_key = '<C-m>'
 
-" Defx
-function! s:defx_toggle_tree_or_open_file() abort
-  let s:candidate = defx#get_candidate()
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
 
-  if s:candidate['is_directory']
-    call defx#call_action('open_or_close_tree')
-  else
-    let s:path = s:candidate['action__path']
+"Open file explorer on full screen if vim isn't open with a file
+autocmd VimEnter * if !argc() | Explore | endif
 
-    bwipeout
-    wincmd q
-    execute "edit ". s:path
-  endif
-endfunction
-
-function! s:defx_quit() abort
-  wincmd q
-  wincmd q
-endfunction
-
-function! DefxSystemOpen(context) abort
-  execute '! open ' . a:context.targets[0]
-endfunction
-
-function! s:defx_keymaps() abort
-  " Enter to open file or toggle tree
-  nnoremap <silent><buffer> <CR>                  :call <SID>defx_toggle_tree_or_open_file()<CR>
-  nnoremap <silent><buffer> o                     :call <SID>defx_toggle_tree_or_open_file()<CR>
-  nnoremap <silent><buffer><expr> h               defx#do_action('close_tree')
-  nnoremap <silent><buffer><expr> <C-H>           defx#do_action('close_tree')
-  nnoremap <silent><buffer><expr> l               defx#do_action('open_or_close_tree')
-  nnoremap <silent><buffer><expr> <C-L>           defx#do_action('open_or_close_tree')
-
-  nnoremap <silent><buffer><expr> U               defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> D               defx#do_action('open_directory')
-
-  nnoremap <silent><buffer> <Esc>                 :call <SID>defx_quit()<CR>
-
-  nnoremap <silent><buffer><expr> .               defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> yy              defx#do_action('yank_path')
-
-  nnoremap <silent><buffer><expr> R               defx#do_action('redraw')
-
-  nnoremap <silent><buffer><expr> !               defx#do_action('call', 'DefxSystemOpen')
-
-  nnoremap <silent><buffer><expr> n               defx#do_action('new_file')
-  nnoremap <silent><buffer><expr><nowait> c       defx#do_action('copy')
-  nnoremap <silent><buffer><expr><nowait> m       defx#do_action('move')
-  nnoremap <silent><buffer><expr><nowait> p       defx#do_action('paste')
-  nnoremap <silent><buffer><expr> dd              defx#do_action('remove')
-endfunction
-
-autocmd FileType defx call s:defx_keymaps() |
-
-function! OpenDefx() abort
-  call fzf_preview#window#create_centered_floating_window()
-
-  setlocal cursorline
-
-  execute 'Defx -toggle'
-endfunction
-
-function! OpenDefxOnCurrentFile() abort
-  let s:dir = expand('%:p:h')
-  let s:filename = expand('%:p')
-
-  call fzf_preview#window#create_centered_floating_window()
-
-  setlocal cursorline
-
-  execute 'Defx -search=' . s:filename
-endfunction
-
-nnoremap <C-e> :call OpenDefx()<CR>
-nnoremap <Leader>p :call OpenDefxOnCurrentFile()<CR>
-
-" Open defx on enter
-autocmd VimEnter * if !argc() | call OpenDefx() | endif
+nmap - :Rex<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC.vim

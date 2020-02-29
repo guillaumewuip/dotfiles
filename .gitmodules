@@ -43,12 +43,6 @@
 [submodule ".vim/pack/git-plugins/start/vim-multiple-cursors"]
 	path = .vim/pack/git-plugins/start/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
-[submodule ".vim/pack/git-plugins/start/defx.nvim"]
-	path = .vim/pack/git-plugins/start/defx.nvim
-	url = https://github.com/Shougo/defx.nvim
-[submodule ".vim/pack/git-plugins/start/defx-git"]
-	path = .vim/pack/git-plugins/start/defx-git
-	url = https://github.com/kristijanhusak/defx-git
 [submodule ".vim/pack/git-plugins/start/typescript-vim"]
 	path = .vim/pack/git-plugins/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
