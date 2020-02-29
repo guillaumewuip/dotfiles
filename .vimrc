@@ -324,6 +324,32 @@ let s:tab_hi_selected = '%#TabLineCellSelected#'
 let s:tab_hi_non_selected = '%#TabLineCell#'
 let s:tab_hi_cwd = '%#TabLine#'
 
+function! s:GetFormattedBuffer(buf) abort
+  let buf_name = pathshorten(fnamemodify(bufname(a:buf), ':.'))
+
+  if empty(buf_name)
+    let buf_name = '[No Name]'
+  endif
+
+  let modified = getbufvar(a:buf, '&modified')
+
+  let selected = a:buf is# bufnr('%')
+
+  if modified
+    let buf_name = buf_name . '+'
+  endif
+
+  if modified && selected
+    return printf('%s %s', s:tab_hi_selected_modified, buf_name)
+  elseif modified
+    return printf('%s %s', s:tab_hi_modified, buf_name)
+  elseif selected
+    return printf('%s %s', s:tab_hi_selected, buf_name)
+  else
+    return printf('%s %s', s:tab_hi_non_selected, buf_name)
+  endif
+endfunction
+
 function! TabLine() abort
     let bl = []
     let current_nr = bufnr('%')
@@ -359,33 +385,6 @@ function! TabLine() abort
     return join(bl)
 endfunction
 
-" ========== HELPERS ========================================
-function! s:GetFormattedBuffer(buf) abort
-    let buf_name = pathshorten(fnamemodify(bufname(a:buf), ':.'))
-
-    if empty(buf_name)
-        let buf_name = '[No Name]'
-    endif
-
-    let modified = getbufvar(a:buf, '&modified')
-
-    let selected = a:buf is# bufnr('%')
-
-    if modified
-      let buf_name = buf_name . '+'
-    endif
-
-    if modified && selected
-      return printf('%s %s', s:tab_hi_selected_modified, buf_name)
-    elseif modified
-      return printf('%s %s', s:tab_hi_modified, buf_name)
-    elseif selected
-      return printf('%s %s', s:tab_hi_selected, buf_name)
-    else
-      return printf('%s %s', s:tab_hi_non_selected, buf_name)
-    endif
-endfunction
-
 set showtabline=2
 set tabline=%!TabLine()
 
@@ -397,27 +396,6 @@ set tabline=%!TabLine()
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
-
-"Vim airline
-let g:airline_theme='minimal'
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols = {
-      \'maxlinenr': '',
-      \'linenr': '',
-      \}
-
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#fnamemod = ':t:.'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#show_close_button = 0
 
 "indentLine
 let g:indentLine_char = '┆'
