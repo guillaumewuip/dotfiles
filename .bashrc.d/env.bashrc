@@ -21,7 +21,7 @@ shopt -s histappend
 shopt -s histappend
 
 # Print the timestamp of each command
-HISTTIMEFORMAT='%F %T '
+# HISTTIMEFORMAT='%F %T '
 
 # Set no limit for history file size
 HISTFILESIZE=5000
