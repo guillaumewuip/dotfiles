@@ -434,7 +434,7 @@ let g:fzf_buffers_jump = 1
 
 let g:fzf_preview_use_floating_window = 1
 let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
-let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!"* *"'
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!".git/*|*node_mdules*"'
 let g:fzf_preview_use_dev_icons = 0
 let g:fzf_preview_fzf_preview_window_option = 'down:50%'
 
@@ -445,13 +445,15 @@ command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore
 nmap <silent> <C-F> :FzfPreviewFromResources project git directory<CR>
 
 "Search and grep  in project
-nmap <silent> <C-G> :FzfPreviewProjectGrep<CR>
+nmap <silent> <C-G> :FzfPreviewProjectGrep ''<CR>
 
 "Search buffers
 nmap <silent> <C-B> :FzfPreviewAllBuffers<CR>
 
 "Search git status
 nmap <silent> <C-S> :FzfPreviewGitStatus<CR>
+
+nmap <silent> = :FzfPreviewDirectoryFiles <C-R>=expand('%:h')<CR><CR>
 
 "Search work under cursor with FRag
 xnoremap  <Leader>f "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
@@ -542,3 +544,4 @@ endfunction
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
