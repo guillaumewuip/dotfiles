@@ -297,36 +297,26 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 
 set laststatus=2 " so we always get airline displaying / always show status
 
-function! CocStatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-
-  if empty(info) | return '' | endif
+function! StatusLine()
+  let cocinfo = get(b:, 'coc_diagnostic_info', {})
 
   let msgs = []
 
-  if get(info, 'error', 0)
-    call add(msgs, '\ #CocErrorSign#: ' . info['error'])
+  if get(cocinfo, 'error', 0)
+    call add(msgs, '%#ErrorMsg#' . cocinfo['error'] . ' errors')
   endif
 
-  if get(info, 'warning', 0)
-    call add(msgs, '\ #CocWarningSign#W: ' . info['warning'])
+  if get(cocinfo, 'warning', 0)
+    call add(msgs, '%#Search#' . cocinfo['warning'] . ' warnings')
   endif
 
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+
+  let base = '%#PmenuSel#%f%#ErrorMsg#%r%#Pmenu#%=%y %#PmenuSel# %p%% %l:%c'
+
+  return base . '%#Pmenu# ' . join(msgs, '%#Pmenu# ')
 endfunction
 
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=%f
-set statusline+=%#ErrorMsg#
-set statusline+=%r
-set statusline+=%#Pmenu#
-set statusline+=%=
-set statusline+=\ %y
-set statusline+=\ %#PmenuSel#
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\%{CocStatusDiagnostic()}
+set statusline=%!StatusLine()
 
 let s:tab_hi_modified = '%#TabLineCellModified#'
 let s:tab_hi_selected_modified = '%#TabLineCellSelectedModified#'
