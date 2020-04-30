@@ -202,6 +202,9 @@ set foldmethod=syntax
 set foldlevelstart=99
 set foldcolumn=0
 
+"decrement number
+nnoremap <C-z> <C-x>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -292,7 +295,7 @@ vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Airline / Tabline
+" => statusline / tabline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set laststatus=2 " so we always get airline displaying / always show status
@@ -359,7 +362,7 @@ function! TabLine() abort
 
     " Show 3 buffers maximum when the joined buffer's list string is bigger
     " than the window's width.
-    if strlen(join(map(copy(bufs), 'bufname(v:val)'))) ># &columns
+    if strlen(join(map(copy(bufs), 'pathshorten(fnamemodify(bufname(v:val), ":."))'))) ># &columns
         let bl += [s:tab_hi_cwd, '[' . bufs_count . ']']
         let current_i = index(bufs, current_nr)
         let prev_nr = current_i - 1 >=# 0 ? bufs[current_i - 1] : bufs[0]
@@ -419,22 +422,23 @@ let g:fzf_preview_fzf_preview_window_option = 'down:50%'
 ":FRag search_term /path/to/dir
 command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
-"Search files in project
-nmap <silent> <C-F> :FzfPreviewFromResources project git directory<CR>
-
-"Search and grep  in project
-nmap <silent> <C-G> :FzfPreviewProjectGrep ''<CR>
-
 "Search buffers
-nmap <silent> <C-B> :FzfPreviewAllBuffers<CR>
+nmap <silent> ) :FzfPreviewAllBuffers<CR>
+nmap <silent> ( :FzfPreviewBufferTags<CR>
+nmap <silent> @ :FzfPreviewJumps<CR>
 
-"Search git status
-nmap <silent> <C-S> :FzfPreviewGitStatus<CR>
+"Git
+nmap <silent> ! :FzfPreviewChanges<CR>
+nmap <silent> @ :FzfPreviewConflict<CR>
 
+"Search files in project
+nmap <silent> + :FzfPreviewFromResources project git directory<CR>
 nmap <silent> = :FzfPreviewDirectoryFiles <C-R>=expand('%:h')<CR><CR>
 
-"Search work under cursor with FRag
-xnoremap  <Leader>f "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+"Search and grep in project
+nmap <Leader>g :FzfPreviewProjectCommandGrep<CR>
+"Search work under cursor
+xnoremap <Leader>f "sy:FzfPreviewProjectCommandGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 
 "Nerdcommenter
 let NERDSpaceDelims=1
@@ -446,7 +450,7 @@ let g:UltiSnipsJumpForwardTrigger = '<leader>sn'
 let g:UltiSnipsJumpBackwardTrigger = '<leader>sp'
 
 "multi-cursor
-let g:multi_cursor_select_all_word_key = '<C-m>'
+let g:multi_cursor_select_all_word_key = '<C-y>'
 
 "netrw
 let g:netrw_liststyle = 3
