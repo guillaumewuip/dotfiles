@@ -1,9 +1,6 @@
 {
   "coc.preferences.jumpCommand": "drop",
 
-  "coc.preferences.formatOnSaveFiletypes": [],
-  "coc.preferences.formatOnType": false,
-
   "coc.preferences.rootPatterns":[
     "package.json",
     "tsconfig.json",
@@ -12,6 +9,11 @@
     ".projections.json"
   ],
 
+  "suggest.timeout": 3000,
+  "suggest.minTriggerInputLength": 2,
+  "suggest.triggerCompletionWait": 100,
+  "suggest.removeDuplicateItems": true,
+
   "diagnostic.errorSign": "xx",
   "diagnostic.warningSign": "!!",
   "diagnostic.infoSign": ">>",
@@ -19,12 +21,18 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "▶︎ ",
 
-  "typescript.format.enabled": false,
+  "signature.enable": false,
+
+  "codeLens.enable": false,
+
+  "list.interactiveDebounceTime": 200,
+
+  "typescript.format.enabled": true,
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.referencesCodeLens.enable": false,
   "typescript.implementationsCodeLens.enable": false,
 
-  "javascript.format.enabled": false,
+  "javascript.format.enabled": true,
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.referencesCodeLens.enable": false,
   "javascript.implementationsCodeLens.enable": false,
@@ -32,10 +40,8 @@
   "tsserver.log": "off",
   "tsserver.formatOnType": false,
 
-  "codeLens.enable": false,
-
-  "eslint.autoFixOnSave": true,
   "eslint.run": "onType",
+  "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
     "javascript",
     "typescript",
@@ -47,14 +53,19 @@
     "location": "separateLine"
   },
 
+  "git.realtimeGutters": false,
+  "coc.source.issues.enable": false,
+
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"],
     "typescriptreact": ["javascript"]
   },
 
-  "snippets.priority": 95,
+  "snippets.priority": 100,
   "snippets.loadFromExtensions": false,
 
-  "coc.source.issues.enable": false
+  "stylelint.filetypes": [
+    "scss"
+  ]
 }
