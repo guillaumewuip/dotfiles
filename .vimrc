@@ -150,6 +150,7 @@ highlight TabLineCell                 cterm=NONE ctermfg=255 ctermbg=236
 highlight TabLineCellSelected         cterm=NONE ctermfg=15 ctermbg=172
 highlight TabLineCellModified         cterm=NONE ctermfg=255 ctermbg=244
 highlight TabLineCellSelectedModified cterm=NONE ctermfg=15 ctermbg=160
+highlight FloatermBorder              ctermfg=black
 
 highlight clear SignColumn
 
@@ -456,10 +457,12 @@ let g:multi_cursor_select_all_word_key = '<C-y>'
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
-"Open file explorer on full screen if vim isn't open with a file
-autocmd VimEnter * if !argc() | Explore | endif
+let g:floaterm_wintitle = v:false
+let g:floaterm_height = 0.8
+let g:floaterm_width = 0.8
+let g:floaterm_width = 0.8
 
-nmap - :Rex<CR>
+nmap - :FloatermNew ranger<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC.vim
