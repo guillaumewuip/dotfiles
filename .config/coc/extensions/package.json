@@ -8,7 +8,7 @@
     "coc-html": ">=1.2.4",
     "coc-json": ">=1.2.5",
     "coc-snippets": ">=2.1.26",
-    "coc-tsserver": ">=1.4.15",
+    "coc-tsserver": ">=1.5.1",
     "coc-vimlsp": ">=0.5.2",
     "coc-yaml": ">=1.0.4",
     "coc-stylelint": "*"
