@@ -6,7 +6,7 @@
 	url = https://github.com/ntpeters/vim-better-whitespace
 [submodule ".vim/pack/git-plugins/start/nerdcommenter"]
 	path = .vim/pack/git-plugins/start/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
+	url = https://github.com/preservim/nerdcommenter
 [submodule ".vim/pack/git-plugins/start/fzf.vim"]
 	path = .vim/pack/git-plugins/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
@@ -61,3 +61,9 @@
 [submodule ".vim/pack/git-plugins/start/vim-floaterm"]
 	path = .vim/pack/git-plugins/start/vim-floaterm
 	url = https://github.com/voldikss/vim-floaterm
+[submodule ".vim/pack/git-plugins/start/vim-clojure-static"]
+	path = .vim/pack/git-plugins/start/vim-clojure-static
+	url = https://github.com/guns/vim-clojure-static
+[submodule ".vim/pack/git-plugins/start/vim-fireplace"]
+	path = .vim/pack/git-plugins/start/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace
