@@ -65,7 +65,21 @@
   "snippets.priority": 100,
   "snippets.loadFromExtensions": false,
 
-  "stylelint.filetypes": [
-    "scss"
-  ]
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "wxss.validate": false,
+
+  "languageserver": {
+    "clojure-lsp": {
+      "command": "bash",
+      "args": ["-c", "clojure-lsp"],
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj"],
+      "additionalSchemes": ["jar", "zipfile"],
+      "trace.server": "verbose",
+      "initializationOptions": {
+      }
+    }
+  }
 }
