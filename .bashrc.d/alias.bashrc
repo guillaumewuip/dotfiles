@@ -19,6 +19,7 @@ alias gv="git commit -v"
 alias gf="git fix"
 alias gfh="git fixh"
 alias gw="git switchf"
+alias gwm="git switch master"
 
 alias gd="git diff"
 alias gdc="git diff --cached"
