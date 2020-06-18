@@ -421,7 +421,7 @@ let g:fzf_preview_use_dev_icons = 0
 let g:fzf_preview_fzf_preview_window_option = 'down:50%'
 
 ":FRag search_term /path/to/dir
-command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 "Search buffers
 nmap <silent> ) :FzfPreviewAllBuffers<CR>
@@ -439,7 +439,7 @@ nmap <silent> = :FzfPreviewDirectoryFiles <C-R>=expand('%:h')<CR><CR>
 "Search and grep in project
 nmap <Leader>g :FzfPreviewProjectCommandGrep<CR>
 "Search work under cursor
-xnoremap <Leader>f "sy:FzfPreviewProjectCommandGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+xnoremap <Leader>f "sy:FzfPreviewProjectCommandGrep<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 
 "Nerdcommenter
 let NERDSpaceDelims=1
