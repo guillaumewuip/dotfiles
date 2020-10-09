@@ -424,22 +424,22 @@ let g:fzf_preview_fzf_preview_window_option = 'down:50%'
 command! -bang -nargs=+ -complete=dir FRag call fzf#vim#ag_raw('--path-to-ignore ~/.home/.ignore ' .<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 "Search buffers
-nmap <silent> ) :FzfPreviewAllBuffers<CR>
-nmap <silent> ( :FzfPreviewBufferTags<CR>
-nmap <silent> @ :FzfPreviewJumps<CR>
+nmap <silent> ) :CocCommand fzf-preview.AllBuffers<CR>
+nmap <silent> ( :CocCommand fzf-preview.BufferTags<CR>
+nmap <silent> @ :CocCommand fzf-preview.Jumps<CR>
 
 "Git
-nmap <silent> ! :FzfPreviewChanges<CR>
-nmap <silent> @ :FzfPreviewConflict<CR>
+nmap <silent> ! :CocCommand fzf-preview.Changes<CR>
+nmap <silent> # :CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 
 "Search files in project
-nmap <silent> + :FzfPreviewFromResources project git directory<CR>
-nmap <silent> = :FzfPreviewDirectoryFiles <C-R>=expand('%:h')<CR><CR>
+nmap <silent> + :CocCommand fzf-preview.FromResources project git directory<CR>
+nmap <silent> = :CocCommand fzf-preview.DirectoryFiles <C-R>=expand('%:h')<CR><CR>
 
 "Search and grep in project
-nmap <Leader>g :FzfPreviewProjectCommandGrep<CR>
+nmap <Leader>g :CocCommand fzf-preview.ProjectGrep<CR>
 "Search work under cursor
-xnoremap <Leader>f "sy:FzfPreviewProjectCommandGrep<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+xnoremap <Leader>f "sy:CocCommand fzf-preview.ProjectGrep<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 
 "Nerdcommenter
 let NERDSpaceDelims=1
