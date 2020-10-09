@@ -31,11 +31,13 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.referencesCodeLens.enable": false,
   "typescript.implementationsCodeLens.enable": false,
+  "typescript.updateImportsOnFileMove.enable": true,
 
   "javascript.format.enabled": true,
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.referencesCodeLens.enable": false,
   "javascript.implementationsCodeLens.enable": false,
+  "javascript.updateImportsOnFileMove.enable": true,
 
   "tsserver.log": "off",
   "tsserver.formatOnType": false,
