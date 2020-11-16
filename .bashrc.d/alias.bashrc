@@ -47,7 +47,7 @@ alias .....="cd ../../../.."
 # Shortcuts to my Code folder in my home directory
 alias go='cd ~/dev/$(cd ~/dev; fd . --maxdepth 5 --type d | fzf)'
 
-# Enable aliases to be sudoâed
+# Enable aliases to be sudo
 alias sudo='sudo '
 
 ## The fuck
