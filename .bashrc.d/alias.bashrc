@@ -54,6 +54,4 @@ alias sudo='sudo '
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
 
-alias composer="php /usr/local/bin/composer.phar"
-
 [ -f private-alias.bashrc ] && source private-alias.bashrc

@@ -1,7 +1,3 @@
-# PHP
-export PATH="/usr/local/opt/php@5.6/bin:$PATH"
-export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
-
 export EDITOR="/usr/local/bin/nvim -u ~/.vim/.vimrc.git --noplugin"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
