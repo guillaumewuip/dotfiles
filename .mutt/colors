@@ -1,0 +1,50 @@
+# basic colors ---------------------------------------------------------
+color normal        white           default
+color error         red             default
+color tilde         black           default
+color message       cyan            default
+color markers       red             white
+color attachment    white           default
+color search        brightmagenta   default
+color indicator     brightblack     yellow
+color tree          green           default
+
+# sidebarh
+color sidebar_indicator   black           brightwhite
+color sidebar_new         brightred       default
+color sidebar_unread      brightred       default
+color sidebar_ordinary    default         default
+
+color status white color238
+
+# index ----------------------------------------------------------------
+
+color index         red             default         "~A"    # all messages
+color index         brightred       default         "~E"    # expired messages
+color index         brightwhite     default         "~N"    # new messages
+color index         default         default         "~O"    # old messages
+color index         brightmagenta   default         "~Q"    # messages that have been replied to
+color index         color240        default         "~R"    # read messages
+color index         brightwhite     default         "~U"    # unread messages
+color index         color236        default         "~P"    # messages from me
+color index         brightred       default         "~F"    # flagged messages
+color index         brightred       default         "~D"    # deleted messages
+
+# message headers ------------------------------------------------------
+
+color hdrdefault    brightgreen     default
+color header        brightyellow    default         "^(From)"
+color header        blue            default         "^(Subject)"
+
+# body -----------------------------------------------------------------
+
+color quoted        blue            default
+color quoted1       cyan            default
+color quoted2       yellow          default
+color quoted3       red             default
+color quoted4       brightred       default
+
+color signature     brightblack     default
+color bold          black           default
+color underline     black           default
+color normal        default         default

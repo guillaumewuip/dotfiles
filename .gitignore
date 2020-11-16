@@ -19,3 +19,5 @@ tags
 .vim/undo
 .vim/sessions
 .vim/.netrwhist
+.mutt/cache
+.mutt/tmp

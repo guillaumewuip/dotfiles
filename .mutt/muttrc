@@ -1,0 +1,116 @@
+# paths
+set folder = ~/mail
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set mailcap_path = ~/.mutt/mailcap
+set tmpdir = ~/.mutt/tmp
+
+# basic
+set wait_key = no
+set mbox_type = Maildir
+set timeout = 3
+set mail_check = 2
+set delete
+set quit
+set thorough_search
+set mail_check_stats
+unset confirmappend
+unset move
+unset mark_old
+unset beep_new
+set charset = "utf-8"
+
+# status format, date format, index format
+set status_chars = "-*RA"
+set status_format = "%r %f %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %?p?(%p postponed)? %>─ %V %s/%S %P"
+
+set date_format = "%a %d/%m/%Y %H:%M"
+set index_format = "%S%T %?X?%X& ? %D  %-20.20F  %s %> %g %M"
+
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+
+set reply_regex = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set quote_regex = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set send_charset = "utf-8:iso-8859-1:us-ascii"
+
+# email headers and attachments
+ignore *
+unignore from: to: cc: bcc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: bcc: date: subject:
+alternative_order text/enriched text/plain text/html
+auto_view text/html
+
+# compose view
+set envelope_from
+set edit_headers
+set fast_reply
+set fcc_attach
+set forward_format = "Fwd: %s"
+set forward_decode
+set attribution = "On %d, %n wrote:"
+set reply_to
+set reverse_name
+set include
+set forward_quote
+set editor = "nvim +':set textwidth=0'"
+set text_flowed
+unset sig_dashes
+unset mime_forward
+
+# pager view
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+
+# sidebar patch config
+set sidebar_visible = yes
+set sidebar_width = 20
+set sidebar_short_path = no
+set sidebar_component_depth = 0
+set sidebar_new_mail_only = no
+set sidebar_next_new_wrap = no
+set sidebar_non_empty_mailbox_only = no
+set sidebar_divider_char = ' | '
+
+set sidebar_format = "%D%?F? [%F]?%* %?N?%N?"
+
+# source colors and keybindings
+source ~/.mutt/colors
+source ~/.mutt/bindings
+
+# notmuch
+set nm_default_uri = "notmuch://$HOME/mail"
+set nm_unread_tag = unread
+set nm_flagged_tag = flagged
+set nm_record = true
+set nm_record_tags = sent
+set nm_replied_tag = replied
+
+# Mailboxes
+set realname = "Guillaume Clochard"
+
+set from = "guillaume@wuips.com"
+alternates ^guillaume@wuips.com$ ^clochard.guillaume@gmail.com$ ^guigui.wuip@gmail.com$
+set sendmail = msmtp
+
+set spoolfile = "Inbox"
+set mbox = "Archive"
+set postponed = "+guillaume-wuips/Drafts"
+set record = "+guillaume-wuips/Sent"
+
+send2-hook '~f guillaume@wuips.com' 'set record = "+guillaume-wuips/Sent"'
+send2-hook '~f guigui.wuip@gmai.com' 'set record = "+guigui-wuip-gmail/[Gmail]/Messages\ envoy\&AOk-s"'
+send2-hook '~f clochard.guillaume@gmai.com' 'set record = "+clochard-guillaume-gmail/[Gmail]/Messages\ envoy\&AOk-s"'
+
+virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox&type=threads"
+virtual-mailboxes "Drafts" "notmuch://?query=tag:draft"
+virtual-mailboxes "Archive" "notmuch://?query=tag:archive and not tag:spam&type=threads&limit=200"
+virtual-mailboxes "Sent" "notmuch://?query=tag:sent&type=threads&limit=200"
+virtual-mailboxes "Spam" "notmuch://?query=tag:spam"
