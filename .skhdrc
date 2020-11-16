@@ -40,16 +40,16 @@ shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
 # # increase region size
-alt - a : yabai -m window --resize left:-40:0
-alt - s : yabai -m window --resize bottom:0:40
-alt - w : yabai -m window --resize top:0:-40
-alt - d : yabai -m window --resize right:40:0
+alt - a : yabai -m window --resize left:-60:0
+alt - s : yabai -m window --resize bottom:0:60
+alt - w : yabai -m window --resize top:0:-60
+alt - d : yabai -m window --resize right:60:0
 
 # decrease region size
-shift + alt - a : yabai -m window --resize left:40:0
-shift + alt - s : yabai -m window --resize bottom:0:-40
-shift + alt - w : yabai -m window --resize top:0:40
-shift + alt - d : yabai -m window --resize right:-40:0
+shift + alt - a : yabai -m window --resize left:60:0
+shift + alt - s : yabai -m window --resize bottom:0:-60
+shift + alt - w : yabai -m window --resize top:0:60
+shift + alt - d : yabai -m window --resize right:-60:0
 
 # fast focus desktop
 alt - p : yabai -m space --focus prev
