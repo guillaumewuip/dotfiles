@@ -1,4 +1,4 @@
-IGNORE_FILES="install.sh|remove.sh|README.md|.git|.gitignore"
+IGNORE_FILES="install.sh|remove.sh|README.md|.git|.gitignore|LaunchAgents"
 
 HOME=~/
 
@@ -28,6 +28,8 @@ do
 
 done
 
-echo "git submodule update --init --recursive"
+echo "git submodule update"
 git submodule update --init --recursive
 
+echo "linking LaunchAgents"
+ln -s ~/.home/LaunchAgents/* ~/Library/LaunchAgents
