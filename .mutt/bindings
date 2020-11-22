@@ -109,12 +109,12 @@ bind index % forward-message
 
 bind index o toggle-new
 
-macro index,pager d \
-    "<modify-tags-then-hide>-unread -inbox +archive\n<sync-mailbox>" \
+macro index d \
+    "<tag-thread><modify-tags>-unread -inbox +archive<enter>" \
     "mark message read and archive"
 
 macro index,pager I \
-    "<modify-tags-then-hide>+inbox -archive\n<sync-mailbox>" \
+    "<tag-thread><modify-tags>+inbox -archive<enter>" \
     "mark message inbox and remove archive"
 
 macro index,pager + \

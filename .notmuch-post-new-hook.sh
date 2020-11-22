@@ -6,7 +6,7 @@ echo "starting post-new"
 notmuch tag -archive -- tag:inbox
 
 # tag SPAM
-notmuch tag -inbox +spam -- path:/.*Spam*./
+notmuch tag -inbox +spam -unread -- path:/.*Spam*./
 
 # tag Drafts
 notmuch tag -inbox +draft -- path:/.*Drafts*./
@@ -20,5 +20,3 @@ notmuch tag +guillaume-wuips -- path:guillaume-wuips/**
 notmuch tag -inbox +sent +archive -- 'not tag:draft and (from:guillaume@wuips.com or from:clochard.guillaume@gmail.com or from:guigui.wuip@gmail.com)'
 
 echo "post-new completed"
-
-# vim: syntax=sh
