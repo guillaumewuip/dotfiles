@@ -86,7 +86,7 @@ SubFolders Verbatim
 Channel clochard-guillaume-gmail
 Master :clochard-guillaume-gmail-remote:
 Slave :clochard-guillaume-gmail-local:
-Pattern "[Gmail]/Tous les messages" "[Gmail]/Brouillons" "[Gmail]/Corbeille"
+Patterns *
 CopyArrivalDate yes
 Create Both
 Expunge None
