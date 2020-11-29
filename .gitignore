@@ -9,6 +9,8 @@ tags
 !.config/coc/
 !.config/ranger/
 !.config/nvim
+!.config/khard
+!.config/khal
 
 .config/coc/**/.*
 .config/coc/*

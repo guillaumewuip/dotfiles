@@ -1,0 +1,41 @@
+[calendars]
+[[personal]]
+path = ~/vdirs/calendar_personal/personal/
+color = dark green
+priority = 20
+
+[[facebook]]
+path = ~/vdirs/calendar_facebook/
+color = yellow
+priority = 10
+
+[[birthdays]]
+type = birthdays
+path = ~/vdirs/contacts_personal/personal/
+color = "214"
+priority = 0
+
+[locale]
+dateformat = %d/%m
+datetimeformat = %d/%m %H:%M
+firstweekday = 0
+longdateformat = %d/%m/%Y
+longdatetimeformat = %d/%m/%Y %H:%M
+timeformat = %H:%M
+weeknumbers = left
+
+[default]
+default_calendar = personal
+highlight_event_days = true
+print_new = event
+timedelta = 7d
+
+[highlight_days]
+method = foreground
+
+[view]
+agenda_day_format = "{bold}{name}, {date-long}{reset}"
+agenda_event_format = "{calendar-color}{cancelled}{start-end-time-style} {title}{repeat-symbol}{reset}"
+event_view_always_visible = True
+event_view_weighting = 2
+frame = color
