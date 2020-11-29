@@ -13,7 +13,7 @@
     </array>
 
     <key>StartInterval</key>
-    <integer>3600</integer>
+    <integer>43200</integer>
 
     <key>StandardInPath</key>
     <string>/usr/local/var/log/com.wuips.backup.mails/stdin</string>
