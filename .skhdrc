@@ -9,6 +9,10 @@ shift + alt - return : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Br
 # toggle window split type vertical / horizontal
 alt - q : yabai -m window --toggle split
 
+# no opacity for window
+alt - u : yabai -m window --opacity 1.0
+shift + alt - u : yabai -m window --opacity 0.0
+
 # toggle window parent zoom
 alt - w : yabai -m window --toggle zoom-parent
 
