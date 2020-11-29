@@ -12,6 +12,25 @@ function readBackupFile() {
 }
 
 case $COMMAND in
+  sync)
+    {
+      echo $(readBackupFile | jq '.sync.status = "running"') > $BACKUPS_FILE
+
+      mbsync -a
+      notmuch new
+
+      vdirsyncer sync
+
+      echo $(readBackupFile | jq '.sync.status = "done"') > $BACKUPS_FILE
+      echo $(readBackupFile | jq '.sync.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
+    } || {
+      echo $(readBackupFile | jq '.sync.status = "error"') > $BACKUPS_FILE
+      echo $(readBackupFile | jq '.sync.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
+
+      echo "sync error"
+    }
+    ;;
+
   documents)
     {
       echo $(readBackupFile | jq '.documents.status = "running"') > $BACKUPS_FILE

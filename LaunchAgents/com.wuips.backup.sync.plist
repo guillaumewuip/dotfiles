@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.wuips.backup.sync</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/bash</string>
+      <string>-c</string>
+      <string>~/.home/backup.sh sync</string>
+    </array>
+
+    <key>StartInterval</key>
+    <integer>900</integer>
+
+    <key>StandardInPath</key>
+    <string>/usr/local/var/log/com.wuips.backup.sync/stdin</string>
+    <key>StandardOutPath</key>
+    <string>/usr/local/var/log/com.wuips.backup.sync/stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/usr/local/var/log/com.wuips.backup.sync/stderr</string>
+  </dict>
+</plist>
