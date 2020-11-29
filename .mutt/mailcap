@@ -6,6 +6,9 @@ text/html; lynx -dump -force_html -assume_charset=%{charset} -display_charset=ut
 text/csv; less %s; copiousoutput
 text/tab-separated-values; less %s; copiousoutput
 
+application/ics; khal import -a personal %s
+text/calendar; khal import -a personal %s
+
 image/*; ~/.mutt/quicklook.sh %s
 video/*; ~/.mutt/quicklook.sh %s
 

@@ -87,6 +87,8 @@ set sidebar_format = "%D%?F? [%F]?%* %?N?%N?"
 source ~/.mutt/colors
 source ~/.mutt/bindings
 
+set query_command = "echo %s | xargs khard email --parsable --"
+
 # notmuch
 set nm_default_uri = "notmuch://$HOME/mail"
 set nm_unread_tag = unread

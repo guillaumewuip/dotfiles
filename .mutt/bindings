@@ -121,6 +121,10 @@ macro index,pager + \
   "<shell-escape>mbsync -a; notmuch new<enter>" \
   "run mbsync to sync all mail"
 
+macro index,pager S \
+  "<pipe-message>khard add-email<return>" \
+  "add the sender email address to khard"
+
 # Attachment
 # View attachments properly.
 bind index,pager a view-attachments
