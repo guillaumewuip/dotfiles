@@ -110,11 +110,11 @@ bind index % forward-message
 bind index o toggle-new
 
 macro index d \
-    "<tag-thread><modify-tags>-unread -inbox +archive<enter>" \
+    "<modify-labels-then-hide>-unread -inbox +archive<enter>" \
     "mark message read and archive"
 
 macro index,pager I \
-    "<tag-thread><modify-tags>+inbox -archive<enter>" \
+    "<modify-labels-then-hide>+inbox -archive<enter>" \
     "mark message inbox and remove archive"
 
 macro index,pager + \
@@ -124,6 +124,8 @@ macro index,pager + \
 macro index,pager S \
   "<pipe-message>khard add-email<return>" \
   "add the sender email address to khard"
+
+bind index,pager x entire-thread
 
 # Attachment
 # View attachments properly.

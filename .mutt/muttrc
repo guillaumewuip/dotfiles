@@ -4,6 +4,7 @@ set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set mailcap_path = ~/.mutt/mailcap
 set tmpdir = ~/.mutt/tmp
+set signature = ~/.mutt/signatures
 
 # basic
 set wait_key = no
@@ -26,8 +27,11 @@ set charset = "utf-8"
 set status_chars = "-*RA"
 set status_format = "%r %f %r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? %?p?(%p postponed)? %>─ %V %s/%S %P"
 
+tag-formats "archive" "GA"
+tag-transforms "archive" "a"
+
 set date_format = "%a %d/%m/%Y %H:%M"
-set index_format = "%S%T %?X?%X& ? %D  %-20.20F  %s %> %g %M"
+set index_format = "%?GA?%GA& ?%T %?X?%X& ? %D  %-20.20F  %s %> %g %M"
 
 set sort = threads
 set sort_aux = reverse-last-date-received
@@ -62,6 +66,7 @@ set editor = "nvim +':set textwidth=0'"
 set text_flowed
 unset sig_dashes
 unset mime_forward
+mime_lookup application/octet-stream
 
 # pager view
 set pager_index_lines = 10
@@ -113,7 +118,7 @@ send2-hook '~f guillaume@wuips.com' 'set record = "+guillaume-wuips/Inbox"'
 send2-hook '~f guigui.wuip@gmai.com' 'set record = "+guigui-wuip-gmail/[Gmail]/Messages\ envoy\&AOk-s"'
 send2-hook '~f clochard.guillaume@gmai.com' 'set record = "+clochard-guillaume-gmail/[Gmail]/Messages\ envoy\&AOk-s"'
 
-virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox&type=threads"
+virtual-mailboxes "Inbox" "notmuch://?query=tag:inbox"
 virtual-mailboxes "Drafts" "notmuch://?query=tag:draft"
 virtual-mailboxes "Archive" "notmuch://?query=tag:archive and not tag:spam&type=threads&limit=200"
 virtual-mailboxes "Sent" "notmuch://?query=tag:sent&type=threads&limit=200"
