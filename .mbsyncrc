@@ -39,7 +39,7 @@ SyncState *
 IMAPAccount guigui-wuip-gmail
 Host imap.gmail.com
 User guigui.wuip@gmail.com
-PassCmd "security find-generic-password -w -a \"Guillaume Clochard\" -l \"guigui.wuip@gmail.com-gmail\""
+PassCmd "security find-generic-password -w -l \"guigui.wuip@gmail.com-gmail\""
 SSLType IMAPS
 SSLVersions TLSv1.2
 AuthMechs LOGIN
@@ -71,7 +71,7 @@ SyncState *
 IMAPAccount clochard-guillaume-gmail
 Host imap.gmail.com
 User clochard.guillaume@gmail.com
-PassCmd "security find-generic-password -w -a \"Guillaume Clochard\" -l \"clochard.guillaume@gmail.com-gmail\""
+PassCmd "security find-generic-password -w -l \"clochard.guillaume@gmail.com-gmail\""
 SSLType IMAPS
 AuthMechs LOGIN
 
@@ -87,37 +87,6 @@ Channel clochard-guillaume-gmail
 Master :clochard-guillaume-gmail-remote:
 Slave :clochard-guillaume-gmail-local:
 Patterns *
-CopyArrivalDate yes
-Create Both
-Expunge None
-Sync All
-SyncState *
-
-###############################################################################
-#
-# guillaume.clochard@iadvize.com
-#
-###############################################################################
-
-IMAPAccount guillaume-clochard-iadvize-gmail
-Host imap.gmail.com
-User guillaume.clochard@iadvize.com
-PassCmd "security find-generic-password -w -a \"Guillaume Clochard\" -l \"guillaume.clochard@iadvize.com-gmail\""
-SSLType IMAPS
-AuthMechs LOGIN
-
-IMAPStore guillaume-clochard-iadvize-gmail-remote
-Account guillaume-clochard-iadvize-gmail
-
-MaildirStore guillaume-clochard-iadvize-gmail-local
-Path ~/mail/guillaume-clochard-iadvize-gmail/
-Inbox ~/mail/guillaume-clochard-iadvize-gmail/INBOX
-SubFolders Verbatim
-
-Channel guillaume-clochard-iadvize-gmail
-Master :guillaume-clochard-iadvize-gmail-remote:
-Slave :guillaume-clochard-iadvize-gmail-local:
-Pattern "[Gmail]/Tous les messages" "[Gmail]/Brouillons" "[Gmail]/Corbeille"
 CopyArrivalDate yes
 Create Both
 Expunge None
