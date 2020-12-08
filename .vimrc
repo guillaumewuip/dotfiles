@@ -170,11 +170,11 @@ set nobackup
 set backupcopy=yes
 " consolidate the writebackups -- not a big
 " deal either way, since they usually get deleted
-set backupdir^=~/.vim/backup//
+set backupdir^=~/.vim/backup/
 
 " persist the undo tree for each file
 set undofile
-set undodir^=~/.vim/undo//
+set undodir^=~/.vim/undo/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
