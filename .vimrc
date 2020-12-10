@@ -437,7 +437,7 @@ nmap <silent> + :CocCommand fzf-preview.FromResources project git directory<CR>
 nmap <silent> = :CocCommand fzf-preview.DirectoryFiles <C-R>=expand('%:h')<CR><CR>
 
 "Search and grep in project
-nmap <Leader>g :CocCommand fzf-preview.ProjectGrep<CR>
+nmap <Leader>g :CocCommand fzf-preview.ProjectGrep .<CR>
 "Search work under cursor
 xnoremap <Leader>f "sy:CocCommand fzf-preview.ProjectGrep<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 
