@@ -1,7 +1,4 @@
-
 ### Aliases
-alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
-alias cmus='cmus 2> /dev/null'
 alias vim='nvim'
 
 #Git
@@ -14,6 +11,7 @@ alias gap="git add -p"
 alias gaf="git addf"
 
 alias gc="git commit -m"
+alias gcb="git-commit-b"
 alias gcan="git commit --amend --no-edit"
 alias gv="git commit -v"
 alias gf="git fix"
@@ -25,6 +23,8 @@ alias gd="git diff"
 alias gdc="git diff --cached"
 
 alias gs="git status -sb"
+alias gpr="git-pr"
+alias gscb="git-scb"
 
 #Tmux
 alias tl="tmux list-sessions"

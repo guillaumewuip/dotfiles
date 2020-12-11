@@ -26,7 +26,6 @@ function port() {
   lsof -i ":${1:-80}"
 }
 
-
 function git-pr() {
   BRANCH_TITLE=$(git rev-parse --abbrev-ref HEAD)
 
@@ -40,8 +39,15 @@ function git-pr() {
 
   TITLE="[$PREFIX] $NAME"
 
-  MESSAGE="$TITLE\n\n> $PREFIX \n\n## Description\n\n\n## DEMO\n\n\n## TESTED\n\n\n## THEME"
+  MESSAGE="$TITLE\n\n> $PREFIX \n## Description\n\n\n## DEMO\n\n\n## TESTED"
 
-  echo -e $MESSAGE | hub pull-request -a guillaumewuip --edit -F -
+  echo -e $MESSAGE | hub pull-request -a guillaumewuip --edit $@ -F -
 }
 
+function git-scb() {
+  git switch -c BOYSCOUT-$1
+}
+
+function git-commit-b() {
+  git commit -m "[BOYSCOUT] $1"
+}

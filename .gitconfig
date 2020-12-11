@@ -50,7 +50,6 @@
     showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     difff =! git status --short | fzf -m | awk '{$1=$1}1' | cut -d' ' -f2- | xargs git diff
     switchf =! git switch $(git branch | fzf)
-    pr =! git-pr
     fa =! git fetch -a
     pushf =! git push --force-with-lease
 [diff]
