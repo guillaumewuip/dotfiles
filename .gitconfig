@@ -23,8 +23,8 @@
 	changed = green
 	untracked = cyan
 [user]
-	name = Guillaume Wuip
-	email = guillaume@wuips.com
+	name = Guillaume Clochard
+	email = guillaume.clochard@blablacar.com
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
