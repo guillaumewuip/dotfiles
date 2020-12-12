@@ -12,20 +12,17 @@ function readBackupFile() {
 }
 
 case $COMMAND in
-  sync)
+  vdirs)
     {
-      echo $(readBackupFile | jq '.sync.status = "running"') > $BACKUPS_FILE
-
-      mbsync -a
-      notmuch new
+      echo $(readBackupFile | jq '.vdirs.status = "running"') > $BACKUPS_FILE
 
       vdirsyncer sync
 
-      echo $(readBackupFile | jq '.sync.status = "done"') > $BACKUPS_FILE
-      echo $(readBackupFile | jq '.sync.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
+      echo $(readBackupFile | jq '.vdirs.status = "done"') > $BACKUPS_FILE
+      echo $(readBackupFile | jq '.vdirs.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
     } || {
-      echo $(readBackupFile | jq '.sync.status = "error"') > $BACKUPS_FILE
-      echo $(readBackupFile | jq '.sync.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
+      echo $(readBackupFile | jq '.vdirs.status = "error"') > $BACKUPS_FILE
+      echo $(readBackupFile | jq '.vdirs.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
 
       echo "sync error"
     }
@@ -55,6 +52,9 @@ case $COMMAND in
     {
       echo $(readBackupFile | jq '.mails.status = "running"') > $BACKUPS_FILE
 
+      mbsync -a
+      notmuch new
+
       rclone sync --stats-file-name-length 0 ~/mail/guillaume-wuips wuips-mail:/guillaume-wuips
       rclone sync --stats-file-name-length 0 ~/mail/clochard-guillaume-gmail wuips-mail:/clochard-guillaume-gmail
       rclone sync --stats-file-name-length 0 ~/mail/guigui-wuip-gmail wuips-mail:/guigui-wuip-gmail
@@ -78,6 +78,6 @@ case $COMMAND in
     ;;
 
   *)
-    echo "backup.sh [documents|mails]"
+    echo "backup.sh [vdirs|documents|mails]"
     ;;
 esac

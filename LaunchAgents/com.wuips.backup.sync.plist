@@ -9,11 +9,11 @@
     <array>
       <string>/usr/local/bin/bash</string>
       <string>-c</string>
-      <string>~/.home/backup.sh sync</string>
+      <string>~/.home/backup.sh documents</string>
     </array>
 
     <key>StartInterval</key>
-    <integer>900</integer>
+    <integer>3600</integer>
 
     <key>StandardInPath</key>
     <string>/usr/local/var/log/com.wuips.backup.sync/stdin</string>

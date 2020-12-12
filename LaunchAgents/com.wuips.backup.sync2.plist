@@ -3,23 +3,23 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>com.wuips.backup.mails</string>
+    <string>com.wuips.backup.sync2</string>
 
     <key>ProgramArguments</key>
     <array>
       <string>/usr/local/bin/bash</string>
       <string>-c</string>
-      <string>~/.home/backup.sh mails</string>
+      <string>~/.home/backup.sh mails && ~/.home/backup.sh vdirs</string>
     </array>
 
     <key>StartInterval</key>
     <integer>43200</integer>
 
     <key>StandardInPath</key>
-    <string>/usr/local/var/log/com.wuips.backup.mails/stdin</string>
+    <string>/usr/local/var/log/com.wuips.backup.sync2/stdin</string>
     <key>StandardOutPath</key>
-    <string>/usr/local/var/log/com.wuips.backup.mails/stdout</string>
+    <string>/usr/local/var/log/com.wuips.backup.sync2/stdout</string>
     <key>StandardErrorPath</key>
-    <string>/usr/local/var/log/com.wuips.backup.mails/stderr</string>
+    <string>/usr/local/var/log/com.wuips.backup.sync2/stderr</string>
   </dict>
 </plist>
