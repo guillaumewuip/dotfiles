@@ -1,10 +1,12 @@
 # open terminal
-alt - return [
+ctrl - return [
   *       : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
   "kitty" ~
 ]
 
-shift + alt - return : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser --incognito https://demo.iadvize.com/rd/sd/gclochard?chat
+ctrl - f : osascript -e 'tell application "Finder" to make new Finder window'
+
+ctrl - p : open -a "1Password 7"
 
 # toggle window split type vertical / horizontal
 alt - q : yabai -m window --toggle split
