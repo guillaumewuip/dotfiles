@@ -31,6 +31,9 @@ HISTFILESIZE=5000
 # Do not store a duplicate of the last entered command
 HISTCONTROL=ignoredups
 
+# Disable husky locally
+HUSKY_SKIP_HOOKS=1
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export NVM_DIR="$HOME/.nvm"
