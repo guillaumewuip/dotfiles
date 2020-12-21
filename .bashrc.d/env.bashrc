@@ -35,6 +35,7 @@ HISTCONTROL=ignoredups
 HUSKY_SKIP_HOOKS=1
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f .private-env.bashrc ] && source .private-env.bashrc
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

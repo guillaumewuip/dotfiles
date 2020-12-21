@@ -27,3 +27,5 @@ tags
 .vim/.netrwhist
 .mutt/cache
 .mutt/tmp
+
+.bashrc.d/private-*
