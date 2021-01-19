@@ -4,9 +4,9 @@ ctrl - return [
   "kitty" ~
 ]
 
-ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
+shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
 
-ctrl - p : open -a "1Password 7"
+shift + ctrl - p : open -a "1Password 7"
 
 # toggle window split type vertical / horizontal
 alt - q : yabai -m window --toggle split
