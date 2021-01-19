@@ -1,6 +1,7 @@
 tags
 
-.vim/autoload/pathogen.vim
+.vim/autoload/plug.vim
+.vim/plugged
 
 .config/*
 !.config/nvim
