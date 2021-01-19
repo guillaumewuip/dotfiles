@@ -12,7 +12,7 @@ text/calendar; khal import -a personal %s
 image/*; ~/.mutt/quicklook.sh %s
 video/*; ~/.mutt/quicklook.sh %s
 
-application/pdf; ~/dotfiles/office/quicklook.sh %s
+application/pdf; ~/.mutt/quicklook.sh %s
 
 application/x-bzip; tar --list %s; copiousoutput
 application/x-bzip1; tar --list %s; copiousoutput
