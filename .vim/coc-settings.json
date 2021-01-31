@@ -50,7 +50,8 @@
     "location": "separateLine"
   },
 
-  "git.realtimeGutters": false,
+  "git.realtimeGutters": true,
+  "git.addGBlameToVirtualText": false,
   "coc.source.issues.enable": false,
 
   "snippets.extends": {
