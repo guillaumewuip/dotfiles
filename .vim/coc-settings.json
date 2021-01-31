@@ -62,6 +62,8 @@
   "snippets.priority": 100,
   "snippets.loadFromExtensions": false,
 
+  "coc.source.iced.enable": true,
+
   "css.validate": false,
   "scss.validate": false,
   "less.validate": false,

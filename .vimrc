@@ -163,11 +163,19 @@ highlight FloatermBorder              ctermfg=black
 
 highlight clear SignColumn
 
+Plug 'junegunn/rainbow_parentheses.vim'
+let g:rainbow#blacklist = [0, 239]
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
+
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'ianks/vim-tsx'
 
-Plug 'Olical/conjure'
+Plug 'guns/vim-clojure-highlight', {'for': 'clojure'}
+Plug 'guns/vim-clojure-static', {'for': 'clojure'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -485,11 +493,13 @@ let g:floaterm_width = 0.8
 
 nmap - :FloatermNew ranger<CR>
 
-Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp', {'for': 'clojure'}
+Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
 
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-fugitive'
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
+let g:iced_enable_default_key_mappings = v:true
 
+Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC.vim
