@@ -423,6 +423,8 @@ set tabline=%!TabLine()
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┆'
 let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 'nc'
+let g:indentLine_conceallevel = 2
 
 "vim-better-whitespace
 Plug 'ntpeters/vim-better-whitespace'
