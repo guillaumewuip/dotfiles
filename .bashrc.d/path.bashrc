@@ -1,5 +1,6 @@
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 
 export PATH=$PATH:~/.home/.vim/plugged/vim-iced/bin
 

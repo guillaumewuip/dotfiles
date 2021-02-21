@@ -25,29 +25,3 @@ function pong() {
 function port() {
   lsof -i ":${1:-80}"
 }
-
-function git-pr() {
-  BRANCH_TITLE=$(git rev-parse --abbrev-ref HEAD)
-
-  FIRT_TWO_WORDS=$(echo $BRANCH_TITLE | cut -f1,2 -d-)
-
-  PREFIX=$([[ "$BRANCH_TITLE" =~ "BOYSCOUT-" ]] && echo "BOYSCOUT" || echo $FIRT_TWO_WORDS)
-
-  NAME_WITH_DASH=$([[ "$BRANCH_TITLE" =~ "BOYSCOUT-" ]] && echo $BRANCH_TITLE | sed s/BOYSCOUT-//g || echo $BRANCH_TITLE | sed s/$FIRT_TWO_WORDS//g)
-
-  NAME=$(echo $NAME_WITH_DASH | sed 's/-/ /g')
-
-  TITLE="[$PREFIX] $NAME"
-
-  MESSAGE="$TITLE\n\n> $PREFIX \n## Description\n\n\n## DEMO\n\n\n## TESTED"
-
-  echo -e $MESSAGE | hub pull-request -a guillaumewuip --edit $@ -F -
-}
-
-function git-scb() {
-  git switch -c BOYSCOUT-$1
-}
-
-function git-commit-b() {
-  git commit -m "[BOYSCOUT] $1"
-}

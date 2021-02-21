@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if git show-ref --verify --quiet refs/heads/main; then
+  git switch main
+else
+  git switch master
+fi
