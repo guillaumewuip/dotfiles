@@ -18,6 +18,12 @@ case $COMMAND in
 
       vdirsyncer sync
 
+      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_facebook wuips-vdirs:/calendar_facebook
+      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_google wuips-vdirs:/calendar_google
+      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_iadvize wuips-vdirs:/calendar_iadvize
+      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_personal wuips-vdirs:/calendar_personal
+      rclone sync --stats-file-name-length 0 ~/vdirs/contacts_personal wuips-vdirs:/contacts_personal
+
       echo $(readBackupFile | jq '.vdirs.status = "done"') > $BACKUPS_FILE
       echo $(readBackupFile | jq '.vdirs.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
     } || {
@@ -58,12 +64,6 @@ case $COMMAND in
       rclone sync --stats-file-name-length 0 ~/mail/guillaume-wuips wuips-mail:/guillaume-wuips
       rclone sync --stats-file-name-length 0 ~/mail/clochard-guillaume-gmail wuips-mail:/clochard-guillaume-gmail
       rclone sync --stats-file-name-length 0 ~/mail/guigui-wuip-gmail wuips-mail:/guigui-wuip-gmail
-
-      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_facebook wuips-vdirs:/calendar_facebook
-      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_google wuips-vdirs:/calendar_google
-      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_iadvize wuips-vdirs:/calendar_iadvize
-      rclone sync --stats-file-name-length 0 ~/vdirs/calendar_personal wuips-vdirs:/calendar_personal
-      rclone sync --stats-file-name-length 0 ~/vdirs/contacts_personal wuips-vdirs:/contacts_personal
 
       echo $(readBackupFile | jq '.mails.status = "done"') > $BACKUPS_FILE
       echo $(readBackupFile | jq '.mails.lastUpdate = '$(date +%s)'') > $BACKUPS_FILE
