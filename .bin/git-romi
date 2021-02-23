@@ -3,5 +3,5 @@
 if git show-ref --verify --quiet refs/heads/main; then
   git rebase -i --autosquash origin/main
 else
-  git rebase -i --autosquash origin/main
+  git rebase -i --autosquash origin/master
 fi
