@@ -8,6 +8,9 @@ notmuch tag -archive -- tag:inbox
 # tag SPAM
 notmuch tag -inbox +spam -unread -- path:/.*Spam*./
 
+# npm
+notmuch tag -inbox -unread -- to:guillaume+fp51-npm-bot@wuips.com 'Successfully published'
+
 # tag Drafts
 notmuch tag -inbox +draft -- path:/.*Drafts*./
 notmuch tag -inbox +draft -- path:/.*Brouillons*./
