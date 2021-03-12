@@ -466,7 +466,7 @@ nmap <silent> = :CocCommand fzf-preview.DirectoryFiles <C-R>=expand('%:h')<CR><C
 "Search and grep in project
 nmap <Leader>g :CocCommand fzf-preview.ProjectGrep .<CR>
 "Search work under cursor
-xnoremap <Leader>f "sy:CocCommand fzf-preview.ProjectGrep<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+xnoremap <Leader>f "sy:FRag <Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 
 "Nerdcommenter
 Plug 'preservim/nerdcommenter'
