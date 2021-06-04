@@ -4,6 +4,8 @@ export PATH="$HOME/.bin:$PATH"
 
 export PATH=$PATH:~/.home/.vim/plugged/vim-iced/bin
 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/g.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/path.bash.inc'; fi
 
