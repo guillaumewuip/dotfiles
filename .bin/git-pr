@@ -12,6 +12,6 @@ NAME=$(echo $NAME_WITH_DASH | sed 's/-/ /g')
 
 TITLE="[$PREFIX] $NAME"
 
-MESSAGE="$TITLE\n\n> $PREFIX \n## Description\n\n\n## DEMO\n\n\n## TESTED"
+MESSAGE="$TITLE\n\n> [$PREFIX] \n## Description\n\n\n## DEMO\n\n\n## TESTED"
 
 echo -e $MESSAGE | hub pull-request -a guillaumewuip --edit "$@" -F -
