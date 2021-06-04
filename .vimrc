@@ -503,6 +503,12 @@ let g:iced_enable_default_key_mappings = v:true
 
 Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
 
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
