@@ -1,19 +1,16 @@
-COMMAND=$1
+URL=$1
 
-case $COMMAND in
-  youtube)
-    shift
-    command="youtube-dl --extract-audio --audio-format=mp3 --audio-quality=0 $@"
+case $URL in
+  *"youtube"*)
+    command="youtube-dl --extract-audio --audio-format=mp3 --audio-quality=0 $URL"
     ;;
 
-  soundcloud)
-    shift
-    command="scdl --addtofile -l $@"
+  *"soundcloud"*)
+    command="scdl --addtofile -l $URL"
     ;;
 
-  bandcamp)
-    shift
-    command="bandcamp-dl $@"
+  *"bandcamp"*)
+    command="bandcamp-dl $URL"
     ;;
 
   *)
