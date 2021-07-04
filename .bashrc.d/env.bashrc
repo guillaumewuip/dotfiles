@@ -32,7 +32,9 @@ HISTFILESIZE=5000
 HISTCONTROL=ignoredups
 
 # Disable husky locally
-HUSKY_SKIP_HOOKS=1
+export HUSKY=0
+
+export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f .private-env.bashrc ] && source .private-env.bashrc
