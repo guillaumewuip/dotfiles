@@ -2,6 +2,7 @@
 alias vim='nvim'
 
 #Git
+alias git="git"
 alias  gl="git ls"
 alias gll="git ll"
 alias glg="git lg"
