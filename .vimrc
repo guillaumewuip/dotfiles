@@ -488,6 +488,7 @@ Plug 'voldikss/vim-floaterm'
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
+let g:floaterm_opener = 'tabe'
 let g:floaterm_wintitle = v:false
 let g:floaterm_height = 0.8
 let g:floaterm_width = 0.8
