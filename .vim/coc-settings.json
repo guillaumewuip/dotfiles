@@ -68,5 +68,7 @@
   "css.validate": false,
   "scss.validate": false,
   "less.validate": false,
-  "wxss.validate": false
+  "wxss.validate": false,
+
+  "coc.preferences.enableMarkdown": true
 }
