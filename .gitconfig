@@ -41,6 +41,8 @@
     rebasei =! git rebase -i --autosquash $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     rebaseo =! git rebase $(git branch -a | grep origin | fzf | cut -d'/' -f2-)
     rebasel =! git rebase $(git branch -a | grep -v origin | fzf | cut -d'/' -f2-)
+    rc =! git rebase --continue
+    ra =! git rebase --abort
     fix =! git commit --fixup $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     fixh =! git commit --fixup $(git --no-pager ls -n 50 | grep -v fixup! | fzf | cut -d' ' -f1)
     addf =! git status --short | fzf -m | awk '{$1=$1}1' | cut -d' ' -f2- | xargs git add
