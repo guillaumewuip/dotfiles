@@ -19,9 +19,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Configure BASH to append (rather than overwrite the history):
 shopt -s histappend
 
-# Configure BASH to append (rather than overwrite the history):
-shopt -s histappend
-
 # Print the timestamp of each command
 # HISTTIMEFORMAT='%F %T '
 
@@ -34,13 +31,17 @@ HISTCONTROL=ignoredups
 # Disable husky locally
 export HUSKY=0
 
-export NVM_DIR="$HOME/.nvm"
+[ -f .private-env.bashrc ] && source .private-env.bashrc
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f .private-env.bashrc ] && source .private-env.bashrc
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . "$HOME/.cargo/env"
+
+export STARSHIP_CONFIG=~/.config/starship/config.toml
+eval "$(starship init bash)"

@@ -12,6 +12,7 @@ tags
 !.config/nvim
 !.config/khard
 !.config/khal
+!.config/starship
 
 .config/coc/**/.*
 .config/coc/*

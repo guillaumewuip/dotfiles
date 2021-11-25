@@ -1,0 +1,66 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Timeout for starship to scan files (in milliseconds).
+scan_timeout = 10
+
+# Timeout for commands executed by starship (in milliseconds).
+command_timeout = 150
+
+format = """
+$fill$status$cmd_duration
+$username\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$fill\
+$nodejs\
+$kubernetes\
+$jobs
+$character"""
+
+right_format = ""
+
+[cmd_duration]
+min_time = 50
+format = '[$duration](bold yellow)'
+show_notifications = true
+min_time_to_notify = 45_000
+
+[directory]
+truncation_length = 5
+format = '[$path](bold yellow)[$read_only](bold red) '
+
+[git_branch]
+symbol = ' '
+
+[git_status]
+format = '([$ahead_behind $all_status]($style)) '
+conflicted = '='	# merge conflicts.
+ahead = '$count⇡'
+behind = '$count⇣'
+diverged = '⇕'
+up_to_date = ''
+untracked =	'?'
+stashed =	'\$'
+modified = '!'
+staged = '+'
+renamed = '»'
+deleted = '✘'
+style = 'bold red'
+
+[nodejs]
+format = '[  ($version)]($style) '
+version_format = '${raw}'
+detect_files = ['package.json', '.node-version', '.nvmrc']
+
+[kubernetes]
+disabled = false
+format = '[ ☸ $context(\($namespace\))](cyan bold)'
+
+[character]
+success_symbol = ''
+error_symbol = ''
+
