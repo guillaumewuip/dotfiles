@@ -5,7 +5,7 @@ add_newline = false
 scan_timeout = 10
 
 # Timeout for commands executed by starship (in milliseconds).
-command_timeout = 150
+command_timeout = 250
 
 format = """
 $fill$status$cmd_duration
@@ -17,11 +17,15 @@ $git_state\
 $git_status\
 $fill\
 $nodejs\
+${custom.docker}\
 $kubernetes\
 $jobs
 $character"""
 
 right_format = ""
+
+[status]
+disabled = false
 
 [cmd_duration]
 min_time = 50
@@ -43,18 +47,23 @@ ahead = '$count⇡'
 behind = '$count⇣'
 diverged = '⇕'
 up_to_date = ''
-untracked =	'?'
+untracked =	'u'
 stashed =	'\$'
-modified = '!'
-staged = '+'
-renamed = '»'
-deleted = '✘'
+modified = 'm'
+staged = 's'
+renamed = 'r'
+deleted = 'd'
 style = 'bold red'
 
 [nodejs]
 format = '[  ($version)]($style) '
 version_format = '${raw}'
 detect_files = ['package.json', '.node-version', '.nvmrc']
+
+[custom.docker]
+command = "docker version -f '{{.Server.Version}}'"  # shows output of command
+format = "[  $output](blue bold) "
+when = "docker version && true"
 
 [kubernetes]
 disabled = false
