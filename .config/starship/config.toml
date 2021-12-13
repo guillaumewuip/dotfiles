@@ -8,7 +8,7 @@ scan_timeout = 10
 command_timeout = 250
 
 format = """
-$fill$status$cmd_duration
+$fill$status$cmd_duration$fill
 $username\
 $directory\
 $git_branch\
