@@ -441,7 +441,7 @@ let g:fzf_buffers_jump = 1
 let g:fzf_preview_use_floating_window = 1
 let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
 let g:fzf_preview_lines_command = 'bat --color=always --plain --number'
-let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g \!".git/*|*node_mdules*"'
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages'
 let g:fzf_preview_use_dev_icons = 0
 let g:fzf_preview_fzf_preview_window_option = 'down:50%'
 
