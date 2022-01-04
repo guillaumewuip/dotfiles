@@ -27,9 +27,6 @@ shift + alt - r : yabai -m space --mirror y-axis
 # toggle float
 alt - t : yabai -m window --toggle float;
 
-# toggle offset
-shift + alt - o : yabai -m space --toggle padding; yabai -m space --toggle gap
-
 # fullscreen for focused window
 alt - f : yabai -m window --toggle zoom-fullscreen
 
