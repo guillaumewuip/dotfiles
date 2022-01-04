@@ -43,5 +43,7 @@ export NVM_DIR="$HOME/.nvm"
 
 . "$HOME/.cargo/env"
 
+eval "$(gh completion -s bash)"
+
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 eval "$(starship init bash)"
