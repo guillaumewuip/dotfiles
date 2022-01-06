@@ -549,7 +549,7 @@ vmap = <Plug>(coc-format-selected)
 nmap <leader>fo  <Plug>(coc-format-selected)
 
 " Setup formatexpr specified filetype(s).
-autocmd FileType typescript,json,markdown setl formatexpr=CocActionAsync('formatSelected')
+autocmd FileType typescript,json setl formatexpr=CocActionAsync('formatSelected')
 " Update signature help on jump placeholder
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
