@@ -468,6 +468,9 @@ nmap <Leader>g :CocCommand fzf-preview.ProjectGrep .<CR>
 "Search work under cursor
 xnoremap <Leader>f "sy:FRag <Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 
+"Browse github
+nmap <Leader>b :CocCommand git.browserOpen<CR>
+
 "Nerdcommenter
 Plug 'preservim/nerdcommenter'
 let NERDSpaceDelims=1
