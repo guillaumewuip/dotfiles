@@ -5,7 +5,7 @@ function server() {
 }
 
 function pong() {
-  ping ${1:-"8.8.8.8"} | while read line; do echo "$(date): $line"; done
+  gping ${1:-"8.8.8.8"}
 }
 
 function port() {
