@@ -1,2 +1,0 @@
-export SAUCE_USERNAME=squad-spa
-export SAUCE_ACCESS_KEY=ac19bc19-7924-41d0-adc1-1477f21640f8
