@@ -41,8 +41,8 @@ yabai -m rule --add app=Moniteur manage=off
 yabai -m rule --add title="Toggl Track" manage=off
 yabai -m rule --add app=Finder title=Copy manage=off
 yabai -m rule --add app="System Preferences" manage=off
-yabai -m rule --add app="1Password 7" manage=off
-yabai -m rule --add app="^iStat.*" manage=off
-yabai -m rule --add app="^iStat.*" mouse_follows_focus=off
+yabai -m rule --add app="1Password" manage=off
+yabai -m rule --add app="iStat*" sticky=on layer=above manage=off border=off
+yabai -m rule --add app="iStat*" mouse_follows_focus=off
 
 echo "yabai configuration loaded.."

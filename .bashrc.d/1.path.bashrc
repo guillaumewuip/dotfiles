@@ -1,3 +1,10 @@
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"

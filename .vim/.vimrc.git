@@ -13,3 +13,5 @@ endif
 colorscheme desert
 set background=dark
 
+set directory^=~/.vim/tmp//
+

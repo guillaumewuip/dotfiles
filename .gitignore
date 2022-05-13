@@ -23,6 +23,7 @@ tags
 
 .vim/swap
 .vim/backup
+.vim/tmp
 .vim/undodir
 .vim/undo
 .vim/sessions
@@ -30,4 +31,4 @@ tags
 .mutt/cache
 .mutt/tmp
 
-.bashrc.d/private-*
+.bashrc.d/*private-*

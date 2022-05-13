@@ -37,7 +37,7 @@ if !has('nvim')
 end
 
 let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 " Smaller updatetime
 set updatetime=100
@@ -173,6 +173,7 @@ augroup END
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'ianks/vim-tsx'
+Plug 'GutenYe/json5.vim'
 
 Plug 'guns/vim-clojure-highlight', {'for': 'clojure'}
 Plug 'guns/vim-clojure-static', {'for': 'clojure'}
@@ -181,7 +182,8 @@ Plug 'guns/vim-clojure-static', {'for': 'clojure'}
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " No swap files
-set noswapfile
+" set noswapfile
+set directory^=~/.vim/tmp/
 
 " protect against crash-during-write
 set writebackup
