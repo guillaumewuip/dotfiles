@@ -7,6 +7,9 @@ tags
 .config/nvim/plugged
 .config/nvim/spell
 .config/nvim/.netrwhist
+.config/nvim/tmp
+.config/nvim/backup
+.config/nvim/swap
 
 !.config/kitty
 !.config/alacritty
