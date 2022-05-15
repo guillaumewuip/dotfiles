@@ -64,3 +64,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
+-- python stuff
+vim.g.python2_host_prog = '/usr/local/bin/python'
+vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
+
