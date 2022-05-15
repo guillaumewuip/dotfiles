@@ -1,0 +1,6 @@
+require('base')
+require('input')
+require('interface')
+require('completion')
+require('search')
+require('statusline')

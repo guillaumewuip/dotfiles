@@ -9,7 +9,7 @@ tags
 .config/nvim/.netrwhist
 .config/nvim/tmp
 .config/nvim/backup
-.config/nvim/swap
+.config/nvim/undo
 
 !.config/kitty
 !.config/alacritty
