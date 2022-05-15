@@ -10,6 +10,7 @@ tags
 .config/nvim/tmp
 .config/nvim/backup
 .config/nvim/undo
+.config/nvim/plugin
 
 !.config/kitty
 !.config/alacritty
