@@ -6,9 +6,6 @@ lua require('settings')
 
 call plug#begin()
 
-"Browse github
-nmap <Leader>b :CocCommand git.browserOpen<CR>
-
 "floaterm
 Plug 'voldikss/vim-floaterm'
 

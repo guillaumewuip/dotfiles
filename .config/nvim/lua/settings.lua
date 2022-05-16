@@ -8,14 +8,22 @@ end
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  require('base')
-  require('input')
-  require('interface')
-  require('completion')
-  require('search')
-  require('statusline')
-  require('syntax')
-  require('undo')
+  require 'base'
+  require 'input'
+  require 'interface'
+  require 'completion'
+  require 'search'
+  require 'statusline'
+  require 'syntax'
+  require 'undo'
+
+  vim.cmd [[
+    augroup packer_user_config
+      autocmd!
+      autocmd BufWritePost */nvim/lua/*.lua source <afile> | PackerCompile
+      autocmd User PackerCompileDone ++once lua print 'PackerCompile done - Restart vim'
+    augroup end
+  ]]
 
   if packer_bootstrap then
     require('packer').sync()

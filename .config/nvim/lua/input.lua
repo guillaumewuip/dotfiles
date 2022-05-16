@@ -3,7 +3,10 @@ local use = require('packer').use
 
 -- Allow vim clipboad <-> host clipboard to share data
 -- @see https://ploegert.gitbook.io/til/tools/vim/allow-neovim-to-copy-paste-with-system-clipboard
-set.clipboard = unnamedplus
+-- don't know why not working with set.clipboard
+vim.cmd [[
+  set clipboard=unnamedplus
+]]
 
 set.mouse = a
 
@@ -39,16 +42,6 @@ vim.keymap.set('i', '<C-k>', "<ESC>:m .-2<CR>==gi", { noremap = true })
 -- Visual mode
 vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { noremap = true })
 vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { noremap = true })
-
-use {
-  'Yggdroot/indentLine',
-  config = function()
-    vim.g.indentLine_char = '┆'
-    vim.g.indentLine_enabled = 1
-    vim.g.indentLine_concealcursor = 'nc'
-    vim.g.indentLine_conceallevel = 2
-  end
-}
 
 use {
   'ntpeters/vim-better-whitespace',
