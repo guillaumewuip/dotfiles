@@ -20,9 +20,9 @@ return require('packer').startup(function(use)
     augroup packer_user_config
       autocmd!
       autocmd BufWritePost */nvim/lua/*.lua source <afile> | PackerCompile
-      autocmd User PackerCompileDone ++once lua print 'PackerCompile done - Restart vim'
     augroup end
   ]]
+  -- autocmd User PackerCompileDone ++once lua print 'PackerCompile done - Restart vim'
 
   if packer_bootstrap then
     require('packer').sync()

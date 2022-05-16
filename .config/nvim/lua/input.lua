@@ -33,15 +33,9 @@ set.foldcolumn = '0'
 vim.keymap.set('n', '<C-z>', '<C-x>')
 
 -- Move a line of text using Ctrl+[jk]
--- Normal mode
-vim.keymap.set('n', '<C-j>', ":m .+1<CR>==", { noremap = true })
-vim.keymap.set('n', '<C-k>', ":m .-2<CR>==", { noremap = true })
--- Insert mode
-vim.keymap.set('i', '<C-j>', "<ESC>:m .+1<CR>==gi", { noremap = true })
-vim.keymap.set('i', '<C-k>', "<ESC>:m .-2<CR>==gi", { noremap = true })
--- Visual mode
-vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { noremap = true })
-vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { noremap = true })
+vim.g.move_key_modifier = 'C'
+vim.g.move_key_modifier_visualmode = 'C'
+use 'matze/vim-move'
 
 use {
   'ntpeters/vim-better-whitespace',
@@ -63,3 +57,10 @@ use {
     vim.g.multi_cursor_select_all_word_key = '<C-y>'
   end
 }
+
+vim.g.lexima_enable_basic_rules = true
+vim.g.lexima_enable_newlines_rules = true
+
+use 'cohama/lexima.vim'
+
+use 'machakann/vim-sandwich'

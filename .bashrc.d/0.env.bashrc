@@ -1,6 +1,6 @@
 set -o vi
 
-export EDITOR="/opt/homebrew/bin/nvim -u ~/.vim/.vimrc.git --noplugin"
+export EDITOR="/opt/homebrew/bin/nvim"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 

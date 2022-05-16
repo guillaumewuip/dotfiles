@@ -24,12 +24,12 @@ use {
   config = function()
     require("telescope").load_extension("emoji")
     require('telescope').setup {
-      layout_strategy = 'flex',
-      layout_config = {
-        prompt_position = "top"
-      },
       defaults = {
         sorting_strategy = "ascending",
+        layout_strategy = 'flex',
+        layout_config = {
+          prompt_position = "top"
+        },
       }
     }
 
@@ -47,7 +47,7 @@ use {
     { 'nvim-lua/plenary.nvim' },
   },
   config = function()
-    require('telescope').setup{}
+    require('spectre').setup{}
 
     vim.keymap.set('n', '<Leader>G', require('spectre').open)
     vim.keymap.set('v', '<Leader>G', function()
@@ -56,3 +56,18 @@ use {
   end
 }
 
+use { 'kevinhwang91/rnvimr' }
+
+vim.g.rnvimr_edit_cmd = 'drop'
+vim.g.rnvimr_enable_picker = true
+vim.g.rnvimr_enable_bw = true
+vim.g.rnvimr_draw_border = false
+vim.g.rnvimr_hide_gitignore = false
+
+vim.cmd [[
+  highlight link RnvimrNormal CursorLine
+]]
+
+vim.keymap.set('n', '-', ':RnvimrToggle<CR>')
+
+use {'kevinhwang91/nvim-bqf', ft = 'qf'}

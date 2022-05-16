@@ -1,5 +1,7 @@
 tags
 
+__pycache__
+
 .config/*
 
 !.config/nvim
