@@ -5,7 +5,7 @@ local use = require('packer').use
 use {
   'preservim/vim-markdown',
   requires = {
-    { 'godlygeek/tabular', opt = true }
+    { 'godlygeek/tabular' }
   },
   config = function()
     vim.g.vim_markdown_folding_disabled = 1

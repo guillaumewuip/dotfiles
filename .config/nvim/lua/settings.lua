@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
   require 'interface'
   require 'completion'
   require 'search'
-  require 'statusline'
   require 'syntax'
   require 'undo'
 

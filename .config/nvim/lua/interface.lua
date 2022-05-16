@@ -2,27 +2,77 @@ local set = vim.opt
 local cmd = vim.cmd
 local use = require('packer').use
 
-vim.cmd('colorscheme desert')
+-- usefull to test new themes:
+-- use 'chxuan/change-colorscheme'
+-- cmd [[
+--   nnoremap <silent> T :PreviousColorScheme<cr>
+--   nnoremap <silent> Y :NextColorScheme<cr>
+-- ]]
 
-set.background = 'dark'
+set.termguicolors = true
 
-cmd [[highlight CursorLine cterm=NONE ctermbg=236]]
+cmd [[
+  let ayucolor="darker" " for darker version of theme
+  colorscheme ayu
 
-cmd [[highlight Search cterm=NONE ctermfg=15 ctermbg=172]]
-cmd [[highlight CocHighlightText ctermfg=15 ctermbg=136]]
-cmd [[highlight CocHighlightRead ctermfg=15 ctermbg=136]]
-cmd [[highlight CocHighlightWrite ctermfg=15 ctermbg=136]]
+  highlight FloatermBorder              ctermfg=black
+]]
 
-cmd [[highlight Pmenu       cterm=NONE ctermfg=255 ctermbg=236]]
-cmd [[highlight PmenuSel    cterm=NONE ctermfg=15 ctermbg=240]]
-cmd [[highlight CocFloating cterm=NONE ctermfg=255 ctermbg=236]]
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons' },
+  config = function()
+    require('lualine').setup({
+      options = {
+        theme = 'ayu_dark',
+        component_separators = { left = '|', right = '|'},
+        section_separators = { left = ' ', right = ' '},
+        globalstatus = true,
+      },
+      extensions = {
+        'quickfix'
+      }
+    })
+  end
+}
 
-cmd [[highlight TabLine                     cterm=NONE ctermfg=255 ctermbg=236]]
-cmd [[highlight TabLineCell                 cterm=NONE ctermfg=255 ctermbg=236]]
-cmd [[highlight TabLineCellSelected         cterm=NONE ctermfg=15 ctermbg=172]]
-cmd [[highlight TabLineCellModified         cterm=NONE ctermfg=255 ctermbg=244]]
-cmd [[highlight TabLineCellSelectedModified cterm=NONE ctermfg=15 ctermbg=160]]
-cmd [[highlight FloatermBorder              ctermfg=black]]
+use {
+  'kdheepak/tabline.nvim',
+  after = 'lualine.nvim',
+  config = function()
+    require'tabline'.setup {
+      -- Defaults configuration options
+      enable = true,
+
+      options = {
+        section_separators = {' ', ' '},
+        component_separators = {'|', '|'},
+        max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+        modified_italic = true, -- set to true by default; this determines whether the filename turns italic if modified
+      }
+    }
+
+    vim.cmd[[
+      set guioptions-=e " Use showtabline in gui vim
+      set sessionoptions+=tabpages,globals " store tabpages and globals in session
+    ]]
+  end,
+  requires = {
+    { 'hoob3rt/lualine.nvim' },
+    {'kyazdani42/nvim-web-devicons' }
+  }
+}
+
+
+-- move among buffers
+vim.keymap.set('', '<C-l>', ':TablineBufferNext<CR>')
+vim.keymap.set('', '<C-h>', ':TablineBufferPrevious<CR>')
+vim.keymap.set('', '<C-g>', ':TablineBufferMoveNext<CR>')
+vim.keymap.set('', '<C-;>', ':TablineBufferMovePrevious<CR>')
+-- close buffer
+vim.keymap.set('', '<C-X>', ':bdelete<CR>')
+
+
 
 -- always show current position
 set.ruler = true
@@ -46,7 +96,7 @@ set.number = true
 set.cursorline = false
 set.cursorcolumn = false
 -- Highlight the screen line of the cursor with H
-vim.keymap.set('n', 'H', ':set cursorline!')
+vim.keymap.set('n', 'H', ':set cursorline!<CR>')
 
 -- Always show x lines around cursor
 set.scrolloff = 7
@@ -62,12 +112,6 @@ vim.keymap.set('n', 'k', 'gk')
 
 vim.keymap.set('', '<ScrollWheelUp>', 'k')
 vim.keymap.set('', '<ScrollWheelDown>', 'j')
-
--- move among buffers
-vim.keymap.set('', '<C-L>', ':bnext<CR>')
-vim.keymap.set('', '<C-H>', ':bprev<CR>')
--- close buffer
-vim.keymap.set('', '<C-X>', ':bd<CR>')
 
 -- Specify the behavior when switching between buffers
 set.switchbuf = 'useopen'
@@ -92,8 +136,6 @@ use {
   end
 }
 
-cmd [[ highlight GitSignsCurrentLineBlame ctermfg=244 ctermbg=NONE cterm=nocombine ]]
-
 use {
   'ruifm/gitlinker.nvim',
   requires = {
@@ -112,14 +154,18 @@ use {
 vim.g.indent_blankline_char = '┆'
 vim.g.indent_blankline_space_char_blankline = ' '
 
-cmd [[ highlight IndentBlanklineChar ctermfg=238 ctermbg=NONE cterm=nocombine ]]
+-- cmd [[
+--   highlight IndentBlanklineChar ctermfg=238 ctermbg=NONE
+--   highlight IndentBlanklineContextChar ctermfg=238 ctermbg=NONE
+--   highlight IndentBlanklineContextStart ctermfg=238 ctermbg=NONE
+-- ]]
 
 use {
   "lukas-reineke/indent-blankline.nvim",
   requires = {
     {
       'nvim-treesitter/nvim-treesitter',
-      cmd = 'TSUpdate'
+      -- cmd = 'TSUpdate'
     },
   },
   config = function ()

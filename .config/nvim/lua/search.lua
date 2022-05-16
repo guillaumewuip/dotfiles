@@ -14,7 +14,6 @@ vim.keymap.set('', '<leader>p', ':cp<cr>')
 
 use {
   'nvim-telescope/telescope.nvim',
-  opt = false,
   requires = {
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
@@ -24,7 +23,15 @@ use {
   },
   config = function()
     require("telescope").load_extension("emoji")
-    require('telescope').setup{}
+    require('telescope').setup {
+      layout_strategy = 'flex',
+      layout_config = {
+        prompt_position = "top"
+      },
+      defaults = {
+        sorting_strategy = "ascending",
+      }
+    }
 
     vim.keymap.set('', ')', require('telescope.builtin').buffers)
     vim.keymap.set('', '+', require('telescope.builtin').git_files)
@@ -33,3 +40,19 @@ use {
     vim.keymap.set('', '!', require('telescope.builtin').git_status)
   end
 }
+
+use {
+  'windwp/nvim-spectre',
+  requires = {
+    { 'nvim-lua/plenary.nvim' },
+  },
+  config = function()
+    require('telescope').setup{}
+
+    vim.keymap.set('n', '<Leader>G', require('spectre').open)
+    vim.keymap.set('v', '<Leader>G', function()
+      require('spectre').open_visual({ select_word = true })
+    end)
+  end
+}
+

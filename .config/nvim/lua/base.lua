@@ -26,7 +26,7 @@ set.lazyredraw = true
 set.ffs = 'unix,dos,mac'
 
 -- No swap files
-set.directory = 'tmp/'
+set.directory = os.getenv("HOME") .. '/.config/nvim/tmp/'
 
 -- protect against crash-during-write
 set.writebackup = true
@@ -35,11 +35,11 @@ set.backup = false
 -- use rename-and-write-new method whenever safe
 set.backupcopy = 'yes'
 -- consolidate the writebackups, not a big deal either way, since they usually get deleted
-set.backupdir = 'backup/'
+set.backupdir = os.getenv("HOME") .. '/.config/nvim/backup/'
 
 -- persist the undo tree for each file
 set.undofile = true
-set.undodir = 'undo/'
+set.undodir = os.getenv("HOME") .. '/.config/nvim/undodir'
 
 -- Return to last edit position when opening files (You want this!)
 vim.api.nvim_create_autocmd(
