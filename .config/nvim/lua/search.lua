@@ -47,6 +47,17 @@ use {
           mirror = true,
           prompt_position = "top"
         },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          '--ignore-file',
+          '.gitignore'
+        }
       },
       extensions = {
         fzf = {
@@ -63,8 +74,8 @@ use {
     vim.keymap.set('', ')', require('telescope.builtin').buffers, keymapOptions)
 
     vim.keymap.set('', '+', function()
-      local ok = pcall(require"telescope.builtin".git_files)
-      if not ok then require"telescope.builtin".find_files() end
+      local ok = pcall(require('telescope.builtin').git_files)
+      if not ok then require('telescope.builtin').find_files() end
     end, keymapOptions)
 
     vim.keymap.set('', '=', require('telescope.builtin').find_files, keymapOptions)
@@ -76,6 +87,8 @@ use {
 	    local text = vim.getVisualSelection()
       require("telescope").extensions.live_grep_raw.live_grep_raw({ default_text = text })
     end, keymapOptions)
+
+    vim.keymap.set('', '<Leader>h', require('telescope.builtin').resume, keymapOptions)
 
     vim.keymap.set('', '!', require('telescope.builtin').git_status, keymapOptions)
     vim.keymap.set('', '@', require('telescope.builtin').git_bcommits, keymapOptions)
