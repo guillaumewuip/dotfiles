@@ -62,15 +62,15 @@ use {
     vim.keymap.set('', ')', require('telescope.builtin').buffers, keymapOptions)
 
     vim.keymap.set('', '+', function()
-      local opts = {} -- define here if you want to define something
-      local ok = pcall(require"telescope.builtin".git_files, opts)
-      if not ok then require"telescope.builtin".find_files(opts) end
-    end)
-
+      local ok = pcall(require"telescope.builtin".git_files)
+      if not ok then require"telescope.builtin".find_files() end
+    end, keymapOptions)
 
     vim.keymap.set('', '=', require('telescope.builtin').find_files, keymapOptions)
 
-    vim.keymap.set('n', '<Leader>g', require("telescope").extensions.live_grep_raw.live_grep_raw, keymapOptions)
+    vim.keymap.set('n', '<Leader>g', function ()
+      require("telescope").extensions.live_grep_raw.live_grep_raw()
+    end, keymapOptions)
     vim.keymap.set('v', '<Leader>g', function()
 	    local text = vim.getVisualSelection()
       require("telescope").extensions.live_grep_raw.live_grep_raw({ default_text = text })
@@ -96,8 +96,6 @@ use {
   end
 }
 
--- trouble in opening some file?
--- check ranger rifle.conf file and complete the "!mime ^text, label editor, ..." line
 use {
   'kevinhwang91/rnvimr',
 

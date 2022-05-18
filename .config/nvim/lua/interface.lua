@@ -166,4 +166,14 @@ use {
   end
 }
 
-use { 'ggandor/lightspeed.nvim' }
+use 'ggandor/lightspeed.nvim'
+
+use {
+  'karb94/neoscroll.nvim',
+  config = function ()
+    require('neoscroll').setup({
+      easing_function = "quintic",
+      hide_cursor = false,
+    })
+  end
+}
