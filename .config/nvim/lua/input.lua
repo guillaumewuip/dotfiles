@@ -25,42 +25,40 @@ set.softtabstop = 2
 
 set.smartindent = true
 
-set.foldmethod = 'syntax'
-set.foldlevelstart = 99
-set.foldcolumn = '0'
-
 -- decrement number with ctrl+z
 vim.keymap.set('n', '<C-z>', '<C-x>')
-
--- Move a line of text using Ctrl+[jk]
-vim.g.move_key_modifier = 'C'
-vim.g.move_key_modifier_visualmode = 'C'
-use 'matze/vim-move'
 
 use {
   'ntpeters/vim-better-whitespace',
   config = function()
     vim.g.strip_whitespace_on_save = 1
+    vim.g.strip_whitespace_confirm = 0
   end
 }
 
 use {
   'preservim/nerdcommenter',
-  config = function()
-    vim.g.NERDSpaceDelims = 1
+  config = function ()
+    vim.g.NERDSpaceDelims = true
+    vim.g.NERDCommentEmptyLines = true
   end
 }
 
+-- auto open/close parentheses and stuff
 use {
-  'terryma/vim-multiple-cursors',
-  config = function()
-    vim.g.multi_cursor_select_all_word_key = '<C-y>'
+  'cohama/lexima.vim',
+  setup = function ()
+    vim.g.lexima_enable_basic_rules = true
+    vim.g.lexima_enable_newlines_rules = true
   end
 }
-
-vim.g.lexima_enable_basic_rules = true
-vim.g.lexima_enable_newlines_rules = true
-
-use 'cohama/lexima.vim'
 
 use 'machakann/vim-sandwich'
+
+
+use {
+  'windwp/nvim-ts-autotag',
+  setup = function ()
+    require('nvim-ts-autotag').setup()
+  end
+}

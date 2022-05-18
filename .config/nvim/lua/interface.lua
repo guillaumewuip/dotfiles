@@ -11,6 +11,7 @@ local use = require('packer').use
 
 set.termguicolors = true
 
+-- @see colors/ayu.vim
 cmd [[
   let ayucolor="darker" " for darker version of theme
   colorscheme ayu
@@ -56,23 +57,18 @@ use {
       set guioptions-=e " Use showtabline in gui vim
       set sessionoptions+=tabpages,globals " store tabpages and globals in session
     ]]
+
+    -- move among sbuffer
+    vim.keymap.set('', '<C-l>', ':TablineBufferNext<CR>')
+    vim.keymap.set('', '<C-h>', ':TablineBufferPrevious<CR>')
+    -- close buffer
+    vim.keymap.set('', '<C-X>', ':bdelete<CR>')
   end,
   requires = {
     { 'hoob3rt/lualine.nvim' },
     {'kyazdani42/nvim-web-devicons' }
   }
 }
-
-
--- move among buffers
-vim.keymap.set('', '<C-l>', ':TablineBufferNext<CR>')
-vim.keymap.set('', '<C-h>', ':TablineBufferPrevious<CR>')
-vim.keymap.set('', '<C-g>', ':TablineBufferMoveNext<CR>')
-vim.keymap.set('', '<C-;>', ':TablineBufferMovePrevious<CR>')
--- close buffer
-vim.keymap.set('', '<C-X>', ':bdelete<CR>')
-
-
 
 -- always show current position
 set.ruler = true
@@ -151,17 +147,14 @@ use {
   end
 }
 
-vim.g.indent_blankline_char = '┆'
-vim.g.indent_blankline_space_char_blankline = ' '
-
--- cmd [[
---   highlight IndentBlanklineChar ctermfg=238 ctermbg=NONE
---   highlight IndentBlanklineContextChar ctermfg=238 ctermbg=NONE
---   highlight IndentBlanklineContextStart ctermfg=238 ctermbg=NONE
--- ]]
-
 use {
   "lukas-reineke/indent-blankline.nvim",
+
+  setup = function ()
+    vim.g.indent_blankline_char = '┆'
+    vim.g.indent_blankline_space_char_blankline = ' '
+  end,
+
   requires = {
     {
       'nvim-treesitter/nvim-treesitter',
@@ -173,3 +166,4 @@ use {
   end
 }
 
+use { 'ggandor/lightspeed.nvim' }

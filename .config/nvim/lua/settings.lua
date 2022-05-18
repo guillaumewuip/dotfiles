@@ -5,26 +5,36 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+return require('packer').startup({
+  function(use)
+    use 'wbthomason/packer.nvim'
 
-  require 'base'
-  require 'input'
-  require 'interface'
-  require 'completion'
-  require 'search'
-  require 'syntax'
-  require 'undo'
+    require 'base'
+    require 'input'
+    require 'interface'
+    require 'movement'
+    require 'completion'
+    require 'search'
+    require 'syntax'
+    require 'undo'
 
-  vim.cmd [[
-    augroup packer_user_config
-      autocmd!
-      autocmd BufWritePost */nvim/lua/*.lua source <afile> | PackerCompile
-    augroup end
-  ]]
-  -- autocmd User PackerCompileDone ++once lua print 'PackerCompile done - Restart vim'
+    vim.cmd [[
+      augroup packer_user_config
+        autocmd!
+        autocmd BufWritePost */nvim/lua/*.lua source <afile> | PackerCompile
+      augroup end
+    ]]
+    -- autocmd User PackerCompileDone ++once lua print 'PackerCompile done - Restart vim'
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+    if packer_bootstrap then
+      require('packer').sync()
+    end
+  end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
+  }
+})

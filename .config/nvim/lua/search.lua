@@ -12,17 +12,33 @@ vim.keymap.set('', '<leader>n', ':cn<cr>')
 -- prev search result
 vim.keymap.set('', '<leader>p', ':cp<cr>')
 
+function vim.getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg('v')
+  vim.fn.setreg('v', {})
+
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
+end
+
 use {
   'nvim-telescope/telescope.nvim',
   requires = {
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-    { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate' },
+    { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' },
     { 'kyazdani42/nvim-web-devicons' },
     { 'xiyaowong/telescope-emoji.nvim' },
+    { "nvim-telescope/telescope-live-grep-raw.nvim" }
   },
   config = function()
     require("telescope").load_extension("emoji")
+    require("telescope").load_extension("live_grep_raw")
+
     require('telescope').setup {
       defaults = {
         sorting_strategy = "ascending",
@@ -30,14 +46,38 @@ use {
         layout_config = {
           prompt_position = "top"
         },
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        }
       }
     }
 
-    vim.keymap.set('', ')', require('telescope.builtin').buffers)
-    vim.keymap.set('', '+', require('telescope.builtin').git_files)
-    vim.keymap.set('', '=', require('telescope.builtin').find_files)
-    vim.keymap.set('', '<Leader>g', require('telescope.builtin').live_grep)
-    vim.keymap.set('', '!', require('telescope.builtin').git_status)
+    local keymapOptions = { noremap = true, silent = true }
+
+    vim.keymap.set('', ')', require('telescope.builtin').buffers, keymapOptions)
+
+    vim.keymap.set('', '+', function()
+      local opts = {} -- define here if you want to define something
+      local ok = pcall(require"telescope.builtin".git_files, opts)
+      if not ok then require"telescope.builtin".find_files(opts) end
+    end)
+
+
+    vim.keymap.set('', '=', require('telescope.builtin').find_files, keymapOptions)
+
+    vim.keymap.set('n', '<Leader>g', require("telescope").extensions.live_grep_raw.live_grep_raw, keymapOptions)
+    vim.keymap.set('v', '<Leader>g', function()
+	    local text = vim.getVisualSelection()
+      require("telescope").extensions.live_grep_raw.live_grep_raw({ default_text = text })
+    end, keymapOptions)
+
+    vim.keymap.set('', '!', require('telescope.builtin').git_status, keymapOptions)
+    vim.keymap.set('', '@', require('telescope.builtin').git_bcommits, keymapOptions)
   end
 }
 
@@ -56,18 +96,26 @@ use {
   end
 }
 
-use { 'kevinhwang91/rnvimr' }
+-- trouble in opening some file?
+-- check ranger rifle.conf file and complete the "!mime ^text, label editor, ..." line
+use {
+  'kevinhwang91/rnvimr',
 
-vim.g.rnvimr_edit_cmd = 'drop'
-vim.g.rnvimr_enable_picker = true
-vim.g.rnvimr_enable_bw = true
-vim.g.rnvimr_draw_border = false
-vim.g.rnvimr_hide_gitignore = false
+  setup = function()
+    vim.g.rnvimr_edit_cmd = 'drop'
+    vim.g.rnvimr_enable_picker = true
+    vim.g.rnvimr_enable_bw = true
+    vim.g.rnvimr_draw_border = false
+    vim.g.rnvimr_hide_gitignore = false
 
-vim.cmd [[
-  highlight link RnvimrNormal CursorLine
-]]
+    vim.cmd [[
+      highlight link RnvimrNormal CursorLine
+    ]]
 
-vim.keymap.set('n', '-', ':RnvimrToggle<CR>')
+    vim.keymap.set('n', '-', ':RnvimrToggle<CR>')
 
-use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+  end,
+}
+
+
+use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
