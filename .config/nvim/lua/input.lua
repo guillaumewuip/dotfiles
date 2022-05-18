@@ -46,19 +46,25 @@ use {
 
 -- auto open/close parentheses and stuff
 use {
-  'cohama/lexima.vim',
-  setup = function ()
-    vim.g.lexima_enable_basic_rules = true
-    vim.g.lexima_enable_newlines_rules = true
+  'windwp/nvim-autopairs',
+  rpt = 'lua', -- need to go inside the lua/ dir
+  config = function()
+    require('nvim-autopairs').setup({
+      check_ts = true,
+      fast_wrap = false,
+    })
   end
 }
 
 use 'machakann/vim-sandwich'
 
-
 use {
   'windwp/nvim-ts-autotag',
   setup = function ()
-    require('nvim-ts-autotag').setup()
+    require('nvim-treesitter.configs').setup {
+      autotag = {
+        enable = true,
+      }
+    }
   end
 }

@@ -15,7 +15,6 @@ use {
 -- Move a line of text using Ctrl+[jk]
 use {
   'matze/vim-move',
-  before = 'kdheepak/tabline.nvim',
 
   setup = function()
     vim.g.move_map_keys = 0
