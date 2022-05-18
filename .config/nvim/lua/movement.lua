@@ -29,3 +29,22 @@ use {
 }
 
 use 'wellle/targets.vim'
+
+use {
+  'ggandor/lightspeed.nvim',
+  config = function ()
+    require('lightspeed').setup({
+      jump_to_unique_chars = { safety_timeout = 400 }
+    })
+  end
+}
+
+use {
+  'karb94/neoscroll.nvim',
+  config = function ()
+    require('neoscroll').setup({
+      easing_function = "quintic",
+      hide_cursor = false,
+    })
+  end
+}

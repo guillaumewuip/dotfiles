@@ -146,34 +146,3 @@ use {
     vim.keymap.set('v', '<leader>b', '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {})
   end
 }
-
-use {
-  "lukas-reineke/indent-blankline.nvim",
-
-  setup = function ()
-    vim.g.indent_blankline_char = '┆'
-    vim.g.indent_blankline_space_char_blankline = ' '
-  end,
-
-  requires = {
-    {
-      'nvim-treesitter/nvim-treesitter',
-      -- cmd = 'TSUpdate'
-    },
-  },
-  config = function ()
-    require("indent_blankline").setup()
-  end
-}
-
-use 'ggandor/lightspeed.nvim'
-
-use {
-  'karb94/neoscroll.nvim',
-  config = function ()
-    require('neoscroll').setup({
-      easing_function = "quintic",
-      hide_cursor = false,
-    })
-  end
-}

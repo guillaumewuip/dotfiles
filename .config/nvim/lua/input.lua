@@ -68,3 +68,22 @@ use {
     }
   end
 }
+
+use {
+  "lukas-reineke/indent-blankline.nvim",
+
+  setup = function ()
+    vim.g.indent_blankline_char = '┆'
+    vim.g.indent_blankline_space_char_blankline = ' '
+  end,
+
+  requires = {
+    {
+      'nvim-treesitter/nvim-treesitter',
+      -- cmd = 'TSUpdate'
+    },
+  },
+  config = function ()
+    require("indent_blankline").setup()
+  end
+}

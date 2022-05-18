@@ -42,8 +42,9 @@ use {
     require('telescope').setup {
       defaults = {
         sorting_strategy = "ascending",
-        layout_strategy = 'flex',
+        layout_strategy = 'vertical',
         layout_config = {
+          mirror = true,
           prompt_position = "top"
         },
       },
