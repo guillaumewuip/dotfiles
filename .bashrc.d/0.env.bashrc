@@ -1,6 +1,6 @@
 set -o vi
 
-export EDITOR="/opt/homebrew/bin/nvim -u ~/.vim/.vimrc.git --noplugin"
+export EDITOR="/opt/homebrew/bin/nvim"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -36,9 +36,17 @@ export HUSKY=0
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 eval "$(starship init bash)"
 
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -d ~/.bash_completion.d ]; then
+    for file in ~/.bash_completion.d/*; do
+      source "$file"
+  done
+else
+  echo "no dir"
+fi
 
 #. "$HOME/.cargo/env"
 

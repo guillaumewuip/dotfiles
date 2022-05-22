@@ -1,10 +1,20 @@
 tags
 
-.vim/autoload/plug.vim
-.vim/plugged
+__pycache__
 
 .config/*
+
 !.config/nvim
+.config/nvim/autoload/plug.vim
+.config/nvim/plugged
+.config/nvim/spell
+.config/nvim/.netrwhist
+.config/nvim/tmp
+.config/nvim/backup
+.config/nvim/undo
+.config/nvim/undodir
+.config/nvim/plugin
+
 !.config/kitty
 !.config/alacritty
 !.config/coc/
@@ -21,13 +31,6 @@ tags
 .config/coc/extensions/*
 !.config/coc/extensions/package.json
 
-.vim/swap
-.vim/backup
-.vim/tmp
-.vim/undodir
-.vim/undo
-.vim/sessions
-.vim/.netrwhist
 .mutt/cache
 .mutt/tmp
 
