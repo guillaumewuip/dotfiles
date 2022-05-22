@@ -54,6 +54,7 @@ use {
   'ray-x/cmp-treesitter',
   'hrsh7th/cmp-nvim-lua',
   'petertriho/cmp-git',
+  'onsails/lspkind.nvim',
 
   'RRethy/vim-illuminate',
 
@@ -139,11 +140,15 @@ use {
               globals = {'vim'},
             },
             workspace = {
-              preloadFileSize = 750,
+              preloadFileSize = 1000,
               library = vim.api.nvim_get_runtime_file("", true),
             },
             telemetry = {
               enable = false,
+            },
+            completion = {
+              keywordSnippet="Replace",
+              callSnippet="Replace"
             },
           }
         }
@@ -164,6 +169,22 @@ use {
         handlers = handlers,
         on_attach = on_attach,
         capabilities = capabilities,
+        settings = {
+          completions = {
+            completeFunctionCalls = true
+          },
+        }
+      }
+
+      lspconfig.emmet_ls.setup {
+        filetypes = {
+          'html',
+          'typescriptreact',
+          'javascriptreact',
+          'css',
+          'sass',
+          'scss',
+          'less' },
       }
 
       lspconfig.eslint.setup {
@@ -232,15 +253,20 @@ use {
         capabilities = capabilities,
       }
 
+      local lspkind = require('lspkind')
+
       local luasnip = require 'luasnip'
       require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
+      luasnip.filetype_set("javascriptreact", { "javascript" })
+      luasnip.filetype_set("typescript", { "javascript" })
+      luasnip.filetype_set("typescriptreact", { "javascriptreact" })
 
       local cmp = require 'cmp'
 
       cmp.setup {
         sources = {
-          { name = "nvim_lsp", priority = 100 }, -- Keep LSP results on top.
-          { name = 'luasnip' },
+          { name = "nvim_lsp", priority = 90 },
+          { name = 'luasnip', priority = 100 },
           { name = "buffer" },
           { name = "emoji" },
           { name = "path" },
@@ -252,6 +278,13 @@ use {
           expand = function(args)
             luasnip.lsp_expand(args.body)
           end,
+        },
+
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol_text', -- show only symbol annotations
+            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          })
         },
 
         mapping = cmp.mapping.preset.insert({
@@ -307,7 +340,11 @@ use {
           { name = 'cmdline' }
         })
       })
+
+      vim.api.nvim_set_keymap("i", "<C-n>", "<Plug>luasnip-next-choice", {})
+      vim.api.nvim_set_keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
+      vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-previous-choice", {})
+      vim.api.nvim_set_keymap("s", "<C-p>", "<Plug>luasnip-previous-choice", {})
     end
   }
 }
-
