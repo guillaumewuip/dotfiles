@@ -33,7 +33,7 @@ let s:palette.error     = {'darker': "#FF3333",  'dark': "#FF3333",  'light': "#
 let s:palette.accent    = {'darker': "#F29718",  'dark': "#F29718",  'light': "#FF6A00",  'mirage': "#FFCC66"}
 let s:palette.panel     = {'darker': "#14191F",  'dark': "#14191F",  'light': "#FFFFFF",  'mirage': "#272D38"}
 let s:palette.guide     = {'darker': "#2D3640",  'dark': "#2D3640",  'light': "#D9D8D7",  'mirage': "#3D4751"}
-let s:palette.line      = {'darker': "#151A1E",  'dark': "#151A1E",  'light': "#F3F3F3",  'mirage': "#242B38"}
+let s:palette.line      = {'darker': "#20282e",  'dark': "#151A1E",  'light': "#F3F3F3",  'mirage': "#242B38"}
 let s:palette.selection = {'darker': "#253340",  'dark': "#253340",  'light': "#F0EEE4",  'mirage': "#343F4C"}
 let s:palette.fg        = {'darker': "#E6E1CF",  'dark': "#E6E1CF",  'light': "#5C6773",  'mirage': "#D9D7CE"}
 let s:palette.fg_idle   = {'darker': "#3E4B59",  'dark': "#3E4B59",  'light': "#828C99",  'mirage': "#607080"}
@@ -56,6 +56,8 @@ for [key_name, d_value] in items(s:palette)
   call s:build_prim('fg', key_name)
 endfor
 " }}}
+
+let fix_fg_bg = " guifg=" . s:palette.bg['dark']
 
 " Formatting Options:"{{{
 " ----------------------------------------------------------------------------
@@ -98,7 +100,7 @@ exe "hi! DiffAdd"       .s:fg_string      .s:bg_panel       .s:fmt_none
 exe "hi! DiffChange"    .s:fg_tag         .s:bg_panel       .s:fmt_none
 exe "hi! DiffText"      .s:fg_fg          .s:bg_panel       .s:fmt_none
 exe "hi! ErrorMsg"      .s:fg_fg          .s:bg_error       .s:fmt_stnd
-exe "hi! VertSplit"     .s:fg_bg          .s:bg_none        .s:fmt_none
+exe "hi! VertSplit"     .fix_fg_bg          .s:bg_none        .s:fmt_none
 exe "hi! Folded"        .s:fg_fg_idle     .s:bg_panel       .s:fmt_none
 exe "hi! FoldColumn"    .s:fg_none        .s:bg_panel       .s:fmt_none
 exe "hi! SignColumn"    .s:fg_none        .s:bg_panel       .s:fmt_none
@@ -108,12 +110,12 @@ exe "hi! MatchParen"    .s:fg_fg          .s:bg_bg          .s:fmt_undr
 exe "hi! ModeMsg"       .s:fg_string      .s:bg_none        .s:fmt_none
 exe "hi! MoreMsg"       .s:fg_string      .s:bg_none        .s:fmt_none
 exe "hi! NonText"       .s:fg_guide       .s:bg_none        .s:fmt_none
-exe "hi! Pmenu"         .s:fg_fg          .s:bg_selection   .s:fmt_none
+exe "hi! Pmenu"         .s:fg_fg          .s:bg_bg          .s:fmt_none
 exe "hi! PmenuSel"      .s:fg_fg          .s:bg_selection   .s:fmt_revr
 "   PmenuSbar"
 "   PmenuThumb"
 exe "hi! Question"      .s:fg_string      .s:bg_none        .s:fmt_none
-exe "hi! Search"        .s:fg_bg          .s:bg_constant    .s:fmt_none
+exe "hi! Search"        .fix_fg_bg          .s:bg_constant    .s:fmt_none
 exe "hi! SpecialKey"    .s:fg_selection   .s:bg_none        .s:fmt_none
 exe "hi! SpellCap"      .s:fg_tag         .s:bg_none        .s:fmt_undr
 exe "hi! SpellLocal"    .s:fg_keyword     .s:bg_none        .s:fmt_undr
@@ -121,7 +123,7 @@ exe "hi! SpellBad"      .s:fg_error       .s:bg_none        .s:fmt_undr
 exe "hi! SpellRare"     .s:fg_regexp      .s:bg_none        .s:fmt_undr
 exe "hi! StatusLine"    .s:fg_fg          .s:bg_panel       .s:fmt_none
 exe "hi! StatusLineNC"  .s:fg_fg_idle     .s:bg_panel       .s:fmt_none
-exe "hi! WildMenu"      .s:fg_bg          .s:bg_markup      .s:fmt_none
+exe "hi! WildMenu"      .fix_fg_bg          .s:bg_markup      .s:fmt_none
 exe "hi! TabLine"       .s:fg_fg          .s:bg_panel       .s:fmt_revr
 "   TabLineFill"
 "   TabLineSel"

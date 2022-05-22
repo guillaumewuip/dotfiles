@@ -3,6 +3,7 @@ local use = require('packer').use
 
 -- Ignore case when searching
 set.ignorecase = true
+set.smartcase = true
 
 -- Disable highlight
 vim.keymap.set('n', '<leader><cr>', ':noh<cr>', { silent = true })
@@ -117,12 +118,9 @@ use {
     vim.g.rnvimr_edit_cmd = 'drop'
     vim.g.rnvimr_enable_picker = true
     vim.g.rnvimr_enable_bw = true
-    vim.g.rnvimr_draw_border = false
+    -- vim.g.rnvimr_draw_border = false
+    -- vim.g.rnvimr_shadow_winblend = 100
     vim.g.rnvimr_hide_gitignore = false
-
-    vim.cmd [[
-      highlight link RnvimrNormal CursorLine
-    ]]
 
     vim.keymap.set('n', '-', ':RnvimrToggle<CR>')
 

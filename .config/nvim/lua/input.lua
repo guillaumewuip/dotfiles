@@ -28,6 +28,16 @@ set.smartindent = true
 -- decrement number with ctrl+z
 vim.keymap.set('n', '<C-z>', '<C-x>')
 
+-- highlight the region that just yanked
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
 use {
   'ntpeters/vim-better-whitespace',
   config = function()

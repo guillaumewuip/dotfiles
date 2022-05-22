@@ -15,8 +15,6 @@ set.termguicolors = true
 cmd [[
   let ayucolor="darker" " for darker version of theme
   colorscheme ayu
-
-  highlight FloatermBorder              ctermfg=black
 ]]
 
 use {
@@ -30,6 +28,28 @@ use {
         section_separators = { left = ' ', right = ' '},
         globalstatus = true,
       },
+
+    sections = {
+      lualine_a = {'mode'},
+      lualine_b = {'diff', 'diagnostics'},
+      lualine_c = {
+        {
+          'filename',
+          path = 1,
+          symbols = {
+            modified = '+',
+            readonly = '-',
+            unnamed = '[No Name]',
+          }
+        }
+      },
+      lualine_x = {
+        'filetype',
+      },
+      lualine_y = {'progress'},
+      lualine_z = {'location'}
+    },
+
       extensions = {
         'quickfix'
       }
