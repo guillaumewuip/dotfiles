@@ -1,4 +1,3 @@
-local set = vim.opt
 local cmd = vim.cmd
 local use = require('packer').use
 

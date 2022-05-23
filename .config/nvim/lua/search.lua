@@ -81,15 +81,15 @@ use {
 
     vim.keymap.set('', '=', require('telescope.builtin').find_files, keymapOptions)
 
-    vim.keymap.set('n', '<Leader>g', function ()
+    vim.keymap.set('n', '<leader>f', function ()
       require("telescope").extensions.live_grep_raw.live_grep_raw()
     end, keymapOptions)
-    vim.keymap.set('v', '<Leader>g', function()
+    vim.keymap.set('v', '<leader>f', function()
 	    local text = vim.getVisualSelection()
       require("telescope").extensions.live_grep_raw.live_grep_raw({ default_text = text })
     end, keymapOptions)
 
-    vim.keymap.set('', '<Leader>h', require('telescope.builtin').resume, keymapOptions)
+    vim.keymap.set('', '<leader>h', require('telescope.builtin').resume, keymapOptions)
 
     vim.keymap.set('', '!', require('telescope.builtin').git_status, keymapOptions)
     vim.keymap.set('', '@', require('telescope.builtin').git_bcommits, keymapOptions)
@@ -104,8 +104,8 @@ use {
   config = function()
     require('spectre').setup{}
 
-    vim.keymap.set('n', '<Leader>G', require('spectre').open)
-    vim.keymap.set('v', '<Leader>G', function()
+    vim.keymap.set('n', '<leader>g', require('spectre').open)
+    vim.keymap.set('v', '<leader>g', function()
       require('spectre').open_visual({ select_word = true })
     end)
   end
