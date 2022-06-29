@@ -23,3 +23,9 @@ use 'pangloss/vim-javascript'
 use 'leafgarland/typescript-vim'
 use 'ianks/vim-tsx'
 use 'jxnblk/vim-mdx-js'
+
+cmd [[
+  augroup typescript_save | au!
+    autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx :EslintFixAll
+  augroup end
+]]

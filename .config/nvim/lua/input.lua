@@ -8,6 +8,8 @@ vim.cmd [[
   set clipboard=unnamedplus
 ]]
 
+set.virtualedit = "all"
+
 set.mouse = a
 
 -- Maximum width of text that is being inserted.

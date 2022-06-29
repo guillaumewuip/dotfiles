@@ -208,7 +208,11 @@ use {
           format = true,
           run = "onType",
           validate = "on",
-        }
+          workingDirectory = {
+            mode = 'location'
+          }
+        },
+        root_dir = require('lspconfig.util').find_git_ancestor,
       }
 
       lspconfig.html.setup {

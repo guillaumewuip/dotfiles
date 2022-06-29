@@ -72,9 +72,15 @@ vim.cmd [[
   let g:ultest_output_on_run = 1
   let g:ultest_output_on_line = 1
   let g:ultest_max_threads = 4
+  let g:ultest_show_in_file = 1
+  let g:ultest_virtual_text = 0
+  let g:ultest_attach_width = 160
+
+  let g:ultest_deprecation_notice = 0
 
   nnoremap <silent> <leader>t :w \| UltestNearest<cr>
   nnoremap <silent> <leader>to :w \| UltestOutput<cr>
+  nnoremap <silent> <leader>ts UltestSummary<cr>
   nnoremap <silent> <leader>y :w \| Ultest<cr>
   nnoremap <silent> <leader>u :w \| TestFile --watch<cr>
 
