@@ -6,6 +6,7 @@
 	ignorecase = false
 	editor = "nvim"
   hooksPath = "~/.home/git/hooks"
+	fsmonitor = true
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
 	ui = auto
