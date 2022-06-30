@@ -79,7 +79,7 @@ vim.cmd [[
   let g:ultest_deprecation_notice = 0
 
   nnoremap <silent> <leader>t :w \| UltestNearest<cr>
-  nnoremap <silent> <leader>to :w \| UltestOutput<cr>
+  nnoremap <silent> <leader>to UltestOutput<cr>
   nnoremap <silent> <leader>ts UltestSummary<cr>
   nnoremap <silent> <leader>y :w \| Ultest<cr>
   nnoremap <silent> <leader>u :w \| TestFile --watch<cr>

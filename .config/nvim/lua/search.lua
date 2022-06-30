@@ -82,11 +82,11 @@ use {
     vim.keymap.set('n', '=', require('telescope.builtin').find_files, keymapOptions)
 
     vim.keymap.set('n', '<leader>f', function ()
-      require("telescope").extensions.live_grep_raw.live_grep_raw()
+      require("telescope").extensions.live_grep_args.live_grep_raw()
     end, keymapOptions)
     vim.keymap.set('v', '<leader>f', function()
 	    local text = vim.getVisualSelection()
-      require("telescope").extensions.live_grep_raw.live_grep_raw({ default_text = text })
+      require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = text })
     end, keymapOptions)
 
     vim.keymap.set('', '<leader>h', require('telescope.builtin').resume, keymapOptions)
