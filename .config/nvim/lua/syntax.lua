@@ -27,5 +27,6 @@ use 'jxnblk/vim-mdx-js'
 cmd [[
   augroup typescript_save | au!
     autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx :EslintFixAll
+    autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx :w
   augroup end
 ]]
