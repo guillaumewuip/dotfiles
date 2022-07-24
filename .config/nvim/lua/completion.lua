@@ -101,6 +101,13 @@ use {
       local on_attach = function(client, bufnr)
         require('illuminate').on_attach(client)
 
+        if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
+          vim.diagnostic.disable(bufnr)
+          vim.defer_fn(function()
+            vim.diagnostic.reset(nil, bufnr)
+          end, 1000)
+        end
+
         local lspactions = require'lspactions'
 
         local opts = { buffer = bufnr, noremap = true }
@@ -174,17 +181,6 @@ use {
             completeFunctionCalls = true
           },
         }
-      }
-
-      lspconfig.emmet_ls.setup {
-        filetypes = {
-          'html',
-          'typescriptreact',
-          'javascriptreact',
-          'css',
-          'sass',
-          'scss',
-          'less' },
       }
 
       lspconfig.eslint.setup {

@@ -23,6 +23,8 @@ use 'pangloss/vim-javascript'
 use 'leafgarland/typescript-vim'
 use 'ianks/vim-tsx'
 use 'jxnblk/vim-mdx-js'
+use 'jvirtanen/vim-hcl'
+use 'towolf/vim-helm'
 
 cmd [[
   augroup typescript_save | au!
