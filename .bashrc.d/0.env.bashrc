@@ -31,6 +31,11 @@ HISTCONTROL=ignoredups
 # Disable husky locally
 export HUSKY=0
 
+GIT_MACHETE_REBASE_OPTS="--autosquash"
+
+export CONSUL_HTTP_TOKEN_FILE=$HOME/.config/bbc/.onelogin-id-token
+export CONSUL_HTTP_ADDR=https://consul.tools-1.blbl.cr
+
 [ -f .private-env.bashrc ] && source .private-env.bashrc
 
 export STARSHIP_CONFIG=~/.config/starship/config.toml
