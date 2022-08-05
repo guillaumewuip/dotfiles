@@ -64,13 +64,13 @@ alt - 0x15 : yabai -m space --focus 4
 alt - 0x16 : yabai -m space --focus 5
 
 # send window to desktop and follow focus
-shift + alt - p : yabai -m window --space prev; yabai -m space --focus prev
-shift + alt - n : yabai -m window --space next; yabai -m space --focus next
-shift + alt - 0x12 : yabai -m window --space 1; yabai -m space --focus 1
-shift + alt - 0x13 : yabai -m window --space 2; yabai -m space --focus 2
-shift + alt - 0x14 : yabai -m window --space 3; yabai -m space --focus 3
-shift + alt - 0x15 : yabai -m window --space 4; yabai -m space --focus 4
-shift + alt - 0x16 : yabai -m window --space 5; yabai -m space --focus 5
+shift + alt - p : yabai -m window --space prev
+shift + alt - n : yabai -m window --space next
+shift + alt - 0x12 : yabai -m window --space 1
+shift + alt - 0x13 : yabai -m window --space 2
+shift + alt - 0x14 : yabai -m window --space 3
+shift + alt - 0x15 : yabai -m window --space 4
+shift + alt - 0x16 : yabai -m window --space 5
 
 # focus monitor
 shift + ctrl - p : yabai -m display --focus prev
@@ -90,6 +90,3 @@ cmd + alt - m : yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
                   yabai -m window --space "${index}" && \
                   yabai -m space --focus "${index}"
-
-# destroy desktop
-cmd + alt - w : yabai -m space --destroy
