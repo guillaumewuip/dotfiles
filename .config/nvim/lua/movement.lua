@@ -6,10 +6,12 @@ set.foldlevelstart = 99
 set.foldcolumn = '0'
 
 use {
-  'terryma/vim-multiple-cursors',
-  config = function()
-    vim.g.multi_cursor_select_all_word_key = '<C-y>'
-  end
+  'mg979/vim-visual-multi',
+
+  setup = function()
+    vim.g.VM_set_statusline = 0
+    vim.g.VM_reselect_first = 0
+  end,
 }
 
 -- Move a line of text using Ctrl+[jk]
