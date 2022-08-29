@@ -46,7 +46,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # Shortcuts to my Code folder in my home directory
-alias go='cd ~/workspace/$(cd ~/workspace; fd . --maxdepth 5 --type d | fzf)'
+alias go='cd ~/workspace/$(cd ~/workspace; fd . --maxdepth 7 --type d | fzf)'
 
 # Enable aliases to be sudo
 alias sudo='sudo '
