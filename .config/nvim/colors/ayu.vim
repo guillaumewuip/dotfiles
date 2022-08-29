@@ -250,6 +250,8 @@ exe "hi! GitGutterChange"       .s:fg_tag        .s:bg_none        .s:fmt_none
 exe "hi! GitGutterDelete"       .s:fg_markup     .s:bg_none        .s:fmt_none
 exe "hi! GitGutterChangeDelete" .s:fg_function   .s:bg_none        .s:fmt_none
 
+exe "hi! PathfinderPopup" .s:fg_fg          .s:bg_selection   .s:fmt_none
+
 "}}}
 
 " Diff Syntax Highlighting:"{{{

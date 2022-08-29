@@ -265,9 +265,17 @@ use {
 
       cmp.setup {
         sources = {
-          { name = "nvim_lsp", priority = 90 },
           { name = 'luasnip', priority = 100 },
-          { name = "buffer" },
+          { name = "nvim_lsp", priority = 90 },
+          {
+            name = "buffer",
+            priority = 80,
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end
+            }
+          },
           { name = "emoji" },
           { name = "path" },
           { name = "treesitter" },
