@@ -6,7 +6,8 @@ ctrl - return [
 
 shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
 
-shift + ctrl - p : open -a "1Password 7"
+shift + ctrl - p : open -a "1Password"
+cmd - escape : open -a "Slack"; sleep 0.02; yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3;
 
 # toggle window split type vertical / horizontal
 alt - q : yabai -m window --toggle split
@@ -21,14 +22,14 @@ alt - w : yabai -m window --toggle zoom-parent
 # rotate all desktop windows
 alt - r : yabai -m space --rotate 90
 
-# mirror tree y-axis
-shift + alt - r : yabai -m space --mirror y-axis
-
 # toggle float
-alt - t : yabai -m window --toggle float;
+alt - t : yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3;
 
 # fullscreen for focused window
 alt - f : yabai -m window --toggle zoom-fullscreen
+
+# balance space
+alt - b : yabai -m space --balance
 
 # change focus
 alt - h : yabai -m window --focus west
@@ -79,14 +80,3 @@ shift + ctrl - n : yabai -m display --focus next
 # send window to monitor and follow focus
 cmd + ctrl - p : yabai -m window --display prev; yabai -m display --focus prev
 cmd + ctrl - n : yabai -m window --display next; yabai -m display --focus next
-
-# create desktop and follow focus
-cmd + alt - n : yabai -m space --create; \
-                id=$(yabai -m query --displays --display | jq .spaces[-1]); \
-                yabai -m space --focus $id
-
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-cmd + alt - m : yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
