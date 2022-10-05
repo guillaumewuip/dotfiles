@@ -7,7 +7,7 @@ ctrl - return [
 shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
 
 shift + ctrl - p : open -a "1Password"
-cmd - escape : open -a "Slack"; sleep 0.02; yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3;
+cmd - escape : open -a "Slack"; sleep 0.02; yabai -m window --toggle float; yabai -m window --grid 8:6:1:1:4:6;
 
 # toggle window split type vertical / horizontal
 alt - q : yabai -m window --toggle split
@@ -23,7 +23,7 @@ alt - w : yabai -m window --toggle zoom-parent
 alt - r : yabai -m space --rotate 90
 
 # toggle float
-alt - t : yabai -m window --toggle float; yabai -m window --grid 5:5:1:1:3:3;
+alt - t : yabai -m window --toggle float; yabai -m window --grid 8:6:1:1:4:6;
 
 # fullscreen for focused window
 alt - f : yabai -m window --toggle zoom-fullscreen

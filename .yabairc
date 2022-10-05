@@ -45,4 +45,8 @@ yabai -m rule --add app="1Password" manage=off
 yabai -m rule --add app="iStat*" sticky=on layer=above manage=off border=off
 yabai -m rule --add app="iStat*" mouse_follows_focus=off
 
+# focus window below when closing a window
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+
 echo "yabai configuration loaded.."
