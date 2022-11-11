@@ -4,9 +4,9 @@ BRANCH_TITLE=$(git rev-parse --abbrev-ref HEAD)
 
 FIRT_TWO_WORDS=$(echo $BRANCH_TITLE | cut -f1,2 -d-)
 
-PREFIX=$([[ "$BRANCH_TITLE" =~ "BOYSCOUT-" ]] && echo "BOYSCOUT" || echo $FIRT_TWO_WORDS)
+PREFIX=$([[ "$BRANCH_TITLE" =~ "SCOUT-" ]] && echo "SCOUT" || echo $FIRT_TWO_WORDS)
 
-NAME_WITH_DASH=$([[ "$BRANCH_TITLE" =~ "BOYSCOUT-" ]] && echo $BRANCH_TITLE | sed s/BOYSCOUT-//g || echo $BRANCH_TITLE | sed s/$FIRT_TWO_WORDS//g)
+NAME_WITH_DASH=$([[ "$BRANCH_TITLE" =~ "SCOUT-" ]] && echo $BRANCH_TITLE | sed s/SCOUT-//g || echo $BRANCH_TITLE | sed s/$FIRT_TWO_WORDS//g)
 
 NAME=$(echo $NAME_WITH_DASH | sed 's/-/ /g')
 
