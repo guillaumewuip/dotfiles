@@ -75,11 +75,3 @@ shift + alt - 0x13 : yabai -m window --space 2
 shift + alt - 0x14 : yabai -m window --space 3
 shift + alt - 0x15 : yabai -m window --space 4
 shift + alt - 0x16 : yabai -m window --space 5
-
-# focus monitor
-shift + ctrl - p : yabai -m display --focus prev
-shift + ctrl - n : yabai -m display --focus next
-
-# send window to monitor and follow focus
-cmd + ctrl - p : yabai -m window --display prev; yabai -m display --focus prev
-cmd + ctrl - n : yabai -m window --display next; yabai -m display --focus next
