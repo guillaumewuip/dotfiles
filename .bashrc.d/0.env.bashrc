@@ -59,6 +59,15 @@ fi
 
 #. "$HOME/.cargo/env"
 
+# pnpm
+export PNPM_HOME="/Users/g.clochard/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# rancher
+export PATH="/Users/g.clochard/.rd/bin:$PATH"
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
