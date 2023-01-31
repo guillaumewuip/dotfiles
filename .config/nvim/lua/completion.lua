@@ -122,7 +122,8 @@ use {
 
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 
-        vim.keymap.set('', '<leader>rn', lspactions.rename, opts)
+        -- vim.keymap.set('', '<leader>rn', lspactions.rename, opts)
+        vim.keymap.set('', '<leader>rn', vim.lsp.buf.rename, opts)
 
         vim.keymap.set('n', '<leader>a', lspactions.code_action, opts)
         vim.keymap.set('v', '<leader>a', lspactions.range_code_action, opts)
