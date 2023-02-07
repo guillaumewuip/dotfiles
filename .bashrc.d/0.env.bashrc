@@ -57,7 +57,7 @@ else
   echo "no dir"
 fi
 
-#. "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 # pnpm
 export PNPM_HOME="/Users/g.clochard/Library/pnpm"
