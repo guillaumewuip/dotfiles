@@ -39,6 +39,42 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 use {
+  'windwp/nvim-ts-autotag',
+  'andymass/vim-matchup',
+  'tree-sitter/tree-sitter-embedded-template',
+  'nvim-treesitter/nvim-treesitter-context',
+  'nvim-treesitter/nvim-treesitter',
+  run = ':TSUpdate',
+  config = function()
+    require('nvim-treesitter.configs').setup {
+      auto_install = true,
+      ignore_install = {},
+      autotag = {
+        enable = true,
+      },
+      matchup = {
+        enable = true
+      },
+      highlight = {
+        enable = true, -- false will disable the whole extension
+      },
+      indent = {
+        enable = true
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = 'gnn',
+          node_incremental = 'grn',
+          scope_incremental = 'grc',
+          node_decremental = 'grm',
+        },
+      },
+    }
+  end
+}
+
+use {
   'ntpeters/vim-better-whitespace',
   config = function()
     vim.g.strip_whitespace_on_save = 1
@@ -69,31 +105,18 @@ use {
 use 'machakann/vim-sandwich'
 
 use {
-  'windwp/nvim-ts-autotag',
-  setup = function ()
-    require('nvim-treesitter.configs').setup {
-      autotag = {
-        enable = true,
-      }
-    }
-  end
-}
-
-use {
   "lukas-reineke/indent-blankline.nvim",
 
   setup = function ()
-    vim.g.indent_blankline_char = '┆'
-    vim.g.indent_blankline_space_char_blankline = ' '
+    vim.opt.list = true
   end,
 
-  requires = {
-    {
-      'nvim-treesitter/nvim-treesitter',
-      -- cmd = 'TSUpdate'
-    },
-  },
+  after = "nvim-treesitter",
+
   config = function ()
-    require("indent_blankline").setup()
+    require("indent_blankline").setup {
+      show_current_context = true,
+      space_char_blankline = ' ',
+    }
   end
 }

@@ -71,13 +71,16 @@ use {
     }
   },
 
-  'williamboman/nvim-lsp-installer',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+
   {
     'neovim/nvim-lspconfig',
     config = function()
-      require('nvim-lsp-installer').setup {
-        automatic_installation = true -- detect lsp server configured here
-      } -- to be called before lspconfig
+      require("mason").setup()
+      require("mason-lspconfig").setup {
+        automatic_installation = true,
+      }
 
       require('fidget').setup {}
       local lspconfig = require("lspconfig")
@@ -131,7 +134,7 @@ use {
         vim.keymap.set('', '<leader>fo', vim.lsp.buf.formatting, opts)
       end
 
-      lspconfig.sumneko_lua.setup {
+      lspconfig.lua_ls.setup {
         handlers = handlers,
         on_attach = on_attach,
         capabilities = capabilities,

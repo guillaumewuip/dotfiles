@@ -137,7 +137,7 @@ vim.keymap.set('n', 't', '<c-w>gf', { noremap = true })
 
 use {
   'lewis6991/gitsigns.nvim',
-  tag = 'release',
+  tag = 'v0.6',
   config = function()
     require('gitsigns').setup {
       signs = {
@@ -172,4 +172,19 @@ use {
   config = function ()
     require("scrollbar").setup()
   end
+}
+
+use {
+  'nvim-treesitter/nvim-treesitter-context',
+
+  requires = {
+    'nvim-treesitter/nvim-treesitter',
+  },
+  after = "nvim-treesitter",
+
+  config = function()
+    require("treesitter-context").setup {
+        enable = true,
+    }
+  end,
 }

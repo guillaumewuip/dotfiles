@@ -56,6 +56,9 @@ use {
           "--line-number",
           "--column",
           "--smart-case",
+          "--hidden",
+          "--glob",
+          "!**/.git/*",
           '--ignore-file',
           '.gitignore'
         }
@@ -77,7 +80,10 @@ use {
     vim.keymap.set('n', '+', function()
       -- local ok = pcall(require('telescope.builtin').git_files)
       -- if not ok then require('telescope.builtin').find_files() end
-      require('telescope.builtin').find_files()
+      require('telescope.builtin').find_files {
+        hidden = true,
+        no_ignore = false,
+      }
     end, keymapOptions)
 
     vim.keymap.set('n', '=', require('telescope.builtin').find_files, keymapOptions)
