@@ -6,7 +6,7 @@ set.wildmode = 'list:longest:full'
 -- ignore compiled files in wild menu
 set.wildignore = '*.o,*~,*.pyc'
 
-set.completeopt = 'menuone,noselect'
+set.completeopt = {'menu', 'menuone', 'noselect'}
 
 vim.diagnostic.config({
   signs = true,
@@ -29,18 +29,6 @@ vim.diagnostic.config({
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>ap', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>an', vim.diagnostic.goto_next)
-
--- if current line have diagnostics message,
--- show diagnostics message float window, otherwise
--- use the normal hover.
-local hover = function()
-  vim.diagnostic.open_float(nil, { scope = "cursor", focus = false })
-end
-
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  pattern = "*",
-  callback = hover,
-})
 
 use {
   "b0o/schemastore.nvim",
@@ -85,7 +73,9 @@ use {
       require('fidget').setup {}
       local lspconfig = require("lspconfig")
 
-      vim.g.Illuminate_delay = 50
+      require('illuminate').configure({
+        delay = 50
+      })
 
       local runtime_path = vim.split(package.path, ';')
       table.insert(runtime_path, "lua/?.lua")
@@ -94,50 +84,57 @@ use {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      local handlers =  {
-        -- ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {}),
-        ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {}),
-        ["textDocument/codeAction"] = require'lspactions'.codeaction
-      }
+      lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
+        'force',
+        lspconfig.util.default_config,
+        capabilities
+      )
 
-      local on_attach = function(client, bufnr)
-        require('illuminate').on_attach(client)
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        {border = 'rounded'}
+      )
 
-        if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
-          vim.diagnostic.disable(bufnr)
-          vim.defer_fn(function()
-            vim.diagnostic.reset(nil, bufnr)
-          end, 1000)
+      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        {border = 'rounded'}
+      )
+
+      local lspactions = require'lspactions'
+      vim.ui.select = lspactions.select
+      vim.ui.input = lspactions.input
+
+      vim.api.nvim_create_autocmd('LspAttach', {
+        desc = 'LSP actions',
+        callback = function(args)
+          -- hide diagnostic for Helm file
+          if vim.bo[args.buf].buftype ~= "" or vim.bo[args.buf].filetype == "helm" then
+            vim.diagnostic.disable(args.buf)
+            vim.defer_fn(function()
+              vim.diagnostic.reset(nil, args.buf)
+            end, 1000)
+          end
+
+          local opts = { buffer = true, noremap = true }
+
+          vim.keymap.set('', 'gD', vim.lsp.buf.declaration, opts)
+          vim.keymap.set('', 'gd', vim.lsp.buf.definition, opts)
+          vim.keymap.set('', 'gt', vim.lsp.buf.type_definition, opts)
+          vim.keymap.set('', 'gr', vim.lsp.buf.references, opts)
+          vim.keymap.set('', 'gi', vim.lsp.buf.implementation, opts)
+
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
+          vim.keymap.set('', '<leader>rn', lspactions.rename, opts)
+
+          vim.keymap.set('n', '<leader>a', lspactions.code_action, opts)
+          vim.keymap.set('v', '<leader>a', lspactions.range_code_action, opts)
+
+          vim.keymap.set('', '<leader>fo', vim.lsp.buf.formatting, opts)
         end
-
-        local lspactions = require'lspactions'
-
-        local opts = { buffer = bufnr, noremap = true }
-
-        vim.keymap.set('', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('', 'gd', vim.lsp.buf.definition, opts)
-
-        vim.keymap.set('', 'gt', vim.lsp.buf.type_definition, opts)
-
-        vim.keymap.set('', 'gr', vim.lsp.buf.references, opts)
-
-        vim.keymap.set('', 'gi', vim.lsp.buf.implementation, opts)
-
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-
-        -- vim.keymap.set('', '<leader>rn', lspactions.rename, opts)
-        vim.keymap.set('', '<leader>rn', vim.lsp.buf.rename, opts)
-
-        vim.keymap.set('n', '<leader>a', lspactions.code_action, opts)
-        vim.keymap.set('v', '<leader>a', lspactions.range_code_action, opts)
-
-        vim.keymap.set('', '<leader>fo', vim.lsp.buf.formatting, opts)
-      end
+      })
 
       lspconfig.lua_ls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
         settings = {
           Lua = {
             runtime = {
@@ -165,9 +162,6 @@ use {
       }
 
       lspconfig.jsonls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
         settings = {
           json = {
             schemas = require('schemastore').json.schemas(),
@@ -176,9 +170,6 @@ use {
       }
 
       lspconfig.tsserver.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
         settings = {
           completions = {
             completeFunctionCalls = true
@@ -187,9 +178,6 @@ use {
       }
 
       lspconfig.eslint.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
         settings = {
           codeAction = {
             disableRuleComment = {
@@ -214,47 +202,21 @@ use {
         root_dir = require('lspconfig.util').find_git_ancestor,
       }
 
-      lspconfig.html.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      lspconfig.html.setup {}
 
-      lspconfig.cssls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      lspconfig.cssls.setup {}
 
-      lspconfig.bashls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      lspconfig.bashls.setup {}
 
-      lspconfig.dockerls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      lspconfig.dockerls.setup {}
 
       lspconfig.yamlls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
+        filetypes = { "yaml" }
       }
 
-      lspconfig.vimls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      lspconfig.vimls.setup {}
 
-      lspconfig.terraformls.setup {
-        handlers = handlers,
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      lspconfig.terraformls.setup {}
 
       local lspkind = require('lspkind')
 
@@ -268,11 +230,25 @@ use {
 
       cmp.setup {
         sources = {
-          { name = 'luasnip', priority = 100 },
-          { name = "nvim_lsp", priority = 90 },
+          { name = "path", priority = 100 },
+          {
+            name = 'luasnip',
+            priority = 100,
+            keyword_length = 1,
+          },
+          {
+            name = "nvim_lsp",
+            priority = 90
+          },
+          {
+            name = "treesitter",
+            keyword_length = 3,
+            priority = 80,
+          },
           {
             name = "buffer",
-            priority = 80,
+            keyword_length = 3,
+            priority = 70,
             option = {
               get_bufnrs = function()
                 return vim.api.nvim_list_bufs()
@@ -280,8 +256,6 @@ use {
             }
           },
           { name = "emoji" },
-          { name = "path" },
-          { name = "treesitter" },
           { name = 'nvim_lua' }
         },
 
@@ -292,6 +266,7 @@ use {
         },
 
         formatting = {
+          fields = {'menu', 'abbr', 'kind'},
           format = lspkind.cmp_format({
             mode = 'symbol_text', -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
@@ -326,6 +301,9 @@ use {
           end, { 'i', 's' }),
         }),
 
+        window = {
+          documentation = cmp.config.window.bordered()
+        },
       }
 
       cmp.setup.filetype('gitcommit', {
