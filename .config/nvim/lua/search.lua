@@ -32,7 +32,7 @@ use {
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     { 'nvim-treesitter/nvim-treesitter' },
-    { 'kyazdani42/nvim-web-devicons' },
+    { 'nvim-tree/nvim-web-devicons' },
     { 'xiyaowong/telescope-emoji.nvim' },
     { "nvim-telescope/telescope-live-grep-args.nvim" }
   },

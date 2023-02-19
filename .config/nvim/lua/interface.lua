@@ -19,7 +19,7 @@ cmd [[
 
 use {
   'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons' },
+  requires = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('lualine').setup({
       options = {
@@ -86,7 +86,7 @@ use {
   end,
   requires = {
     { 'hoob3rt/lualine.nvim' },
-    {'kyazdani42/nvim-web-devicons' }
+    { 'nvim-tree/nvim-web-devicons' }
   }
 }
 
@@ -137,7 +137,6 @@ vim.keymap.set('n', 't', '<c-w>gf', { noremap = true })
 
 use {
   'lewis6991/gitsigns.nvim',
-  tag = 'v0.6',
   config = function()
     require('gitsigns').setup {
       signs = {
