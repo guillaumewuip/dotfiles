@@ -39,6 +39,7 @@ use {
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-emoji',
+  'hrsh7th/cmp-nvim-lsp-signature-help',
   'ray-x/cmp-treesitter',
   'hrsh7th/cmp-nvim-lua',
   'petertriho/cmp-git',
@@ -123,6 +124,7 @@ use {
           vim.keymap.set('', 'gr', vim.lsp.buf.references, opts)
           vim.keymap.set('', 'gi', vim.lsp.buf.implementation, opts)
 
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 
           vim.keymap.set('', '<leader>rn', lspactions.rename, opts)
@@ -236,6 +238,12 @@ use {
             priority = 100,
             keyword_length = 1,
           },
+          {
+            name = 'nvim_lsp_signature_help',
+            priority = 100,
+            keyword_length = 1,
+          },
+
           {
             name = "nvim_lsp",
             priority = 90
