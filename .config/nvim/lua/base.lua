@@ -10,7 +10,7 @@ vim.g.mapleader = ','
 
 -- If this many milliseconds nothing is typed the swap file will be written to disk
 -- Also used for the CursorHold autocommand event.
-set.updatetime = 2000
+set.updatetime = 100
 
 -- Time in milliseconds to wait for a mapped sequence to complete.
 set.timeoutlen = 500

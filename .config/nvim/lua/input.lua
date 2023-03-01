@@ -149,5 +149,7 @@ use {
       show_current_context = true,
       space_char_blankline = ' ',
     }
+
+    vim.cmd [[highlight IndentBlanklineContextChar guifg=#B8CC52 gui=nocombine]]
   end
 }

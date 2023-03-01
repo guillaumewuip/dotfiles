@@ -183,7 +183,7 @@ use {
 
   config = function()
     require("treesitter-context").setup {
-        enable = true,
+      enable = true,
     }
   end,
 }

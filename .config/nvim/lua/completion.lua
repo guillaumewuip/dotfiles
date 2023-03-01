@@ -30,6 +30,8 @@ vim.diagnostic.config({
 vim.keymap.set('n', '<leader>ap', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>an', vim.diagnostic.goto_next)
 
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
 use {
   "b0o/schemastore.nvim",
 
@@ -105,6 +107,17 @@ use {
       vim.ui.select = lspactions.select
       vim.ui.input = lspactions.input
 
+      local handlers =  {
+        ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {}),
+        ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {}),
+        ["textDocument/codeAction"] = require'lspactions'.codeaction,
+        ["textDocument/references"] = require'lspactions'.references,
+        ["textDocument/declaration"] = require'lspactions'.declaration,
+        ["textDocument/definition"] = require'lspactions'.definition,
+        ["textDocument/implementation"] = require'lspactions'.implementation,
+        ["textDocument/prepareRename"] = require'lspactions'.prepareRename
+      }
+
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(args)
@@ -127,10 +140,10 @@ use {
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 
-          vim.keymap.set('', '<leader>rn', lspactions.rename, opts)
+          vim.keymap.set('', '<leader>rn', vim.lsp.buf.rename, opts)
 
-          vim.keymap.set('n', '<leader>a', lspactions.code_action, opts)
-          vim.keymap.set('v', '<leader>a', lspactions.range_code_action, opts)
+          vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
+          vim.keymap.set('v', '<leader>a', vim.lsp.buf.range_code_action, opts)
 
           vim.keymap.set('', '<leader>fo', vim.lsp.buf.formatting, opts)
         end
@@ -308,10 +321,6 @@ use {
             end
           end, { 'i', 's' }),
         }),
-
-        window = {
-          documentation = cmp.config.window.bordered()
-        },
       }
 
       cmp.setup.filetype('gitcommit', {
