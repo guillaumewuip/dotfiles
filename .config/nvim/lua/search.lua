@@ -40,6 +40,8 @@ use {
     require("telescope").load_extension("emoji")
     require("telescope").load_extension("live_grep_args")
 
+    local actions = require "telescope.actions"
+
     require('telescope').setup {
       defaults = {
         sorting_strategy = "ascending",
@@ -61,6 +63,14 @@ use {
           "!**/.git/*",
           '--ignore-file',
           '.gitignore'
+        },
+        mappings = {
+          i = {
+            ["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
+          },
+          n = {
+            ["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
+          }
         }
       },
       extensions = {
