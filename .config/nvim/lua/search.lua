@@ -67,9 +67,13 @@ use {
         mappings = {
           i = {
             ["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<M-Down>"] = actions.cycle_history_next,
+            ["<M-Up>"] = actions.cycle_history_prev,
           },
           n = {
             ["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<M-Down>"] = actions.cycle_history_next,
+            ["<M-Up>"] = actions.cycle_history_prev,
           }
         }
       },
@@ -105,8 +109,6 @@ use {
 	    local text = vim.getVisualSelection()
       require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = text })
     end, keymapOptions)
-
-    vim.keymap.set('', '<leader>h', require('telescope.builtin').resume, keymapOptions)
 
     vim.keymap.set('n', '!', require('telescope.builtin').git_status, keymapOptions)
     vim.keymap.set('n', '@', require('telescope.builtin').git_bcommits, keymapOptions)
