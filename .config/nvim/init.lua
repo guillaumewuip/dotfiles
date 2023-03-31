@@ -24,7 +24,7 @@ return require('packer').startup({
     require 'search'
     require 'syntax'
     require 'undo'
-    require 'test'
+    -- require 'test'
 
     if packer_bootstrap then
       require('packer').sync()
