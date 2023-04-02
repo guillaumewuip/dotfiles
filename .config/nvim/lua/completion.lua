@@ -31,7 +31,6 @@ local hover = function()
   vim.b.diagnostics_pos = cursor_pos
 end
 
--- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
   pattern = "*",
   callback = hover,
@@ -74,7 +73,6 @@ use {
     {'petertriho/cmp-git'},
     {'saadparwaiz1/cmp_luasnip'},
     {'L3MON4D3/LuaSnip'},
-
   },
   config = function()
     require('fidget').setup {}
@@ -142,7 +140,6 @@ use {
     local lspkind = require('lspkind')
 
     cmp.setup({
-      preselect = 'item',
       sources = {
         { name = "path",    priority = 100 },
         {
@@ -158,12 +155,14 @@ use {
 
         {
           name = "nvim_lsp",
+          keyword_length = 1,
           priority = 90
         },
         {
           name = "treesitter",
           keyword_length = 3,
           priority = 80,
+          group_index = 6
         },
         {
           name = "buffer",
@@ -173,24 +172,25 @@ use {
             get_bufnrs = function()
               return vim.api.nvim_list_bufs()
             end
-          }
+          },
+          group_index = 6
         },
         { name = "emoji" },
         { name = 'nvim_lua' }
       },
 
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
-
       formatting = {
         fields = { 'menu', 'abbr', 'kind' },
         format = lspkind.cmp_format({
-          mode = 'symbol_text',   -- show only symbol annotations
-          maxwidth = 50,          -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          mode = 'symbol_text',
+          maxwidth = 65,
         })
+      },
+
+      window = {
+        completion =  {
+          side_padding = 0
+        },
       },
 
       mapping = cmp.mapping.preset.insert({
@@ -201,25 +201,11 @@ use {
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
         },
-        ['<Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
       }),
+
+      experimental = {
+        ghost_text = false -- this feature conflict with copilot.vim's preview.
+      }
     })
 
     cmp.setup.filetype('gitcommit', {
@@ -246,11 +232,6 @@ use {
       })
     })
 
-    vim.api.nvim_set_keymap("i", "<C-n>", "<Plug>luasnip-next-choice", {})
-    vim.api.nvim_set_keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
-    vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-previous-choice", {})
-    vim.api.nvim_set_keymap("s", "<C-p>", "<Plug>luasnip-previous-choice", {})
-
     lsp.setup()
 
     vim.diagnostic.config({
@@ -266,3 +247,39 @@ use {
     })
   end
 }
+
+-- Copilot
+
+use {
+  "github/copilot.vim",
+  event = { "VimEnter" },
+  config = function ()
+    vim.g.copilot_filetypes = {
+      ["TelescopePrompt"] = false,
+    }
+
+    vim.g.copilot_no_maps = true
+
+    vim.keymap.set(
+      "i",
+      "<C-,>",
+      "copilot#Previous()",
+      { noremap = true, silent = true, expr = true, replace_keycodes = false }
+    )
+
+    vim.keymap.set(
+      "i",
+      "<C-.>",
+      "copilot#Next()",
+      { noremap = true, silent = true, expr = true, replace_keycodes = false }
+    )
+
+    vim.keymap.set(
+      "i",
+      "<C-/>",
+      "copilot#Suggest()",
+      { noremap = true, silent = true, expr = true, replace_keycodes = false }
+    )
+  end
+}
+
