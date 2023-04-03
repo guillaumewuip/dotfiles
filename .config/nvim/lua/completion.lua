@@ -139,20 +139,29 @@ use {
 
     local lspkind = require('lspkind')
 
+    cmp.register_source('Copilot', require('copilot_cmp').new())
+
     cmp.setup({
       sources = {
-        { name = "path",    priority = 100 },
+        {
+          name = "path",
+          priority = 100,
+        },
         {
           name = 'luasnip',
           priority = 100,
           keyword_length = 1,
         },
         {
+          name = 'Copilot',
+          priority = 95,
+          keyword_length = 0,
+        },
+        {
           name = 'nvim_lsp_signature_help',
           priority = 100,
           keyword_length = 1,
         },
-
         {
           name = "nvim_lsp",
           keyword_length = 1,
@@ -184,6 +193,9 @@ use {
         format = lspkind.cmp_format({
           mode = 'symbol_text',
           maxwidth = 65,
+          symbol_map = {
+            Copilot = "",
+          },
         })
       },
 
@@ -204,7 +216,7 @@ use {
       }),
 
       experimental = {
-        ghost_text = false -- this feature conflict with copilot.vim's preview.
+        ghost_text = true -- !! this feature can conflict with copilot.vim's preview.
       }
     })
 
