@@ -107,12 +107,16 @@ set.matchtime = 2
 
 -- Display relative line numbers and absolute line number for the current line
 set.number = true
+set.relativenumber = true
+
+vim.keymap.set('n', 'L', function ()
+  vim.opt.relativenumber = not vim.opt.relativenumber:get()
+end, { noremap = true })
+
 
 -- Not highlight the screen line of the cursor
-set.cursorline = false
+set.cursorline = true
 set.cursorcolumn = false
--- Highlight the screen line of the cursor with H
-vim.keymap.set('n', 'H', ':set cursorline!<CR>')
 
 -- Always show x lines around cursor
 set.scrolloff = 7
