@@ -6,7 +6,7 @@ set.wildmode = 'list:longest:full'
 -- ignore compiled files in wild menu
 set.wildignore = '*.o,*~,*.pyc'
 
-set.completeopt = {'menu', 'menuone', 'noselect'}
+set.completeopt = {'menu', 'menuone', 'preview', 'noinsert'}
 
 local hover = function()
   local float_opts = {
@@ -148,6 +148,7 @@ use {
     end
 
     cmp.setup({
+
       sources = {
         {
           name = "path",
