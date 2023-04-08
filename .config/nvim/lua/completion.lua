@@ -119,7 +119,7 @@ use {
       vim.keymap.set('', '<leader>rn', vim.lsp.buf.rename, opts)
 
       vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, opts)
-      vim.keymap.set('v', '<leader>a', vim.lsp.buf.range_code_action, opts)
+      vim.keymap.set('v', '<leader>a', vim.lsp.buf.code_action, opts)
 
       vim.keymap.set('', '<leader>fo', vim.lsp.buf.format, opts)
 
@@ -127,7 +127,10 @@ use {
       vim.keymap.set('n', '<leader>an', vim.diagnostic.goto_next)
     end)
 
+
     require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+    lsp.setup()
 
     local cmp = require('cmp')
 
@@ -148,7 +151,6 @@ use {
     end
 
     cmp.setup({
-
       sources = {
         {
           name = "path",
@@ -288,8 +290,6 @@ use {
         selection_order = 'near_cursor',
       },
     })
-
-    lsp.setup()
 
     vim.diagnostic.config({
       signs = true,

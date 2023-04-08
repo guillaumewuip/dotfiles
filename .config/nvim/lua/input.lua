@@ -39,15 +39,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 use {
+  'nvim-treesitter/nvim-treesitter',
+  'nvim-treesitter/nvim-treesitter-context',
   'windwp/nvim-ts-autotag',
   'andymass/vim-matchup',
   'tree-sitter/tree-sitter-embedded-template',
-  'nvim-treesitter/nvim-treesitter-context',
-  'nvim-treesitter/nvim-treesitter',
   run = ':TSUpdate',
   config = function()
     require('nvim-treesitter.configs').setup {
       auto_install = true,
+      sync_install = false,
       ignore_install = {},
       ensure_installed = {
         'css',
@@ -79,7 +80,6 @@ use {
         'typescript',
         'vim',
       },
-      sync_install = true,
       autotag = {
         enable = true,
       },
