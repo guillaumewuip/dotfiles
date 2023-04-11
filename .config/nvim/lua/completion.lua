@@ -200,7 +200,7 @@ use {
       window = {
         completion =  {
           side_padding = 0,
-          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
         },
       },
 

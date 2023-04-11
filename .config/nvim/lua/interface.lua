@@ -118,6 +118,20 @@ end, { noremap = true })
 set.cursorline = true
 set.cursorcolumn = false
 
+vim.keymap.set('n', 'H', function ()
+  local lineHighlight = vim.api.nvim_exec('hi CursorLine', true)
+
+  if string.match(lineHighlight, 'cleared') then
+    vim.cmd[[
+      hi CursorLine guibg=#20282e
+    ]]
+  else
+    vim.cmd[[
+      hi clear CursorLine
+    ]]
+  end
+end, { noremap = true })
+
 -- Always show x lines around cursor
 set.scrolloff = 7
 set.sidescrolloff = 7
@@ -148,7 +162,6 @@ use {
 
 use {
   'nvim-treesitter/nvim-treesitter-context',
-
   requires = {
     'nvim-treesitter/nvim-treesitter',
   },
