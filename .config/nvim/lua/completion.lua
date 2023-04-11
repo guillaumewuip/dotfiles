@@ -123,8 +123,8 @@ use {
 
       vim.keymap.set('', '<leader>fo', vim.lsp.buf.format, opts)
 
-      vim.keymap.set('n', '<leader>ap', vim.diagnostic.goto_prev)
-      vim.keymap.set('n', '<leader>an', vim.diagnostic.goto_next)
+      vim.keymap.set('n', '<leader>ap', vim.diagnostic.goto_prev, opts)
+      vim.keymap.set('n', '<leader>an', vim.diagnostic.goto_next, opts)
     end)
 
 
