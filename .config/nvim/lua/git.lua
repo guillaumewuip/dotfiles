@@ -66,5 +66,15 @@ use {
   end
 }
 
+vim.keymap.set('n', "!", "<cmd>G<CR>", { noremap = true, silent = true })
+
+vim.cmd([[
+  aug FugitiveCustom
+    au!
+    au User FugitiveIndex nmap <buffer> pp :G push<CR>
+    au User FugitiveIndex nmap <buffer> pf :G push --no-force-with-lease<CR>
+  aug end
+]])
+
 vim.keymap.set('n', "gl", "<cmd>diffget //3<CR>")
 vim.keymap.set('n', "gh", "<cmd>diffget //2<CR>")

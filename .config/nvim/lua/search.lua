@@ -110,8 +110,6 @@ use {
       require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = text })
     end, keymapOptions)
 
-    vim.keymap.set('n', '!', require('telescope.builtin').git_status, keymapOptions)
-    vim.keymap.set('n', '@', require('telescope.builtin').git_bcommits, keymapOptions)
   end
 }
 
