@@ -23,13 +23,8 @@ __pycache__
 !.config/khard
 !.config/khal
 !.config/starship
-
-.config/coc/**/.*
-.config/coc/*
-!.config/coc/ultisnips/
-!.config/coc/extensions/
-.config/coc/extensions/*
-!.config/coc/extensions/package.json
+!.config/gh/config.yml
+!.config/gh-dash
 
 .mutt/cache
 .mutt/tmp

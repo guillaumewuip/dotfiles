@@ -1,0 +1,21 @@
+prSections:
+- title: My Pull Requests
+  filters: is:open assignee:@me
+- title: Needs My Review
+  filters: is:open review-requested:@me
+- title: Involved
+  filters: is:open involves:@me -assignee:@me
+defaults:
+  preview:
+    open: true
+    width: 70
+  prsLimit: 30
+  issuesLimit: 20
+  view: prs
+  refetchIntervalMinutes: 2
+keybindings:
+  issues: []
+  prs: []
+repoPaths:
+  blablacar/*: ~/workspace/*/
+  blablacar/kairos: ~/workspace/kairos/

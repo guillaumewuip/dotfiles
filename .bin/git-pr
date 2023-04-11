@@ -7,11 +7,22 @@ FIRT_TWO_WORDS=$(echo $BRANCH_TITLE | cut -f1,2 -d-)
 PREFIX=$([[ "$BRANCH_TITLE" =~ "SCOUT-" ]] && echo "SCOUT" || echo $FIRT_TWO_WORDS)
 
 NAME_WITH_DASH=$([[ "$BRANCH_TITLE" =~ "SCOUT-" ]] && echo $BRANCH_TITLE | sed s/SCOUT-//g || echo $BRANCH_TITLE | sed s/$FIRT_TWO_WORDS//g)
-
 NAME=$(echo $NAME_WITH_DASH | sed 's/-/ /g')
 
 TITLE="[$PREFIX] $NAME"
 
-MESSAGE="$TITLE\n\n> [$PREFIX] \n## Description\n\n\n## DEMO\n\n\n## TESTED"
+DRAFT_PR="$TITLE\n\n> [$PREFIX]\n\n## Description\n\n\n## TESTED"
 
-echo -e $MESSAGE | hub pull-request --browse -a guillaumewuip --edit "$@" -F -
+PR=$(echo -e $DRAFT_PR | vipe --suffix md)
+
+if [ -z "$PR" ]; then
+  echo "Empty PR description. Abort."
+  exit 1
+else
+  git push
+
+  FINAL_TITLE=$(echo "$PR" | head -n 1)
+  FINAL_CONTENT=$(echo -e "$PR" | tail -n +2)
+
+  echo "$FINAL_CONTENT" | gh pr create --assignee @me --title "$FINAL_TITLE" --body-file -
+fi
