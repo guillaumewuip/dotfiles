@@ -140,37 +140,6 @@ set.switchbuf = 'useopen'
 vim.keymap.set('n', 't', '<c-w>gf', { noremap = true })
 
 use {
-  'lewis6991/gitsigns.nvim',
-  config = function()
-    require('gitsigns').setup {
-      signs = {
-        add          = { text = '+' },
-        change       = { text = '~' },
-        delete       = { text = '-' },
-        topdelete    = { text = '-' },
-        changedelete = { text = '~' },
-      },
-      current_line_blame = true,
-    }
-  end
-}
-
-use {
-  'ruifm/gitlinker.nvim',
-  requires = {
-    'nvim-lua/plenary.nvim',
-  },
-  config = function()
-    require("gitlinker").setup{
-      mappings = nil
-    }
-
-    vim.keymap.set('n', '<leader>b', '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {silent = true})
-    vim.keymap.set('v', '<leader>b', '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {})
-  end
-}
-
-use {
   'petertriho/nvim-scrollbar',
   config = function ()
     require("scrollbar").setup()

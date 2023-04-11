@@ -25,6 +25,7 @@ return require('packer').startup({
     require 'syntax'
     require 'undo'
     -- require 'test'
+    require 'git'
 
     if packer_bootstrap then
       require('packer').sync()
