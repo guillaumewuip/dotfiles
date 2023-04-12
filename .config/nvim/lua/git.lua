@@ -3,9 +3,21 @@ local use = require('packer').use
 
 use {
   'tpope/vim-fugitive',
-  config = function ()
-  end
+  'tpope/vim-rhubarb',
 }
+
+vim.keymap.set('n', "!", "<cmd>G<CR>", { noremap = true, silent = true })
+
+vim.cmd([[
+  aug FugitiveCustom
+    au!
+    au User FugitiveIndex nmap <buffer> pp :G push<CR>
+    au User FugitiveIndex nmap <buffer> pf :G push --no-force-with-lease<CR>
+  aug end
+]])
+
+vim.keymap.set('n', '<leader>b', ':GBrowse<CR>')
+vim.keymap.set('v', '<leader>b', ":'<,'>GBrowse<CR>")
 
 use {
   'lewis6991/gitsigns.nvim',
@@ -50,31 +62,6 @@ use {
     }
   end
 }
-
-use {
-  'ruifm/gitlinker.nvim',
-  requires = {
-    'nvim-lua/plenary.nvim',
-  },
-  config = function()
-    require("gitlinker").setup{
-      mappings = nil
-    }
-
-    vim.keymap.set('n', '<leader>b', '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {silent = true})
-    vim.keymap.set('v', '<leader>b', '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {})
-  end
-}
-
-vim.keymap.set('n', "!", "<cmd>G<CR>", { noremap = true, silent = true })
-
-vim.cmd([[
-  aug FugitiveCustom
-    au!
-    au User FugitiveIndex nmap <buffer> pp :G push<CR>
-    au User FugitiveIndex nmap <buffer> pf :G push --no-force-with-lease<CR>
-  aug end
-]])
 
 vim.keymap.set('n', "gl", "<cmd>diffget //3<CR>")
 vim.keymap.set('n', "gh", "<cmd>diffget //2<CR>")
