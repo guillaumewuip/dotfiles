@@ -101,7 +101,7 @@ use {
     end, keymapOptions)
 
     vim.keymap.set('n', '=', require('telescope.builtin').find_files, keymapOptions)
-    vim.keymap.set('n', '@', function ()
+    vim.keymap.set('n', '(', function ()
       require('telescope.builtin').keymaps({
         modes = { "n", "i", "c", "x", "v" }
       })
