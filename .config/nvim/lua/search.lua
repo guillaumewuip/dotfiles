@@ -101,6 +101,11 @@ use {
     end, keymapOptions)
 
     vim.keymap.set('n', '=', require('telescope.builtin').find_files, keymapOptions)
+    vim.keymap.set('n', '@', function ()
+      require('telescope.builtin').keymaps({
+        modes = { "n", "i", "c", "x", "v" }
+      })
+    end, keymapOptions)
 
     vim.keymap.set('n', '<leader>f', function ()
       require("telescope").extensions.live_grep_args.live_grep_raw()
