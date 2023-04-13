@@ -6,13 +6,15 @@ use {
   'tpope/vim-rhubarb',
 }
 
-vim.keymap.set('n', "!", "<cmd>G<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', "!", "<cmd>Git<CR>", { noremap = true, silent = true })
 
 vim.cmd([[
   aug FugitiveCustom
     au!
-    au User FugitiveIndex nmap <buffer> pp :G push<CR>
-    au User FugitiveIndex nmap <buffer> pf :G push --no-force-with-lease<CR>
+    au User FugitiveIndex nmap <buffer> pp :Git push<CR>
+    au User FugitiveIndex nmap <buffer> pf :Git push --no-force-with-lease<CR>
+
+    au User FugitiveIndex nmap <buffer> <esc> :bwipeout<CR>
   aug end
 ]])
 
