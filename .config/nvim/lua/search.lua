@@ -135,8 +135,10 @@ use {
 
 use {
   'kevinhwang91/rnvimr',
-
-  setup = function()
+  -- commit after introduce an issue with refresh inside ranger when changing directory
+  -- @see https://github.com/kevinhwang91/rnvimr/commit/cd0311d65cb3b8f8737b52f3294eb77d2fcec826
+  commit = '40b4e0b',
+  config = function()
     vim.g.rnvimr_edit_cmd = 'drop'
     vim.g.rnvimr_enable_picker = true
     vim.g.rnvimr_enable_bw = true
@@ -145,7 +147,6 @@ use {
     vim.g.rnvimr_hide_gitignore = false
 
     vim.keymap.set('n', '-', ':RnvimrToggle<CR>')
-
   end,
 }
 
