@@ -12,7 +12,7 @@ vim.cmd([[
   aug FugitiveCustom
     au!
     au User FugitiveIndex nmap <buffer> pp :Git push<CR>
-    au User FugitiveIndex nmap <buffer> pf :Git push --no-force-with-lease<CR>
+    au User FugitiveIndex nmap <buffer> pf :Git push --force-with-lease<CR>
 
     au User FugitiveIndex nmap <buffer> <esc> :bwipeout<CR>
   aug end
