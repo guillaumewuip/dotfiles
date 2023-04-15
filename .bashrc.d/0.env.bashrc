@@ -35,24 +35,21 @@ HISTCONTROL=ignoredups
 # Disable husky locally
 export HUSKY=0
 
-GIT_MACHETE_REBASE_OPTS="--autosquash"
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
-export CONSUL_HTTP_TOKEN_FILE=$HOME/.config/bbc/.onelogin-id-token
-export CONSUL_HTTP_ADDR=https://consul.tools-1.blbl.cr
+export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 
-[ -f .private-env.bashrc ] && source .private-env.bashrc
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/g.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/path.bash.inc'; fi
 
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-if [ -d ~/.bash_completion.d ]; then
-    for file in ~/.bash_completion.d/*; do
-      source "$file"
-  done
-else
-  echo "no dir"
-fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/g.clochard/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/completion.bash.inc'; fi
 
 . "$HOME/.cargo/env"
 
@@ -62,6 +59,26 @@ export PATH="$PNPM_HOME:$PATH"
 
 # rancher
 export PATH="/Users/g.clochard/.rd/bin:$PATH"
+
+HOMEBREW_PREFIX="$(brew --prefix)"
+if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+then
+  source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+else
+  for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+  do
+    [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+  done
+fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -d ~/.bash_completion.d ]; then
+    for file in ~/.bash_completion.d/*; do
+      source "$file"
+  done
+fi
+
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
