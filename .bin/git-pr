@@ -24,5 +24,5 @@ else
   FINAL_TITLE=$(echo "$PR" | head -n 1)
   FINAL_CONTENT=$(echo -e "$PR" | tail -n +2)
 
-  echo "$FINAL_CONTENT" | gh pr create --assignee @me --title "$FINAL_TITLE" --body-file -
+  echo "$FINAL_CONTENT" | gh pr create --assignee @me --title "$FINAL_TITLE" --body-file - "$@"
 fi

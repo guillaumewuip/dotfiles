@@ -12,7 +12,6 @@ alias gap="git add -p"
 alias gaf="git addf"
 
 alias gc="git commit -m"
-alias gcb="git cb"
 alias gcan="git commit --amend --no-edit"
 alias gv="git commit -v"
 alias gf="git fix"
@@ -26,10 +25,6 @@ alias gdc="git diff --cached"
 alias gs="git status -sb"
 alias gpr="git-pr"
 alias gscb="git-scb"
-
-#Tmux
-alias tl="tmux list-sessions"
-alias ta="tmux attach -t"
 
 # Color LS
 colorflag="-G"

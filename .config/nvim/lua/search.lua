@@ -67,11 +67,15 @@ use {
         mappings = {
           i = {
             ["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<C-a>"] = actions.select_all,
+            ["<C-z>"] = actions.drop_all,
             ["<M-Down>"] = actions.cycle_history_next,
             ["<M-Up>"] = actions.cycle_history_prev,
           },
           n = {
             ["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<C-a>"] = actions.select_all,
+            ["<C-z>"] = actions.drop_all,
             ["<M-Down>"] = actions.cycle_history_next,
             ["<M-Up>"] = actions.cycle_history_prev,
           }
