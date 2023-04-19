@@ -25,4 +25,6 @@ else
   FINAL_CONTENT=$(echo -e "$PR" | tail -n +2)
 
   echo "$FINAL_CONTENT" | gh pr create --assignee @me --title "$FINAL_TITLE" --body-file - "$@"
+
+  gh pr view --web
 fi
