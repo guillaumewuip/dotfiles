@@ -15,6 +15,10 @@ set.mouse = a
 set.textwidth = 80
 set.linebreak = true
 
+vim.cmd [[
+  autocmd FileType markdown setlocal textwidth=0
+]]
+
 -- Use spaces instead of tabs
 set.expandtab = true
 
