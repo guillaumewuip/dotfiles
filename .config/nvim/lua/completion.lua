@@ -73,6 +73,8 @@ use {
     {'petertriho/cmp-git'},
     {'saadparwaiz1/cmp_luasnip'},
     {'L3MON4D3/LuaSnip'},
+    {"zbirenbaum/copilot.lua"},
+    {"zbirenbaum/copilot-cmp"},
   },
   config = function()
     require('fidget').setup {}
@@ -132,6 +134,13 @@ use {
 
     lsp.setup()
 
+    require("copilot").setup({
+      suggestion = { enabled = false },
+      panel = { enabled = true },
+    })
+
+    require("copilot_cmp").setup()
+
     local cmp = require('cmp')
 
     local luasnip = require 'luasnip'
@@ -141,8 +150,6 @@ use {
     luasnip.filetype_set("typescriptreact", { "javascriptreact" })
 
     local lspkind = require('lspkind')
-
-    cmp.register_source('Copilot', require('copilot_cmp').new())
 
     local has_words_before = function()
       unpack = unpack or table.unpack
@@ -162,7 +169,7 @@ use {
           keyword_length = 1,
         },
         {
-          name = 'Copilot',
+          name = 'copilot',
           priority = 95,
           keyword_length = 0,
         },
@@ -215,7 +222,7 @@ use {
           mode = 'symbol_text',
           maxwidth = 65,
           symbol_map = {
-            Copilot = "",
+            copilot = "",
           },
         })
       },
@@ -229,8 +236,8 @@ use {
           select = true,
         },
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
+          if cmp.visible() and has_words_before() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           elseif has_words_before() then
@@ -251,7 +258,7 @@ use {
       }),
 
       experimental = {
-        ghost_text = true -- !! this feature can conflict with copilot.vim's preview.
+        ghost_text = true
       }
     })
 
@@ -304,39 +311,3 @@ use {
     })
   end
 }
-
--- Copilot
-
-use {
-  "github/copilot.vim",
-  event = { "VimEnter" },
-  config = function ()
-    vim.g.copilot_filetypes = {
-      ["TelescopePrompt"] = false,
-    }
-
-    vim.g.copilot_no_maps = true
-
-    vim.keymap.set(
-      "i",
-      "<C-,>",
-      "copilot#Previous()",
-      { noremap = true, silent = true, expr = true, replace_keycodes = false }
-    )
-
-    vim.keymap.set(
-      "i",
-      "<C-.>",
-      "copilot#Next()",
-      { noremap = true, silent = true, expr = true, replace_keycodes = false }
-    )
-
-    vim.keymap.set(
-      "i",
-      "<C-/>",
-      "copilot#Suggest()",
-      { noremap = true, silent = true, expr = true, replace_keycodes = false }
-    )
-  end
-}
-
