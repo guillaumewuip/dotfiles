@@ -65,5 +65,5 @@ use {
   end
 }
 
-vim.keymap.set('n', "gl", "<cmd>diffget //3<CR>")
-vim.keymap.set('n', "gh", "<cmd>diffget //2<CR>")
+vim.keymap.set('n', "<leader>l", ":diffget //3<CR>")
+vim.keymap.set('n', "<leader>h", ":diffget //2<CR>")
