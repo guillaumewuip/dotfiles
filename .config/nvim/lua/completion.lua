@@ -135,8 +135,55 @@ use {
     lsp.setup()
 
     require("copilot").setup({
-      suggestion = { enabled = false },
-      panel = { enabled = true },
+      suggestion = {
+        enabled = true,
+        auto_trigger = false, -- if autocomplete menu doesn't show while you type, setting this to true is recommended
+        keymap = {
+          accept = "<C-m>",
+          accept_word = false,
+          accept_line = false,
+          next = "<M-]>",
+          prev = "<M-[>",
+          --dismiss = "<C-]>",
+          dismiss = "<C-e>",
+        },
+      },
+      panel = {
+        enabled = true,
+        auto_refresh = false,
+        keymap = {
+          jump_prev = "[[",
+          jump_next = "]]",
+          accept = "<CR>",
+          refresh = "gr",
+          open = "<M-CR>",
+        },
+        layout = {
+          position = "right", -- | top | left | right
+          ratio = 0.4,
+        },
+      },
+      filetypes = {
+        ["."] = true,
+        --["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
+        sh = function()
+          if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
+            -- disable for .env files
+            return false
+          end
+          return true
+        end,
+      },
+      copilot_node_command = "node", -- Node.js version must be > 16.x
+      server_opts_overrides = {
+        trace = "verbose",
+        settings = {
+          advanced = {
+            listCount = 6, -- #completions for panel
+            inlineSuggestCount = 5, -- #completions for getCompletions
+          },
+        },
+      },
     })
 
     require("copilot_cmp").setup()
@@ -169,11 +216,6 @@ use {
           keyword_length = 1,
         },
         {
-          name = 'copilot',
-          priority = 95,
-          keyword_length = 0,
-        },
-        {
           name = 'nvim_lsp_signature_help',
           priority = 100,
           keyword_length = 1,
@@ -182,6 +224,11 @@ use {
           name = "nvim_lsp",
           keyword_length = 1,
           priority = 90
+        },
+        {
+          name = 'copilot',
+          priority = 85,
+          keyword_length = 0,
         },
         {
           name = "treesitter",
@@ -220,7 +267,7 @@ use {
         fields = { 'menu', 'abbr', 'kind' },
         format = lspkind.cmp_format({
           mode = 'symbol_text',
-          maxwidth = 65,
+          maxwidth = 80,
           symbol_map = {
             copilot = "",
           },
