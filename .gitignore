@@ -5,15 +5,16 @@ __pycache__
 .config/*
 
 !.config/nvim
-.config/nvim/autoload/plug.vim
-.config/nvim/plugged
-.config/nvim/spell
-.config/nvim/.netrwhist
-.config/nvim/tmp
-.config/nvim/backup
-.config/nvim/undo
-.config/nvim/undodir
-.config/nvim/plugin
+!.config/nvim.old
+.config/nvim.old/autoload/plug.vim
+.config/nvim.old/plugged
+.config/nvim.old/spell
+.config/nvim.old/.netrwhist
+.config/nvim.old/tmp
+.config/nvim.old/backup
+.config/nvim.old/undo
+.config/nvim.old/undodir
+.config/nvim.old/plugin
 
 !.config/kitty
 !.config/alacritty

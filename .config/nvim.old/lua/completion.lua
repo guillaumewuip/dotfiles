@@ -52,7 +52,10 @@ use {
     {'williamboman/mason-lspconfig.nvim'},
     {'onsails/lspkind.nvim'},
     {'RRethy/vim-illuminate'},
-    {'j-hui/fidget.nvim'},
+    {
+      'j-hui/fidget.nvim',
+      tag = 'legacy',
+    },
     {
       'RishabhRD/lspactions',
       requires = {
@@ -208,47 +211,54 @@ use {
       sources = {
         {
           name = "path",
-          priority = 100,
         },
         {
           name = 'luasnip',
-          priority = 100,
           keyword_length = 1,
         },
         {
           name = 'nvim_lsp_signature_help',
-          priority = 100,
           keyword_length = 1,
         },
         {
           name = "nvim_lsp",
           keyword_length = 1,
-          priority = 90
         },
         {
           name = 'copilot',
-          priority = 85,
           keyword_length = 0,
         },
         {
           name = "treesitter",
           keyword_length = 3,
-          priority = 80,
-          group_index = 6
         },
         {
           name = "buffer",
           keyword_length = 3,
-          priority = 70,
           option = {
             get_bufnrs = function()
               return vim.api.nvim_list_bufs()
             end
           },
-          group_index = 6
         },
         { name = "emoji" },
         { name = 'nvim_lua' }
+      },
+
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          require("copilot_cmp.comparators").prioritize,
+          cmp.config.compare.offset,
+          cmp.config.compare.scopes,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
       },
 
       window = {
