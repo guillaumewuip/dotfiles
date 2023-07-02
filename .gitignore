@@ -6,6 +6,7 @@ __pycache__
 
 !.config/nvim
 !.config/nvim.old
+!.config/nvim.d
 .config/nvim.old/autoload/plug.vim
 .config/nvim.old/plugged
 .config/nvim.old/spell

@@ -1,0 +1,35 @@
+-- local autocmd = vim.api.nvim_create_autocmd
+
+-- Auto resize panes when resizing nvim window
+-- autocmd("VimResized", {
+--   pattern = "*",
+--   command = "tabdo wincmd =",
+-- })
+
+
+local set = vim.opt
+
+vim.g.mapleader = ','
+
+-- Maximum width of text that is being inserted.
+-- A longer line will be broken after white space to get this width.
+set.textwidth = 80
+set.linebreak = false
+
+-- Display relative line numbers and absolute line number for the current line
+set.number = true
+set.relativenumber = true
+
+-- Not highlight the screen line of the cursor
+set.cursorline = true
+set.cursorcolumn = false
+
+-- Always show x lines around cursor
+set.scrolloff = 7
+set.sidescrolloff = 7
+
+-- Ignore case when searching
+set.ignorecase = true
+set.smartcase = true
+
+set.sidescroll = 1
