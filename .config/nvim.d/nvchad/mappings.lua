@@ -121,9 +121,7 @@ M.general = {
 		},
 
 		["<leader>f"] = {
-			function()
-				require("telescope").extensions.live_grep_args.live_grep_raw()
-			end,
+			require("telescope").extensions.live_grep_args.live_grep_args,
 			"Open Telescope find_files",
 		},
 
@@ -149,10 +147,7 @@ M.general = {
 		},
 
 		["<leader>f"] = {
-			function()
-				local text = vim.getVisualSelection()
-				require("telescope").extensions.live_grep_args.live_grep_raw({ default_text = text })
-			end,
+			require("telescope-live-grep-args.shortcuts").grep_visual_selection,
 			"Open Spectre Search/Replace",
 		},
 

@@ -516,12 +516,17 @@ local plugins = {
 
 	{
 		"nvim-telescope/telescope.nvim",
+		lazy = false,
 		dependencies = {
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
+				lazy = false,
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
-			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+			{
+				"nvim-telescope/telescope-live-grep-args.nvim",
+				lazy = false,
+			},
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -579,6 +584,10 @@ local plugins = {
 							["<C-z>"] = actions.drop_all,
 							["<M-Down>"] = actions.cycle_history_next,
 							["<M-Up>"] = actions.cycle_history_prev,
+							["<C-q>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+							["<C-g>"] = require("telescope-live-grep-args.actions").quote_prompt({
+								postfix = ' --iglob ""',
+							}),
 						},
 						n = {
 							["<C-o>"] = actions.send_selected_to_qflist + actions.open_qflist,
