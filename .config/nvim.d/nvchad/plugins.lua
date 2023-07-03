@@ -75,6 +75,13 @@ local plugins = {
 					},
 				},
 			},
+
+			{
+				"RishabhRD/lspactions",
+				dependencies = {
+					"nvim-lua/popup.nvim",
+				},
+			},
 		},
 		config = function()
 			require("plugins.configs.lspconfig")
@@ -99,6 +106,10 @@ local plugins = {
 				"yamlls",
 				"helm_ls",
 			}
+
+			local lspactions = require("lspactions")
+			vim.ui.select = lspactions.select
+			vim.ui.input = lspactions.input
 
 			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({
@@ -263,6 +274,9 @@ local plugins = {
 						return item
 					end,
 				},
+				mapping = {
+					["<Esc>"] = require("cmp").mapping.close(),
+				},
 				sorting = {
 					priority_weight = 2,
 					comparators = {
@@ -270,10 +284,10 @@ local plugins = {
 						require("cmp_tabnine.compare"),
 						-- require("copilot_cmp.comparators").prioritize,
 						compare.offset,
-						compare.recently_used,
 						compare.scopes,
 						compare.score,
 						compare.kind,
+						compare.recently_used,
 						compare.sort_text,
 						compare.length,
 						compare.order,

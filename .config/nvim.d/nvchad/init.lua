@@ -6,10 +6,9 @@
 --   command = "tabdo wincmd =",
 -- })
 
-
 local set = vim.opt
 
-vim.g.mapleader = ','
+vim.g.mapleader = ","
 
 -- Maximum width of text that is being inserted.
 -- A longer line will be broken after white space to get this width.
@@ -33,3 +32,10 @@ set.ignorecase = true
 set.smartcase = true
 
 set.sidescroll = 1
+
+-- If this many milliseconds nothing is typed the swap file will be written to disk
+-- Also used for the CursorHold autocommand event.
+set.updatetime = 100
+
+-- Time in milliseconds to wait for a mapped sequence to complete.
+set.timeoutlen = 500
