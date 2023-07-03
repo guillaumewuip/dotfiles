@@ -155,6 +155,8 @@ local plugins = {
 		dependencies = {
 			{
 				"L3MON4D3/LuaSnip",
+				version = "1.*",
+				build = "make install_jsregexp",
 				config = function(_, opts)
 					require("plugins.configs.others").luasnip(opts)
 
@@ -163,7 +165,7 @@ local plugins = {
 					local luasnip = require("luasnip")
 					luasnip.filetype_set("javascriptreact", { "javascript" })
 					luasnip.filetype_set("typescript", { "javascript" })
-					luasnip.filetype_set("typescriptreact", { "javascriptreact" })
+					luasnip.filetype_set("typescriptreact", { "javascript" })
 				end,
 			},
 
@@ -186,12 +188,16 @@ local plugins = {
 						run_on_every_keystroke = true,
 						snippet_placeholder = "..",
 						show_prediction_strength = true,
+						ignored_file_types = {
+							TelescopePrompt = true,
+						},
 					})
 				end,
 			},
 		},
 		opts = function()
-			local cmp = require("cmp")
+			local compare = require("cmp.config.compare")
+
 			local cmp_ui = require("core.utils").load_config().ui.cmp
 			local icons = require("nvchad_ui.icons").lspkind
 
@@ -203,7 +209,6 @@ local plugins = {
 					},
 					{
 						name = "luasnip",
-						keyword_length = 1,
 					},
 					{
 						name = "nvim_lsp_signature_help",
@@ -241,8 +246,10 @@ local plugins = {
 					},
 				},
 
-				completion = {
-					scrollbar = true,
+				window = {
+					completion = {
+						scrollbar = true,
+					},
 				},
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
@@ -259,16 +266,17 @@ local plugins = {
 				sorting = {
 					priority_weight = 2,
 					comparators = {
-						cmp.config.compare.exact,
+						compare.exact,
+						require("cmp_tabnine.compare"),
 						-- require("copilot_cmp.comparators").prioritize,
-						cmp.config.compare.offset,
-						cmp.config.compare.scopes,
-						cmp.config.compare.score,
-						cmp.config.compare.recently_used,
-						cmp.config.compare.kind,
-						cmp.config.compare.sort_text,
-						cmp.config.compare.length,
-						cmp.config.compare.order,
+						compare.offset,
+						compare.recently_used,
+						compare.scopes,
+						compare.score,
+						compare.kind,
+						compare.sort_text,
+						compare.length,
+						compare.order,
 					},
 				},
 				experimental = {
@@ -510,6 +518,11 @@ local plugins = {
 			local actions = require("telescope.actions")
 
 			require("telescope").setup({
+				pickers = {
+					find_files = {
+						follow = true,
+					},
+				},
 				defaults = {
 					initial_mode = "insert",
 					sorting_strategy = "ascending",
@@ -520,6 +533,7 @@ local plugins = {
 					},
 					vimgrep_arguments = {
 						"rg",
+						"-L",
 						"--color=never",
 						"--no-heading",
 						"--with-filename",
@@ -527,11 +541,10 @@ local plugins = {
 						"--column",
 						"--smart-case",
 						"--hidden",
-						"--follow",
 						"--glob",
 						"!**/.git/*",
-						"--ignore-file",
-						".gitignore",
+						"--glob",
+						"!**/node_modules/*",
 					},
 					file_sorter = require("telescope.sorters").get_fuzzy_file,
 					generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
