@@ -610,6 +610,17 @@ local plugins = {
 		end,
 	},
 
+	{
+		"ecthelionvi/NeoColumn.nvim",
+		event = "BufEnter",
+		opts = {
+			always_on = true,
+		},
+		config = function(_, opts)
+			require("NeoColumn").setup(opts)
+		end,
+	},
+
 	-- All NvChad plugins are lazy-loaded by default
 	-- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
 	-- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
