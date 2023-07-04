@@ -22,17 +22,16 @@ local plugins = {
 				"jose-elias-alvarez/null-ls.nvim",
 				config = function()
 					local null_ls = require("null-ls")
-					local b = null_ls.builtins
 
 					local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 					null_ls.setup({
 						sources = {
-							b.code_actions.eslint_d,
-							b.diagnostics.eslint_d,
-							b.formatting.eslint_d,
+							null_ls.builtins.code_actions.eslint_d,
+							null_ls.builtins.diagnostics.eslint_d,
+							null_ls.builtins.formatting.eslint_d,
 
-							b.formatting.stylua,
+							null_ls.builtins.formatting.stylua,
 						},
 
 						on_attach = function(client, bufnr)
@@ -65,6 +64,7 @@ local plugins = {
 						"bash-language-server",
 						"css-lsp",
 						"dockerfile-language-server",
+						"eslint-lsp",
 						"eslint_d",
 						"html-lsp",
 						"json-lsp",
