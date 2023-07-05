@@ -112,21 +112,29 @@ M.general = {
 			"Open Telescope find_files (hidden=true, no_ignore=true)",
 		},
 		["<leader>@"] = {
-			require("telescope.builtin").buffers,
+			function()
+				require("telescope.builtin").buffers()
+			end,
 			"Open Telescope buffers",
 		},
 		["<leader>!"] = {
-			require("telescope.builtin").git_status,
+			function()
+				require("telescope.builtin").git_status()
+			end,
 			"Open Telescope find_files",
 		},
 
 		["<leader>f"] = {
-			require("telescope").extensions.live_grep_args.live_grep_args,
+			function()
+				require("telescope").extensions.live_grep_args.live_grep_args()
+			end,
 			"Open Telescope find_files",
 		},
 
 		["<leader>g"] = {
-			require("spectre").open,
+			function()
+				require("spectre").open()
+			end,
 			"Open Spectre Search/Replace",
 		},
 	},
@@ -147,12 +155,16 @@ M.general = {
 		},
 
 		["<leader>f"] = {
-			require("telescope-live-grep-args.shortcuts").grep_visual_selection,
+			function()
+				require("telescope-live-grep-args.shortcuts").grep_visual_selection()
+			end,
 			"Open Spectre Search/Replace",
 		},
 
 		["<leader>g"] = {
-			require("spectre").open_visual,
+			function()
+				require("spectre").open_visual()
+			end,
 			"Open Spectre Search/Replace",
 		},
 	},
@@ -202,6 +214,13 @@ M.lspconfig = {
 				vim.diagnostic.goto_next({ float = { border = "rounded" } })
 			end,
 			"Goto next",
+		},
+
+		["F"] = {
+			function()
+				vim.diagnostic.open_float({ border = "rounded" })
+			end,
+			"Floating diagnostic",
 		},
 	},
 }

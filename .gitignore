@@ -1,26 +1,14 @@
-tags
-
 __pycache__
 
 .config/*
 
-!.config/nvim
 !.config/nvim.d
 
 !.config/kitty
-!.config/alacritty
 !.config/coc/
 !.config/ranger/
-!.config/nvim
-!.config/khard
-!.config/khal
 !.config/starship
 !.config/gh/config.yml
 !.config/gh-dash
 
-.mutt/cache
-.mutt/tmp
-
 .bashrc.d/*private-*
-
-.luarc.json
