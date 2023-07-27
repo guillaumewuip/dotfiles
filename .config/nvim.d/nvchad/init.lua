@@ -1,19 +1,19 @@
--- local autocmd = vim.api.nvim_create_autocmd
-
 -- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
 
 local set = vim.opt
+local autocmd = vim.api.nvim_create_autocmd
 
 vim.g.mapleader = ","
 
 -- Maximum width of text that is being inserted.
 -- A longer line will be broken after white space to get this width.
 set.textwidth = 80
-set.linebreak = false
+set.linebreak = true
+
+autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.md",
+	command = "setlocal textwidth=0",
+})
 
 -- Display relative line numbers and absolute line number for the current line
 set.number = true
