@@ -44,6 +44,7 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
 export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.0.0/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Rancher
 export PATH="/Users/g.clochard/.rd/bin:$PATH"
