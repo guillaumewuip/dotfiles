@@ -158,31 +158,11 @@ local plugins = {
 			"hrsh7th/cmp-emoji",
 			-- "zbirenbaum/copilot.lua",
 			-- "zbirenbaum/copilot-cmp",
-			{
-				"tzachar/cmp-tabnine",
-				build = "./install.sh",
-				config = function()
-					local tabnine = require("cmp_tabnine.config")
-
-					tabnine:setup({
-						max_lines = 1000,
-						max_num_results = 20,
-						sort = true,
-						run_on_every_keystroke = true,
-						snippet_placeholder = "..",
-						show_prediction_strength = true,
-						ignored_file_types = {
-							TelescopePrompt = true,
-						},
-					})
-				end,
-			},
 		},
 		opts = function()
 			local compare = require("cmp.config.compare")
 
 			local cmp_ui = require("core.utils").load_config().ui.cmp
-			local icons = require("nvchad_ui.icons").lspkind
 
 			local nvchadOptions = require("plugins.configs.cmp")
 			local customOptions = {
@@ -213,10 +193,6 @@ local plugins = {
 					--   name = "copilot",
 					-- },
 					{
-						name = "cmp_tabnine",
-						keyword_length = 0,
-					},
-					{
 						name = "treesitter",
 						keyword_length = 3,
 					},
@@ -237,7 +213,8 @@ local plugins = {
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, item)
-						local icon = (cmp_ui.icons and icons[item.kind]) or ""
+			      local icons = require("nvchad_ui.icons.lspkind")
+            local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
 						icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
 						item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
@@ -253,7 +230,6 @@ local plugins = {
 					priority_weight = 2,
 					comparators = {
 						compare.exact,
-						require("cmp_tabnine.compare"),
 						-- require("copilot_cmp.comparators").prioritize,
 						compare.offset,
 						compare.scopes,
@@ -462,14 +438,14 @@ local plugins = {
 		end,
 	},
 
-	{
-		"karb94/neoscroll.nvim",
-		event = "BufEnter",
-		opts = {
-			easing_function = "quintic",
-			hide_cursor = false,
-		},
-	},
+	-- {
+	-- 	"karb94/neoscroll.nvim",
+	-- 	event = "BufEnter",
+	-- 	opts = {
+	-- 		easing_function = "quintic",
+	-- 		hide_cursor = false,
+	-- 	},
+	-- },
 
 	{
 		"mg979/vim-visual-multi",
