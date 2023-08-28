@@ -49,3 +49,5 @@ alias sudo='sudo '
 ## The fuck
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
+
+alias pp="pnpm i && pnpm turbo run build"
