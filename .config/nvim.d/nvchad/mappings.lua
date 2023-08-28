@@ -190,7 +190,7 @@ M.lspconfig = {
 
 		["<leader>rn"] = {
 			function()
-				require("nvchad_ui.renamer").open()
+				require("nvchad.renamer").open()
 			end,
 			"LSP rename",
 		},

@@ -86,18 +86,19 @@ local plugins = {
 		config = function()
 			require("plugins.configs.lspconfig")
 
-			local on_attach = require("plugins.configs.lspconfig").on_attach
-			local capabilities = require("plugins.configs.lspconfig").capabilities
+			local configs = require("plugins.configs.lspconfig")
+
+			local on_attach = configs.on_attach
+			local capabilities = configs.capabilities
 
 			local lspconfig = require("lspconfig")
 
-			-- if you just want default config for the servers then put them in a table
 			local servers = {
 				"html",
 				"cssls",
 				"tsserver",
 				"lua_ls",
-				"dockerls",
+				-- "dockerls",
 				"jsonls",
 				"html",
 				"bashls",
@@ -107,16 +108,16 @@ local plugins = {
 				"helm_ls",
 			}
 
-			local lspactions = require("lspactions")
-			vim.ui.select = lspactions.select
-			vim.ui.input = lspactions.input
-
 			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end
+
+			local lspactions = require("lspactions")
+			vim.ui.select = lspactions.select
+			vim.ui.input = lspactions.input
 		end,
 	},
 
@@ -213,8 +214,8 @@ local plugins = {
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, item)
-			      local icons = require("nvchad_ui.icons.lspkind")
-            local icon = (cmp_ui.icons and icons[item.kind]) or ""
+						local icons = require("nvchad.icons.lspkind")
+						local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
 						icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
 						item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
@@ -229,13 +230,14 @@ local plugins = {
 				sorting = {
 					priority_weight = 2,
 					comparators = {
-						compare.exact,
 						-- require("copilot_cmp.comparators").prioritize,
 						compare.offset,
-						compare.scopes,
+						-- compare.scopes, --this is commented in nvim-cmp too
+						compare.exact,
 						compare.score,
-						compare.kind,
 						compare.recently_used,
+						compare.locality,
+						compare.kind,
 						compare.sort_text,
 						compare.length,
 						compare.order,
