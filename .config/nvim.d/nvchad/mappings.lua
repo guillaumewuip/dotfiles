@@ -137,6 +137,49 @@ M.general = {
 			end,
 			"Open Spectre Search/Replace",
 		},
+
+		["n"] = {
+			[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+			"Go to next search match",
+		},
+		["N"] = {
+			[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+			"Go to next search match",
+		},
+		["*"] = {
+			[[*<Cmd>lua require('hlslens').start()<CR>]],
+			"Search word under cursor in file (forward)",
+		},
+		["#"] = {
+			[[*<Cmd>lua require('hlslens').start()<CR>]],
+			"Search word under cursor in file (backward)",
+		},
+		["g*"] = {
+			[[*<Cmd>lua require('hlslens').start()<CR>]],
+			"Search whole file for word (inclusive those where it is only part of too) (forward)",
+		},
+		["g#"] = {
+			[[*<Cmd>lua require('hlslens').start()<CR>]],
+			"Search whole file for word (inclusive those where it is only part of too) (backward)",
+		},
+		["<leader><Enter>"] = {
+			"<Cmd>noh<CR>",
+			"Search whole file for word (inclusive those where it is only part of too) (backward)",
+		},
+
+		["zR"] = {
+			function()
+				require("ufo").openAllFolds()
+			end,
+			"Open all folds",
+		},
+
+		["zM"] = {
+			function()
+				require("ufo").openAllFolds()
+			end,
+			"Close all folds",
+		},
 	},
 
 	v = {

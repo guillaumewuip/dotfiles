@@ -59,7 +59,6 @@ local plugins = {
 				opts = {
 					ensure_installed = {
 						"lua-language-server",
-						"stylua",
 						"typescript-language-server",
 						"bash-language-server",
 						"css-lsp",
@@ -68,6 +67,7 @@ local plugins = {
 						"eslint_d",
 						"html-lsp",
 						"json-lsp",
+						"stylua",
 						"terraform-ls",
 						"vim-language-server",
 						"yaml-language-server",
@@ -82,6 +82,14 @@ local plugins = {
 					"nvim-lua/popup.nvim",
 				},
 			},
+
+			{
+				"kevinhwang91/nvim-ufo",
+				event = "BufReadPost",
+				dependencies = {
+					"kevinhwang91/promise-async",
+				},
+			},
 		},
 		config = function()
 			require("plugins.configs.lspconfig")
@@ -90,6 +98,15 @@ local plugins = {
 
 			local on_attach = configs.on_attach
 			local capabilities = configs.capabilities
+			capabilities.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			}
+
+			vim.o.foldcolumn = "0" -- '0' is not bad
+			vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+			vim.o.foldlevelstart = 99
+			vim.o.foldenable = true
 
 			local lspconfig = require("lspconfig")
 
@@ -98,7 +115,7 @@ local plugins = {
 				"cssls",
 				"tsserver",
 				"lua_ls",
-				-- "dockerls",
+				"dockerls",
 				"jsonls",
 				"html",
 				"bashls",
@@ -115,23 +132,12 @@ local plugins = {
 				})
 			end
 
+			require("ufo").setup()
+
 			local lspactions = require("lspactions")
 			vim.ui.select = lspactions.select
 			vim.ui.input = lspactions.input
 		end,
-	},
-
-	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			{
-				"nvim-treesitter/nvim-treesitter-context",
-			},
-		},
-		opts = {
-			auto_install = true,
-			ensure_installed = {},
-		},
 	},
 
 	{
@@ -307,21 +313,21 @@ local plugins = {
 		end,
 	},
 
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "-" },
-				topdelete = { text = "-" },
-				changedelete = { text = "~" },
-				untracked = { text = "?" },
-			},
-			current_line_blame = true,
-		},
-	},
-
+	-- {
+	-- 	"lewis6991/gitsigns.nvim",
+	-- 	opts = {
+	-- 		signs = {
+	-- 			add = { text = "+" },
+	-- 			change = { text = "~" },
+	-- 			delete = { text = "-" },
+	-- 			topdelete = { text = "-" },
+	-- 			changedelete = { text = "~" },
+	-- 			untracked = { text = "?" },
+	-- 		},
+	-- 		current_line_blame = true,
+	-- 	},
+	-- },
+	--
 	{
 		"max397574/better-escape.nvim",
 		event = "BufEnter",
@@ -344,11 +350,6 @@ local plugins = {
 			vim.g.rnvimr_enable_bw = true
 			vim.g.rnvimr_hide_gitignore = false
 		end,
-	},
-
-	{
-		"lewis6991/spaceless.nvim",
-		event = "InsertEnter",
 	},
 
 	{
@@ -426,9 +427,9 @@ local plugins = {
 			require("tabline").setup(opts)
 
 			vim.cmd([[
-        set guioptions-=e " use showtabline in gui vim
-        set sessionoptions+=tabpages,globals " store tabpages and globals in session
-      ]])
+	       set guioptions-=e " use showtabline in gui vim
+	       set sessionoptions+=tabpages,globals " store tabpages and globals in session
+	     ]])
 		end,
 	},
 
@@ -439,15 +440,6 @@ local plugins = {
 			require("remember")
 		end,
 	},
-
-	-- {
-	-- 	"karb94/neoscroll.nvim",
-	-- 	event = "BufEnter",
-	-- 	opts = {
-	-- 		easing_function = "quintic",
-	-- 		hide_cursor = false,
-	-- 	},
-	-- },
 
 	{
 		"mg979/vim-visual-multi",
@@ -571,13 +563,13 @@ local plugins = {
 		end,
 	},
 
-	-- All NvChad plugins are lazy-loaded by default
-	-- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-	-- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-	-- {
-	--   "mg979/vim-visual-multi",
-	--   lazy = false,
-	-- }
+	{
+		"kevinhwang91/nvim-hlslens",
+		event = "BufEnter",
+		config = function(_, opts)
+			require("hlslens").setup(opts)
+		end,
+	},
 }
 
 return plugins
