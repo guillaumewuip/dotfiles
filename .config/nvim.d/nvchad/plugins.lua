@@ -313,21 +313,15 @@ local plugins = {
 		end,
 	},
 
-	-- {
-	-- 	"lewis6991/gitsigns.nvim",
-	-- 	opts = {
-	-- 		signs = {
-	-- 			add = { text = "+" },
-	-- 			change = { text = "~" },
-	-- 			delete = { text = "-" },
-	-- 			topdelete = { text = "-" },
-	-- 			changedelete = { text = "~" },
-	-- 			untracked = { text = "?" },
-	-- 		},
-	-- 		current_line_blame = true,
-	-- 	},
-	-- },
-	--
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signcolumn = false,
+			numhl = true,
+			current_line_blame = true,
+		},
+	},
+
 	{
 		"max397574/better-escape.nvim",
 		event = "BufEnter",
@@ -568,6 +562,24 @@ local plugins = {
 		event = "BufEnter",
 		config = function(_, opts)
 			require("hlslens").setup(opts)
+		end,
+	},
+
+	{
+		"luukvbaal/statuscol.nvim",
+		event = "BufReadPost",
+		opts = function()
+			local builtin = require("statuscol.builtin")
+			return {
+				setopt = true,
+				relculright = true,
+				segments = {
+					-- { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+					{ sign = { name = { "Diagnostic" } }, click = "v:lua.ScSa" },
+					{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+					-- { sign = { name = { ".*" } }, click = "v:lua.ScSa" },
+				},
+			}
 		end,
 	},
 }
