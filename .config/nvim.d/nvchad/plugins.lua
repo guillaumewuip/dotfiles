@@ -59,11 +59,10 @@ local plugins = {
 				opts = {
 					ensure_installed = {
 						"lua-language-server",
-						"typescript-language-server",
+						"vtsls",
 						"bash-language-server",
 						"css-lsp",
 						"dockerfile-language-server",
-						"eslint-lsp",
 						"eslint_d",
 						"html-lsp",
 						"json-lsp",
@@ -90,6 +89,27 @@ local plugins = {
 					"kevinhwang91/promise-async",
 				},
 			},
+
+			{
+				"yioneko/nvim-vtsls",
+				opts = {
+					settings = {
+						typescript = {
+							inlayHints = {
+								parameterNames = { enabled = "literals" },
+								parameterTypes = { enabled = true },
+								variableTypes = { enabled = true },
+								propertyDeclarationTypes = { enabled = true },
+								functionLikeReturnTypes = { enabled = true },
+								enumMemberValues = { enabled = true },
+							},
+						},
+					},
+				},
+				config = function(_, opts)
+					require("lspconfig").vtsls.setup(opts)
+				end,
+			},
 		},
 		config = function()
 			require("plugins.configs.lspconfig")
@@ -113,7 +133,8 @@ local plugins = {
 			local servers = {
 				"html",
 				"cssls",
-				"tsserver",
+				-- "tsserver",
+				"vtsls",
 				"lua_ls",
 				"dockerls",
 				"jsonls",
