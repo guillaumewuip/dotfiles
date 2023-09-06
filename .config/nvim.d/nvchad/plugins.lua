@@ -196,9 +196,6 @@ local plugins = {
 			local customOptions = {
 				sources = {
 					{
-						name = "path",
-					},
-					{
 						name = "luasnip",
 					},
 					{
@@ -208,6 +205,9 @@ local plugins = {
 					{
 						name = "nvim_lsp",
 						keyword_length = 1,
+					},
+					{
+						name = "path",
 					},
 					{
 						name = "git",
