@@ -46,9 +46,6 @@ export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.0.0/bin:$P
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# Rancher
-export PATH="/Users/g.clochard/.rd/bin:$PATH"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/g.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/path.bash.inc'; fi
 
@@ -60,9 +57,6 @@ if [ -f '/Users/g.clochard/google-cloud-sdk/completion.bash.inc' ]; then . '/Use
 # pnpm
 export PNPM_HOME="/Users/g.clochard/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-
-# rancher
-export PATH="/Users/g.clochard/.rd/bin:$PATH"
 
 HOMEBREW_PREFIX="$(brew --prefix)"
 if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
