@@ -85,9 +85,9 @@ M.general = {
 		["<leader>l"] = { ":diffget //3<CR>", "Choose right git diff" },
 		["<leader>h"] = { ":diffget //2<CR>", "Choose left git diff" },
 
-		["<C-l>"] = { ":TablineBufferNext<CR>", "Goto next buffer", opts = { nowait = true } },
+		["<C-l>"] = { ":bnext<CR>", "Goto next buffer", opts = { nowait = true } },
 
-		["<C-h>"] = { ":TablineBufferPrevious<CR>", "Goto prev buffer", opts = { nowait = true } },
+		["<C-h>"] = { ":bprevious<CR>", "Goto prev buffer", opts = { nowait = true } },
 
 		["<C-x>"] = { ":bdelete<CR>", "Close buffer", opts = { nowait = true } },
 

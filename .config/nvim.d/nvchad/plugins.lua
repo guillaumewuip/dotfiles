@@ -384,68 +384,64 @@ local plugins = {
 	},
 
 	{
-		"kdheepak/tabline.nvim",
+		"nvim-lualine/lualine.nvim",
 		lazy = false,
 		dependencies = {
 			{
-				"nvim-lualine/lualine.nvim",
-				dependencies = {
-					{
-						"arkav/lualine-lsp-progress",
-					},
-				},
-				opts = {
-					options = {
-						theme = "ayu_dark",
-						component_separators = { left = "|", right = "|" },
-						section_separators = { left = " ", right = " " },
-						globalstatus = true,
-					},
-
-					sections = {
-						lualine_a = { "mode" },
-						lualine_b = { "diff", "diagnostics" },
-						lualine_c = {
-							{
-								"filename",
-								path = 1,
-								symbols = {
-									modified = "+",
-									readonly = "-",
-									unnamed = "[No Name]",
-								},
-							},
-						},
-						lualine_x = {
-							"lsp_progress",
-							"filetype",
-						},
-						lualine_y = { "progress" },
-						lualine_z = { "location" },
-					},
-
-					extensions = {
-						"quickfix",
-					},
-				},
+				"arkav/lualine-lsp-progress",
 			},
 		},
 		opts = {
 			options = {
-				section_separators = { " ", " " },
-				component_separators = { "|", "|" },
-				max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
-				modified_italic = true, -- set to true by default; this determines whether the filename turns italic if modified
+				theme = "ayu_dark",
+				component_separators = { left = "|", right = "|" },
+				section_separators = { left = " ", right = " " },
+				globalstatus = true,
+			},
+
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "diff", "diagnostics" },
+				lualine_c = {
+					{
+						"filename",
+						path = 1,
+						symbols = {
+							modified = "+",
+							readonly = "-",
+							unnamed = "[No Name]",
+						},
+					},
+				},
+				lualine_x = {
+					"lsp_progress",
+					"filetype",
+				},
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+
+			tabline = {
+				lualine_a = {
+					{
+						"buffers",
+						show_filename_only = false,
+						max_length = vim.o.columns,
+					},
+				},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
+			},
+
+			windbar = {},
+
+			extensions = {
+				"quickfix",
 			},
 		},
-		config = function(_, opts)
-			require("tabline").setup(opts)
-
-			vim.cmd([[
-	       set guioptions-=e " use showtabline in gui vim
-	       set sessionoptions+=tabpages,globals " store tabpages and globals in session
-	     ]])
-		end,
 	},
 
 	{
