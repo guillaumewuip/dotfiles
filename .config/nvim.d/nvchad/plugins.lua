@@ -153,7 +153,7 @@ local plugins = {
 				})
 			end
 
-			require("ufo").setup()
+			-- require("ufo").setup()
 
 			local lspactions = require("lspactions")
 			vim.ui.select = lspactions.select
