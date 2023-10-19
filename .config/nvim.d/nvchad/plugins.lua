@@ -184,8 +184,8 @@ local plugins = {
 			"petertriho/cmp-git",
 			"ray-x/cmp-treesitter",
 			"hrsh7th/cmp-emoji",
-			-- "zbirenbaum/copilot.lua",
-			-- "zbirenbaum/copilot-cmp",
+			"zbirenbaum/copilot.lua",
+			"zbirenbaum/copilot-cmp",
 		},
 		opts = function()
 			local compare = require("cmp.config.compare")
@@ -217,9 +217,9 @@ local plugins = {
 						name = "emoji",
 						keyword_length = 1,
 					},
-					-- {
-					--   name = "copilot",
-					-- },
+					{
+						name = "copilot",
+					},
 					{
 						name = "treesitter",
 						keyword_length = 3,
@@ -257,7 +257,7 @@ local plugins = {
 				sorting = {
 					priority_weight = 2,
 					comparators = {
-						-- require("copilot_cmp.comparators").prioritize,
+						require("copilot_cmp.comparators").prioritize,
 						compare.offset,
 						-- compare.scopes, --this is commented in nvim-cmp too
 						compare.exact,
@@ -278,48 +278,48 @@ local plugins = {
 			return vim.tbl_deep_extend("force", nvchadOptions, customOptions)
 		end,
 		config = function(_, opts)
-			-- require("copilot").setup {
-			--   suggestion = { enabled = false },
-			--   panel = {
-			--     enabled = true,
-			--     auto_refresh = true,
-			--     keymap = {
-			--       jump_prev = "[[",
-			--       jump_next = "]]",
-			--       accept = "<CR>",
-			--       refresh = "gr",
-			--       open = "<M-CR>",
-			--     },
-			--     layout = {
-			--       position = "right", -- | top | left | right
-			--       ratio = 0.4,
-			--     },
-			--   },
-			--   filetypes = {
-			--     ["."] = true,
-			--     --["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
-			--     sh = function()
-			--       if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
-			--         -- disable for .env files
-			--         return false
-			--       end
-			--       return true
-			--     end,
-			--   },
-			--   copilot_node_command = "node", -- Node.js version must be > 16.x
-			--   server_opts_overrides = {
-			--     trace = "verbose",
-			--     settings = {
-			--       advanced = {
-			--         listCount = 6, -- #completions for panel
-			--         inlineSuggestCount = 5, -- #completions for getCompletions
-			--       },
-			--     },
-			--   },
-			-- }
-			--
-			-- require("copilot_cmp").setup()
-			--
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = {
+					enabled = true,
+					auto_refresh = true,
+					keymap = {
+						jump_prev = "[[",
+						jump_next = "]]",
+						accept = "<CR>",
+						refresh = "gr",
+						open = "<M-CR>",
+					},
+					layout = {
+						position = "right", -- | top | left | right
+						ratio = 0.4,
+					},
+				},
+				filetypes = {
+					["."] = true,
+					--["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
+					sh = function()
+						if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
+							-- disable for .env files
+							return false
+						end
+						return true
+					end,
+				},
+				copilot_node_command = "node", -- Node.js version must be > 16.x
+				server_opts_overrides = {
+					trace = "verbose",
+					settings = {
+						advanced = {
+							listCount = 6, -- #completions for panel
+							inlineSuggestCount = 5, -- #completions for getCompletions
+						},
+					},
+				},
+			})
+
+			require("copilot_cmp").setup()
+
 			require("cmp").setup(opts)
 		end,
 	},
