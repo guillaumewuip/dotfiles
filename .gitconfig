@@ -56,9 +56,10 @@
     pushf =! git push --force-with-lease
 [diff]
 	tool = vimdiff
-	algorithm = patience
+	algorithm = histogram
 [merge]
 	tool = vimdiff
+	conflictstyle = zdiff3
 [credentials]
 	helper = cache
 [rerere]
@@ -71,3 +72,5 @@
 	defaultBranch = main
 [interactive]
 	diffFilter = diff-so-fancy --patch
+[help]
+	autocorrect = prompt
