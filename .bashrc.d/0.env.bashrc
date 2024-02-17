@@ -80,30 +80,5 @@ fi
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Run 'nvm use' automatically every time there's
-# a .nvmrc file in the directory. Also, revert to default
-# version when entering a directory without .nvmrc
-#
-enter_directory() {
-  if [[ $PWD == $PREV_PWD ]]; then
-   return
-  fi
-
-  PREV_PWD=$PWD
-  if [[ -f ".nvmrc" ]]; then
-     nvm use
-     NVM_DIRTY=true
-  elif [[ $NVM_DIRTY = true ]]; then
-     # nvm use default
-     NVM_DIRTY=false
-  fi
-}
-
-export PROMPT_COMMAND=enter_directory
-
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 eval "$(starship init bash)"
