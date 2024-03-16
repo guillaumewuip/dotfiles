@@ -8,7 +8,7 @@ shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder wi
 
 shift + ctrl - p : open -a "1Password"
 cmd - escape [
-  *       : open -a "Slack"; sleep 0.02; (yabai -m query --windows --window | jq -e '.["is-floating"] == true' || (yabai -m window --toggle float; yabai -m window --grid 8:6:1:1:4:6 --layer below;))
+  *       : open -a "Slack"; sleep 0.02; (yabai -m query --windows --window | jq -e '.["is-floating"] == true' || (yabai -m window --toggle float; yabai -m window --grid 8:6:1:1:4:6 --sub-layer below;))
   "Slack" : yabai -m window --close
 ]
 
