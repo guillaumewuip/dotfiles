@@ -1,3 +1,5 @@
+-- Find the absolute path to the local project's tsserver (to avoid using the
+-- version embedded with vtsls)
 ---@type NvPluginSpec[]
 local plugins = {
 	{
@@ -59,6 +61,16 @@ local plugins = {
 				"yioneko/nvim-vtsls",
 				opts = {
 					settings = {
+						vtsls = {
+							autoUseWorkspaceTsdk = true, -- not working?
+							experimental = {
+								enableProjectDiagnostics = true,
+								completion = {
+									enableServerSideFuzzyMatch = true,
+								},
+							},
+							enableMoveToFileCodeAction = true,
+						},
 						typescript = {
 							inlayHints = {
 								parameterNames = { enabled = "literals" },
@@ -68,6 +80,42 @@ local plugins = {
 								functionLikeReturnTypes = { enabled = true },
 								enumMemberValues = { enabled = true },
 							},
+							referencesCodeLens = { enabled = true },
+							format = { enable = false },
+							suggest = {
+								completeFunctionCalls = true,
+							},
+							preferGoToSourceDefinition = true,
+							experimental = {
+								aiCodeActions = {
+									extractInterface = true,
+									missingFunctionDeclaration = true,
+									extractType = true,
+									inferAndAddTypes = true,
+									extractFunction = true,
+									extractConstant = true,
+									classIncorrectlyImplementsInterface = true,
+									classDoesntImplementInheritedAbstractMember = true,
+									addNameToNamelessParameter = true,
+								},
+								enableProjectDiagnostics = true,
+							},
+						},
+						javascript = {
+							inlayHints = {
+								parameterNames = { enabled = "literals" },
+								parameterTypes = { enabled = true },
+								variableTypes = { enabled = true },
+								propertyDeclarationTypes = { enabled = true },
+								functionLikeReturnTypes = { enabled = true },
+								enumMemberValues = { enabled = true },
+							},
+							referencesCodeLens = { enabled = true },
+							format = { enable = false },
+							suggest = {
+								completeFunctionCalls = true,
+							},
+							preferGoToSourceDefinition = true,
 						},
 					},
 				},
@@ -179,8 +227,8 @@ local plugins = {
 						typescriptreact = { eslint_d_lint, eslint_d_format },
 						svelte = { eslint_d_lint, eslint_d_format },
 						vue = { eslint_d_lint, eslint_d_format },
-						json = { fixjson },
-						jsonc = { fixjson },
+						-- json = { fixjson },
+						-- jsonc = { fixjson },
 					},
 				},
 			})
