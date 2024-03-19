@@ -72,6 +72,7 @@ local plugins = {
 							enableMoveToFileCodeAction = true,
 						},
 						typescript = {
+							tsdk = "./node_modules/typescript/lib",
 							inlayHints = {
 								parameterNames = { enabled = "literals" },
 								parameterTypes = { enabled = true },
@@ -169,7 +170,6 @@ local plugins = {
 			local stylua = require("efmls-configs.formatters.stylua")
 			local eslint_d_lint = require("efmls-configs.linters.eslint_d")
 			local eslint_d_format = require("efmls-configs.formatters.eslint_d")
-			local fixjson = require("efmls-configs.formatters.fixjson")
 
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -195,11 +195,6 @@ local plugins = {
 					"javascriptreact",
 					"typescript",
 					"typescriptreact",
-					"json",
-					"jsonc",
-					"svelte",
-					"vue",
-					"python",
 					"sh",
 					"docker",
 					"markdown",
@@ -225,8 +220,6 @@ local plugins = {
 						javascriptreact = { eslint_d_lint, eslint_d_format },
 						typescript = { eslint_d_lint, eslint_d_format },
 						typescriptreact = { eslint_d_lint, eslint_d_format },
-						svelte = { eslint_d_lint, eslint_d_format },
-						vue = { eslint_d_lint, eslint_d_format },
 						-- json = { fixjson },
 						-- jsonc = { fixjson },
 					},
