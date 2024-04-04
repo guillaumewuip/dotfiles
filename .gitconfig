@@ -6,7 +6,7 @@
 	ignorecase = false
 	editor = "nvim"
   hooksPath = "~/.home/git/hooks"
-	fsmonitor = true
+	fsmonitor = false
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
@@ -74,3 +74,5 @@
 	diffFilter = diff-so-fancy --patch
 [help]
 	autocorrect = prompt
+[fsmonitor]
+	socketDir = /Users/g.clochard/.git-fsmonitor
