@@ -487,6 +487,24 @@ local plugins = {
 				},
 				lualine_x = {
 					"lsp_progress",
+					{
+						function()
+							return "A"
+						end,
+						color = { fg = "#8FBCBB" }, -- green
+						cond = function()
+							return _G.aider_background_status == "idle"
+						end,
+					},
+					{
+						function()
+							return "A"
+						end,
+						color = { fg = "#BF616A" }, -- red
+						cond = function()
+							return _G.aider_background_status == "working"
+						end,
+					},
 					"filetype",
 				},
 				lualine_y = { "progress" },
@@ -675,6 +693,20 @@ local plugins = {
 	{
 		"madox2/vim-ai",
 		event = "VeryLazy",
+	},
+
+	{
+		"joshuavial/aider.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("aider").setup({
+				default_bindings = false,
+			})
+
+			vim.api.nvim_create_user_command("AiderOpen", function()
+				AiderOpen()
+			end, { nargs = 0 })
+		end,
 	},
 }
 
