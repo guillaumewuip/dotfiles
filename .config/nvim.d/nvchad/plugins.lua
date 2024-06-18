@@ -37,7 +37,6 @@ local plugins = {
 						"bash-language-server",
 						"css-lsp",
 						"dockerfile-language-server",
-						"eslint_d",
 						"html-lsp",
 						"json-lsp",
 						"stylua",
@@ -157,6 +156,7 @@ local plugins = {
 				"vimls",
 				"yamlls",
 				"helm_ls",
+				"eslint",
 			}
 
 			for _, lsp in ipairs(servers) do
@@ -166,10 +166,18 @@ local plugins = {
 				})
 			end
 
+			lspconfig.eslint.setup({
+				on_attach = function(config, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						command = "EslintFixAll",
+					})
+				end,
+				capabilities = capabilities,
+			})
+
 			local luacheck = require("efmls-configs.linters.luacheck")
 			local stylua = require("efmls-configs.formatters.stylua")
-			local eslint_d_lint = require("efmls-configs.linters.eslint_d")
-			local eslint_d_format = require("efmls-configs.formatters.eslint_d")
 
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -216,12 +224,6 @@ local plugins = {
 					},
 					languages = {
 						lua = { luacheck, stylua },
-						javascript = { eslint_d_lint, eslint_d_format },
-						javascriptreact = { eslint_d_lint, eslint_d_format },
-						typescript = { eslint_d_lint, eslint_d_format },
-						typescriptreact = { eslint_d_lint, eslint_d_format },
-						-- json = { fixjson },
-						-- jsonc = { fixjson },
 					},
 				},
 			})
