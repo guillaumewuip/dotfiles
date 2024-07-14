@@ -46,6 +46,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.0.0/bin:$P
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/g.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/path.bash.inc'; fi
 
@@ -77,8 +78,7 @@ if [ -d ~/.bash_completion.d ]; then
   done
 fi
 
-
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
 
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 eval "$(starship init bash)"
