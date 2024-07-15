@@ -6,20 +6,19 @@ vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = ","
 
 autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = "*.md",
-	command = "setlocal textwidth=0",
+  pattern = "*.md",
+  command = "setlocal textwidth=0",
 })
 
-
 local enable_providers = {
-	"python3_provider",
-	"node_provider",
-	-- and so on
+  "python3_provider",
+  "node_provider",
+  -- and so on
 }
 
 for _, plugin in pairs(enable_providers) do
-	vim.g["loaded_" .. plugin] = nil
-	vim.cmd("runtime " .. plugin)
+  vim.g["loaded_" .. plugin] = nil
+  vim.cmd("runtime " .. plugin)
 end
 
 -- bootstrap lazy and all plugins
@@ -89,6 +88,7 @@ require("lazy").setup({
     import = "nvchad.plugins",
     config = function()
       require "options"
+      require "nvchad.mappings"
     end,
   },
 

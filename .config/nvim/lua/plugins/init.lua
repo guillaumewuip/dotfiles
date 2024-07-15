@@ -546,6 +546,11 @@ return {
   {
     "mg979/vim-visual-multi",
     event = "BufEnter",
+    init = function()
+      vim.g.VM_custom_remaps = {
+        ["<C-c>"] = "<Esc>",
+      }
+    end,
   },
 
   {

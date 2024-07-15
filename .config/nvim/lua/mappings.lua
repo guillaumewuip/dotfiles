@@ -1,5 +1,3 @@
-require "nvchad.mappings"
-
 local map = vim.keymap.set
 local del = vim.keymap.del
 
@@ -21,6 +19,8 @@ del("n", "]d")
 --del("n", "<leader>wa")
 --del("n", "<leader>wr")
 --del("n", "<leader>wl")
+del("n", "<C-n>")
+del("n", "<leader>e")
 
 --del("v", "<C-k>")
 --del("v", "<C-j>")
@@ -88,7 +88,7 @@ end, { desc = "Open Telescope find_files" })
 
 map("n", "<leader>f", function()
   require("telescope").extensions.live_grep_args.live_grep_args()
-end, { desc = "Open Telescope find_files" })
+end, { desc = "Open Telescope find_files", nowait = true })
 
 map("n", "<leader>g", function()
   require("spectre").open()
@@ -168,7 +168,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { desc = "LSP signature help" })
 
     map("n", "<leader>rn", function()
-      require("nvchad.renamer").open()
+      require "nvchad.lsp.renamer"()
     end, { desc = "LSP rename" })
 
     map("n", "<leader>a", function()
