@@ -1,25 +1,11 @@
-local set = vim.opt
-local autocmd = vim.api.nvim_create_autocmd
-
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 
 vim.g.mapleader = ","
 
-autocmd({ "BufRead", "BufNewFile" }, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.md",
   command = "setlocal textwidth=0",
 })
-
-local enable_providers = {
-  "python3_provider",
-  "node_provider",
-  -- and so on
-}
-
-for _, plugin in pairs(enable_providers) do
-  vim.g["loaded_" .. plugin] = nil
-  vim.cmd("runtime " .. plugin)
-end
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -87,8 +73,14 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
     config = function()
-      require "options"
+      require "nvchad.options"
+
+      vim.g.loaded_node_provider = nil
+      vim.g.loaded_python3_provider = nil
+
       require "nvchad.mappings"
+
+      require "options"
     end,
   },
 

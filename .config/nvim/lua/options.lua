@@ -1,5 +1,3 @@
-require "nvchad.options"
-
 local set = vim.opt
 
 -- Maximum width of text that is being inserted.

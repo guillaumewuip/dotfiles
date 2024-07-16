@@ -59,6 +59,10 @@ if [ -f '/Users/g.clochard/google-cloud-sdk/completion.bash.inc' ]; then . '/Use
 export PNPM_HOME="/Users/g.clochard/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 HOMEBREW_PREFIX="$(brew --prefix)"
 if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
 then
