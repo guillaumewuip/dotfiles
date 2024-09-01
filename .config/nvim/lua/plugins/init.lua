@@ -416,6 +416,12 @@ return {
   },
 
   {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    config = true,
+  },
+
+  {
     "max397574/better-escape.nvim",
     event = "BufEnter",
   },
@@ -464,75 +470,69 @@ return {
         "arkav/lualine-lsp-progress",
       },
     },
-    opts = {
-      options = {
-        theme = "ayu_dark",
-        component_separators = { left = "|", right = "|" },
-        section_separators = { left = " ", right = " " },
-        globalstatus = true,
-      },
+    config = function()
+      require("lualine").setup {
+        options = {
+          theme = "ayu_dark",
+          component_separators = { left = "|", right = "|" },
+          section_separators = { left = " ", right = " " },
+          globalstatus = true,
+        },
 
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "diff", "diagnostics" },
-        lualine_c = {
-          {
-            "filename",
-            path = 1,
-            symbols = {
-              modified = "+",
-              readonly = "-",
-              unnamed = "[No Name]",
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "diff", "diagnostics" },
+          lualine_c = {
+            {
+              "filename",
+              path = 1,
+              symbols = {
+                modified = "+",
+                readonly = "-",
+                unnamed = "[No Name]",
+              },
             },
           },
-        },
-        lualine_x = {
-          "lsp_progress",
-          {
-            function()
-              return "A"
-            end,
-            color = { fg = "#8FBCBB" }, -- green
-            cond = function()
-              return _G.aider_background_status == "idle"
-            end,
+          lualine_x = {
+            "lsp_progress",
+            require "plugins.codecompanion.lualine",
+            {
+              function()
+                return "A..."
+              end,
+              color = { fg = "#BF616A" }, -- red
+              cond = function()
+                return _G.aider_background_status == "working"
+              end,
+            },
+            "filetype",
           },
-          {
-            function()
-              return "A"
-            end,
-            color = { fg = "#BF616A" }, -- red
-            cond = function()
-              return _G.aider_background_status == "working"
-            end,
-          },
-          "filetype",
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
         },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-      },
 
-      tabline = {
-        lualine_a = {
-          {
-            "buffers",
-            show_filename_only = false,
-            max_length = vim.o.columns,
+        tabline = {
+          lualine_a = {
+            {
+              "buffers",
+              show_filename_only = false,
+              max_length = vim.o.columns,
+            },
           },
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {},
         },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {},
-      },
 
-      windbar = {},
+        windbar = {},
 
-      extensions = {
-        "quickfix",
-      },
-    },
+        extensions = {
+          "quickfix",
+        },
+      }
+    end,
   },
 
   {
@@ -744,19 +744,8 @@ return {
   },
 
   {
-    "madox2/vim-ai",
-    cmd = {
-      "AI",
-      "AIEdit",
-      "AIChat",
-    },
-  },
-
-  {
     "joshuavial/aider.nvim",
-    cmd = {
-      "AiderOpen",
-    },
+    event = "VeryLazy",
     config = function()
       require("aider").setup {
         default_bindings = false,
@@ -766,5 +755,36 @@ return {
         AiderOpen()
       end, { nargs = 0 })
     end,
+  },
+
+  {
+    "olimorris/codecompanion.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim",
+      {
+        "stevearc/dressing.nvim",
+        opts = {},
+      },
+    },
+    config = {
+      strategies = {
+        chat = {
+          adapter = "copilot",
+          roles = {
+            llm = "Copilot",
+            user = "Me",
+          },
+        },
+        inline = {
+          adapter = "copilot",
+        },
+        agent = {
+          adapter = "copilot",
+        },
+      },
+    },
   },
 }
