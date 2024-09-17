@@ -7,7 +7,7 @@
 	editor = "nvim"
   hooksPath = "~/.home/git/hooks"
 	fsmonitor = false
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
 	ui = auto
@@ -57,9 +57,10 @@
 [diff]
 	tool = vimdiff
 	algorithm = histogram
+  colorMoved = default
 [merge]
 	tool = vimdiff
-	conflictstyle = zdiff3
+	conflictstyle = diff3
 [credentials]
 	helper = cache
 [rerere]
@@ -71,8 +72,11 @@
 [init]
 	defaultBranch = main
 [interactive]
-	diffFilter = diff-so-fancy --patch
+    diffFilter = delta --color-only
 [help]
 	autocorrect = prompt
 [fsmonitor]
 	socketDir = /Users/g.clochard/.git-fsmonitor
+[delta]
+  navigate = true 
+  line-numbers = true
