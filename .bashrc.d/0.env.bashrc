@@ -54,8 +54,6 @@ if [ -f '/Users/g.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/g.c
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/g.clochard/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/completion.bash.inc'; fi
 
-. "$HOME/.cargo/env"
-
 # pnpm
 export PNPM_HOME="/Users/g.clochard/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
