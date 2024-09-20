@@ -65,6 +65,9 @@ local lazy_config = {
   },
 }
 
+vim.g.python3_host_prog = '/Users/guillaume.clochard/.pyenv/versions/py3nvim/bin/python'
+vim.g.rnvimr_ranger_cmd = {'/Users/guillaume.clochard/.pyenv/versions/py3nvim/bin/ranger'}
+
 -- load plugins
 require("lazy").setup({
   {
