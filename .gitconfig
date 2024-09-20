@@ -27,6 +27,7 @@
 [user]
 	name = Guillaume Clochard
 	email = guillaume.clochard@blablacar.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFmTe4tid3GTcR676yUat7Bg8w7Yuxe2KZJo78l9iKgq
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -80,3 +81,11 @@
 [delta]
   navigate = true 
   line-numbers = true
+
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[commit]
+	gpgsign = true
