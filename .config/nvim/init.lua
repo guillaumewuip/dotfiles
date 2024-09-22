@@ -1,6 +1,7 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 
 vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.md",
@@ -66,7 +67,7 @@ local lazy_config = {
 }
 
 vim.g.python3_host_prog = '/Users/guillaume.clochard/.pyenv/versions/py3nvim/bin/python'
-vim.g.rnvimr_ranger_cmd = {'/Users/guillaume.clochard/.pyenv/versions/py3nvim/bin/ranger'}
+vim.g.rnvimr_ranger_cmd = { '/Users/guillaume.clochard/.pyenv/versions/py3nvim/bin/ranger' }
 
 -- load plugins
 require("lazy").setup({

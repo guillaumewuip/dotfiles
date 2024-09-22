@@ -91,7 +91,7 @@ map("n", "<leader>f", function()
 end, { desc = "Open Telescope find_files", nowait = true })
 
 map("n", "<leader>g", function()
-  require("spectre").open()
+  require('grug-far').open({ prefills = { search = vim.fn.expand("<cword>") } })
 end, { desc = "Open Spectre Search/Replace" })
 
 map(
@@ -150,11 +150,11 @@ end, { desc = "Open repository url" })
 
 map("v", "<leader>f", function()
   require("telescope-live-grep-args.shortcuts").grep_visual_selection()
-end, { desc = "Open Spectre Search/Replace" })
+end, { desc = "Search in files" })
 
 map("v", "<leader>g", function()
-  require("spectre").open_visual()
-end, { desc = "Open Spectre Search/Replace" })
+  require('grug-far').with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })
+end, { desc = "Open Search/Replace" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -168,7 +168,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { desc = "LSP signature help" })
 
     map("n", "<leader>rn", function()
-      require "nvchad.lsp.renamer"()
+      require "nvchad.lsp.renamer" ()
     end, { desc = "LSP rename" })
 
     map("n", "<leader>a", function()

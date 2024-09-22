@@ -111,7 +111,7 @@ return {
       }
 
       vim.o.foldcolumn = "0" -- '0' is not bad
-      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
 
@@ -383,7 +383,7 @@ return {
           trace = "verbose",
           settings = {
             advanced = {
-              listCount = 6, -- #completions for panel
+              listCount = 6,          -- #completions for panel
               inlineSuggestCount = 5, -- #completions for getCompletions
             },
           },
@@ -437,6 +437,7 @@ return {
     cmd = { "RnvimrToggle" },
     -- commit after introduce an issue with refresh inside ranger when changing directory
     -- @see https://github.com/kevinhwang91/rnvimr/commit/cd0311d65cb3b8f8737b52f3294eb77d2fcec826
+    commit = "40b4e0b",
     config = function()
       vim.g.rnvimr_edit_cmd = "drop"
       vim.g.rnvimr_enable_picker = true
@@ -553,56 +554,69 @@ return {
   },
 
   {
-    "nvim-pack/nvim-spectre",
-    keys = { "<leader>g" },
+    'MagicDuck/grug-far.nvim',
     config = function()
-      require("spectre").setup {
-        find_engine = {
-          -- rg is map with finder_cmd
-          ["rg"] = {
-            cmd = "rg",
-            -- default args
-            args = {
-              "--color=never",
-              "--no-heading",
-              "--with-filename",
-              "--line-number",
-              "--hidden",
-              "--column",
-              "--glob",
-              "!**/.git/*",
-              "--glob",
-              "!**/node_modules/*",
-            },
-            options = {
-              ["ignore-case"] = {
-                value = "--ignore-case",
-                icon = "[I]",
-                desc = "ignore case",
-              },
-              ["hidden"] = {
-                value = "--hidden",
-                desc = "hidden file",
-                icon = "[H]",
-              },
-              -- you can put any rg search option you want here it can toggle with
-              -- show_option function
-            },
+      require('grug-far').setup({
+        engines = {
+          ripgrep = {
+            extraArgs = '--hidden --glob !**/node_modules/*',
           },
-        },
-        replace_engine = {
-          ["sed"] = {
-            cmd = "sed",
-            args = {
-              "-i",
-              "",
-              "-E",
-            },
-          },
-        },
-      }
-    end,
+        }
+      })
+    end
   },
+
+  -- {
+  --   "nvim-pack/nvim-spectre",
+  --   keys = { "<leader>g" },
+  --   config = function()
+  --     require("spectre").setup {
+  --       find_engine = {
+  --         -- rg is map with finder_cmd
+  --         ["rg"] = {
+  --           cmd = "rg",
+  --           -- default args
+  --           args = {
+  --             "--color=never",
+  --             "--no-heading",
+  --             "--with-filename",
+  --             "--line-number",
+  --             "--hidden",
+  --             "--column",
+  --             "--glob",
+  --             "!**/.git/*",
+  --             "--glob",
+  --             "!**/node_modules/*",
+  --           },
+  --           options = {
+  --             ["ignore-case"] = {
+  --               value = "--ignore-case",
+  --               icon = "[I]",
+  --               desc = "ignore case",
+  --             },
+  --             ["hidden"] = {
+  --               value = "--hidden",
+  --               desc = "hidden file",
+  --               icon = "[H]",
+  --             },
+  --             -- you can put any rg search option you want here it can toggle with
+  --             -- show_option function
+  --           },
+  --         },
+  --       },
+  --       replace_engine = {
+  --         ["sed"] = {
+  --           cmd = "sed",
+  --           args = {
+  --             "-i",
+  --             "",
+  --             "-E",
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
 
   {
     "kevinhwang91/nvim-bqf",
@@ -616,7 +630,8 @@ return {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         lazy = false,
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
       },
       {
         "nvim-telescope/telescope-live-grep-args.nvim",
@@ -735,7 +750,7 @@ return {
         segments = {
           -- { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
           { sign = { name = { "Diagnostic" } }, click = "v:lua.ScSa" },
-          { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+          { text = { builtin.lnumfunc, " " },   click = "v:lua.ScLa" },
           -- { sign = { name = { ".*" } }, click = "v:lua.ScSa" },
         },
       }
