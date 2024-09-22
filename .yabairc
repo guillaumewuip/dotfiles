@@ -41,8 +41,6 @@ yabai -m rule --add title="Toggl Track" manage=off
 yabai -m rule --add app=Finder title=Copy manage=off
 yabai -m rule --add app="System Preferences" manage=off
 yabai -m rule --add app="1Password" manage=off
-yabai -m rule --add app="iStat*" sticky=on layer=above manage=off border=off
-yabai -m rule --add app="iStat*" mouse_follows_focus=off
 
 yabai -m rule --add app="^Slack$" scratchpad=slack grid=8:6:1:1:4:6
 
