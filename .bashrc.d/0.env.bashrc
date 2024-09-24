@@ -76,7 +76,7 @@ else
   done
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
 
 if [ -d ~/.bash_completion.d ]; then
     for file in ~/.bash_completion.d/*; do
