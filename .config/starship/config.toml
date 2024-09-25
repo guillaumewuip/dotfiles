@@ -56,7 +56,7 @@ deleted = 'd'
 style = 'bold red'
 
 [nodejs]
-format = '[  ($version)]($style) '
+format = '[ 󰎙 ($version)]($style) '
 version_format = '${raw}'
 detect_files = ['package.json', '.node-version', '.nvmrc']
 
