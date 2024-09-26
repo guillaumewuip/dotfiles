@@ -210,22 +210,13 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "yaml-language-server",
-        "bash-language-server",
-        "dockerfile-language-server",
-        "vim-language-server",
-        "vtsls",
-        "css-lsp",
-        "html-lsp",
-        "json-lsp",
-        "terraform-ls",
-        "helm-ls",
-        "efm",
-      },
-    },
+  },
+
+  {
+    "zapling/mason-lock.nvim",
+    init = function()
+      require("mason-lock").setup()
+    end,
   },
 
   {

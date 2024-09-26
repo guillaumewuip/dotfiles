@@ -1,0 +1,15 @@
+{
+  "bash-language-server": "5.4.2",
+  "css-lsp": "4.10.0",
+  "diagnostic-languageserver": "1.15.0",
+  "dockerfile-language-server": "0.13.0",
+  "efm": "v0.0.53",
+  "eslint-lsp": "4.10.0",
+  "helm-ls": "v0.1.0",
+  "html-lsp": "4.10.0",
+  "json-lsp": "4.10.0",
+  "lua-language-server": "3.10.6",
+  "terraform-ls": "v0.34.3",
+  "vtsls": "0.2.6",
+  "yaml-language-server": "1.15.0"
+}
