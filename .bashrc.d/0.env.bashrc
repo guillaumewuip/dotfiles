@@ -47,12 +47,11 @@ eval "$(rbenv init - --no-rehash bash)"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/g.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/Users/guillaume.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/guillaume.clochard/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/g.clochard/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/g.clochard/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/Users/guillaume.clochard/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/guillaume.clochard/google-cloud-sdk/completion.bash.inc'; fi
 
 # pnpm
 export PNPM_HOME="/Users/guillaume.clochard/Library/pnpm"
