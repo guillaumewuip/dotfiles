@@ -58,9 +58,9 @@ end, { desc = "Toggle cursorline highlight" })
 map("n", "<leader>l", ":diffget //3<CR>", { desc = "Choose right git diff" })
 map("n", "<leader>h", ":diffget //2<CR>", { desc = "Choose left git diff" })
 
-map("n", "<C-l>", ":bnext<CR>", { desc = "Goto next buffer", nowait = true })
-map("n", "<C-h>", ":bprevious<CR>", { desc = "Goto prev buffer", nowait = true })
-map("n", "<C-x>", ":bdelete<CR>", { desc = "Close buffer", nowait = true })
+map("n", "<C-l>", ":BufferNext<CR>", { desc = "Goto next buffer", nowait = true })
+map("n", "<C-h>", ":BufferPrevious<CR>", { desc = "Goto prev buffer", nowait = true })
+map("n", "<C-x>", ":BufferWipeout<CR>", { desc = "Close buffer", nowait = true })
 
 map("n", "<C-o>", ":BufferMoveNext<CR>", { desc = "Goto next buffer", nowait = true })
 map("n", "<C-y>", ":BufferMovePrevious<CR>", { desc = "Goto prev buffer", nowait = true })
