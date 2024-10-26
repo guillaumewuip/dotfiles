@@ -3,6 +3,7 @@
   "NeoColumn.nvim": { "branch": "main", "commit": "db7695c7c70fcacd290712deef659bca464634ee" },
   "NvChad": { "branch": "v2.5", "commit": "09dd13e9c6df98fe5609829a7a0fbccea2f515ae" },
   "aider.nvim": { "branch": "main", "commit": "74a01227271d0ea211f2edafa82028b22d4c2022" },
+  "barbar.nvim": { "branch": "master", "commit": "7c28de8c22f4c00ed43a78ae16c13dd6a248fe1a" },
   "base46": { "branch": "v2.5", "commit": "fec9fa583025e69e0c4f902bd61990e8d13d1975" },
   "better-escape.nvim": { "branch": "master", "commit": "bb197e51a91a635deb88630813c3bfc284413697" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },

@@ -15,7 +15,9 @@ M.base46 = {
     },
   },
 
-  hl_add = {},
+  hl_add = {
+    BufferTabpageFill = {},
+  },
 
 }
 

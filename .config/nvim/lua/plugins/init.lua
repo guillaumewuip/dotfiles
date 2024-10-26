@@ -502,20 +502,20 @@ return {
           lualine_z = { "location" },
         },
 
-        tabline = {
-          lualine_a = {
-            {
-              "buffers",
-              show_filename_only = false,
-              max_length = vim.o.columns,
-            },
-          },
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {},
-        },
+        -- tabline = {
+        --   lualine_a = {
+        --     {
+        --       "buffers",
+        --       show_filename_only = false,
+        --       max_length = vim.o.columns,
+        --     },
+        --   },
+        --   lualine_b = {},
+        --   lualine_c = {},
+        --   lualine_x = {},
+        --   lualine_y = {},
+        --   lualine_z = {},
+        -- },
 
         windbar = {},
 
@@ -738,6 +738,21 @@ return {
           adapter = "copilot",
         },
       },
+    },
+  },
+
+  {
+    'romgrk/barbar.nvim',
+    event = "BufEnter",
+    dependencies = {
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    opts = {
+      animation = false,
+      tabpages = false,
+      maximum_padding = 1,
+      minimum_padding = 0,
     },
   },
 }

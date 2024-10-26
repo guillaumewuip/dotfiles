@@ -62,6 +62,9 @@ map("n", "<C-l>", ":bnext<CR>", { desc = "Goto next buffer", nowait = true })
 map("n", "<C-h>", ":bprevious<CR>", { desc = "Goto prev buffer", nowait = true })
 map("n", "<C-x>", ":bdelete<CR>", { desc = "Close buffer", nowait = true })
 
+map("n", "<C-o>", ":BufferMoveNext<CR>", { desc = "Goto next buffer", nowait = true })
+map("n", "<C-y>", ":BufferMovePrevious<CR>", { desc = "Goto prev buffer", nowait = true })
+
 map("n", "+", function()
   require("telescope.builtin").find_files {
     hidden = true,
