@@ -48,7 +48,7 @@
     ra =! git rebase --abort
     fix =! git commit --fixup $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     fixh =! git commit --fixup $(git --no-pager ls -n 50 | grep -v fixup! | fzf | cut -d' ' -f1)
-    addf =! git status --short | fzf -m | awk '{$1=$1}1' | cut -d' ' -f2- | xargs git add
+    addf =! git status --short | fzf -m --tac | awk '{$1=$1}1' | cut -d' ' -f2- | xargs git add
     restoref =! git status --short | fzf -m | awk '{$1=$1}1' | cut -d' ' -f2- | xargs git restore
     showf =! git show $(git --no-pager ls -n 50 | fzf | cut -d' ' -f1)
     difff =! git status --short | fzf -m | awk '{$1=$1}1' | cut -d' ' -f2- | xargs git diff
