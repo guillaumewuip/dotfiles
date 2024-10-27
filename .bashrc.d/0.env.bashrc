@@ -53,6 +53,8 @@ if [ -f '/Users/guillaume.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/U
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/guillaume.clochard/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/guillaume.clochard/google-cloud-sdk/completion.bash.inc'; fi
 
+export NODE_COMPILE_CACHE=~/.cache/nodejs/compile-cache
+
 # pnpm
 export PNPM_HOME="/Users/guillaume.clochard/Library/pnpm"
 case ":$PATH:" in
