@@ -47,6 +47,9 @@ eval "$(rbenv init - --no-rehash bash)"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/guillaume.clochard/google-cloud-sdk/path.bash.inc' ]; then . '/Users/guillaume.clochard/google-cloud-sdk/path.bash.inc'; fi
 
