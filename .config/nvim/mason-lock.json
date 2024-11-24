@@ -8,7 +8,7 @@
   "helm-ls": "v0.1.0",
   "html-lsp": "4.10.0",
   "json-lsp": "4.10.0",
-  "lua-language-server": "3.11.1",
+  "lua-language-server": "3.12.0",
   "terraform-ls": "v0.35.0",
   "vtsls": "0.2.6",
   "yaml-language-server": "1.15.0"

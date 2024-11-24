@@ -30,7 +30,7 @@ map("n", ";", ":", { desc = "enter command mode", nowait = true })
 map("n", "<C-k>", ":MoveLine(-1)<CR>", { desc = "Move line up", nowait = true, noremap = true, silent = true })
 map("n", "<C-j>", ":MoveLine(1)<CR>", { desc = "Move line down", nowait = true, noremap = true, silent = true })
 
-map("n", "-", ":RnvimrToggle<cr>", { desc = "Open Ranger", nowait = true })
+map("n", "-", ":Yazi<cr>", { desc = "Open file manager", nowait = true })
 map("n", "<C-z>", "<C-x>", { desc = "Decrement number" })
 
 map("n", "<leader>b", function()
