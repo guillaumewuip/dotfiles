@@ -1,0 +1,9 @@
+theme = ayu
+background = 000000
+
+font-family = "GeistMono Nerd Font Propo"
+font-style = SemiBold
+font-style-bold = Bold
+bold-is-bright = true
+
+window-decoration = false

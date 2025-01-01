@@ -5,6 +5,7 @@ __pycache__
 !.config/nvim
 
 !.config/kitty
+!.config/ghostty
 !.config/coc/
 !.config/ranger/
 !.config/starship
