@@ -3,11 +3,6 @@ vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = "*.md",
-  command = "setlocal textwidth=0",
-})
-
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
@@ -17,6 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
 
 local lazy_config = {
   defaults = { lazy = true },
@@ -91,13 +87,17 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
--- load nvui theme cache files
-for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
-  dofile(vim.g.base46_cache .. v)
-end
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
 vim.schedule(function()
   require "mappings"
 end)
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.md",
+  command = "setlocal textwidth=0",
+})
