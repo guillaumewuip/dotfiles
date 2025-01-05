@@ -191,3 +191,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { desc = "Floating diagnostic" })
   end,
 })
+
+map("n", "co", ":GitConflictChooseOurs<CR>", { desc = "Git conflict - choose ours" })
+map("n", "ct", ":GitConflictChooseTheirs<CR>", { desc = "Git conflict - choose theirs" })
+map("n", "cb", ":GitConflictChooseBoth<CR>", { desc = "Git conflict - choose both" })
+map("n", "c0", ":GitConflictChooseNone<CR>", { desc = "Git conflict - choose none" })
+map("n", "cn", ":GitConflictNextConflict<CR>", { desc = "Git conflict - move to next conflict" })
+map("n", "cp", ":GitConflictPrevConflict<CR>", { desc = "Git conflict - move to previous conflict" })
