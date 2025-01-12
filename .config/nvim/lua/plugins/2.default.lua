@@ -77,10 +77,8 @@ return {
 
   {
     "petertriho/nvim-scrollbar",
-    event = "BufEnter",
-    config = function(_, opts)
-      require("scrollbar").setup(opts)
-    end,
+    event = "LazyFile",
+    opts = {},
   },
 
   {
