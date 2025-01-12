@@ -11,22 +11,47 @@ return {
   },
 
   {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function(_, opts)
+      local icons = LazyVim.config.icons
+
+      opts.options = {
+        theme = "tokyonight-night",
+        component_separators = { left = "|", right = "|" },
+        section_separators = { left = " ", right = " " },
+        globalstatus = true,
+      }
+
+      -- remove some items opts.sections.lualine_x
+      -- @see https://www.lazyvim.org/plugins/ui#lualinenvim
+      table.remove(opts.sections.lualine_x, 1)
+      table.remove(opts.sections.lualine_x, 2)
+      table.remove(opts.sections.lualine_x, 4)
+
+      opts.sections.lualine_z = {
+        { "filetype" },
+      }
+    end,
+  },
+
+  {
     "echasnovski/mini.files",
-    keys = {
-      {
-        "<leader>fp",
-        function()
-          require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
-        end,
-        desc = "Find Plugin File",
-      },
-    },
     opts = {
       windows = {
         preview = false,
       },
       options = {
         use_as_default_explorer = true,
+      },
+    },
+    keys = {
+      {
+        "-",
+        function()
+          require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+        end,
+        desc = "Open mini.files (Directory of Current File)",
       },
     },
   },
@@ -91,8 +116,22 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "hrsh7th/cmp-emoji",
+      {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        config = function(_, opts)
+          require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
+
+          local luasnip = require("luasnip")
+          luasnip.filetype_set("javascriptreact", { "javascript" })
+          luasnip.filetype_set("typescript", { "javascript" })
+          luasnip.filetype_set("typescriptreact", { "javascript" })
+        end,
+      },
     },
     opts = {
+      snippets = { preset = "luasnip" },
+
       completion = {
         menu = { border = "single" },
         documentation = { window = { border = "single" } },
@@ -104,7 +143,7 @@ return {
         compat = {
           "emoji",
         },
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = { "snippets", "lsp", "path", "buffer" },
         cmdline = {},
       },
       keymap = {
@@ -123,6 +162,7 @@ return {
     "mg979/vim-visual-multi",
     event = "LazyFile",
     init = function()
+      vim.g.VM_theme = "sand"
       vim.g.VM_custom_remaps = {
         ["<C-c>"] = "<Esc>",
       }
@@ -146,11 +186,29 @@ return {
   },
 
   {
+    "lewis6991/gitsigns.nvim",
+    enabled = true,
+    opts = {
+      signcolumn = false,
+      numhl = true,
+      current_line_blame = true,
+    },
+  },
+
+  {
     "akinsho/git-conflict.nvim",
     event = "BufEnter",
     version = "*",
     config = {
       default_mappings = false,
+    },
+    keys = {
+      { "<leader>gco", ":GitConflictChooseOurs<CR>", { desc = "Git conflict - choose ours" } },
+      { "<leader>gct", ":GitConflictChooseTheirs<CR>", { desc = "Git conflict - choose theirs" } },
+      { "<leader>gcb", ":GitConflictChooseBoth<CR>", { desc = "Git conflict - choose both" } },
+      { "<leader>gc0", ":GitConflictChooseNone<CR>", { desc = "Git conflict - choose none" } },
+      { "<leader>gcn", ":GitConflictNextConflict<CR>", { desc = "Git conflict - move to next conflict" } },
+      { "<leader>gcp", ":GitConflictPrevConflict<CR>", { desc = "Git conflict - move to previous conflict" } },
     },
   },
 }
