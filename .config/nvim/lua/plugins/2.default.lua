@@ -71,12 +71,12 @@ return {
   {
     "akinsho/bufferline.nvim",
     keys = {
-      { "<c-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-      { "<c-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-      { "[b", false },
       { "]b", false },
-      { "<c-y>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-      { "<c-o>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+      { "]b", false },
+      { "<s-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+      { "<s-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+      { "<c-l>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+      { "<c-h>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
       { "<C-x>", "<cmd>bdelete<cr>", desc = "Close buffer" },
     },
   },
@@ -86,16 +86,16 @@ return {
     opts = {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-        left = "<S-h>",
-        right = "<S-l>",
+        left = "<",
+        right = ">",
         down = "<S-j>",
         up = "<S-k>",
 
         -- Move current line in Normal mode
-        line_left = "<S-h>",
-        line_right = "<S-l>",
-        line_down = "<S-j>",
-        line_up = "<S-k>",
+        line_left = "",
+        line_right = "",
+        line_down = "",
+        line_up = "",
       },
     },
   },

@@ -4,11 +4,11 @@
 
 local map = LazyVim.safe_keymap_set
 
-map("n", "L", function()
+map("n", "<leader>ln", function()
   vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end, { desc = "Toggle relative line number", expr = true, silent = true })
 
-map("n", "H", function()
+map("n", "<leader>lh", function()
   local lineHighlight = vim.api.nvim_exec("hi CursorLine", true)
 
   if string.match(lineHighlight, "cleared") then
