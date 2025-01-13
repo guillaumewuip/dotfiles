@@ -7,7 +7,6 @@ return {
       local icons = LazyVim.config.icons
 
       opts.options = {
-        theme = "tokyonight-night",
         component_separators = { left = "|", right = "|" },
         section_separators = { left = " ", right = " " },
         globalstatus = true,
