@@ -1,14 +1,4 @@
 return {
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-  },
 
   {
     "nvim-lualine/lualine.nvim",
@@ -73,10 +63,10 @@ return {
     keys = {
       { "]b", false },
       { "]b", false },
-      { "<s-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
       { "<s-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-      { "<c-l>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-      { "<c-h>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+      { "<s-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+      { "<c-h>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+      { "<c-l>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
       { "<C-x>", "<cmd>bdelete<cr>", desc = "Close buffer" },
     },
   },
