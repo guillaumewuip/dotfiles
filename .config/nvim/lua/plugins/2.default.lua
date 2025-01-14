@@ -138,13 +138,9 @@ return {
       keymap = {
         preset = "enter",
         ["<C-y>"] = { "select_and_accept" },
+        ["<CR>"] = { "select_and_accept", "fallback" },
       },
     },
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = { ensure_installed = { "eslint_d" } },
   },
 
   {
@@ -199,5 +195,19 @@ return {
       { "<leader>gcn", ":GitConflictNextConflict<CR>", { desc = "Git conflict - move to next conflict" } },
       { "<leader>gcp", ":GitConflictPrevConflict<CR>", { desc = "Git conflict - move to previous conflict" } },
     },
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim",
+    },
+    opts = function(_, opts)
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        require("none-ls.diagnostics.eslint_d"),
+        require("none-ls.formatting.eslint_d"),
+        require("none-ls.code_actions.eslint_d"),
+      })
+    end,
   },
 }

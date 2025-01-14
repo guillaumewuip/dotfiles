@@ -10,3 +10,4 @@ vim.g.snacks_animate = false
 local opt = vim.opt
 
 opt.cursorline = false
+opt.conceallevel = 0

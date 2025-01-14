@@ -10,4 +10,9 @@ return {
     "rafamadriz/friendly-snippets",
     enabled = false,
   },
+
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    enabled = false,
+  },
 }
