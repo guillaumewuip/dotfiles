@@ -164,7 +164,7 @@ return {
 
   {
     "ecthelionvi/NeoColumn.nvim",
-    event = "BufEnter",
+    event = "LazyFile",
     opts = {
       always_on = true,
     },
