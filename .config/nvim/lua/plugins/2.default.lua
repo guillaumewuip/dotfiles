@@ -66,7 +66,6 @@ return {
       { "<s-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
       { "<c-h>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
       { "<c-l>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
-      { "<C-x>", "<cmd>bdelete<cr>", desc = "Close buffer" },
     },
   },
 

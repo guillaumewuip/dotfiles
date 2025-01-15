@@ -21,3 +21,5 @@ map("n", "<leader>lh", function()
      ]])
   end
 end, { desc = "Toggle cursorline highlight", expr = true, silent = true })
+
+map("n", "q", "<cmd>bdelete<cr>", { desc = "Close buffer" })
