@@ -1,5 +1,4 @@
 return {
-
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -33,6 +32,9 @@ return {
       options = {
         use_as_default_explorer = true,
       },
+      mappings = {
+        close = "<ESC>",
+      },
     },
     keys = {
       {
@@ -46,13 +48,10 @@ return {
   },
 
   {
-    "folke/noice.nvim",
+    "j-hui/fidget.nvim",
     opts = {
-      presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        lsp_doc_border = false, -- add a border to hover docs and signature help
+      notification = {
+        override_vim_notify = true,
       },
     },
   },
@@ -103,7 +102,7 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = {
-      "hrsh7th/cmp-emoji",
+      "moyiz/blink-emoji.nvim",
       {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
@@ -128,11 +127,19 @@ return {
       sources = {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
-        compat = {
-          "emoji",
-        },
-        default = { "snippets", "lsp", "path", "buffer" },
         cmdline = {},
+        default = { "snippets", "lsp", "path", "buffer", "emoji" },
+        providers = {
+          emoji = {
+            module = "blink-emoji",
+            name = "Emoji",
+            score_offset = 0, -- Tune by preference
+            opts = { insert = true }, -- Insert emoji (default) or complete its name
+          },
+          snippets = {
+            score_offset = 100,
+          },
+        },
       },
       keymap = {
         preset = "enter",
@@ -208,5 +215,37 @@ return {
         require("none-ls.code_actions.eslint_d"),
       })
     end,
+  },
+
+  {
+    "folke/snacks.nvim",
+    opts = {
+      picker = {
+        layouts = {
+          ivy = {
+            layout = {
+              box = "vertical",
+              backdrop = false,
+              row = 0,
+              width = 0,
+              height = 0.4,
+              border = "top",
+              title = " {source} {live}",
+              title_pos = "left",
+              { win = "input", height = 1, border = "bottom" },
+              {
+                box = "horizontal",
+                { win = "list", border = "none" },
+                { win = "preview", width = 0.4, border = "none" },
+              },
+            },
+          },
+        },
+      },
+    },
+    keys = {
+      { "=", LazyVim.pick("files", { root = false, layout = "ivy", reverse = false }), desc = "Find Files (cwd)" },
+      { "+", LazyVim.pick("live_grep", { root = false, layout = "ivy", reverse = false }), desc = "Grep (cwd)" },
+    },
   },
 }

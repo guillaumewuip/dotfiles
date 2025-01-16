@@ -15,4 +15,18 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     enabled = false,
   },
+
+  {
+    "folke/noice.nvim",
+    enabled = false,
+  },
+
+  {
+    "folke/snacks.nvim",
+    opts = {
+      notifier = {
+        enabled = false,
+      },
+    },
+  },
 }
