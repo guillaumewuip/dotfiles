@@ -222,15 +222,16 @@ return {
     opts = {
       picker = {
         layouts = {
-          ivy = {
+          custom = {
+            reverse = false,
             layout = {
               box = "vertical",
               backdrop = false,
               row = 0,
               width = 0,
-              height = 0.4,
-              border = "top",
-              title = " {source} {live}",
+              height = 0.5,
+              border = "rounded",
+              title = "{source} {live}",
               title_pos = "left",
               { win = "input", height = 1, border = "bottom" },
               {
@@ -241,18 +242,6 @@ return {
             },
           },
         },
-      },
-    },
-    keys = {
-      {
-        "=",
-        LazyVim.pick("files", { root = false, layout = "ivy", reverse = false, hidden = true }),
-        desc = "Find Files (cwd)",
-      },
-      {
-        "+",
-        LazyVim.pick("live_grep", { root = false, layout = "ivy", reverse = false, hidden = true }),
-        desc = "Grep (cwd)",
       },
     },
   },

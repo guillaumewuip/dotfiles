@@ -23,3 +23,23 @@ map("n", "<leader>lh", function()
 end, { desc = "Toggle cursorline highlight", expr = true, silent = true })
 
 map("n", "q", "<cmd>bdelete<cr>", { desc = "Close buffer" })
+
+map(
+  "n",
+  "=",
+  LazyVim.pick("files", { root = false, layout = {
+    preset = "custom",
+    reverse = false,
+  }, hidden = true }),
+  { desc = "Find Files (cwd)" }
+)
+
+map(
+  "n",
+  "+",
+  LazyVim.pick("live_grep", { root = false, layout = {
+    preset = "custom",
+    reverse = false,
+  }, hidden = true }),
+  { desc = "Grep (cwd)" }
+)
