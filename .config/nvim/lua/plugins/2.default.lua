@@ -143,8 +143,8 @@ return {
       },
       keymap = {
         preset = "enter",
-        ["<C-y>"] = { "select_and_accept" },
-        ["<CR>"] = { "select_and_accept", "fallback" },
+        ["<c-y>"] = { "select_and_accept" },
+        ["<cr>"] = { "select_and_accept", "fallback" },
       },
     },
   },
@@ -244,8 +244,16 @@ return {
       },
     },
     keys = {
-      { "=", LazyVim.pick("files", { root = false, layout = "ivy", reverse = false }), desc = "Find Files (cwd)" },
-      { "+", LazyVim.pick("live_grep", { root = false, layout = "ivy", reverse = false }), desc = "Grep (cwd)" },
+      {
+        "=",
+        LazyVim.pick("files", { root = false, layout = "ivy", reverse = false, hidden = true }),
+        desc = "Find Files (cwd)",
+      },
+      {
+        "+",
+        LazyVim.pick("live_grep", { root = false, layout = "ivy", reverse = false, hidden = true }),
+        desc = "Grep (cwd)",
+      },
     },
   },
 }

@@ -27,6 +27,9 @@ return {
       notifier = {
         enabled = false,
       },
+      dashboard = {
+        enabled = false,
+      },
     },
   },
 }
