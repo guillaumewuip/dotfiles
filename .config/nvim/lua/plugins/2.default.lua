@@ -122,6 +122,9 @@ return {
       completion = {
         menu = { border = "single" },
         documentation = { window = { border = "single" } },
+        list = {
+          selection = { preselect = true, auto_insert = true },
+        },
       },
 
       signature = { window = { border = "single" } },
@@ -145,6 +148,7 @@ return {
           },
         },
       },
+
       keymap = {
         preset = "enter",
         ["<c-y>"] = { "select_and_accept" },
