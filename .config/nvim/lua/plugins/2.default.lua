@@ -123,12 +123,16 @@ return {
         menu = { border = "single" },
         documentation = { window = { border = "single" } },
       },
+
       signature = { window = { border = "single" } },
+
+      cmdline = {},
+
       sources = {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
-        cmdline = {},
-        default = { "snippets", "lsp", "path", "buffer", "emoji" },
+        default = { "snippets", "copilot", "lsp", "path", "buffer", "emoji" },
+
         providers = {
           emoji = {
             module = "blink-emoji",
@@ -137,7 +141,7 @@ return {
             opts = { insert = true }, -- Insert emoji (default) or complete its name
           },
           snippets = {
-            score_offset = 100,
+            score_offset = 200,
           },
         },
       },
