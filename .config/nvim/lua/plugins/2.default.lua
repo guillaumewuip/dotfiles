@@ -155,7 +155,7 @@ return {
 
   {
     "mg979/vim-visual-multi",
-    event = "LazyFile",
+    event = "VeryLazy",
     init = function()
       vim.g.VM_theme = "sand"
       vim.g.VM_custom_remaps = {
