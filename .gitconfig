@@ -58,16 +58,20 @@
 [diff]
 	tool = vimdiff
 	algorithm = histogram
-  colorMoved = default
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [merge]
 	tool = vimdiff
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [credentials]
 	helper = cache
 [rerere]
 	enabled = true
+  autoupdate = true
 [rebase]
 	autoStash = true
+  updateRefs = true
 [pull]
 	rebase = true
 [init]
@@ -91,3 +95,13 @@
 	gpgsign = true
 [pack]
 	usePathWalk = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
