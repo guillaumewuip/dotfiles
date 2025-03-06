@@ -140,12 +140,12 @@ return {
           emoji = {
             module = "blink-emoji",
             name = "Emoji",
-            score_offset = 0, -- Tune by preference
+            -- score_offset = 0, -- Tune by preference
             opts = { insert = true }, -- Insert emoji (default) or complete its name
           },
-          snippets = {
-            score_offset = 200,
-          },
+          -- snippets = {
+          -- score_offset = 200,
+          -- },
         },
       },
 
