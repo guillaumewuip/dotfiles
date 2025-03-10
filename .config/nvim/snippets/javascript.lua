@@ -3,49 +3,29 @@ local fmta = require("luasnip.extras.fmt").fmta
 return {
   s(
     {
-      name = 'console {}',
-      trig = 'console',
-      priority = 20,
+      name = "console.log({})",
+      trig = "loga",
+      priority = 200,
     },
-    fmta(
-      'console.<>({ <> })',
-      {
-        c(2, {
-          t('log'),
-          t('error'),
-          t('warn'),
-          t('info'),
-          i(nil, 'something'),
-        }),
-        i(1),
-      }
-    )
+    fmta("console.log({ <> })", {
+      i(1),
+    })
   ),
 
   s(
     {
-      name = 'console',
-      trig = 'console',
-      priority = 10,
+      name = "console.log(",
+      trig = "logb",
+      priority = 100,
     },
-    fmta(
-      'console.<>(<>)',
-      {
-        c(2, {
-          t('log'),
-          t('error'),
-          t('warn'),
-          t('info'),
-          i(nil, 'something'),
-        }),
-        i(1),
-      }
-    )
+    fmta("console.log(<>)", {
+      i(1),
+    })
   ),
 
   s(
     {
-      trig = 'describe',
+      trig = "describe",
     },
     fmta(
       [[
@@ -55,7 +35,7 @@ return {
         <>
       ]],
       {
-        i(1, 'toto'),
+        i(1, "toto"),
         i(2),
         i(0),
       }
@@ -64,8 +44,8 @@ return {
 
   s(
     {
-      name = 'it',
-      trig = 'it',
+      name = "it",
+      trig = "it",
     },
     fmta(
       [[
@@ -75,7 +55,7 @@ return {
         <>
       ]],
       {
-        i(1, 'toto'),
+        i(1, "toto"),
         i(2),
         i(0),
       }
@@ -84,8 +64,8 @@ return {
 
   s(
     {
-      name = 'it async',
-      trig = 'it',
+      name = "it async",
+      trig = "it",
     },
     fmta(
       [[
@@ -95,7 +75,7 @@ return {
         <>
       ]],
       {
-        i(1, 'toto'),
+        i(1, "toto"),
         i(2),
         i(0),
       }
@@ -104,8 +84,8 @@ return {
 
   s(
     {
-      name = 'import',
-      trig = 'import',
+      name = "import",
+      trig = "import",
     },
     fmta(
       [[
@@ -122,8 +102,8 @@ return {
 
   s(
     {
-      name = 'import object',
-      trig = 'import',
+      name = "import object",
+      trig = "import",
     },
     fmta(
       [[
@@ -134,44 +114,6 @@ return {
         i(2),
         i(1),
         i(0),
-      }
-    )
-  ),
-
-  s(
-    {
-      trig = 'pipe',
-    },
-    fmta(
-      [[
-        import { pipe } from 'fp-ts/function'
-        <>
-      ]],
-      {
-        i(0),
-      }
-    )
-  ),
-
-  s(
-    {
-      trig = 'fpts',
-    },
-    fmta(
-      [[
-        import * as <> from 'fp-ts/<>'
-        <>
-      ]],
-      {
-        i(1),
-        f(
-          function(args, snip, user_arg)
-            return args[1][1]
-          end,
-          {1},
-          {}
-        ),
-        i(0)
       }
     )
   ),
