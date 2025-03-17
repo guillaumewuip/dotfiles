@@ -272,6 +272,7 @@ return {
 
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    cmd = { "CopilotChat", "CopilotChatToggle" },
     opts = {
       model = "claude-3.7-sonnet",
     },
