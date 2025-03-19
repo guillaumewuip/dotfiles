@@ -4,8 +4,8 @@ return {
   s(
     {
       name = "console.log({})",
-      trig = "loga",
-      priority = 200,
+      trig = "log",
+      priority = 300,
     },
     fmta("console.log({ <> })", {
       i(1),
@@ -15,8 +15,8 @@ return {
   s(
     {
       name = "console.log(",
-      trig = "logb",
-      priority = 100,
+      trig = "log",
+      priority = 250,
     },
     fmta("console.log(<>)", {
       i(1),
