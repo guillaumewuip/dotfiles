@@ -71,7 +71,6 @@
   autoupdate = true
 [rebase]
 	autoStash = true
-  updateRefs = true
 [pull]
 	rebase = true
 [init]
