@@ -24,6 +24,7 @@ return {
         NormalFloat = { bg = "none" },
         Pmenu = { bg = "none" },
         FloatBorder = { bg = "none" },
+
         MiniFilesNormal = { bg = "none" },
         MiniFilesBorder = { bg = "none" },
       },

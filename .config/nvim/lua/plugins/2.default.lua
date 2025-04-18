@@ -66,6 +66,13 @@ return {
       { "<c-h>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
       { "<c-l>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
     },
+    opts = {
+      highlights = {
+        fill = {
+          bg = "black", -- "none" does not work
+        },
+      },
+    },
   },
 
   {
@@ -268,7 +275,13 @@ return {
       },
     },
   },
-
+  {
+    "zbirenbaum/copilot.lua",
+    optional = true,
+    opts = {
+      copilot_model = "gpt-4o-copilot",
+    },
+  },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     cmd = { "CopilotChat", "CopilotChatToggle" },
