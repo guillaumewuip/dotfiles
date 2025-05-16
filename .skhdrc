@@ -7,9 +7,16 @@ ctrl - return [
 shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
 
 shift + ctrl - p : open -a "1Password"
+
+# see .yabairc for the scratchpad definition used in --toggle <scratchpad name>
 cmd - escape [
   *       : yabai -m window --toggle slack || open -a Slack
   "Slack" : yabai -m window --toggle slack
+]
+
+cmd - 0x0A [
+  *      : yabai -m window --toggle tana || open -a Tana
+  "Tana" : yabai -m window --toggle tana
 ]
 
 # toggle window split type vertical / horizontal
