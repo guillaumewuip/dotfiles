@@ -14,17 +14,13 @@ cmd - escape [
   "Slack" : yabai -m window --toggle slack
 ]
 
-cmd - 0x0A [
+cmd - 0x0A [ # §± key, below esc
   *      : yabai -m window --toggle tana || open -a Tana
   "Tana" : yabai -m window --toggle tana
 ]
 
 # toggle window split type vertical / horizontal
 alt - q : yabai -m window --toggle split
-
-# no opacity for window
-alt - z : yabai -m window --opacity 1.0
-shift + alt - z : yabai -m window --opacity 0.0
 
 # toggle window parent zoom
 alt - w : yabai -m window --toggle zoom-parent
@@ -38,9 +34,6 @@ shift + alt - t : yabai -m window --grid 2:2:0:0:2:2;
 
 # fullscreen for focused window
 alt - f : yabai -m window --toggle zoom-fullscreen
-
-# balance space
-alt - b : yabai -m space --balance
 
 # change focus
 alt - h : yabai -m window --focus west
