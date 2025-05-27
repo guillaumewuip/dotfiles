@@ -40,7 +40,7 @@ yabai -m rule --add app=Moniteur manage=off
 yabai -m rule --add app=Finder title=Copy manage=off
 
 yabai -m rule --add app="^Slack$" scratchpad=slack grid=8:6:1:1:4:6
-yabai -m rule --add app="^Tana$" scratchpad=tana grid=8:6:1:1:4:6
+yabai -m rule --add app="^Tana$" scratchpad=tana grid=1:1:0:0:1:1
 
 # focus window below when closing a window
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
