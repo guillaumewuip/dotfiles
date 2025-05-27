@@ -50,7 +50,7 @@ alias sudo='sudo '
 # https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
 
-alias pp="pnpm i && pnpm turbo run build"
+alias pp="pnpm i; pnpm turbo run build"
 
 __inshellisense__() {
     inshellisense -c "$READLINE_LINE" -s bash
