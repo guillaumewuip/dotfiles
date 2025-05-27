@@ -150,7 +150,7 @@ return {
             opts = { insert = true }, -- Insert emoji (default) or complete its name
           },
           snippets = {
-            score_offset = 100,
+            -- score_offset = 100,
           },
         },
       },
@@ -286,7 +286,7 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     cmd = { "CopilotChat", "CopilotChatToggle" },
     opts = {
-      model = "claude-3.7-sonnet",
+      model = "gpt-4o",
     },
   },
 }
