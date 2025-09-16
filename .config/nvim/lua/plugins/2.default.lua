@@ -239,10 +239,13 @@ return {
       "nvimtools/none-ls-extras.nvim",
     },
     opts = function(_, opts)
+      local nls = require("null-ls")
+
       opts.sources = vim.list_extend(opts.sources or {}, {
         require("none-ls.diagnostics.eslint_d"),
         require("none-ls.formatting.eslint_d"),
         require("none-ls.code_actions.eslint_d"),
+        nls.builtins.formatting.biome,
       })
     end,
   },
