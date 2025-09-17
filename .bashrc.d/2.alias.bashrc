@@ -42,6 +42,7 @@ alias .....="cd ../../../.."
 
 alias goo='cd ~/workspace/$(cd ~/workspace; fd . --maxdepth 7 --type d | fzf)'
 alias go='cd $(fd . --maxdepth 7 --type d | fzf)'
+alias gog='cd $(git rev-parse --show-toplevel)$(cd $(git rev-parse --show-toplevel); fd . --maxdepth 5 --type d | fzf)'
 
 # Enable aliases to be sudo
 alias sudo='sudo '
