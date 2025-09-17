@@ -11,6 +11,7 @@ format = """
 $fill
 $username\
 $directory\
+${custom.rootrepo}\
 $git_branch\
 $git_commit\
 $git_state\
@@ -54,6 +55,24 @@ staged = 's'
 renamed = 'r'
 deleted = 'd'
 style = 'bold red'
+
+[custom.rootrepo]
+disabled = false
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+# shell = ["bash", "--noprofile", "--norc", "-c"]
+command = """
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  gd=$(git rev-parse --git-dir 2>/dev/null) || exit 0
+  gcd=$(git rev-parse --git-common-dir 2>/dev/null) || exit 0
+
+  if [ "$gd" != "$gcd" ]; then
+    root_dir=$(dirname "$gcd")
+    printf "(%s)" "$(basename "$root_dir")"
+  fi
+fi
+"""
+# Shown only if there is output (i.e., in a worktree)
+format = "[($output)](bold purple) "
 
 [nodejs]
 format = '[ 󰎙 ($version)]($style) '
