@@ -24,7 +24,7 @@ return {
   },
 
   {
-    "echasnovski/mini.files",
+    "nvim-mini/mini.files",
     opts = {
       windows = {
         preview = false,
@@ -76,7 +76,7 @@ return {
   },
 
   {
-    "echasnovski/mini.move",
+    "nvim-mini/mini.move",
     opts = {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
