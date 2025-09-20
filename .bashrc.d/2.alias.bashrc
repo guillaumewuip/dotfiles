@@ -52,11 +52,3 @@ alias sudo='sudo '
 alias fuck='$(thefuck $(fc -ln -1))'
 
 alias pp="pnpm i; pnpm turbo run build"
-
-__inshellisense__() {
-    inshellisense -c "$READLINE_LINE" -s bash
-    history -s $(inshellisense --history)
-    READLINE_LINE=
-}
-
-bind -x '"\C-a": __inshellisense__'

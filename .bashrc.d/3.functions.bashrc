@@ -25,7 +25,7 @@ function root() {
     [ "$(git rev-parse --git-common-dir)" = "$(git rev-parse --git-dir)" ]
   }
 
-# Main logic
+  # Main logic
   if is_git_worktree; then
       # Case 1: We're in a git worktree, cd to the original repo
       # The git-common-dir points to the original repo's .git directory
