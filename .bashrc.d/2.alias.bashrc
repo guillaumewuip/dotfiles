@@ -44,6 +44,8 @@ alias goo='cd ~/workspace/$(cd ~/workspace; fd . --maxdepth 7 --type d | fzf)'
 alias go='cd $(fd . --maxdepth 7 --type d | fzf)'
 alias gog='cd $(git rev-parse --show-toplevel)/$(cd $(git rev-parse --show-toplevel); fd . --maxdepth 5 --type d | fzf)'
 
+alias wk='cd $(fd "^worktree-.*" --maxdepth 1 --type d -I | fzf)'
+
 # Enable aliases to be sudo
 alias sudo='sudo '
 
@@ -52,3 +54,4 @@ alias sudo='sudo '
 alias fuck='$(thefuck $(fc -ln -1))'
 
 alias pp="pnpm i; pnpm turbo run build"
+alias p="pnpm turbo run build"
