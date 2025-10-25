@@ -14,33 +14,25 @@ export CDPATH=$CDPATH:.
 # enables extended globbing, usefull for ls !(*.*)
 shopt -s extglob
 
-# Setting fd as the default source for fzf
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# Configure BASH to append (rather than overwrite the history):
-shopt -s histappend
-
-# Print the timestamp of each command
-# HISTTIMEFORMAT='%F %T '
-
-# Set no limit for history file size
-HISTFILESIZE=5000
-
-# Do not store a duplicate of the last entered command
-HISTCONTROL=ignoredups
-
 # Disable husky locally
 export HUSKY=0
 
-export HOMEBREW_PREFIX="/opt/homebrew";
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+HOMEBREW_PREFIX="$(brew --prefix)"
+export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
+then
+  source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+else
+  for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
+  do
+    [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+  done
+fi
 
 eval "$(rbenv init - --no-rehash bash)"
 
@@ -71,18 +63,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-HOMEBREW_PREFIX="$(brew --prefix)"
-if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
-then
-  source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-else
-  for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
-  do
-    [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
-  done
-fi
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
-eval "$(fzf --bash)"
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [ -d ~/.bash_completion.d ]; then
     for file in ~/.bash_completion.d/*; do
@@ -90,9 +77,10 @@ if [ -d ~/.bash_completion.d ]; then
   done
 fi
 
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
-
 if [[ "$TERM_PROGRAM" != "vscode" ]]; then
   export STARSHIP_CONFIG=~/.config/starship/config.toml
   eval "$(starship init bash)"
 fi
+
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init bash)"

@@ -11,5 +11,6 @@ __pycache__
 !.config/starship
 !.config/gh/config.yml
 !.config/gh-dash
+!.config/atuin
 
 .bashrc.d/*private-*
