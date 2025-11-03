@@ -1,7 +1,7 @@
 return {
   {
     "LazyVim/LazyVim",
-    version = "v15.10.1",
+    version = "v15.13.0",
     opts = {
       colorscheme = "onedark",
     },
