@@ -239,13 +239,32 @@ return {
       "nvimtools/none-ls-extras.nvim",
     },
     opts = function(_, opts)
-      local nls = require("null-ls")
-
       opts.sources = vim.list_extend(opts.sources or {}, {
         require("none-ls.diagnostics.eslint_d"),
         require("none-ls.formatting.eslint_d"),
         require("none-ls.code_actions.eslint_d"),
-        nls.builtins.formatting.biome,
+      })
+
+      local lspconfig = require("lspconfig")
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      lspconfig.biome.setup({
+        capabilities = capabilities,
+        on_attach = function(_client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = vim.api.nvim_create_augroup("BiomeOrganizeImports", { clear = true }),
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.code_action({ // TODO working when the cursor is on the line only?
+                context = {
+                  only = { "source.organizeImports.biome" },
+                  diagnostics = {},
+                },
+                apply = true,
+              })
+            end,
+          })
+        end,
       })
     end,
   },
