@@ -278,18 +278,4 @@ return {
       },
     },
   },
-  {
-    "zbirenbaum/copilot.lua",
-    optional = true,
-    opts = {
-      copilot_model = "gpt-4o-copilot",
-    },
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    cmd = { "CopilotChat", "CopilotChatToggle" },
-    opts = {
-      model = "gpt-4o",
-    },
-  },
 }
