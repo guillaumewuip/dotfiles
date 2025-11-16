@@ -255,7 +255,7 @@ return {
             group = vim.api.nvim_create_augroup("BiomeOrganizeImports", { clear = true }),
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.code_action({ // TODO working when the cursor is on the line only?
+              vim.lsp.buf.code_action({ -- TODO working when the cursor is on the line only?
                 context = {
                   only = { "source.organizeImports.biome" },
                   diagnostics = {},
