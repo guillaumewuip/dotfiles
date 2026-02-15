@@ -20,6 +20,16 @@ local icons = {
 			_10 = "􀊡",
 			_0 = "􀊣",
 		},
+		sound = {
+			airpods = "􀪷",
+			hifi = "􀝎",
+		},
+		mic = {
+			airpods = "􀪷",
+			on = "􀊱",
+			muted = "􀊳",
+			external = "􀑫",
+		},
 		battery = {
 			_100 = "􀛨",
 			_75 = "􀺸",

@@ -8,7 +8,7 @@ require("items.front_app")
 
 require("items.calendar")
 require("items.widgets.battery")
-require("items.widgets.volume")
+require("items.widgets.audio")
 require("items.widgets.network")
 require("items.widgets.cpu")
 require("items.secure_input")
