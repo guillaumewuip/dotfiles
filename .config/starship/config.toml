@@ -17,8 +17,6 @@ $git_commit\
 $git_state\
 $git_status\
 $fill\
-$nodejs\
-${custom.docker}\
 $kubernetes\
 $jobs
 $character"""
@@ -76,16 +74,6 @@ fi
 """
 # Shown only if there is output (i.e., in a worktree)
 format = "[($output)](bold purple) "
-
-[nodejs]
-format = '[ 󰎙 ($version)]($style) '
-version_format = '${raw}'
-detect_files = ['package.json', '.node-version', '.nvmrc']
-
-[custom.docker]
-command = "docker version -f '{{.Server.Version}}'"  # shows output of command
-format = "[  $output](blue bold) "
-when = "docker version && true"
 
 [kubernetes]
 disabled = false
