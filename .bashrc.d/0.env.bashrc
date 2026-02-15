@@ -82,6 +82,21 @@ if [ -d ~/.bash_completion.d ]; then
   done
 fi
 
+__current_command=""
+
+function preexec() {
+  # Extract command name (first word)
+  __current_command="${1%% *}"
+  builtin printf '\033]0;%s - %s\007' "${__current_command}" "${PWD}"
+}
+
+function set_window_title() {
+  __current_command=""
+  builtin printf '\033]0;%s\007' "${PWD}"
+}
+
+starship_precmd_user_func="set_window_title"
+
 if [[ "$TERM_PROGRAM" != "vscode" ]]; then
   export STARSHIP_CONFIG=~/.config/starship/config.toml
   eval "$(starship init bash)"
