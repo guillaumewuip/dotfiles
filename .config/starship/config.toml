@@ -25,6 +25,9 @@ $character"""
 
 right_format = ""
 
+[fill]
+symbol = ' '
+
 [status]
 disabled = false
 

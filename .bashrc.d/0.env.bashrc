@@ -4,6 +4,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
+# Ghostty shell integration for Bash. This should be at the top of your bashrc!
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 export EDITOR="/opt/homebrew/bin/nvim"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -17,7 +22,7 @@ shopt -s extglob
 # Disable husky locally
 export HUSKY=0
 
-HOMEBREW_PREFIX="$(brew --prefix)"
+HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";

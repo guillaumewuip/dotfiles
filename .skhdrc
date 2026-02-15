@@ -1,7 +1,7 @@
 # open terminal
 ctrl - return [
-  *       : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
-  "kitty" ~
+  *       : ~/.bin/bin/ghostty-create-window.sh
+  "ghosty" ~
 ]
 
 shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
