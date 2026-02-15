@@ -87,12 +87,12 @@ __current_command=""
 function preexec() {
   # Extract command name (first word)
   __current_command="${1%% *}"
-  builtin printf '\033]0;%s - %s\007' "${__current_command}" "${PWD}"
+  builtin printf '\033]0;%s - %s\007' "${__current_command}" "${PWD/#$HOME/\~}"
 }
 
 function set_window_title() {
   __current_command=""
-  builtin printf '\033]0;%s\007' "${PWD}"
+  builtin printf '\033]0;%s\007' "${PWD/#$HOME/\~}"
 }
 
 starship_precmd_user_func="set_window_title"
