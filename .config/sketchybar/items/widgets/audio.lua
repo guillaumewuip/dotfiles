@@ -82,19 +82,30 @@ local audio = sbar.add("item", "widgets.audio", {
 	update_freq = 10,
 })
 
-local function render()
+local function render_output()
 	local output_icon = get_output_source_icon(state.output_source, state.output_volume)
+
+	if state.output_volume == 0 then
+		return output_icon
+	end
+
+	return string.format("%s%s", output_icon, format_percent(state.output_volume))
+end
+
+local function render_input()
 	local input_icon = get_input_source_icon(state.input_source, state.input_volume)
 
+	if state.input_source == "" then
+		return ""
+	end
+
+	return string.format(" %s%s", input_icon, format_percent(state.input_volume))
+end
+
+local function render()
 	audio:set({
 		label = {
-			string = string.format(
-				"%s%s %s%s",
-				output_icon,
-				format_percent(state.output_volume),
-				input_icon,
-				format_percent(state.input_volume)
-			),
+			string = string.format("%s%s", render_output(), render_input()),
 		},
 	})
 end
@@ -109,44 +120,45 @@ end
 local function refresh_output_source()
 	sbar.exec(get_switch_audio_source_command("output"), function(result)
 		state.output_source = trim(result)
+		render()
 	end)
 end
 
 local function refresh_input_source()
 	sbar.exec(get_switch_audio_source_command("input"), function(result)
 		state.input_source = trim(result)
+		render()
 	end)
 end
 
 local function refresh_output_volume()
 	sbar.exec("osascript -e 'output volume of (get volume settings)'", function(result)
 		state.output_volume = result
+		render()
 	end)
 end
 
 local function refresh_input_volume()
 	sbar.exec("osascript -e 'input volume of (get volume settings)'", function(result)
 		state.input_volume = result
+		render()
 	end)
 end
 
-local function refresh_and_render()
+local function refresh()
 	refresh_output_source()
 	refresh_output_volume()
 	refresh_input_source()
 	refresh_input_volume()
-
-	render()
 end
 
 audio:subscribe("volume_change", function(env)
 	state.output_volume = tonumber(env.INFO)
-
 	render()
 end)
 
 audio:subscribe({ "routine", "forced", "system_woke" }, function()
-	refresh_and_render()
+	refresh()
 end)
 
-refresh_and_render()
+refresh()
