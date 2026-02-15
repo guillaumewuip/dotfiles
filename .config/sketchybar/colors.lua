@@ -1,35 +1,44 @@
-return {
-	black = 0xff181819,
-	white = 0xffe2e2e3,
-	red = 0xfffc5d7c,
-	green = 0xff9ed072,
-	blue = 0xff76cce0,
-	yellow = 0xffe7c664,
-	orange = 0xfff39660,
-	magenta = 0xffb39df3,
-	grey = 0xff7f8490,
-	transparent = 0x00000000,
-
+local dark = {
 	bar = {
-		bg = 0x00000000,
-		border = 0xff2c2e34,
+		background = 0x00000000,
 	},
-	popup = {
-		bg = 0xc02c2e34,
-		border = 0xff7f8490,
+
+	icon = {
+		color = 0xffe2e2e3,
+		highlight_color = 0xffe2e2e3,
+		dimmed = 0xff7f8490,
+		warning = 0xfff39660,
+		error = 0xfffc5d7c,
 	},
-	bg1 = 0xff363944,
-	bg2 = 0xff414550,
 
-	with_alpha = function(color, alpha)
-		if alpha > 1.0 or alpha < 0.0 then
-			return color
-		end
-		return (color & 0x00ffffff) | (math.floor(alpha * 255.0) << 24)
-	end,
+	label = {
+		color = 0xff7f8490,
+		highlight_color = 0xffe2e2e3,
 
-	item = {
-		bg = 0xff414550,
-		border = 0xff181819,
+		dimmed = 0xff7f8490,
+		warning = 0xfff39660,
+		error = 0xfffc5d7c,
+	},
+
+	background = {
+		color = 0xff414550,
+		highlight_color = 0xff181819,
+		dimmed = 0x00000000,
+	},
+
+	border = {
+		color = 0xff7f8490,
+		highlight_color = 0xfff39660,
+	},
+
+	graph = {
+		blue = 0xff76cce0,
+		green = 0xff9ed072,
+		yellow = 0xffe7c664,
+		orange = 0xfff39660,
+		red = 0xfffc5d7c,
+		grey = 0xff7f8490,
 	},
 }
+
+return dark

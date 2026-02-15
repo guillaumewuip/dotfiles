@@ -53,7 +53,7 @@ local network_up = sbar.add("item", "widgets.network1", {
 			style = settings.font.style_map["Bold"],
 			size = 9.0,
 		},
-		color = colors.red,
+		color = colors.graph.red,
 		string = "??? Bps",
 	},
 	y_offset = 4,
@@ -77,7 +77,7 @@ local network_down = sbar.add("item", "widgets.network2", {
 			style = settings.font.style_map["Bold"],
 			size = 9.0,
 		},
-		color = colors.blue,
+		color = colors.graph.blue,
 		string = "??? Bps",
 	},
 	y_offset = -4,
@@ -92,7 +92,7 @@ local max_down_history = 1 -- number of values to average over for download
 local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 	position = "right",
 	graph = {
-		color = colors.red,
+		color = colors.graph.red,
 	},
 	background = {
 		height = 10,
@@ -111,7 +111,7 @@ local net_graph_down = sbar.add("graph", "widgets.net_graph_down", 42, {
 	position = "right",
 	padding_right = -49,
 	graph = {
-		color = colors.blue,
+		color = colors.graph.blue,
 	},
 	background = {
 		height = 10,
@@ -186,7 +186,7 @@ sbar.add("bracket", "widgets.network.bracket", {
 	net_graph_down.name,
 	status.name,
 }, {
-	background = { color = colors.bg1 },
+	background = { color = item.widget.background.color },
 })
 
 sbar.add("item", "widgets.network.right", {
@@ -195,8 +195,8 @@ sbar.add("item", "widgets.network.right", {
 })
 
 network_up:subscribe("network_update", function(env)
-	local up_color = (env.upload == "000 Bps") and colors.grey or colors.red
-	local down_color = (env.download == "000 Bps") and colors.grey or colors.blue
+	local up_color = (env.upload == "000 Bps") and colors.graph.grey or colors.graph.red
+	local down_color = (env.download == "000 Bps") and colors.graph.grey or colors.graph.blue
 
 	network_up:set({
 		icon = { color = up_color },

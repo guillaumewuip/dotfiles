@@ -4,28 +4,28 @@ local merge = require("helpers.merge")
 
 local primary = {
 	icon = {
-		color = colors.white,
-		highlight_color = colors.white,
+		color = colors.icon.color,
+		highlight_color = colors.icon.highlight_color,
 		padding_left = 8,
 		padding_right = 4,
 	},
 
 	label = {
-		color = colors.grey,
-		highlight_color = colors.white,
+		color = colors.label.color,
+		highlight_color = colors.label.highlight_color,
 		padding_left = 4,
 		padding_right = 8,
 	},
 
 	background = {
-		color = colors.bg2,
-		highlight_color = colors.bg2,
+		color = colors.background.color,
+		highlight_color = colors.background.highlight_color,
 	},
 
 	border = {
-		color = colors.black,
-		width = 1,
-		highlight_color = colors.grey,
+		color = colors.border.color,
+		highlight_color = colors.border.highlight_color,
+		width = 2,
 	},
 
 	padding_left = 3,
@@ -34,14 +34,14 @@ local primary = {
 
 local secondary = {
 	icon = {
-		color = colors.grey,
+		color = colors.icon.dimmed,
 
 		padding_right = 8,
 		padding_left = 0,
 	},
 
 	label = {
-		color = colors.grey,
+		color = colors.label.dimmed,
 
 		font = {
 			style = settings.font.style_map["Heavy"],
@@ -53,7 +53,7 @@ local secondary = {
 	},
 
 	background = {
-		color = colors.transparent,
+		color = colors.background.dimmed,
 	},
 
 	padding_left = 8,
@@ -62,7 +62,7 @@ local secondary = {
 
 local widget = merge.deep(primary, {
 	label = {
-		color = colors.white,
+		color = colors.icon.color,
 	},
 
 	padding_left = 2,

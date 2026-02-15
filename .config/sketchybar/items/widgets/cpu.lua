@@ -15,7 +15,7 @@ sbar.add("item", "widgets.resource.left", {
 local ram = sbar.add("graph", "ram", 42, {
 	position = "right",
 	graph = {
-		color = colors.blue,
+		color = colors.graph.blue,
 	},
 	background = {
 		drawing = true,
@@ -44,7 +44,7 @@ local ram = sbar.add("graph", "ram", 42, {
 local cpu = sbar.add("graph", "widgets.cpu", 42, {
 	position = "right",
 	graph = {
-		color = colors.blue,
+		color = colors.graph.blue,
 	},
 	background = {
 		drawing = true,
@@ -89,20 +89,20 @@ cpu:subscribe("cpu_update", function(env)
 	local load = tonumber(env.total_load)
 	cpu:push({ load / 100. })
 
-	local color = colors.blue
+	local color = colors.graph.grey
 	if load > 30 then
 		if load < 60 then
-			color = colors.yellow
+			color = colors.graph.yellow
 		elseif load < 80 then
-			color = colors.orange
+			color = colors.graph.orange
 		else
-			color = colors.red
+			color = colors.graph.red
 		end
 	end
 
 	cpu:set({
 		graph = { color = color },
-		label = "cpu " .. env.total_load .. "%",
+		label = { color = color, string = "cpu " .. env.total_load .. "%" },
 	})
 end)
 
@@ -112,13 +112,13 @@ ram:subscribe({ "routine", "forced", "system_woke" }, function(env)
 		local load = 100 - tonumber(percentage)
 		ram:push({ load / 100. })
 
-		local color = colors.green
+		local color = colors.graph.grey
 		if load >= 90 then
-			color = colors.red
+			color = colors.graph.red
 		elseif load >= 75 then
-			color = colors.orange
+			color = colors.graph.orange
 		elseif load >= 50 then
-			color = colors.yellow
+			color = colors.graph.yellow
 		end
 
 		ram:set({
