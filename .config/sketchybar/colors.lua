@@ -21,8 +21,8 @@ local dark = {
 	},
 
 	background = {
-		color = 0xffebebf0,
-		highlight_color = 0xffffffff,
+		color = 0xaaebebf0,
+		highlight_color = 0xaaffffff,
 		dimmed = 0x00000000,
 	},
 
