@@ -61,14 +61,14 @@ local function format_percent(volume)
 	if volume == nil then
 		return "--%"
 	end
-	return string.format("%02d%%", volume)
+	return string.format("%03d%%", volume)
 end
 
 local audio = sbar.add("item", "widgets.audio", {
 	position = "right",
 	icon = { drawing = false },
 	label = {
-		string = "􀊣 --% · 􀊱 --%",
+		string = "",
 		font = { family = settings.font.numbers },
 		color = item.widget.label.color,
 		padding_left = item.widget.icon.padding_left,
