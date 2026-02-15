@@ -25,7 +25,7 @@ local primary = {
 	border = {
 		color = colors.border.color,
 		highlight_color = colors.border.highlight_color,
-		width = 2,
+		width = 1,
 	},
 
 	padding_left = 3,

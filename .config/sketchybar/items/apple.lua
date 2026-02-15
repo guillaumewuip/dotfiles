@@ -5,6 +5,7 @@ sbar.add("item", {
 	icon = {
 		font = { size = 16.0 },
 		string = icons.apple,
+		color = item.primary.icon.color,
 		padding_left = item.primary.icon.padding_left,
 		padding_right = item.primary.label.padding_right,
 	},

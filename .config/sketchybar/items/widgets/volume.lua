@@ -24,7 +24,7 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 	position = "right",
 	icon = {
 		drawing = true,
-		string = icons.volume._100,
+		string = "",
 		width = 0,
 		align = "left",
 		color = colors.icon.dimmed,
@@ -61,6 +61,7 @@ sbar.add("item", "widgets.volume.left", {
 volume_percent:subscribe("volume_change", function(env)
 	local volume = tonumber(env.INFO)
 	local icon = icons.volume._0
+
 	if volume > 60 then
 		icon = icons.volume._100
 	elseif volume > 30 then
