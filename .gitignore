@@ -12,5 +12,6 @@ __pycache__
 !.config/gh/config.yml
 !.config/gh-dash
 !.config/atuin
+!.config/sketchybar
 
 .bashrc.d/*private-*
