@@ -68,10 +68,6 @@ front_app:subscribe("front_app_switched", function(env)
 	end)
 end)
 
--- Register custom events triggered by yabai - see .yabairc
-sbar.add("event", "window_focus")
-sbar.add("event", "title_change")
-
 front_app:subscribe("window_focus", function(env)
 	update_from_window_id(env.WINDOW_ID)
 end)
