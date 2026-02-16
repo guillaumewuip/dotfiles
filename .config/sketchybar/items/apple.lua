@@ -13,7 +13,6 @@ sbar.add("item", {
 	background = {
 		border_width = item.primary.border.width,
 		color = item.primary.background.color,
-		border_color = item.primary.border.color,
 	},
 	padding_left = 10,
 	padding_right = 22,

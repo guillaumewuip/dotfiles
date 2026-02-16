@@ -18,7 +18,6 @@ local calendar_event = sbar.add("item", "calendar_event", {
 	},
 	background = {
 		color = item.primary.background.color,
-		border_color = item.primary.border.color,
 	},
 	padding_left = item.primary.padding_left,
 	padding_right = item.primary.padding_right,
