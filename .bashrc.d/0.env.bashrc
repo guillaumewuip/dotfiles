@@ -87,9 +87,7 @@ __current_command=""
 function preexec() {
   # Extract command name (first word)
   __current_command="${1%% *}"
-  # Remove emojis before printing
-  local cmd_no_emoji="${__current_command//[^[:alnum:][:punct:][:space:]_-]/}"
-  builtin printf '\033]0;%s - %s\007' "${cmd_no_emoji}" "${PWD/#$HOME/\~}"
+  builtin printf '\033]0;%s - %s\007' "${__current_command}" "${PWD/#$HOME/\~}"
 }
 
 function set_window_title() {
