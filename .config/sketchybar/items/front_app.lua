@@ -36,7 +36,9 @@ sbar.add("bracket", { front_app_icon.name, front_app.name }, {
 })
 
 local function remove_emoji(text)
-	if not text then return text end
+	if not text then
+		return text
+	end
 	-- Remove emoji and other unicode symbols
 	-- Emoji ranges: U+1F300-U+1F9FF, U+2600-U+26FF, U+2700-U+27BF
 	-- Also remove variation selectors and zero-width joiners
@@ -50,13 +52,34 @@ local function remove_emoji(text)
 	return cleaned
 end
 
+local function clean_terminal_title(title)
+	if not title then
+		return title
+	end
+
+	-- Replace ~/workspace/kairos/worktree-* with kairos::
+	local cleaned = title:gsub("~/workspace/kairos/worktree%-", "kairos/")
+
+	-- If no match yet, remove ~/workspace/ prefix
+	if cleaned == title then
+		cleaned = title:gsub("~/workspace/", "")
+	end
+
+	-- If still no match, replace /Users/guillaume.clochard/ with ~/
+	if cleaned == title then
+		cleaned = title:gsub("/Users/guillaume%.clochard/", "~/")
+	end
+
+	return cleaned
+end
+
 local function set_front_app(app_name, title)
 	local lookup = app_icons[app_name]
 	local icon = ((lookup == nil) and app_icons["Default"] or lookup)
 	front_app_icon:set({ label = icon })
 
 	if app_name == "Ghostty" and title and title ~= "" then
-		local cleaned_title = remove_emoji(title)
+		local cleaned_title = clean_terminal_title(remove_emoji(title))
 		front_app:set({ label = { string = cleaned_title } })
 	else
 		front_app:set({ label = { string = app_name } })
