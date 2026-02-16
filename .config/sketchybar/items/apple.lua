@@ -1,3 +1,4 @@
+local colors = require("colors")
 local item = require("item")
 local icons = require("icons")
 
@@ -12,8 +13,8 @@ sbar.add("item", {
 	label = { drawing = false },
 	background = {
 		border_width = item.primary.border.width,
-		color = item.primary.background.color,
+		color = colors.bar.background,
 	},
 	padding_left = 10,
-	padding_right = 22,
+	padding_right = item.primary.padding_right,
 })
