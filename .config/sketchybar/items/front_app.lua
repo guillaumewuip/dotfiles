@@ -35,13 +35,29 @@ sbar.add("bracket", { front_app_icon.name, front_app.name }, {
 	},
 })
 
+local function remove_emoji(text)
+	if not text then return text end
+	-- Remove emoji and other unicode symbols
+	-- Emoji ranges: U+1F300-U+1F9FF, U+2600-U+26FF, U+2700-U+27BF
+	-- Also remove variation selectors and zero-width joiners
+	local cleaned = text:gsub("[\u{1F300}-\u{1F9FF}]", "")
+	cleaned = cleaned:gsub("[\u{2600}-\u{26FF}]", "")
+	cleaned = cleaned:gsub("[\u{2700}-\u{27BF}]", "")
+	cleaned = cleaned:gsub("[\u{FE00}-\u{FE0F}]", "") -- variation selectors
+	cleaned = cleaned:gsub("[\u{200D}]", "") -- zero-width joiner
+	-- Trim leading/trailing whitespace
+	cleaned = cleaned:gsub("^%s*(.-)%s*$", "%1")
+	return cleaned
+end
+
 local function set_front_app(app_name, title)
 	local lookup = app_icons[app_name]
 	local icon = ((lookup == nil) and app_icons["Default"] or lookup)
 	front_app_icon:set({ label = icon })
 
 	if app_name == "Ghostty" and title and title ~= "" then
-		front_app:set({ label = { string = title } })
+		local cleaned_title = remove_emoji(title)
+		front_app:set({ label = { string = cleaned_title } })
 	else
 		front_app:set({ label = { string = app_name } })
 	end

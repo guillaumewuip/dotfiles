@@ -37,7 +37,7 @@ local function format_duration(seconds)
 end
 
 local function update_calendar_event()
-	sbar.exec("~/.config/sketchybar/helpers/calendar_event.sh", function(result)
+	sbar.exec("~/.config/sketchybar/helpers/calendar_event.swift", function(result)
 		result = result:gsub("^%s*(.-)%s*$", "%1") -- trim whitespace
 
 		-- Hide item when no event
@@ -48,8 +48,8 @@ local function update_calendar_event()
 			return
 		end
 
-		-- Parse result: "title|start_date|end_date|status"
-		local title, start_date, end_date, status = result:match("([^|]+)|([^|]+)|([^|]+)|([^|]+)")
+		-- Parse result: "title|start_date|end_date"
+		local title, start_date, end_date = result:match("([^|]+)|([^|]+)|([^|]+)")
 
 		if not title then
 			calendar_event:set({
@@ -75,16 +75,16 @@ local function update_calendar_event()
 		local label_color = item.primary.label.color
 		local icon_color = item.primary.icon.color
 
-		if status == "current" then
-			-- Event is happening now
+		if start_timestamp <= now then
+			-- Event is happening now (start date is in the past)
 			local time_remaining = end_timestamp - now
 			label_str = string.format("%s (ends in %s)", title, format_duration(time_remaining))
-		elseif status == "upcoming" then
-			-- Event is upcoming
+		else
+			-- Event is upcoming (start date is in the future)
 			local time_until = start_timestamp - now
 			local minutes_until = math.floor(time_until / 60)
 
-			-- Orange background if starting in less than 10 minutes
+			-- Orange background if starting in less than 15 minutes
 			if minutes_until < 15 then
 				icon_color = colors.icon.warning
 				label_color = colors.label.warning
