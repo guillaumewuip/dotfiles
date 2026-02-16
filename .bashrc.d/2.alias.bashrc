@@ -53,5 +53,6 @@ alias fuck='$(thefuck $(fc -ln -1))'
 
 alias pp="pnpm i; pnpm turbo run build"
 alias p="pnpm turbo run build"
+alias ci="pnpm run format --fix && pnpm run lint --fix && pnpm run test:unit -u"
 
 alias c="copilot --enable-all-github-mcp-tools --allow-all-tools --experimental"
