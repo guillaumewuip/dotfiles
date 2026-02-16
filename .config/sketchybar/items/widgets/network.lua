@@ -6,6 +6,8 @@ local settings = require("settings")
 -- Execute the event provider binary which provides the event "network_update"
 -- for the current network interface, which is fired every 2.0 seconds.
 
+local current_interface = nil
+
 local function start_network_load()
 	sbar.exec("route get default 2>/dev/null | awk '/interface: / {print $2}'", function(iface)
 		iface = iface and iface:match("^%s*(.-)%s*$") -- trim whitespace
@@ -13,9 +15,16 @@ local function start_network_load()
 			return
 		end
 
+		-- Only restart if interface changed
+		if iface == current_interface then
+			return
+		end
+
+		current_interface = iface
+
 		sbar.exec(
 			string.format(
-				"killall network_load >/dev/null 2>&1; "
+				"pkill -f 'network_load.*network_update' >/dev/null 2>&1; "
 					.. "$CONFIG_DIR/helpers/event_providers/network_load/bin/network_load %s network_update 2.0 &",
 				iface
 			)
@@ -29,6 +38,10 @@ start_network_load()
 -- re-run when system wakes or network changes
 sbar.add("event", "system_woke"):subscribe("system_woke", start_network_load)
 sbar.add("event", "network_change"):subscribe("network_change", start_network_load)
+
+-- Periodically check if interface changed (every 10 seconds)
+sbar.exec("sleep 30 && while true; do sketchybar --trigger interface_check; sleep 30; done &")
+sbar.add("event", "interface_check"):subscribe("interface_check", start_network_load)
 
 sbar.add("item", "widgets.network.left", {
 	position = "right",
@@ -140,8 +153,8 @@ net_graph_down:subscribe("network_update", function(env)
 	end
 	local avg_up = sum / #up_history
 
-	-- normalize and push
-	net_graph_up:push({ math.min(avg_up / 1000, 1) })
+	-- normalize and push (scale: divide by 100KB)
+	net_graph_up:push({ math.min(avg_up / 100, 1) })
 
 	-------------
 
@@ -160,8 +173,8 @@ net_graph_down:subscribe("network_update", function(env)
 	end
 	local avg_down = sum / #down_history
 
-	-- normalize and push
-	net_graph_down:push({ math.min(avg_down / 1000, 1) })
+	-- normalize and push (scale: divide by 100KB)
+	net_graph_down:push({ math.min(avg_down / 100, 1) })
 end)
 
 local status = sbar.add("item", "widgets.network.status", {
@@ -240,7 +253,7 @@ local function updateNetworkStatus()
 						if ssid_str:match("iPhone") then
 							-- Detected hotspot
 							status:set({
-								icon = { string = icon.network.hotspot },
+								icon = { string = icons.network.hotspot },
 							})
 						else
 							-- Normal Wi-Fi
