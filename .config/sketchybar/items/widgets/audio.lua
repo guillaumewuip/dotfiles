@@ -34,7 +34,7 @@ local function get_output_source_icon(source, volume)
 		return icons.sound.airpods
 	elseif normalized_source:match("denon") then
 		return icons.sound.hifi
-	elseif normalized_source:match("lsx") then
+	elseif normalized_source:match("airplay") then
 		return icons.sound.hifi
 	end
 
