@@ -69,7 +69,7 @@ local network_up = sbar.add("item", "widgets.network1", {
 		color = colors.graph.red,
 		string = "??? Bps",
 	},
-	y_offset = 4,
+	y_offset = 6,
 	padding_right = item.widget.label.padding_right + item.widget.padding_right,
 })
 
@@ -114,7 +114,7 @@ local net_graph_up = sbar.add("graph", "widgets.net_graph_up", 42, {
 		drawing = true,
 	},
 	updates = true,
-	y_offset = 7,
+	y_offset = 5,
 	padding_right = -2,
 
 	update_freq = 30,
