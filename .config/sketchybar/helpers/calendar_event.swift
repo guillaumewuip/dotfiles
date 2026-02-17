@@ -31,7 +31,7 @@ func findNextEvent(granted: Bool) {
     
     // Find first event that hasn't ended yet
     for event in events.sorted(by: { $0.startDate < $1.startDate }) {
-        if event.endDate >= now {
+        if event.endDate >= now && !event.isAllDay {
             let title = event.title ?? "Untitled"
             let startTs = Int(event.startDate.timeIntervalSince1970)
             let endTs = Int(event.endDate.timeIntervalSince1970)
