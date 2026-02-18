@@ -89,7 +89,7 @@ local function render_calendar_event()
 end
 
 local function fetch_calendar_event()
-	sbar.exec("~/.config/sketchybar/helpers/calendar_event.swift", function(result)
+	sbar.exec("~/.config/sketchybar/helpers/calendar_event", function(result)
 		result = result:gsub("^%s*(.-)%s*$", "%1") -- trim whitespace
 
 		if result == "NO_EVENT" or result == "" then

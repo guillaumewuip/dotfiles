@@ -43,4 +43,4 @@ func findNextEvent(granted: Bool) {
     print("NO_EVENT")
 }
 
-semaphore.wait()
+_ = semaphore.wait(timeout: .now() + 5)
