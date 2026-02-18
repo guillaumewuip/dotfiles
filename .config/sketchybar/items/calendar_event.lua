@@ -21,8 +21,8 @@ local calendar_event = sbar.add("item", "calendar_event", {
 	},
 	padding_left = item.primary.padding_left,
 	padding_right = item.primary.padding_right,
-	update_freq = 30,
-	updates = "always",
+	update_freq = 60,
+	updates = "on",
 	click_script = "open -a 'Calendar'",
 })
 
@@ -37,79 +37,88 @@ local function format_duration(seconds)
 	end
 end
 
-local function update_calendar_event()
+-- Cached event data from the last Swift script execution
+local cached_event = nil
+
+local function render_calendar_event()
+	if not cached_event then
+		calendar_event:set({ drawing = false })
+		return
+	end
+
+	local now = os.time()
+	local label_str = ""
+	local label_color = item.primary.label.color
+	local icon_color = item.primary.icon.color
+
+	if cached_event.start_timestamp <= now then
+		local time_remaining = cached_event.end_timestamp - now
+		if time_remaining <= 0 then
+			-- Event has ended, clear cache
+			cached_event = nil
+			calendar_event:set({ drawing = false })
+			return
+		end
+		label_str = string.format("%s (ends in %s)", cached_event.title, format_duration(time_remaining))
+	else
+		local time_until = cached_event.start_timestamp - now
+		local minutes_until = math.floor(time_until / 60)
+
+		if minutes_until < 15 then
+			icon_color = colors.icon.warning
+			label_color = colors.label.warning
+		end
+
+		label_str = string.format("%s (in %s)", cached_event.title, format_duration(time_until))
+	end
+
+	calendar_event:set({
+		drawing = true,
+		icon = { color = icon_color },
+		label = { string = label_str, color = label_color },
+	})
+end
+
+local function fetch_calendar_event()
 	sbar.exec("~/.config/sketchybar/helpers/calendar_event.swift", function(result)
 		result = result:gsub("^%s*(.-)%s*$", "%1") -- trim whitespace
 
-		-- Hide item when no event
 		if result == "NO_EVENT" or result == "" then
-			calendar_event:set({
-				drawing = false,
-			})
+			cached_event = nil
+			render_calendar_event()
 			return
 		end
 
-		-- Parse result: "title|start_date|end_date"
 		local title, start_date, end_date = result:match("([^|]+)|([^|]+)|([^|]+)")
 
 		if not title then
-			calendar_event:set({
-				drawing = true,
-				label = "error no title!",
-			})
+			calendar_event:set({ drawing = true, label = "error no title!" })
 			return
 		end
 
-		local now = os.time()
 		local start_timestamp = tonumber(start_date)
 		local end_timestamp = tonumber(end_date)
 
 		if not start_timestamp or not end_timestamp then
-			calendar_event:set({
-				drawing = true,
-				label = "error with date!",
-			})
+			calendar_event:set({ drawing = true, label = "error with date!" })
 			return
 		end
 
-		local label_str = ""
-		local label_color = item.primary.label.color
-		local icon_color = item.primary.icon.color
+		cached_event = {
+			title = title,
+			start_timestamp = start_timestamp,
+			end_timestamp = end_timestamp,
+		}
 
-		if start_timestamp <= now then
-			-- Event is happening now (start date is in the past)
-			local time_remaining = end_timestamp - now
-			label_str = string.format("%s (ends in %s)", title, format_duration(time_remaining))
-		else
-			-- Event is upcoming (start date is in the future)
-			local time_until = start_timestamp - now
-			local minutes_until = math.floor(time_until / 60)
-
-			-- Orange background if starting in less than 15 minutes
-			if minutes_until < 15 then
-				icon_color = colors.icon.warning
-				label_color = colors.label.warning
-			end
-
-			label_str = string.format("%s (in %s)", title, format_duration(time_until))
-		end
-
-		calendar_event:set({
-			drawing = true,
-			icon = {
-				color = icon_color,
-			},
-			label = {
-				string = label_str,
-				color = label_color,
-			},
-		})
+		render_calendar_event()
 	end)
 end
 
 calendar_event:subscribe({ "forced", "routine", "system_woke" }, function()
-	update_calendar_event()
+	render_calendar_event()
+
+	fetch_calendar_event()
 end)
 
--- Initial update
-update_calendar_event()
+-- Initial fetch
+fetch_calendar_event()
