@@ -22,6 +22,7 @@ local calendar_event = sbar.add("item", "calendar_event", {
 	padding_left = item.primary.padding_left,
 	padding_right = item.primary.padding_right,
 	update_freq = 30,
+	updates = "always",
 	click_script = "open -a 'Calendar'",
 })
 
