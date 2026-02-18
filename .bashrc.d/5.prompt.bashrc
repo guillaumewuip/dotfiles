@@ -14,7 +14,7 @@ fi
 readonly YELLOW_BOLD=$'\001\033[1;33m\002'
 readonly ORANGE_BOLD=$'\001\033[1;35m\002'
 readonly RED_BOLD=$'\001\033[1;31m\002'
-readonly PURPLE_BOLD=$'\001\033[1;45m\002'
+readonly PURPLE_BOLD=$'\001\033[1;34m\002'
 readonly RESET=$'\001\033[0m\002'
 
 # ============================================================================
