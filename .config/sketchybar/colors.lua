@@ -9,6 +9,7 @@ local dark = {
 		dimmed = 0xff8e8e93,
 		warning = 0xffd79921,
 		error = 0xffff453a,
+		inverted = 0xffffffff,
 	},
 
 	label = {
@@ -18,6 +19,7 @@ local dark = {
 		dimmed = 0xff8e8e93,
 		warning = 0xffd79921,
 		error = 0xffff453a,
+		inverted = 0xffffffff,
 	},
 
 	background = {

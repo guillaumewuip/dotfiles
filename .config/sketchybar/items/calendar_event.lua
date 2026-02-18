@@ -51,6 +51,8 @@ local function render_calendar_event()
 	local label_color = item.primary.label.color
 	local icon_color = item.primary.icon.color
 
+	local bg_color = item.primary.background.color
+
 	if cached_event.start_timestamp <= now then
 		local time_remaining = cached_event.end_timestamp - now
 		if time_remaining <= 0 then
@@ -64,7 +66,13 @@ local function render_calendar_event()
 		local time_until = cached_event.start_timestamp - now
 		local minutes_until = math.floor(time_until / 60)
 
-		if minutes_until < 15 then
+		if minutes_until < 5 then
+			-- urgent: white text on orange background
+			icon_color = colors.icon.inverted
+			label_color = colors.label.inverted
+			bg_color = colors.icon.warning
+		elseif minutes_until < 15 then
+			-- warning: orange text
 			icon_color = colors.icon.warning
 			label_color = colors.label.warning
 		end
@@ -76,6 +84,7 @@ local function render_calendar_event()
 		drawing = true,
 		icon = { color = icon_color },
 		label = { string = label_str, color = label_color },
+		background = { color = bg_color },
 	})
 end
 
