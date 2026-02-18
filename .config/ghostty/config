@@ -22,4 +22,4 @@ keybind = super+n=new_window
 keybind = ctrl+enter=new_window
 
 # https://github.com/ghostty-org/ghostty/discussions/4018
-shell-integration = none
+shell-integration = bash

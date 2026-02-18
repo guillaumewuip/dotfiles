@@ -170,13 +170,6 @@ build_prompt() {
 export -f git_status_format
 export -f build_prompt
 
-__current_command=""
-
-# update terminal window to be <command> - <current directory>
-function preexec() {
-	# Extract command name (first word)
-	__current_command="${1%% *}"
-	builtin printf '\033]0;%s - %s\007' "${__current_command}" "${PWD/#$HOME/\~}"
-}
-
 PS1='$(build_prompt)'
+
+[[ ! ${BLE_VERSION-} ]] || ble-attach

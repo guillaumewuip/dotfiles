@@ -17,6 +17,8 @@ shopt -s extglob
 # Disable husky locally
 export HUSKY=0
 
+[[ $- == *i* ]] && source -- ~/.local/share/blesh/ble.sh --attach=none
+
 HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
@@ -63,7 +65,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+# [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -76,12 +78,6 @@ if [ -d ~/.bash_completion.d ]; then
       source "$file"
   done
 fi
-
-# Starship integration disabled - Replaced with native bash prompt in 5.prompt.bashrc
-# if [[ "$TERM_PROGRAM" != "vscode" ]]; then
-#   export STARSHIP_CONFIG=~/.config/starship/config.toml
-#   eval "$(starship init bash)"
-# fi
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init bash)"
