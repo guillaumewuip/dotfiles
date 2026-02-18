@@ -4,11 +4,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
-# Ghostty shell integration for Bash. This should be at the top of your bashrc!
-if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
-    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
-fi
-
 export EDITOR="/opt/homebrew/bin/nvim"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -82,25 +77,11 @@ if [ -d ~/.bash_completion.d ]; then
   done
 fi
 
-__current_command=""
-
-function preexec() {
-  # Extract command name (first word)
-  __current_command="${1%% *}"
-  builtin printf '\033]0;%s - %s\007' "${__current_command}" "${PWD/#$HOME/\~}"
-}
-
-function set_window_title() {
-  __current_command=""
-  builtin printf '\033]0;%s\007' "${PWD/#$HOME/\~}"
-}
-
-starship_precmd_user_func="set_window_title"
-
-if [[ "$TERM_PROGRAM" != "vscode" ]]; then
-  export STARSHIP_CONFIG=~/.config/starship/config.toml
-  eval "$(starship init bash)"
-fi
+# Starship integration disabled - Replaced with native bash prompt in 5.prompt.bashrc
+# if [[ "$TERM_PROGRAM" != "vscode" ]]; then
+#   export STARSHIP_CONFIG=~/.config/starship/config.toml
+#   eval "$(starship init bash)"
+# fi
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init bash)"
