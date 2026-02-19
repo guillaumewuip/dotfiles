@@ -16,5 +16,6 @@ __pycache__
 !.config/blesh
 
 .bashrc.d/*private-*
+.zshrc.d/*private-*
 
 .config/sketchybar/helpers/calendar_event
