@@ -3,45 +3,10 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
--- Execute the event provider binary which provides the event "network_update"
--- for the current network interface, which is fired every 2.0 seconds.
-
-local current_interface = nil
-
-local function start_network_load()
-	sbar.exec("route get default 2>/dev/null | awk '/interface: / {print $2}'", function(iface)
-		iface = iface and iface:match("^%s*(.-)%s*$") -- trim whitespace
-		if not iface or iface == "" then
-			return
-		end
-
-		-- Only restart if interface changed
-		if iface == current_interface then
-			return
-		end
-
-		current_interface = iface
-
-		sbar.exec(
-			string.format(
-				"pkill -f 'network_load.*network_update' >/dev/null 2>&1; "
-					.. "$CONFIG_DIR/helpers/event_providers/network_load/bin/network_load %s network_update 2.0 &",
-				iface
-			)
-		)
-	end)
-end
-
--- run immediately at startup
-start_network_load()
-
--- re-run when system wakes or network changes
-sbar.add("event", "system_woke"):subscribe("system_woke", start_network_load)
-sbar.add("event", "network_change"):subscribe("network_change", start_network_load)
-
--- Periodically check if interface changed (every 10 seconds)
-sbar.exec("sleep 30 && while true; do sketchybar --trigger interface_check; sleep 30; done &")
-sbar.add("event", "interface_check"):subscribe("interface_check", start_network_load)
+-- Launch the self-adapting Swift network monitor once.
+sbar.exec(
+	"kill $(pgrep -f 'sketchybar/helpers/network_load$') 2>/dev/null; sleep 0.2; ~/.config/sketchybar/helpers/network_load &"
+)
 
 sbar.add("item", "widgets.network.left", {
 	position = "right",
