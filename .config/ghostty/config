@@ -5,9 +5,14 @@
 # theme = "Dark Pastel"
 theme = "/Users/guillaume.clochard/.config/ghostty/theme.conf"
 
-font-family = "FiraCode Nerd Font Mono"
+font-family = "FiraCode Nerd Font"
 font-style = Retina
 font-style-bold = Bold
+
+# font-family = "MesloLGS Nerd Font"
+# font-style = Regular
+# font-style-bold = Bold
+ 
 bold-color = bright
 font-size = 12
 
