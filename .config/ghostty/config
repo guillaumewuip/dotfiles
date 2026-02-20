@@ -18,7 +18,7 @@ macos-option-as-alt = false
 
 confirm-close-surface=false
 
-#shell-integration-features = cursor,sudo
+shell-integration = none
+shell-integration-features = cursor,sudo,ssh-env,ssh-terminfo,no-title
 
-keybind = super+n=new_window
 keybind = ctrl+enter=new_window
