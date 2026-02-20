@@ -11,6 +11,60 @@ export ZSH="$HOME/.oh-my-zsh"
 # Theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_MAXLENGTH=512
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+ZSH_HIGHLIGHT_STYLES[default]='none'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='none'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='none'
+ZSH_HIGHLIGHT_STYLES[global-alias]='none'
+ZSH_HIGHLIGHT_STYLES[precommand]='none'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='none'
+ZSH_HIGHLIGHT_STYLES[autodirectory]='none'
+ZSH_HIGHLIGHT_STYLES[path]='none'
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='none'
+ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='none'
+ZSH_HIGHLIGHT_STYLES[globbing]='none'
+ZSH_HIGHLIGHT_STYLES[history-expansion]='none'
+ZSH_HIGHLIGHT_STYLES[command-substitution]='none'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='none'
+ZSH_HIGHLIGHT_STYLES[process-substitution]='none'
+ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='none'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='none'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='none'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='none'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[rc-quote]='none'
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[assign]='none'
+ZSH_HIGHLIGHT_STYLES[redirection]='none'
+ZSH_HIGHLIGHT_STYLES[comment]='none'
+ZSH_HIGHLIGHT_STYLES[named-fd]='none'
+ZSH_HIGHLIGHT_STYLES[numeric-fd]='none'
+ZSH_HIGHLIGHT_STYLES[arg0]='none'
+
+ZSH_HIGHLIGHT_STYLES[bracket-error]='fg=red,bold'
+ZSH_HIGHLIGHT_STYLES[bracket-level-1]='none'
+ZSH_HIGHLIGHT_STYLES[bracket-level-2]='none'
+ZSH_HIGHLIGHT_STYLES[bracket-level-3]='none'
+ZSH_HIGHLIGHT_STYLES[bracket-level-4]='none'
+ZSH_HIGHLIGHT_STYLES[bracket-level-5]='none'
+ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]='none'
+
+DISABLE_FZF_KEY_BINDINGS="true"
+DISABLE_AUTO_TITLE="true"
+
+function zvm_config() {
+  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+}
+
 # Plugins
 plugins=(
   zsh-vi-mode
@@ -20,16 +74,9 @@ plugins=(
   sudo
   fzf
   fzf-tab
-  fast-syntax-highlighting
   zsh-dot-up
+  zsh-syntax-highlighting
 )
-
-DISABLE_FZF_KEY_BINDINGS="true"
-DISABLE_AUTO_TITLE="true"
-
-function zvm_config() {
-  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-}
 
 source $ZSH/oh-my-zsh.sh
 
