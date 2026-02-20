@@ -5,8 +5,8 @@
 # theme = "Dark Pastel"
 theme = "/Users/guillaume.clochard/.config/ghostty/theme.conf"
 
-font-family = "Menlo"
-font-style = SemiBold
+font-family = "FiraCode Nerd Font Mono"
+font-style = Retina
 font-style-bold = Bold
 bold-color = bright
 font-size = 12
