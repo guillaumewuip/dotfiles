@@ -33,13 +33,6 @@ alias l="ls -lF ${colorflag}" # all files, in long format
 alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
 alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
 
-# Quicker navigation
-alias home="cd ~"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
 alias goo='cd ~/workspace/$(cd ~/workspace; fd . --maxdepth 7 --type d | fzf)'
 alias go='cd $(fd . --maxdepth 7 --type d | fzf)'
 alias gog='cd $(git rev-parse --show-toplevel)/$(cd $(git rev-parse --show-toplevel); fd . --maxdepth 5 --type d | fzf)'

@@ -14,16 +14,18 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Plugins
 plugins=(
   zsh-vi-mode
-  safe-paste
-  # dotenv
   git
-  gh
+  gitfast
   kubectx
-  nodenv
   sudo
   fzf
-  zsh-interactive-cd
+  fzf-tab
+  fast-syntax-highlighting
+  zsh-dot-up
 )
+
+DISABLE_FZF_KEY_BINDINGS="true"
+DISABLE_AUTO_TITLE="true"
 
 function zvm_config() {
   ZVM_SYSTEM_CLIPBOARD_ENABLED=true

@@ -18,5 +18,7 @@ macos-option-as-alt = false
 
 confirm-close-surface=false
 
+#shell-integration-features = cursor,sudo
+
 keybind = super+n=new_window
 keybind = ctrl+enter=new_window
