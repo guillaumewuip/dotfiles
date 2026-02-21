@@ -42,7 +42,7 @@ for i = 1, 10, 1 do
 			icon = { highlight = selected },
 			label = { highlight = selected },
 			background = {
-				color = selected and item.primary.background.highlight_color or item.primary.background.color,
+				color = selected and colors.space_highlight_colors[i] or item.primary.background.color,
 				border_color = selected and item.primary.border.highlight_color or item.primary.border.color,
 			},
 		})

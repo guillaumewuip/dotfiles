@@ -41,6 +41,20 @@ local dark = {
 		red = 0xffff453a,
 		grey = 0xff8e8e93,
 	},
+
+	-- Per-space highlight background colors (selected state), light pastel theme
+	space_highlight_colors = {
+		0xaaffffff, -- space 1: white
+		0xaaffffff, -- space 2: white
+		0xaabdddff, -- space 3: soft blue
+		0xaab5f0b5, -- space 4: soft green
+		0xaaffedaa, -- space 5: soft yellow
+		0xaaffdaaa, -- space 6: soft orange
+		0xaaffb8b8, -- space 7: soft pink
+		0xaad8b8ff, -- space 8: soft lavender
+		0xaab8eeee, -- space 9: soft cyan
+		0xaaffc8d8, -- space 10: soft rose
+	},
 }
 
 return dark
