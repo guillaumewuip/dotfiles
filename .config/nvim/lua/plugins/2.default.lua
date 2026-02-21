@@ -267,7 +267,7 @@ return {
             callback = function()
               vim.lsp.buf.code_action({ -- TODO working when the cursor is on the line only?
                 context = {
-                  only = { "source.organizeImports.biome" },
+                  only = { "source.organizeImports" },
                   diagnostics = {},
                 },
                 apply = true,
