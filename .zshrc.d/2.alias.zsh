@@ -46,3 +46,5 @@ alias ci="pnpm run format --fix && pnpm run lint --fix && pnpm run test:unit -u"
 
 alias c="copilot --enable-all-github-mcp-tools --allow-all-tools --experimental --disable-mcp-server=tana --disable-mcp-server=atlassian"
 alias t="copilot --allow-all-tools --disable-mcp-server=atlassian --disable-mcp-server=context7"
+
+alias n='vim __notes.md'
