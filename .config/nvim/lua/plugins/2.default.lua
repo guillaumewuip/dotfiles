@@ -234,6 +234,16 @@ return {
   },
 
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        vtsls = false,
+        tsgo = {},
+      },
+    },
+  },
+
+  {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
