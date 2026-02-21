@@ -19,6 +19,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export PATH="$HOME/.atuin/bin:$PATH"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 export NODE_COMPILE_CACHE=~/.cache/nodejs/compile-cache
 
 # pnpm

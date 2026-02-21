@@ -14,6 +14,7 @@ __pycache__
 !.config/atuin
 !.config/sketchybar
 !.config/blesh
+!.config/lazygit
 
 .bashrc.d/*private-*
 .zshrc.d/*private-*
