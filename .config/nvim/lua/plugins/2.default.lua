@@ -244,6 +244,26 @@ return {
   },
 
   {
+    "stevearc/conform.nvim",
+    opts = function(_, opts)
+      local biome_filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "jsonc",
+      }
+
+      for _, ft in ipairs(biome_filetypes) do
+        local existing = opts.formatters_by_ft[ft] or {}
+        -- Prepend biome-organize-imports so it runs before biome
+        opts.formatters_by_ft[ft] = vim.list_extend({ "biome-organize-imports" }, existing)
+      end
+    end,
+  },
+
+  {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
@@ -254,28 +274,6 @@ return {
         require("none-ls.formatting.eslint_d"),
         require("none-ls.code_actions.eslint_d"),
       })
-
-      local lspconfig = require("lspconfig")
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-      -- lspconfig.biome.setup({
-      --   capabilities = capabilities,
-      --   on_attach = function(_client, bufnr)
-      --     vim.api.nvim_create_autocmd("BufWritePre", {
-      --       group = vim.api.nvim_create_augroup("BiomeOrganizeImports", { clear = true }),
-      --       buffer = bufnr,
-      --       callback = function()
-      --         vim.lsp.buf.code_action({ -- TODO working when the cursor is on the line only?
-      --           context = {
-      --             only = { "source.organizeImports" },
-      --             diagnostics = {},
-      --           },
-      --           apply = true,
-      --         })
-      --       end,
-      --     })
-      --   end,
-      -- })
     end,
   },
 
