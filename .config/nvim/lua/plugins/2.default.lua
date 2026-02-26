@@ -258,24 +258,24 @@ return {
       local lspconfig = require("lspconfig")
       local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-      lspconfig.biome.setup({
-        capabilities = capabilities,
-        on_attach = function(_client, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("BiomeOrganizeImports", { clear = true }),
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.code_action({ -- TODO working when the cursor is on the line only?
-                context = {
-                  only = { "source.organizeImports" },
-                  diagnostics = {},
-                },
-                apply = true,
-              })
-            end,
-          })
-        end,
-      })
+      -- lspconfig.biome.setup({
+      --   capabilities = capabilities,
+      --   on_attach = function(_client, bufnr)
+      --     vim.api.nvim_create_autocmd("BufWritePre", {
+      --       group = vim.api.nvim_create_augroup("BiomeOrganizeImports", { clear = true }),
+      --       buffer = bufnr,
+      --       callback = function()
+      --         vim.lsp.buf.code_action({ -- TODO working when the cursor is on the line only?
+      --           context = {
+      --             only = { "source.organizeImports" },
+      --             diagnostics = {},
+      --           },
+      --           apply = true,
+      --         })
+      --       end,
+      --     })
+      --   end,
+      -- })
     end,
   },
 
