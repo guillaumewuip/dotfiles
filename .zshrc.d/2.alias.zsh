@@ -42,7 +42,7 @@ alias sudo='sudo '
 
 alias pp="pnpm i; pnpm turbo run build"
 alias p="pnpm turbo run build"
-alias ci="pnpm run format --fix && pnpm run lint --fix && pnpm run test:unit -u && pnpm run build"
+alias ci="pnpm run format --fix && pnpm run lint --fix && pnpm turbo run typings && pnpm run test:unit -u && pnpm turbo run build"
 
 alias c="copilot --enable-all-github-mcp-tools --allow-all-tools --experimental --disable-mcp-server=tana --disable-mcp-server=atlassian --model=claude-sonnet-4.6"
 alias t="copilot --allow-all-tools --disable-mcp-server=atlassian --disable-mcp-server=context7 --model=claude-opus-4.6"
