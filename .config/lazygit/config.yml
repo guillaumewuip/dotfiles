@@ -2,3 +2,9 @@ git:
   pagers:
     - pager: delta --dark --paging=never
   overrideGpg: true
+customCommands:
+  - key: P
+    context: branches
+    description: Create pull request (git pr)
+    command: git pr
+    subprocess: true
