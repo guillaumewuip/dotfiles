@@ -27,5 +27,6 @@ clipboard-read = allow
 clipboard-write = allow
 
 shell-integration = detect
+bell-features = attention,title
 
 keybind = ctrl+enter=new_window
