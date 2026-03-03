@@ -3,8 +3,8 @@ git:
     - pager: delta --dark --paging=never
   overrideGpg: true
 customCommands:
-  - key: P
-    context: branches
+  - key: <c-p>
+    context: localBranches
     description: Create pull request (git pr)
     command: git pr
-    subprocess: true
+    output: terminal
