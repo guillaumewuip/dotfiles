@@ -20,3 +20,4 @@ __pycache__
 .zshrc.d/*private-*
 
 .config/sketchybar/helpers/calendar_event
+.config/sketchybar/helpers/network_load
