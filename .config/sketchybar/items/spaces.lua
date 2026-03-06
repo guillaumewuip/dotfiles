@@ -60,9 +60,9 @@ local function check_ghostty_bell_in_space(space_number, callback)
 		local has_bell = false
 		if result and result ~= "" then
 			-- Check each line (each window title) for bell emoji prefix
-			for title in result:gmatch("[^\r\n]+") do
+			for raw_title in result:gmatch("[^\r\n]+") do
 				-- Remove quotes from jq output
-				title = title:gsub('^"', ""):gsub('"$', "")
+				local title = raw_title:gsub('^"', ""):gsub('"$', "")
 				-- Check if title starts with bell emoji
 				if title:match("^🔔") then
 					has_bell = true
