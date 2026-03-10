@@ -9,12 +9,17 @@ font-family = "FiraCode Nerd Font"
 font-style = Retina
 font-style-bold = Bold
 
-# font-family = "MesloLGS Nerd Font"
+#font-family = "MesloLGS Nerd Font"
 # font-style = Regular
 # font-style-bold = Bold
- 
+
+font-thicken          = true
+font-thicken-strength = 1
+
 bold-color = bright
-font-size = 12
+font-size  = 12
+
+window-inherit-font-size = true
 
 link-url = true
 
