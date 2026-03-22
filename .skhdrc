@@ -1,8 +1,6 @@
-# open terminal
-ctrl - return [
-  *       : ~/.bin/bin/ghostty-create-window.sh
-  "ghosty" ~
-]
+ctrl - return: osascript -e 'tell application "Ghostty" to new window'
+
+shift + ctrl - return : osascript -e 'tell application "Ghostty"' -e 'set cfg to new surface configuration' -e 'set initial working directory of cfg to "/Users/guillaume.clochard/workspace/kairos"' -e 'new window with configuration cfg' -e 'end tell'
 
 shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
 
