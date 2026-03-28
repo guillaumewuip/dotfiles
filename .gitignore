@@ -21,3 +21,5 @@ __pycache__
 
 .config/sketchybar/helpers/calendar_event
 .config/sketchybar/helpers/network_load
+
+.code-review.md
