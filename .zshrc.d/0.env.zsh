@@ -21,6 +21,8 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
   source "$HOME/google-cloud-sdk/completion.zsh.inc"
 fi
 
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # export PYENV_ROOT="$HOME/.pyenv"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"

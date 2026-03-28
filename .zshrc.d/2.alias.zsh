@@ -45,6 +45,6 @@ alias p="pnpm turbo run build"
 alias ci="pnpm run format --fix && pnpm run lint --fix && pnpm turbo run typings --ui=stream && pnpm turbo run test:unit --ui=stream && pnpm turbo run build --ui=stream"
 
 alias c="copilot --enable-all-github-mcp-tools --allow-all-tools --experimental --disable-mcp-server=tana --disable-mcp-server=atlassian --model=claude-sonnet-4.6"
-alias t="copilot --allow-all-tools --disable-mcp-server=atlassian --disable-mcp-server=context7 --model=gpt-5.4"
+alias t="copilot --allow-all-tools --disable-mcp-server=atlassian --disable-mcp-server=context7 --model=claude-sonnet-4.6 --effort=high --yolo"
 
 alias n='vim __notes.md'
