@@ -31,3 +31,5 @@ case ":$PATH:" in
 esac
 
 # export PYENV_ROOT="$HOME/.pyenv"
+ 
+export DO_NOT_TRACK=1
