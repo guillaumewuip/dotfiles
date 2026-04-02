@@ -234,26 +234,6 @@ return {
   },
 
   {
-    "stevearc/conform.nvim",
-    opts = function(_, opts)
-      local biome_filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json",
-        "jsonc",
-      }
-
-      for _, ft in ipairs(biome_filetypes) do
-        local existing = opts.formatters_by_ft[ft] or {}
-        -- Prepend biome-organize-imports so it runs before biome
-        opts.formatters_by_ft[ft] = vim.list_extend({ "biome-organize-imports" }, existing)
-      end
-    end,
-  },
-
-  {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvimtools/none-ls-extras.nvim",
