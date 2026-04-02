@@ -234,16 +234,6 @@ return {
   },
 
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        vtsls = false,
-        tsgo = {},
-      },
-    },
-  },
-
-  {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       local biome_filetypes = {
