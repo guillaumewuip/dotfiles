@@ -115,3 +115,11 @@ done
 # Powerlevel10k config — run `p10k configure` to regenerate
 # ============================================================================
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/Users/guillaume.clochard/.oh-my-zsh/custom/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
