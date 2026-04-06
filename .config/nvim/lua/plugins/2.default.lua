@@ -60,7 +60,7 @@ return {
     "akinsho/bufferline.nvim",
     keys = {
       { "]b", false },
-      { "]b", false },
+      { "[b", false },
       { "<s-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
       { "<s-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
       { "<c-h>", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
