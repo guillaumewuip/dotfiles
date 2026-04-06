@@ -6,21 +6,11 @@ local map = LazyVim.safe_keymap_set
 
 map("n", "<leader>ln", function()
   vim.opt.relativenumber = not vim.opt.relativenumber:get()
-end, { desc = "Toggle relative line number", expr = true, silent = true })
+end, { desc = "Toggle relative line number", silent = true })
 
 map("n", "<leader>lh", function()
-  local lineHighlight = vim.api.nvim_exec("hi CursorLine", true)
-
-  if string.match(lineHighlight, "cleared") then
-    vim.cmd([[
-       hi CursorLine guibg=#20282e
-     ]])
-  else
-    vim.cmd([[
-       hi clear CursorLine
-     ]])
-  end
-end, { desc = "Toggle cursorline highlight", expr = true, silent = true })
+  vim.opt.cursorline = not vim.opt.cursorline:get()
+end, { desc = "Toggle cursorline highlight", silent = true })
 
 map("n", "q", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
