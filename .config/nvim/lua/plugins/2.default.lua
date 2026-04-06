@@ -224,12 +224,12 @@ return {
       default_mappings = false,
     },
     keys = {
-      { "<leader>gco", ":GitConflictChooseOurs<CR>", { desc = "Git conflict - choose ours" } },
-      { "<leader>gct", ":GitConflictChooseTheirs<CR>", { desc = "Git conflict - choose theirs" } },
-      { "<leader>gcb", ":GitConflictChooseBoth<CR>", { desc = "Git conflict - choose both" } },
-      { "<leader>gc0", ":GitConflictChooseNone<CR>", { desc = "Git conflict - choose none" } },
-      { "<leader>gcn", ":GitConflictNextConflict<CR>", { desc = "Git conflict - move to next conflict" } },
-      { "<leader>gcp", ":GitConflictPrevConflict<CR>", { desc = "Git conflict - move to previous conflict" } },
+      { "<leader>gco", ":GitConflictChooseOurs<CR>", desc = "Git conflict - choose ours" },
+      { "<leader>gct", ":GitConflictChooseTheirs<CR>", desc = "Git conflict - choose theirs" },
+      { "<leader>gcb", ":GitConflictChooseBoth<CR>", desc = "Git conflict - choose both" },
+      { "<leader>gc0", ":GitConflictChooseNone<CR>", desc = "Git conflict - choose none" },
+      { "<leader>gcn", ":GitConflictNextConflict<CR>", desc = "Git conflict - move to next conflict" },
+      { "<leader>gcp", ":GitConflictPrevConflict<CR>", desc = "Git conflict - move to previous conflict" },
     },
   },
 
