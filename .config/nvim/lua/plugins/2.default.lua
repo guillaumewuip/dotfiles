@@ -11,11 +11,11 @@ return {
         globalstatus = true,
       }
 
-      -- remove some items opts.sections.lualine_x
+      -- Default lualine_x: [1]=profiler [2]=noice_cmd [3]=noice_mode [4]=dap [5]=lazy_updates [6]=diff
       -- @see https://www.lazyvim.org/plugins/ui#lualinenvim
-      table.remove(opts.sections.lualine_x, 1)
-      table.remove(opts.sections.lualine_x, 2)
-      table.remove(opts.sections.lualine_x, 4)
+      table.remove(opts.sections.lualine_x, 6) -- diff
+      table.remove(opts.sections.lualine_x, 3) -- noice mode
+      table.remove(opts.sections.lualine_x, 1) -- profiler
 
       opts.sections.lualine_z = {
         { "filetype" },
