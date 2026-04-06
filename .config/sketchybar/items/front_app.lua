@@ -111,6 +111,15 @@ front_app:subscribe("window_focus", function(env)
 	update_from_window_id(env.WINDOW_ID)
 end)
 
+local title_change_seqs = {}
+
 front_app:subscribe("title_change", function(env)
-	update_from_window_id(env.WINDOW_ID)
+	local window_id = env.WINDOW_ID
+	title_change_seqs[window_id] = (title_change_seqs[window_id] or 0) + 1
+	local seq = title_change_seqs[window_id]
+	sbar.delay(0.3, function()
+		if title_change_seqs[window_id] == seq then
+			update_from_window_id(window_id)
+		end
+	end)
 end)
