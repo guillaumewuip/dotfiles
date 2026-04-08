@@ -4,6 +4,8 @@ shift + ctrl - return : osascript -e 'tell application "Ghostty"' -e 'set cfg to
 
 shift + ctrl - f : osascript -e 'tell application "Finder" to make new Finder window to folder ((path to home folder) as text)'
 
+shift + ctrl - m : osascript -e 'tell application "Arc"' -e 'make new window' -e 'tell front window' -e 'make new tab with properties {URL:"https://meet.google.com"}' -e 'end tell' -e 'end tell'
+
 shift + ctrl - p : open -a "1Password"
 
 # see .yabairc for the scratchpad definition used in --toggle <scratchpad name>
