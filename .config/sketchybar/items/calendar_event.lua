@@ -98,7 +98,9 @@ local function fetch_calendar_event()
 			return
 		end
 
-		local title, start_date, end_date = result:match("([^|]+)|([^|]+)|([^|]+)")
+		-- Titles may contain "|", so anchor the numeric timestamps at the end
+		local start_date, end_date = result:match("|(%d+)|(%d+)%s*$")
+		local title = result:match("^(.+)|%d+|%d+%s*$")
 
 		if not title then
 			calendar_event:set({ drawing = true, label = "error no title!" })

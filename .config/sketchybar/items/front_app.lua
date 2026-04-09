@@ -107,19 +107,26 @@ front_app:subscribe("front_app_switched", function(env)
 	end)
 end)
 
+-- Throttle: remember the last time we actually processed each window event
+local last_processed = {}
+
+local function should_process(window_id, min_interval)
+	local now = os.clock()
+	if (last_processed[window_id] or 0) + min_interval > now then
+		return false
+	end
+	last_processed[window_id] = now
+	return true
+end
+
 front_app:subscribe("window_focus", function(env)
-	update_from_window_id(env.WINDOW_ID)
+	if should_process(env.WINDOW_ID, 0.1) then
+		update_from_window_id(env.WINDOW_ID)
+	end
 end)
 
-local title_change_seqs = {}
-
 front_app:subscribe("title_change", function(env)
-	local window_id = env.WINDOW_ID
-	title_change_seqs[window_id] = (title_change_seqs[window_id] or 0) + 1
-	local seq = title_change_seqs[window_id]
-	sbar.delay(0.3, function()
-		if title_change_seqs[window_id] == seq then
-			update_from_window_id(window_id)
-		end
-	end)
+	if should_process(env.WINDOW_ID, 0.3) then
+		update_from_window_id(env.WINDOW_ID)
+	end
 end)

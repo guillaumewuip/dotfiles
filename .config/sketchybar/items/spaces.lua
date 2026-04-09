@@ -143,37 +143,34 @@ space_window_observer:subscribe("space_windows_change", function(env)
 	update_space_display(env.INFO.space, apps)
 end)
 
-local title_change_seqs = {}
+local title_change_last = {}
 
 space_window_observer:subscribe("title_change", function(env)
 	local window_id = env.WINDOW_ID
-	title_change_seqs[window_id] = (title_change_seqs[window_id] or 0) + 1
-	local seq = title_change_seqs[window_id]
-	sbar.delay(0.3, function()
-		if title_change_seqs[window_id] ~= seq then
-			return
-		end
-		sbar.exec("yabai -m query --windows --window " .. window_id .. " | jq -r '.space'", function(space_result)
-			local space_number = tonumber(space_result)
-			if space_number then
-				-- Query apps in that space
-				sbar.exec(
-					"yabai -m query --windows --space " .. space_number .. " | jq -r '[.[].app] | unique'",
-					function(apps_result)
-						local apps = {}
-						if apps_result and apps_result ~= "" and apps_result ~= "[]" then
-							-- Parse JSON array - extract app names from lines like '  "Arc",'
-							for line in apps_result:gmatch("[^\r\n]+") do
-								local app_name = line:match('"([^"]+)"')
-								if app_name then
-									table.insert(apps, app_name)
-								end
+	local now = os.clock()
+	if (title_change_last[window_id] or 0) + 0.5 > now then
+		return
+	end
+	title_change_last[window_id] = now
+
+	sbar.exec("yabai -m query --windows --window " .. window_id .. " | jq -r '.space'", function(space_result)
+		local space_number = tonumber(space_result)
+		if space_number then
+			sbar.exec(
+				"yabai -m query --windows --space " .. space_number .. " | jq -r '[.[].app] | unique'",
+				function(apps_result)
+					local apps = {}
+					if apps_result and apps_result ~= "" and apps_result ~= "[]" then
+						for line in apps_result:gmatch("[^\r\n]+") do
+							local app_name = line:match('"([^"]+)"')
+							if app_name then
+								table.insert(apps, app_name)
 							end
 						end
-						update_space_display(space_number, apps)
 					end
-				)
-			end
-		end)
+					update_space_display(space_number, apps)
+				end
+			)
+		end
 	end)
 end)
