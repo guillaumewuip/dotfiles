@@ -11,3 +11,5 @@ yarn-error.log
 __notes.md
 
 .code-review.md
+
+__pycache__
