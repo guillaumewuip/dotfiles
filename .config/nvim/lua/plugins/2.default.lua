@@ -236,6 +236,16 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      lazygit = {
+        -- Override nvim-remote preset to open files in current buffer instead of new tab
+        -- Default preset uses --remote-tab; we replace edit templates with --remote
+        config = {
+          os = {
+            edit = '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})',
+            editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
+          },
+        },
+      },
       picker = {
         layouts = {
           custom = {
