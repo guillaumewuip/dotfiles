@@ -119,6 +119,11 @@ done
 # OPENSPEC:START
 # OpenSpec shell completions configuration
 fpath=("/Users/guillaume.clochard/.oh-my-zsh/custom/completions" $fpath)
+
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 autoload -Uz compinit
 compinit
 # OPENSPEC:END
