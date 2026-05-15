@@ -15,7 +15,7 @@ cmd - escape [
 ]
 
 cmd - 0x0A [ # §± key, below esc
-  *      : yabai -m window --toggle tana || open -a Tana
+  *      : yabai -m window --toggle tana || open -a "Tana Outliner"
   "Tana" : yabai -m window --toggle tana
 ]
 
